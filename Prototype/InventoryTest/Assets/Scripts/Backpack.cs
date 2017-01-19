@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Backpack : MonoBehaviour {
 
@@ -12,7 +13,17 @@ public class Backpack : MonoBehaviour {
 	public float slotSize;
 	public GameObject slotPrefab;
 	private List<GameObject> allSlots;
-	private int emptySlot;	
+	private static int emptySlot;	
+	private Slot from, to;
+	public GameObject iconPrefab;
+	private static GameObject hoverObject;
+	public Canvas canvas;
+	private float hoverYOffset;
+
+	public static int EmptySlot {
+		get { return emptySlot; }
+		set { emptySlot = value;}
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -21,12 +32,18 @@ public class Backpack : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (hoverObject != null) {
+			Vector2 position;
+			RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform, Input.mousePosition, canvas.worldCamera, out position);
+			position.Set(position.x, position.y - hoverYOffset);
+			hoverObject.transform.position = canvas.transform.TransformPoint(position);
+		}
 	}
 
 	private void CreateLayout() {
 		allSlots = new List<GameObject>();
 		emptySlot = slots;
+		hoverYOffset = slotSize * 0.01f;
 		backpackWidth = (slots / rows) * (slotSize + 5 + slotPaddingLeft) + slotPaddingLeft;
 		backpackHeight = rows * (slotSize + 5 + slotPaddingTop) + slotPaddingTop;
 		backpackRect = GetComponent<RectTransform>();
@@ -85,4 +102,44 @@ public class Backpack : MonoBehaviour {
 		}
 		return false;
 	}
+
+	public void MoveItem(GameObject clicked) {
+		if (from == null) {
+			if (!clicked.GetComponent<Slot>().isEmpty) {
+				from = clicked.GetComponent<Slot>();
+				from.GetComponent<Image>().color = Color.gray;
+
+				hoverObject = (GameObject)Instantiate(iconPrefab);
+				hoverObject.GetComponent<Image>().sprite = clicked.GetComponent<Image>().sprite;
+				hoverObject.name = "Hover";
+
+				RectTransform hoverTransform = hoverObject.GetComponent<RectTransform>();
+				RectTransform clickedTransform = clicked.GetComponent<RectTransform>();
+
+				hoverTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, clickedTransform.sizeDelta.x);
+				hoverTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, clickedTransform.sizeDelta.y);
+
+				hoverObject.transform.SetParent(GameObject.Find("Canvas").transform, true);
+				hoverObject.transform.localScale = from.gameObject.transform.localScale;
+			}
+		} else if (to == null) {
+			to = clicked.GetComponent<Slot>();
+			Destroy(GameObject.Find("Hover"));
+		}
+		if (to != null && from != null) {
+			Stack<Item> tmpTo = new Stack<Item>(to.Items);
+			to.AddItems(from.Items);
+			
+			if (tmpTo.Count == 0) {
+				from.ClearSlot();
+			} else {
+				from.AddItems(tmpTo);
+			}
+			from.GetComponent<Image>().color = Color.white;
+			to = null;
+			from = null;
+			hoverObject = null;
+		}
+	}
+
 }

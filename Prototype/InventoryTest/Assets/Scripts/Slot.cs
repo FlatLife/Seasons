@@ -2,13 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class Slot : MonoBehaviour {
+public class Slot : MonoBehaviour, IPointerClickHandler {
 
-	private Stack<Item> items;
+    private Stack<Item> items;
 	public Text stackTxt;
 	public Sprite slotEmpty;
 	public Sprite slotHighlighted;
+
+	public Stack<Item> Items {
+		get {return items;}
+		set {items = value;}
+	}
 
 	public bool isEmpty {
 		get {return items.Count == 0;}
@@ -54,6 +60,12 @@ public class Slot : MonoBehaviour {
 		ChangeSprite(item.spriteNeutral, item.spriteHighlighted);
 	}
 
+	public void AddItems(Stack<Item> items) {
+		this.items = new Stack<Item>(items);
+		stackTxt.text = items.Count > 1 ? items.Count.ToString() : string.Empty;
+		ChangeSprite(CurrentItem.spriteNeutral, CurrentItem.spriteHighlighted);
+	}
+
 	private void ChangeSprite(Sprite neutral, Sprite highlighted) {
 		GetComponent<Image>().sprite = neutral;
 		SpriteState st = new SpriteState();
@@ -66,6 +78,24 @@ public class Slot : MonoBehaviour {
 	private void UseItem() {
 		if (!isEmpty) {
 			items.Pop().Use();
+			stackTxt.text = items.Count > 1 ? items.Count.ToString() : string.Empty;
+
+			if (isEmpty) {
+				ChangeSprite(slotEmpty, slotHighlighted);
+				Backpack.EmptySlot++;
+			}
 		}
+	}
+
+	public void OnPointerClick(PointerEventData eventData) {
+		if (eventData.button == PointerEventData.InputButton.Right) {
+			UseItem();
+		}
+	}
+
+	public void ClearSlot() {
+		items.Clear();
+		ChangeSprite(slotEmpty, slotHighlighted);
+		stackTxt.text = string.Empty;
 	}
 }
