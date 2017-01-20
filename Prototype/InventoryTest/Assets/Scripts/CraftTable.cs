@@ -73,6 +73,12 @@ public class CraftTable : MonoBehaviour {
 		equalRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 20);
 		equalRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 20);
 
+
+		// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		// NEEDS TO CHECK ITEM, AND BE CHECKED EVERY UPDATE RATHER THAN CALLED ONCE
+		if (Slot1.GetComponent<Button>().spriteState.disabledSprite==null) {
+			Debug.Log("Slot1 filled");
+		}
 		//BackPack.allSlots.Add(Slot1);
 		//BackPack.allSlots.Add(Slot2);
 		//BackPack.allSlots.Add(Slot3);
