@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class HandleCanvas : MonoBehaviour {
 
+	public GameObject itemPrefab;
 	private CanvasScaler scaler;
 
 	void Start () {
