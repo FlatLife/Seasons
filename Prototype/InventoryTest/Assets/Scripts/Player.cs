@@ -7,6 +7,7 @@ public class Player : MonoBehaviour {
 	public float speed;
 	public Backpack backpack;
 	private bool canTouch = false;
+	private Collider2D objectColliderID;
 
 	// Use this for initialization
 	void Start () {
@@ -26,15 +27,15 @@ public class Player : MonoBehaviour {
 
 	private void OnTriggerEnter2D(Collider2D other){
 		if (other.tag == "Item") {
+			objectColliderID = other;
 			canTouch = true;
 		}		
 	}
 
 	private void OnCollisionUpdate() {
 		if (canTouch) {
-			Collider2D objectCollider = GameObject.FindGameObjectWithTag("Item").GetComponent<Collider2D>();
 			if (Input.GetKeyDown(KeyCode.E)) {
-				backpack.AddItem(objectCollider.GetComponent<Item>());
+				backpack.AddItem(objectColliderID.GetComponent<Item>());
 			}
 		}
 	}
