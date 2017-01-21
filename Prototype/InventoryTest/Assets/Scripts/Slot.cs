@@ -10,6 +10,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 	public Text stackTxt;
 	public Sprite slotEmpty;
 	public Sprite slotHighlighted;
+	public ItemType myItemType;
 
 	public Stack<Item> Items {
 		get {return items;}
@@ -31,6 +32,9 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 	// Use this for initialization
 	void Start () {
 
+		//myItemType = ItemType.FISHINGROD;
+
+		//stack stuff
 		items = new Stack<Item>();
 		RectTransform slotRect = GetComponent<RectTransform>();
 		RectTransform txtRect = stackTxt.GetComponent<RectTransform>();

@@ -12,6 +12,14 @@ public class CraftTable : MonoBehaviour {
 	private RectTransform CraftTableRect;
 	public Canvas canvas;
 
+	private GameObject plus;
+	private GameObject equal;
+	private GameObject Slot1;
+	private GameObject Slot2;
+	private GameObject Slot3;
+
+
+
 	// Use this for initialization
 	void Start () {
 		CreateLayout();
@@ -24,11 +32,11 @@ public class CraftTable : MonoBehaviour {
 
 	private void CreateLayout() {
 		
-		GameObject plus = (GameObject)Instantiate(plusImage);
-		GameObject equal = (GameObject)Instantiate(equalsImage);
-		GameObject Slot1 = (GameObject)Instantiate(slotPrefab);
-		GameObject Slot2 = (GameObject)Instantiate(slotPrefab);
-		GameObject Slot3 = (GameObject)Instantiate(slotPrefab);
+		plus = (GameObject)Instantiate(plusImage);
+		equal = (GameObject)Instantiate(equalsImage);
+		Slot1 = (GameObject)Instantiate(slotPrefab);
+		Slot2 = (GameObject)Instantiate(slotPrefab);
+		Slot3 = (GameObject)Instantiate(slotPrefab);
 
 		RectTransform slotRect1 = Slot1.GetComponent<RectTransform>();
 		RectTransform slotRect2 = Slot2.GetComponent<RectTransform>();
@@ -53,38 +61,36 @@ public class CraftTable : MonoBehaviour {
 		//Debug.Log(CraftTableRect.localPosition);
 
 		//places the slots in the inventory in each column, then row
-		slotRect1.localPosition = CraftTableRect.localPosition + new Vector3(10, -50);
+		slotRect1.localPosition = CraftTableRect.localPosition + new Vector3(10, -20);
 		slotRect1.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 50);
 		slotRect1.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 50);
 
-		slotRect2.localPosition = CraftTableRect.localPosition + new Vector3(90, -50);			
+		slotRect2.localPosition = CraftTableRect.localPosition + new Vector3(90, -20);			
 		slotRect2.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 50);
 		slotRect2.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 50);
 
-		slotRect3.localPosition = CraftTableRect.localPosition + new Vector3(170, -50);		
+		slotRect3.localPosition = CraftTableRect.localPosition + new Vector3(170, -20);		
 		slotRect3.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 50);
 		slotRect3.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 50);
 
-		plusRect.localPosition = CraftTableRect.localPosition + new Vector3(65, -63);		
+		plusRect.localPosition = CraftTableRect.localPosition + new Vector3(65, -33);		
 		plusRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 20);
 		plusRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 20);
 
-		equalRect.localPosition = CraftTableRect.localPosition + new Vector3(145, -63);		
+		equalRect.localPosition = CraftTableRect.localPosition + new Vector3(145, -33);		
 		equalRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 20);
 		equalRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 20);
 
-
-		// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		// NEEDS TO CHECK ITEM, AND BE CHECKED EVERY UPDATE RATHER THAN CALLED ONCE
-		if (Slot1.GetComponent<Button>().spriteState.disabledSprite==null) {
-			Debug.Log("Slot1 filled");
-		}
-		//BackPack.allSlots.Add(Slot1);
-		//BackPack.allSlots.Add(Slot2);
-		//BackPack.allSlots.Add(Slot3);
 	}
 
+	
 	public void CraftItem() {
-		
+		Slot tmp1 = Slot1.GetComponent<Slot>();
+		Slot tmp2 = Slot2.GetComponent<Slot>();
+		Slot tmp3 = Slot3.GetComponent<Slot>();
+
+		if(tmp1.CurrentItem.type == ItemType.STICK && tmp2.CurrentItem.type == ItemType.VINE) {
+			tmp3.AddItem(tmp3.GetComponent<Item>());
+		}
 	}
 }

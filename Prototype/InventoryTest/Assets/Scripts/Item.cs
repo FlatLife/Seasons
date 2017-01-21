@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum ItemType {REDBUTTON, STICK, VINE};
+public enum ItemType {NONE, FISHINGROD, STICK, VINE};
 
 
 public class Item : MonoBehaviour {
@@ -15,8 +15,8 @@ public class Item : MonoBehaviour {
 
 	public void Use() {
 		switch(type) {
-			case ItemType.REDBUTTON:
-				Debug.Log("RedButtoned");
+			case ItemType.FISHINGROD:
+				Debug.Log("FishingRodded");
 				break;
 			case ItemType.STICK:
 				Debug.Log("Sticked");
