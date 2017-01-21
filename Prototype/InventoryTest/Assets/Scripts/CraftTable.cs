@@ -12,7 +12,7 @@ public class CraftTable : MonoBehaviour {
 	private RectTransform CraftTableRect;
 	public Canvas canvas;
 	private Backpack backpack;
-	private HandleCanvas prefabGrab;
+	private ItemInstantiator itemGrab;
 
 	private GameObject plus;
 	private GameObject equal;
@@ -94,7 +94,8 @@ public class CraftTable : MonoBehaviour {
 		if(tmp1.CurrentItem.type == ItemType.STICK && tmp2.CurrentItem.type == ItemType.VINE) {
 			//backpack.AddItem(tmp3.GetComponent<Item>());
 			Debug.Log("Can craft fishing rod, just need to find out how to code the cunt");
-			backpack.AddItem(prefabGrab.GetComponent("itemPrefab3").GetComponent<Item>());
+			Debug.Log(itemGrab.itemPrefab3);
+			
 		}
 	}
 }
