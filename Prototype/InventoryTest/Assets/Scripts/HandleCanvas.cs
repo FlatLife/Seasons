@@ -7,12 +7,14 @@ public class HandleCanvas : MonoBehaviour {
 
 	public GameObject itemPrefab;
 	public GameObject itemPrefab2;
+	public GameObject itemPrefab3;
 	private CanvasScaler scaler;
 
 	void Start () {
 		scaler = GetComponent<CanvasScaler>();
 		scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
 
+		
 		//Instantiating test item
 		GameObject itemImage = (GameObject)Instantiate(itemPrefab);
 		Transform itemImageRect = itemImage.GetComponent<Transform>();
