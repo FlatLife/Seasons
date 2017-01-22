@@ -141,5 +141,4 @@ public class Backpack : MonoBehaviour {
 			hoverObject = null;
 		}
 	}
-
 }

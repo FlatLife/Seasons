@@ -4,16 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class CraftTable : MonoBehaviour {
-
-	public GameObject plusImage;
-	public GameObject equalsImage;
 	public GameObject slotPrefab;
+	public float slotSize;
 
 	private Backpack BackPack;
 	private RectTransform CraftTableRect;
-
-	private GameObject plus;
-	private GameObject equal;
 	private GameObject Slot1;
 	private GameObject Slot2;
 	private GameObject Slot3;
@@ -31,9 +26,6 @@ public class CraftTable : MonoBehaviour {
 	}
 
 	private void CreateLayout() {
-		
-		plus = (GameObject)Instantiate(plusImage);
-		equal = (GameObject)Instantiate(equalsImage);
 		Slot1 = (GameObject)Instantiate(slotPrefab);
 		Slot2 = (GameObject)Instantiate(slotPrefab);
 		Slot3 = (GameObject)Instantiate(slotPrefab);
@@ -41,45 +33,31 @@ public class CraftTable : MonoBehaviour {
 		RectTransform slotRect1 = Slot1.GetComponent<RectTransform>();
 		RectTransform slotRect2 = Slot2.GetComponent<RectTransform>();
 		RectTransform slotRect3 = Slot3.GetComponent<RectTransform>();
-		RectTransform plusRect = plus.GetComponent<RectTransform>();
-		RectTransform equalRect = equal.GetComponent<RectTransform>();
 		CraftTableRect = GetComponent<RectTransform>();
 
 		Slot1.name = "Slot1";
 		Slot2.name = "Slot2";
 		Slot3.name = "Slot3";
-		plus.name = "PlusImage";
-		equal.name = "EqualImage";
 
 		//Slot1.GetComponent<Button>().interactable = false;
 		Slot1.transform.SetParent(this.transform.parent);
 		Slot2.transform.SetParent(this.transform.parent);
 		Slot3.transform.SetParent(this.transform.parent);
-		plus.transform.SetParent(this.transform.parent);
-		equal.transform.SetParent(this.transform.parent);
 
 		//Debug.Log(CraftTableRect.localPosition);
 
 		//places the slots in the inventory in each column, then row
 		slotRect1.localPosition = CraftTableRect.localPosition + new Vector3(10, -20);
-		slotRect1.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 50);
-		slotRect1.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 50);
+		slotRect1.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, slotSize);
+		slotRect1.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, slotSize);
 
 		slotRect2.localPosition = CraftTableRect.localPosition + new Vector3(90, -20);			
-		slotRect2.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 50);
-		slotRect2.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 50);
+		slotRect2.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, slotSize);
+		slotRect2.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, slotSize);
 
 		slotRect3.localPosition = CraftTableRect.localPosition + new Vector3(170, -20);		
-		slotRect3.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 50);
-		slotRect3.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 50);
-
-		plusRect.localPosition = CraftTableRect.localPosition + new Vector3(65, -33);		
-		plusRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 20);
-		plusRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 20);
-
-		equalRect.localPosition = CraftTableRect.localPosition + new Vector3(145, -33);		
-		equalRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 20);
-		equalRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 20);
+		slotRect3.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, slotSize);
+		slotRect3.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, slotSize);
 
 	}
 
