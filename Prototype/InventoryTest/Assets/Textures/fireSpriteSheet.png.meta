@@ -1,9 +1,14 @@
 fileFormatVersion: 2
 guid: f12e08e3fe107b74d8e0903ee0c2178d
-timeCreated: 1485074971
+timeCreated: 1485076209
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: fireSpriteSheet_0
+    21300002: fireSpriteSheet_1
+    21300004: fireSpriteSheet_2
+    21300006: fireSpriteSheet_3
+    21300008: fireSpriteSheet_4
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -92,7 +97,72 @@ TextureImporter:
     overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: fireSpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6
+        width: 200
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fireSpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 6
+        width: 200
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fireSpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 6
+        width: 200
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fireSpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 6
+        width: 200
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fireSpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 6
+        width: 200
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 
