@@ -79,7 +79,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 		GetComponent<Button>().spriteState = st;
 	}
 
-	private void UseItem() {
+	public void UseItem() {
 		if (!isEmpty) {
 			items.Pop().Use();
 			stackTxt.text = items.Count > 1 ? items.Count.ToString() : string.Empty;

@@ -8,11 +8,9 @@ public class CraftTable : MonoBehaviour {
 	public GameObject plusImage;
 	public GameObject equalsImage;
 	public GameObject slotPrefab;
+
 	private Backpack BackPack;
 	private RectTransform CraftTableRect;
-	public Canvas canvas;
-	private Backpack backpack;
-	private ItemInstantiator itemGrab;
 
 	private GameObject plus;
 	private GameObject equal;
@@ -87,15 +85,17 @@ public class CraftTable : MonoBehaviour {
 
 	
 	public void CraftItem() {
+		// tmp1/2/3 are just the crafting slots
 		Slot tmp1 = Slot1.GetComponent<Slot>();
 		Slot tmp2 = Slot2.GetComponent<Slot>();
 		Slot tmp3 = Slot3.GetComponent<Slot>();
 
+		//compares items in slots (has to be specific), atm just called find everytime, so probably shud do that in instanatiate
+		// on start up or whatever to not slow it down but yolo
 		if(tmp1.CurrentItem.type == ItemType.STICK && tmp2.CurrentItem.type == ItemType.VINE) {
-			//backpack.AddItem(tmp3.GetComponent<Item>());
-			Debug.Log("Can craft fishing rod, just need to find out how to code the cunt");
-			Debug.Log(itemGrab.itemPrefab3);
-			
+			tmp3.AddItem(GameObject.Find("Items/FishingRod").GetComponent<Item>());
+			tmp1.UseItem ();
+			tmp2.UseItem ();
 		}
 	}
 }
