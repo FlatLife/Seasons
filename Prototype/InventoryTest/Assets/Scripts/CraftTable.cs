@@ -70,7 +70,8 @@ public class CraftTable : MonoBehaviour {
 
 		//compares items in slots (has to be specific), atm just called find everytime, so probably shud do that in instanatiate
 		// on start up or whatever to not slow it down but yolo
-		if(tmp1.CurrentItem.type == ItemType.STICK && tmp2.CurrentItem.type == ItemType.VINE) {
+		if((tmp1.CurrentItem.type == ItemType.STICK && tmp2.CurrentItem.type == ItemType.VINE)
+			|| (tmp1.CurrentItem.type == ItemType.VINE && tmp2.CurrentItem.type == ItemType.STICK)){
 			tmp3.AddItem(GameObject.Find("Items/FishingRod").GetComponent<Item>());
 			tmp1.UseItem ();
 			tmp2.UseItem ();
