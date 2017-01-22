@@ -25,17 +25,17 @@ public class Fire : MonoBehaviour {
         if (cookCount == 1)
         {
             Transform food = Instantiate(itemPrefab);
-            food.position = new Vector3(getXCordinate() - 0.7f, getYCordinate() + 1, -1);
+            food.position = new Vector3(getXCordinate() - 40, getYCordinate() + 50, -1);
         }
         else if (cookCount == 2)
         {
             Transform food = Instantiate(itemPrefab);
-            food.position = new Vector3(getXCordinate() + 0.7f, getYCordinate() + 1, -1);
+            food.position = new Vector3(getXCordinate() + 40, getYCordinate() + 50, -1);
         }
         else if(cookCount == 0)
         {
             Transform food = Instantiate(itemPrefab);
-            food.position = new Vector3(getXCordinate(), getYCordinate() + 1, -1);
+            food.position = new Vector3(getXCordinate(), getYCordinate() + 50, -1);
         }
         cookCount++;
     }
