@@ -769,6 +769,11 @@ MonoBehaviour:
   craft: {fileID: 1292792047}
   slot: {fileID: 114472974881531644, guid: 1046856afdf9c4d5891a11c611ccab04, type: 2}
   cookingUI: {fileID: 1950040296}
+  isSwimming: 0
+  diving: 0
+  canFish: 0
+  performingAction: 0
+  timeToCatch: 2
 --- !u!1 &1216158955
 GameObject:
   m_ObjectHideFlags: 0
