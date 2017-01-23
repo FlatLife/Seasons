@@ -10,7 +10,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 	public Text stackTxt;
 	public Sprite slotEmpty;
 	public Sprite slotHighlighted;
-	public ItemType myItemType;
+	
 
 	public Stack<Item> Items {
 		get {return items;}
