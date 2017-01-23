@@ -12,7 +12,7 @@ public class Backpack : MonoBehaviour {
 	public float slotPaddingLeft, slotPaddingTop;
 	public float slotSize;
 	public GameObject slotPrefab;
-	private List<GameObject> allSlots;
+	public List<GameObject> allSlots;
 	private static int emptySlot;	
 	private Slot from, to;
 	public GameObject iconPrefab;
@@ -26,7 +26,7 @@ public class Backpack : MonoBehaviour {
 	}
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		CreateLayout();
 	}
 	
@@ -63,6 +63,7 @@ public class Backpack : MonoBehaviour {
 				slotRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, slotSize);
 				slotRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, slotSize);
 				allSlots.Add(newSlot);
+				newSlot.GetComponent<Image>().enabled = false;
 			}
 		}
 	}
@@ -104,6 +105,7 @@ public class Backpack : MonoBehaviour {
 	}
 
 	public void MoveItem(GameObject clicked) {
+		if(clicked.GetComponent<Image>().enabled){
 		if (from == null) {
 			if (!clicked.GetComponent<Slot>().isEmpty) {
 				from = clicked.GetComponent<Slot>();
@@ -140,5 +142,7 @@ public class Backpack : MonoBehaviour {
 			from = null;
 			hoverObject = null;
 		}
+		}
 	}
+	
 }
