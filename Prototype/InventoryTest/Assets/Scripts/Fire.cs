@@ -5,24 +5,17 @@ using UnityEngine;
 public class Fire : MonoBehaviour {
     public Transform itemPrefab;
     public int cookCount;
+    int frameIndex;
     float xCo;
     float yCo;
     // An array with the sprites used for animation
     public Sprite[] animSprites;
 
-    // Controls how fast to change the sprites when
-    // animation is running
-    public float framesPerSecond;
-
     // Reference to the renderer of the sprite
     // game object
     SpriteRenderer animRenderer;
 
-    // Time passed since the start of animatin
-    private float timeAtAnimStart;
-
-    // Indicates whether animation is running or not
-    private bool animRunning = false;
+    private float timeSinceLastFrame;    
 
     // Use this for initialization
     void Start () {
@@ -30,24 +23,30 @@ public class Fire : MonoBehaviour {
         // Get a reference to game object renderer and
         // cast it to a Sprite Renderer
         animRenderer = GetComponent<Renderer>() as SpriteRenderer;
+        //Sets the animation to the first frame
+        frameIndex = 0;
+        timeSinceLastFrame = 0;
 
     }
 
     void FixedUpdate()
     {
-        if (!animRunning)
-        {
-                // Animation will start playing
-                animRunning = true;
-
-                // Record time at animation start
-                timeAtAnimStart = Time.timeSinceLevelLoad;
-        }
+        
     }
 
     // Update is called once per frame
     void Update () {
-		
+        if(timeSinceLastFrame > 0.15){
+            animRenderer.sprite = animSprites[frameIndex];
+            timeSinceLastFrame = 0;
+            frameIndex++;
+        } else{
+            timeSinceLastFrame = timeSinceLastFrame + Time.deltaTime;
+        }		    
+        //If we are at the last animation frame, reset it back to the first frame
+        if(frameIndex > 4){
+            frameIndex = 0;
+        }
 	}
 
     public void startCooking()
