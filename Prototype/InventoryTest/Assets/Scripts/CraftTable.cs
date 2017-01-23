@@ -9,15 +9,16 @@ public class CraftTable : MonoBehaviour {
 
 	private Backpack BackPack;
 	private RectTransform CraftTableRect;
-	private GameObject Slot1;
-	private GameObject Slot2;
-	private GameObject Slot3;
+	public GameObject Slot1;
+	public GameObject Slot2;
+	public GameObject Slot3;
 
 
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		CreateLayout();
+		
 	}
 	
 	// Update is called once per frame
@@ -26,39 +27,44 @@ public class CraftTable : MonoBehaviour {
 	}
 
 	private void CreateLayout() {
-		Slot1 = (GameObject)Instantiate(slotPrefab);
-		Slot2 = (GameObject)Instantiate(slotPrefab);
-		Slot3 = (GameObject)Instantiate(slotPrefab);
 
-		RectTransform slotRect1 = Slot1.GetComponent<RectTransform>();
-		RectTransform slotRect2 = Slot2.GetComponent<RectTransform>();
-		RectTransform slotRect3 = Slot3.GetComponent<RectTransform>();
-		CraftTableRect = GetComponent<RectTransform>();
+			Slot1 = (GameObject)Instantiate(slotPrefab);
+			Slot2 = (GameObject)Instantiate(slotPrefab);
+			Slot3 = (GameObject)Instantiate(slotPrefab);
 
-		Slot1.name = "Slot1";
-		Slot2.name = "Slot2";
-		Slot3.name = "Slot3";
+			RectTransform slotRect1 = Slot1.GetComponent<RectTransform>();
+			RectTransform slotRect2 = Slot2.GetComponent<RectTransform>();
+			RectTransform slotRect3 = Slot3.GetComponent<RectTransform>();
+			CraftTableRect = GetComponent<RectTransform>();
 
-		//Slot1.GetComponent<Button>().interactable = false;
-		Slot1.transform.SetParent(this.transform.parent);
-		Slot2.transform.SetParent(this.transform.parent);
-		Slot3.transform.SetParent(this.transform.parent);
+			Slot1.name = "Slot1";
+			Slot2.name = "Slot2";
+			Slot3.name = "Slot3";
 
-		//Debug.Log(CraftTableRect.localPosition);
+			//Slot1.GetComponent<Button>().interactable = false;
+			Slot1.transform.SetParent(this.transform.parent);
+			Slot2.transform.SetParent(this.transform.parent);
+			Slot3.transform.SetParent(this.transform.parent);
 
-		//places the slots in the inventory in each column, then row
-		slotRect1.localPosition = CraftTableRect.localPosition + new Vector3(10, -20);
-		slotRect1.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, slotSize);
-		slotRect1.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, slotSize);
+			//Debug.Log(CraftTableRect.localPosition);
 
-		slotRect2.localPosition = CraftTableRect.localPosition + new Vector3(90, -20);			
-		slotRect2.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, slotSize);
-		slotRect2.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, slotSize);
+			//places the slots in the inventory in each column, then row
+			slotRect1.localPosition = CraftTableRect.localPosition + new Vector3(10, -20);
+			slotRect1.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, slotSize);
+			slotRect1.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, slotSize);
 
-		slotRect3.localPosition = CraftTableRect.localPosition + new Vector3(170, -20);		
-		slotRect3.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, slotSize);
-		slotRect3.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, slotSize);
+			slotRect2.localPosition = CraftTableRect.localPosition + new Vector3(90, -20);			
+			slotRect2.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, slotSize);
+			slotRect2.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, slotSize);
 
+			slotRect3.localPosition = CraftTableRect.localPosition + new Vector3(170, -20);		
+			slotRect3.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, slotSize);
+			slotRect3.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, slotSize);
+			
+			Slot1.GetComponent<Image>().enabled = false;
+			Slot2.GetComponent<Image>().enabled = false;
+			Slot3.GetComponent<Image>().enabled = false;
+		
 	}
 
 	
@@ -71,10 +77,12 @@ public class CraftTable : MonoBehaviour {
 		//compares items in slots (has to be specific), atm just called find everytime, so probably shud do that in instanatiate
 		// on start up or whatever to not slow it down but yolo
 		if((tmp1.CurrentItem.type == ItemType.STICK && tmp2.CurrentItem.type == ItemType.VINE)
-			|| (tmp1.CurrentItem.type == ItemType.VINE && tmp2.CurrentItem.type == ItemType.STICK)){
-			tmp3.AddItem(GameObject.Find("Items/FishingRod").GetComponent<Item>());
-			tmp1.UseItem ();
-			tmp2.UseItem ();
+		|| (tmp1.CurrentItem.type == ItemType.VINE && tmp2.CurrentItem.type == ItemType.STICK)){
+			//if(tmp3.CurrentItem != null && tmp3.CurrentItem.GetComponent<ItemType>() == ItemType.FISHINGROD) {
+				tmp3.AddItem(GameObject.Find("Items/FishingRod").GetComponent<Item>());
+				tmp1.UseItem ();
+				tmp2.UseItem ();
+			//}
 		}
 	}
 }
