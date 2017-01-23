@@ -10,7 +10,12 @@ public class Player : MonoBehaviour {
     bool atFire = false;
     private Collider2D objectColliderID;
     Fire fire;
-    
+
+	public bool isSwimming = false;
+	public bool diving = false;
+	public bool canFish = false;
+	public bool performingAction = false;
+	public float timeToCatch = 2.0f;
 
 
     // Use this for initialization
@@ -22,7 +27,45 @@ public class Player : MonoBehaviour {
 	void Update () {
 		HandleMovement();
 		OnCollisionUpdate();
+		Fishing fish = GetComponent<Fishing> ();
+		float movementInput = Input.GetAxis ("Horizontal");
+		float movementInput2 = Input.GetAxis ("Vertical");
+
+		if (Input.GetKeyDown (KeyCode.E) && canFish) {
+			if (fish.isFishing) {
+				performingAction = false;
+				fish.stop ();
+			} else {
+				performingAction = true;
+				timeToCatch = 2.0f;
+				fish.fish ();
+			}
+		}
+
+		if (fish.minigame) {
+			timeToCatch -= Time.deltaTime;
+			if (timeToCatch < 0.0f) {
+				fish.minigame = false;
+				timeToCatch = 2.0f;
+			}else if(Input.GetKeyDown (KeyCode.Space)){
+				fish.hasCaught = true;
+				performingAction = false;
+			}
+		}
+
+		if(isSwimming && Input.GetKeyDown(KeyCode.S)){
+			diving = true;
+		}
+
+		if(Input.GetKey(KeyCode.S) && isSwimming && diving){
+			transform.Translate(new Vector3(Time.deltaTime * speed * movementInput,Time.deltaTime * 6.0f * -1,0), Space.World);
+			
+		}
+		if (!performingAction) {
+			transform.Translate (new Vector3 (Time.deltaTime * speed * movementInput, Time.deltaTime * speed * movementInput2, 0), Space.World);
+		}
 	}
+    
 
 	private void HandleMovement() {
 		float translation = speed * Time.deltaTime;
