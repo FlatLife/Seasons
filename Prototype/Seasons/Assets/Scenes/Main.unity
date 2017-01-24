@@ -518,7 +518,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 273, y: -218.5}
+  m_AnchoredPosition: {x: 363, y: -40}
   m_SizeDelta: {x: 228, y: 143}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &966952893
@@ -567,9 +567,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotPrefab: {fileID: 1032774612882832, guid: 1046856afdf9c4d5891a11c611ccab04, type: 2}
   slotSize: 30
+  BackPack: {fileID: 765439387}
   Slot1: {fileID: 0}
   Slot2: {fileID: 0}
-  Slot3: {fileID: 0}
 --- !u!1 &968074598
 GameObject:
   m_ObjectHideFlags: 0
@@ -1204,6 +1204,7 @@ MonoBehaviour:
   isSwimming: 0
   diving: 0
   canFish: 0
+  atFire: 0
   performingAction: 0
   timeToCatch: 2
 --- !u!61 &2081458099
