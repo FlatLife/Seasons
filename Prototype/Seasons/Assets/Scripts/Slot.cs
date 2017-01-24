@@ -91,6 +91,18 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 		}
 	}
 
+	public void DestroyItem() {
+		if (!isEmpty) {
+			items.Pop();
+			stackTxt.text = items.Count > 1 ? items.Count.ToString() : string.Empty;
+
+			if (isEmpty) {
+				ChangeSprite(slotEmpty, slotHighlighted);
+				Backpack.EmptySlot++;
+			}
+		}
+	}
+
 	public void OnPointerClick(PointerEventData eventData) {
 		if (eventData.button == PointerEventData.InputButton.Right) {
 			UseItem();
