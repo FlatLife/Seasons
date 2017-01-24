@@ -46,15 +46,15 @@ public class CookingUI : MonoBehaviour {
 
 
 			//places the slots in the inventory in each column, then row
-			slotRect4.localPosition = CookingUIRect.localPosition + new Vector3(80, -90);
+			slotRect4.localPosition = CookingUIRect.localPosition + new Vector3(10, -20);
 			slotRect4.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, slotSize);
 			slotRect4.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, slotSize);
 
-			slotRect5.localPosition = CookingUIRect.localPosition + new Vector3(150, -90);			
+			slotRect5.localPosition = CookingUIRect.localPosition + new Vector3(90, -20);			
 			slotRect5.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, slotSize);
 			slotRect5.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, slotSize);
 
-			slotRect6.localPosition = CookingUIRect.localPosition + new Vector3(220, -90);		
+			slotRect6.localPosition = CookingUIRect.localPosition + new Vector3(170, -20);		
 			slotRect6.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, slotSize);
 			slotRect6.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, slotSize);
 			
