@@ -642,9 +642,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotPrefab: {fileID: 1032774612882832, guid: 1046856afdf9c4d5891a11c611ccab04, type: 2}
   slotSize: 30
+  BackPack: {fileID: 765439387}
   Slot1: {fileID: 0}
   Slot2: {fileID: 0}
-  Slot3: {fileID: 0}
 --- !u!1 &968074598
 GameObject:
   m_ObjectHideFlags: 0
@@ -1382,6 +1382,8 @@ MonoBehaviour:
   minigame: 0
   hasCaught: 0
   alertP: {fileID: 4312798782951526, guid: ba7c398a6e4444970903fe8f1c31c2cb, type: 2}
+  rodAlert: {fileID: 0}
+  canvas: {fileID: 0}
 --- !u!1 &2092461084
 GameObject:
   m_ObjectHideFlags: 0
