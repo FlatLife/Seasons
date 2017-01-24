@@ -21,9 +21,10 @@ GameObject:
   - component: {fileID: 4359664319608864}
   - component: {fileID: 212487112175136312}
   - component: {fileID: 114377582577303490}
+  - component: {fileID: 61912352552302642}
   m_Layer: 0
   m_Name: rawFish
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35,12 +36,26 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1842889047269010}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.7750465, y: 2.5840268, z: 0}
+  m_LocalPosition: {x: 4.272688, y: -0.73450446, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &61912352552302642
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1842889047269010}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 2.25, y: 2.25}
 --- !u!114 &114377582577303490
 MonoBehaviour:
   m_ObjectHideFlags: 1

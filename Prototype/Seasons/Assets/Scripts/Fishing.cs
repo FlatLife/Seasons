@@ -50,6 +50,7 @@ public class Fishing : MonoBehaviour {
 			isFishing = true;
 		}
 		else{
+			GetComponent<Player>().performingAction = false;
 			Transform text = Instantiate(rodAlert);
 			text.SetParent(canvas);
 			Vector3 position = transform.position;
