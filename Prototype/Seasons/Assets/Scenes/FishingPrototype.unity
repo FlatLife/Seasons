@@ -482,9 +482,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slots: 16
   rows: 4
-  slotPaddingLeft: 30
-  slotPaddingTop: 30
-  slotSize: 0.5
+  slotPaddingLeft: 15
+  slotPaddingTop: 15
+  slotSize: 30
   slotPrefab: {fileID: 1032774612882832, guid: 1046856afdf9c4d5891a11c611ccab04, type: 2}
   allSlots: []
   iconPrefab: {fileID: 1059737987419112, guid: 0ac614e9beb31402a9a39ea7c3a2f4f5, type: 2}
@@ -571,7 +571,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotPrefab: {fileID: 1032774612882832, guid: 1046856afdf9c4d5891a11c611ccab04, type: 2}
-  slotSize: 0.5
+  slotSize: 30
   Slot1: {fileID: 0}
   Slot2: {fileID: 0}
   Slot3: {fileID: 0}
@@ -852,7 +852,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotPrefab: {fileID: 1032774612882832, guid: 1046856afdf9c4d5891a11c611ccab04, type: 2}
-  slotSize: 35
+  slotSize: 30
   Slot4: {fileID: 0}
   Slot5: {fileID: 0}
   Slot6: {fileID: 0}
