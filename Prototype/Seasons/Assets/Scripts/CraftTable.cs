@@ -66,23 +66,21 @@ public class CraftTable : MonoBehaviour {
 			Slot3.GetComponent<Image>().enabled = false;
 		
 	}
-
 	
 	public void CraftItem() {
-		// tmp1/2/3 are just the crafting slots
-		Slot tmp1 = Slot1.GetComponent<Slot>();
-		Slot tmp2 = Slot2.GetComponent<Slot>();
-		Slot tmp3 = Slot3.GetComponent<Slot>();
+		CheckRecipe(ItemType.VINE, ItemType.STICK, "FishingRod");
+    }
+	public void CheckRecipe(ItemType type1, ItemType type2, string product) {
+        Slot tmp1 = Slot1.GetComponent<Slot>();
+        Slot tmp2 = Slot2.GetComponent<Slot>();
+        Slot tmp3 = Slot3.GetComponent<Slot>();
 
-		//compares items in slots (has to be specific), atm just called find everytime, so probably shud do that in instanatiate
-		// on start up or whatever to not slow it down but yolo
-		if((tmp1.CurrentItem.type == ItemType.STICK && tmp2.CurrentItem.type == ItemType.VINE)
-		|| (tmp1.CurrentItem.type == ItemType.VINE && tmp2.CurrentItem.type == ItemType.STICK)){
-			//if(tmp3.CurrentItem != null && tmp3.CurrentItem.GetComponent<ItemType>() == ItemType.FISHINGROD) {
-				tmp3.AddItem(GameObject.Find("Items/FishingRod").GetComponent<Item>());
-				tmp1.UseItem ();
-				tmp2.UseItem ();
-			//}
-		}
+		if((tmp1.CurrentItem.type == type1 && tmp2.CurrentItem.type == type2)
+        || (tmp1.CurrentItem.type == type2 && tmp2.CurrentItem.type == type1)){
+            Item result = Resources.Load<GameObject>(product).GetComponent<Item>();
+            tmp3.AddItem(result);
+            tmp1.UseItem ();
+            tmp2.UseItem ();
+        }
 	}
 }
