@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 
-public enum ItemType {NONE, FISHINGROD, STICK, VINE};
+public enum ItemType {NONE, FISHINGROD, STICK, VINE, RAWFISH};
 
 
 public class Item : MonoBehaviour {

@@ -9,7 +9,6 @@ public float speed;
 	public Backpack backpack;
     public CraftTable craft;
 	private bool canTouch = false;
-    bool atFire = false;
     private Collider2D objectColliderID;
     Fire fire;
     public Slot slot;
@@ -18,6 +17,7 @@ public float speed;
 	public bool isSwimming = false;
 	public bool diving = false;
 	public bool canFish = false;
+	public bool atFire = false;
 	public bool performingAction = false;
 	public float timeToCatch = 2.0f;
 
@@ -35,15 +35,27 @@ public float speed;
 		float movementInput = Input.GetAxis ("Horizontal");
 		float movementInput2 = Input.GetAxis ("Vertical");
 
-		if (Input.GetKeyDown (KeyCode.E) && canFish) {
-			if (fish.isFishing) {
+		//If player is pressing the interaction key
+		if (Input.GetKeyDown (KeyCode.E)) {
+			//Fishing minigame interaction
+			if(canFish){
+				if (fish.isFishing) {
 				performingAction = false;
 				fish.stop ();
 			} else {
 				performingAction = true;
 				timeToCatch = 2.0f;
 				fish.fish ();
+				}
 			}
+			//Cooking minigame interaction
+			if(atFire){
+				GameObject.Find("Canvas/CookingUI").GetComponent<Image>().enabled = !GameObject.Find("Canvas/CookingUI").GetComponent<Image>().enabled;
+                cookingUI.Slot4.GetComponent<Image>().enabled = !cookingUI.Slot4.GetComponent<Image>().enabled;
+                cookingUI.Slot5.GetComponent<Image>().enabled = !cookingUI.Slot5.GetComponent<Image>().enabled;
+                cookingUI.Slot6.GetComponent<Image>().enabled = !cookingUI.Slot6.GetComponent<Image>().enabled;
+			}
+			
 		}
 
 		if (fish.minigame) {
@@ -97,13 +109,6 @@ private void HandleMovement() {
 			objectColliderID = other;
 			canTouch = true;
 		}
-        //Collision with Fire
-        if (other.tag == "Fire")
-        {
-            GameObject target = other.gameObject;
-            fire = target.GetComponent<Fire>();
-            atFire = true;
-        }
     }
 
 	private void OnCollisionUpdate() {
@@ -112,21 +117,7 @@ private void HandleMovement() {
 			if (Input.GetKeyDown(KeyCode.E)) {
 				backpack.AddItem(objectColliderID.GetComponent<Item>());
 			}
-        //If colliding with fire
-		} else if (atFire)
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                GameObject.Find("Canvas/CookingUI").GetComponent<Image>().enabled = !GameObject.Find("Canvas/CookingUI").GetComponent<Image>().enabled;
-                cookingUI.Slot4.GetComponent<Image>().enabled = !cookingUI.Slot4.GetComponent<Image>().enabled;
-                cookingUI.Slot5.GetComponent<Image>().enabled = !cookingUI.Slot5.GetComponent<Image>().enabled;
-                cookingUI.Slot6.GetComponent<Image>().enabled = !cookingUI.Slot6.GetComponent<Image>().enabled;
-                if (fire.cookCount < 3 && atFire == true)
-                {
-                    fire.startCooking();
-                }
-            }
-        }
+		}
 	}
 
 	private void OnTriggerExit2D(Collider2D other){

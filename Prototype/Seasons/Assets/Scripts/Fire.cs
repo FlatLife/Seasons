@@ -29,11 +29,6 @@ public class Fire : MonoBehaviour {
 
     }
 
-    void FixedUpdate()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update () {
         if(timeSinceLastFrame > 0.15){
@@ -47,6 +42,19 @@ public class Fire : MonoBehaviour {
         if(frameIndex > 4){
             frameIndex = 0;
         }
+	}
+
+    void OnTriggerEnter2D(Collider2D other)
+	{
+		Player control = other.gameObject.GetComponent<Player>();
+		control.atFire = true;
+
+	}
+
+	void OnTriggerExit2D(Collider2D other)
+	{
+		Player control = other.gameObject.GetComponent<Player>();
+		control.atFire = false;
 	}
 
     public void startCooking()
