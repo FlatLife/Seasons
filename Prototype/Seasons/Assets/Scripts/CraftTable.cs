@@ -79,8 +79,8 @@ public class CraftTable : MonoBehaviour {
         || (tmp1.CurrentItem.type == type2 && tmp2.CurrentItem.type == type1)){
             Item result = Resources.Load<GameObject>(product).GetComponent<Item>();
             tmp3.AddItem(result);
-            tmp1.UseItem ();
-            tmp2.UseItem ();
+            tmp1.DestroyItem ();
+            tmp2.DestroyItem ();
         }
 	}
 }
