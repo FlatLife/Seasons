@@ -24,6 +24,9 @@ public class Item : MonoBehaviour {
 			case ItemType.VINE:
 				Debug.Log("Vined");
 				break;
+			case ItemType.RAWFISH:
+				Debug.Log("Fished");
+				break;
 		}
 	}
 }
