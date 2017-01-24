@@ -11,6 +11,8 @@ public class Fishing : MonoBehaviour {
 	public bool minigame = false;
 	public bool hasCaught = false;
 	public Transform alertP;
+	public Transform rodAlert;
+	public Transform canvas;
 	Transform alert;
 
 	// Use this for initialization
@@ -42,8 +44,21 @@ public class Fishing : MonoBehaviour {
 	}
 
 	public void fish(){
-		isFishing = true;
-	}	
+		Backpack inv = backpack.GetComponent<Backpack> ();
+		Item item = (Resources.Load("FishingRod") as GameObject).GetComponent<Item>();
+		if(inv.CheckItem(item)){
+			isFishing = true;
+		}
+		else{
+			GetComponent<Player>().performingAction = false;
+			Transform text = Instantiate(rodAlert);
+			text.SetParent(canvas);
+			Vector3 position = transform.position;
+			position.y += 3;
+			rodAlert.position = position;
+			Destroy (text.gameObject, 2.0f);
+		}
+	}		
 
 	public void stop(){
 		isFishing = false;

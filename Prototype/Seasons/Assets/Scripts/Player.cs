@@ -84,12 +84,12 @@ public float speed;
     
 
 private void HandleMovement() {
-		float translation = speed * Time.deltaTime;
-		transform.Translate(new Vector3(Input.GetAxis("Horizontal") * translation, 0));
+		// float translation = speed * Time.deltaTime;
+		// transform.Translate(new Vector3(Input.GetAxis("Horizontal") * translation, 0));
         if(Input.GetKeyDown(KeyCode.B)) {
             craft.Slot1.GetComponent<Image>().enabled = !craft.Slot1.GetComponent<Image>().enabled;
             craft.Slot2.GetComponent<Image>().enabled = !craft.Slot2.GetComponent<Image>().enabled;
-            craft.Slot3.GetComponent<Image>().enabled = !craft.Slot3.GetComponent<Image>().enabled;
+            
             foreach(GameObject slot in backpack.allSlots) {
                 slot.GetComponent<Image>().enabled = !slot.GetComponent<Image>().enabled;
                 slot.GetComponentInChildren<Text>().enabled = !slot.GetComponentInChildren<Text>().enabled;
