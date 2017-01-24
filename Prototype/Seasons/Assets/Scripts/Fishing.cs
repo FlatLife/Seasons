@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Fishing : MonoBehaviour {
 
+	public GameObject backpack;
 	public float fishChance = 0.002f;
 	public Transform fishPrefab;
 	public bool isFishing = false;
@@ -31,12 +32,12 @@ public class Fishing : MonoBehaviour {
 		}
 
 		if (minigame && hasCaught) {
-			Transform fish = Instantiate(fishPrefab);
-			Vector3 position = transform.position;
-			position.x += 3;
-			fish.position =	position;
+			Backpack inv = backpack.GetComponent<Backpack> ();
+			Item item = (Resources.Load("rawFish") as GameObject).GetComponent<Item>();
+			inv.AddItem(item);
 			Destroy (alert.gameObject);
 			stop ();
+
 		}
 	}
 
