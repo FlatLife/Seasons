@@ -151,7 +151,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &398800675
 GameObject:
@@ -338,7 +338,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &642413997
 Prefab:
@@ -377,7 +377,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4662518567844124, guid: a15bd9530329f40e7b849e9b9ed86199, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4662518567844124, guid: a15bd9530329f40e7b849e9b9ed86199, type: 2}
       propertyPath: m_LocalScale.x
@@ -653,7 +653,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &968074602
 BoxCollider2D:
@@ -820,7 +820,7 @@ Transform:
   - {fileID: 1793698542}
   - {fileID: 536564643}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1527374876
 GameObject:
@@ -1013,7 +1013,7 @@ RectTransform:
   - {fileID: 966952892}
   - {fileID: 1527374880}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1119,7 +1119,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!120 &1788822142
 LineRenderer:
@@ -1333,7 +1333,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4659344256071094, guid: 3eeab4aec5a154ce8b7ff13300a9e0f2, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4659344256071094, guid: 3eeab4aec5a154ce8b7ff13300a9e0f2, type: 2}
       propertyPath: m_LocalScale.x
@@ -1419,7 +1419,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2081458097
 GameObject:
@@ -1460,6 +1460,7 @@ MonoBehaviour:
   isSwimming: 0
   diving: 0
   canFish: 0
+  atFire: 0
   performingAction: 0
   timeToCatch: 2
 --- !u!61 &2081458099
@@ -1540,9 +1541,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.91, y: 0, z: 1}
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 2092461089}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2081458103
 MonoBehaviour:
@@ -1562,6 +1564,8 @@ MonoBehaviour:
   minigame: 0
   hasCaught: 0
   alertP: {fileID: 4312798782951526, guid: ba7c398a6e4444970903fe8f1c31c2cb, type: 2}
+  rodAlert: {fileID: 224182299289146694, guid: a75df00d2c24f42f9ae3ca489cac2229, type: 2}
+  canvas: {fileID: 1768770959}
 --- !u!1 &2092461084
 GameObject:
   m_ObjectHideFlags: 0
@@ -1642,10 +1646,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2092461084}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 7.64, y: 0, z: -11}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2081458102}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
