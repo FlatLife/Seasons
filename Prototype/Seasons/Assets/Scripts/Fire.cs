@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Fire : MonoBehaviour {
     public Transform itemPrefab;
-    public int cookCount;
+
+    Transform food1;
+    Transform food2;
+    Transform food3;
     int frameIndex;
     float xCo;
     float yCo;
@@ -19,7 +22,6 @@ public class Fire : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        cookCount = 0;
         // Get a reference to game object renderer and
         // cast it to a Sprite Renderer
         animRenderer = GetComponent<Renderer>() as SpriteRenderer;
@@ -57,25 +59,38 @@ public class Fire : MonoBehaviour {
 		control.atFire = false;
 	}
 
-    public void startCooking()
+    public void startCooking(int position)
     {
         //Puts fish in position based on how many are already on the fire
-        if (cookCount == 1)
+        if (position == 1)
         {
-            Transform food = Instantiate(itemPrefab);
-            food.position = new Vector3(getXCordinate() - 35, getYCordinate() + 55, 0);
+            food1 = Instantiate(itemPrefab);
+            food1.position = new Vector3(getXCordinate() - 0.5f, getYCordinate() + 0.8f, 0);
+            food1.GetComponent<Food>().itemPosition = 1;
+            
         }
-        else if (cookCount == 2)
+        else if (position == 2)
         {
-            Transform food = Instantiate(itemPrefab);
-            food.position = new Vector3(getXCordinate() + 45, getYCordinate() + 55, 0);
+            food2 = Instantiate(itemPrefab);
+            food2.position = new Vector3(getXCordinate() + 0.5f, getYCordinate() + 0.8f, 0);
+            food2.GetComponent<Food>().itemPosition = 2;
         }
-        else if(cookCount == 0)
+        else if(position == 0)
         {
-            Transform food = Instantiate(itemPrefab);
-            food.position = new Vector3(getXCordinate() + 5, getYCordinate() + 55, 0);
+            food3 = Instantiate(itemPrefab);
+            food3.position = new Vector3(getXCordinate(), getYCordinate() + 0.8f, 0);
+            food3.GetComponent<Food>().itemPosition = 0;
         }
-        cookCount++;
+    }
+
+    public void removeItem(int position){
+        if(position == 1){
+            Destroy(food1.gameObject);
+        } else if(position == 2){
+            Destroy(food2.gameObject);
+        } else if(position == 3){
+            Destroy(food3.gameObject);
+        }
     }
 
     //Returns the X cordinate of the object
