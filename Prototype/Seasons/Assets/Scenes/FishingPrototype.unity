@@ -1379,7 +1379,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fe56804b02d24be4876b7caf3fa935c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fishChance: 0.002
+  backpack: {fileID: 765439383}
+  fishChance: 1
   fishPrefab: {fileID: 4359664319608864, guid: 6baadb7079a8c4c8e8ac9c1d307abd1d, type: 2}
   isFishing: 0
   minigame: 0

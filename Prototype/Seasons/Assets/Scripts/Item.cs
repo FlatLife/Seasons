@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 
-public enum ItemType {NONE, FISHINGROD, STICK, VINE};
+public enum ItemType {NONE, FISHINGROD, STICK, VINE, RAWFISH};
 
 
 public class Item : MonoBehaviour {
@@ -23,6 +23,9 @@ public class Item : MonoBehaviour {
 				break;
 			case ItemType.VINE:
 				Debug.Log("Vined");
+				break;
+			case ItemType.RAWFISH:
+				Debug.Log("Fished");
 				break;
 		}
 	}
