@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Fishing : MonoBehaviour {
 
+ private Transform text;
 	public GameObject backpack;
 	public float fishChance = 0.002f;
 	public Transform fishPrefab;
@@ -49,9 +50,9 @@ public class Fishing : MonoBehaviour {
 		if(inv.CheckItem(item)){
 			isFishing = true;
 		}
-		else{
+		else if(text == null){
 			GetComponent<Player>().performingAction = false;
-			Transform text = Instantiate(rodAlert);
+			text = Instantiate(rodAlert);
 			text.SetParent(canvas);
 			Vector3 position = transform.position;
 			position.y += 3;
