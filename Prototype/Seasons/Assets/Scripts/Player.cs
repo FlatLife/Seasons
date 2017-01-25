@@ -150,7 +150,7 @@ public float speed;
 	}
 
 	private void OnTriggerExit2D(Collider2D other){
-		if(other.tag == "Item")
+		if(other.tag == "Item" && other == objectColliderID)
         {
             canTouch = false;
         }
