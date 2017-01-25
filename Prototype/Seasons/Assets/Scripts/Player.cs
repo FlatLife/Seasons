@@ -78,13 +78,9 @@ public float speed;
 		}
 
 		if(Input.GetKey(KeyCode.S) && isSwimming && diving){
-			transform.Translate(new Vector3(Time.deltaTime * speed * movementInput,Time.deltaTime * 6.0f * -1,0), Space.World);
+			transform.Translate(new Vector3(Time.deltaTime * speed * movementInput,Time.deltaTime * 6.0f * -1));
 			
 		}
-		// Shaye needs to fix this!! v (Currently allows vertical movement while on land)
-		//if (!performingAction) {
-		//	transform.Translate (new Vector3 (Time.deltaTime * speed * movementInput, Time.deltaTime * speed * movementInput2, 0), Space.World);
-		//}
 
 		if(Input.GetKeyDown(KeyCode.B)) {
 			ToggleUI();
@@ -95,7 +91,11 @@ public float speed;
 	private void HandleMovement() {
 		if(!openUI && !performingAction) {
 			float translation = speed * Time.deltaTime;
-			transform.Translate(new Vector3(Input.GetAxis("Horizontal") * translation, 0));
+			if(!isSwimming){
+				transform.Translate(new Vector3(Input.GetAxis("Horizontal") * translation, 0));
+			}else if(isSwimming){
+				transform.Translate(new Vector3 (Input.GetAxis("Horizontal") * translation, Input.GetAxis("Vertical") * translation));
+			}
 		}
 	}
 
