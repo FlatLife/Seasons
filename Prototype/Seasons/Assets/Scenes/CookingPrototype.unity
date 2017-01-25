@@ -597,7 +597,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 108, y: -186}
+  m_AnchoredPosition: {x: 19, y: -31}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &765439385
@@ -687,7 +687,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 318, y: -18.5}
+  m_AnchoredPosition: {x: 456, y: -18.5}
   m_SizeDelta: {x: 228, y: 143}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &966952893
@@ -1672,7 +1672,7 @@ MonoBehaviour:
   speed: 5
   backpack: {fileID: 765439387}
   craft: {fileID: 966952895}
-  destroy: {fileID: 0}
+  destroy: {fileID: 2027794408}
   slot: {fileID: 114472974881531644, guid: 1046856afdf9c4d5891a11c611ccab04, type: 2}
   cookingUI: {fileID: 1527374877}
   isSwimming: 0
