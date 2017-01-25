@@ -451,6 +451,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 4057177441259352, guid: 05cc5609a849f654d8131240912b56be, type: 2}
+  raw: {fileID: 0}
+  cooked: {fileID: 0}
+  burnt: {fileID: 0}
+  cookingUI: {fileID: 0}
   animSprites:
   - {fileID: 21300000, guid: f12e08e3fe107b74d8e0903ee0c2178d, type: 3}
   - {fileID: 21300002, guid: f12e08e3fe107b74d8e0903ee0c2178d, type: 3}
@@ -593,7 +597,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 54, y: -40}
+  m_AnchoredPosition: {x: 108, y: -186}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &765439385
@@ -1094,6 +1098,12 @@ MonoBehaviour:
   Slot4: {fileID: 0}
   Slot5: {fileID: 0}
   Slot6: {fileID: 0}
+  tmp1: {fileID: 0}
+  tmp2: {fileID: 0}
+  tmp3: {fileID: 0}
+  cooking1: 0
+  cooking2: 0
+  cooking3: 0
 --- !u!114 &1527374878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1662,10 +1672,11 @@ MonoBehaviour:
   speed: 5
   backpack: {fileID: 765439387}
   craft: {fileID: 966952895}
-  destroy: {fileID: 2027794408}
+  destroy: {fileID: 0}
   slot: {fileID: 114472974881531644, guid: 1046856afdf9c4d5891a11c611ccab04, type: 2}
   cookingUI: {fileID: 1527374877}
   isSwimming: 0
+  isUnderwater: 0
   diving: 0
   canFish: 0
   atFire: 0
