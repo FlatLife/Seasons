@@ -9,6 +9,10 @@ public class Fire : MonoBehaviour {
     Transform food2;
     Transform food3;
 
+    public Sprite raw;
+    public Sprite cooked;
+    public Sprite burnt;
+
     private SpriteRenderer spriteRenderer;
 
     public CookingUI cookingUI;
@@ -73,22 +77,49 @@ public class Fire : MonoBehaviour {
             }
         }
 
-          //POSITION 2
-        if(cookingUI.cooking2){
-            if(!cookingUI.tmp2.isEmpty)
-            timeCooked2 = timeCooked2 + Time.deltaTime;
-            if (timeCooked2 >= 5 && food2.GetComponent<Food>().spriteRenderer.sprite == raw) 
+        //POSITION 2
+        if (cookingUI.cooking2)
+        {
+            if (!cookingUI.tmp2.isEmpty)
+                timeCooked2 = timeCooked2 + Time.deltaTime;
+            if (timeCooked2 >= 5 && food2.GetComponent<Food>().spriteRenderer.sprite == raw)
             {
                 food2.GetComponent<Food>().spriteRenderer.sprite = cooked;
-                if(food2.GetComponent<Food>().itemPosition == 2){
+                if (food2.GetComponent<Food>().itemPosition == 2)
+                {
                     cookingUI.ChangeItem(2, "CookedFish");
+                }
+
+                if (timeCooked2 >= 10 && food2.GetComponent<Food>().spriteRenderer.sprite == cooked)
+                {
+                    food2.GetComponent<Food>().spriteRenderer.sprite = burnt;
+                    if (food2.GetComponent<Food>().itemPosition == 2)
+                    {
+                        cookingUI.ChangeItem(2, "BurntFish");
+                    }
+                }
             }
-            
-            if(timeCooked2 >= 10 && food2.GetComponent<Food>().spriteRenderer.sprite == cooked)
+        }
+
+        //POSITION 3
+        if (cookingUI.cooking3)
+        {
+            if (!cookingUI.tmp3.isEmpty)
+                timeCooked3 = timeCooked3 + Time.deltaTime;
+            if (timeCooked3 >= 5 && food3.GetComponent<Food>().spriteRenderer.sprite == raw)
             {
-                food2.GetComponent<Food>().spriteRenderer.sprite = burnt;
-                if(food2.GetComponent<Food>().itemPosition == 2){
-                    cookingUI.ChangeItem(2, "BurntFish");
+                food3.GetComponent<Food>().spriteRenderer.sprite = cooked;
+                if (food3.GetComponent<Food>().itemPosition == 3)
+                {
+                    cookingUI.ChangeItem(3, "CookedFish");
+                }
+
+                if (timeCooked2 >= 10 && food3.GetComponent<Food>().spriteRenderer.sprite == cooked)
+                {
+                    food3.GetComponent<Food>().spriteRenderer.sprite = burnt;
+                    if (food3.GetComponent<Food>().itemPosition == 3)
+                    {
+                        cookingUI.ChangeItem(3, "BurntFish");
                     }
                 }
             }
