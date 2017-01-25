@@ -70,6 +70,13 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 		ChangeSprite(CurrentItem.spriteNeutral, CurrentItem.spriteHighlighted);
 	}
 
+	public void StackItems(Stack<Item> items) {
+		int maxSize = items.Peek().maxSize;
+		while(items.Count > 0 && this.items.Count < maxSize) {
+			this.AddItem(items.Pop());
+		}
+	}
+
 	private void ChangeSprite(Sprite neutral, Sprite highlighted) {
 		GetComponent<Image>().sprite = neutral;
 		SpriteState st = new SpriteState();

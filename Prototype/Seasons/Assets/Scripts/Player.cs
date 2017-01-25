@@ -17,6 +17,7 @@ public float speed;
     public CookingUI cookingUI;
 
 	public bool isSwimming = false;
+	public bool isUnderwater = false;
 	public bool diving = false;
 	public bool canFish = false;
 	public bool atFire = false;
@@ -24,11 +25,12 @@ public float speed;
 	public float timeToCatch = 2.0f;
 
 	private bool openUI = false;
+	private Rigidbody2D rb; 
 
 
     // Use this for initialization
     void Start () {
-		
+		rb = GetComponent<Rigidbody2D>();
 	}
 	
 	// Update is called once per frame
@@ -36,11 +38,11 @@ public float speed;
 		HandleMovement();
 		OnCollisionUpdate();
 		Fishing fish = GetComponent<Fishing> ();
-		float movementInput = Input.GetAxis ("Horizontal");
-		float movementInput2 = Input.GetAxis ("Vertical");
+		float movementInputH = Input.GetAxis ("Horizontal");
+		float movementInputV = Input.GetAxis ("Vertical");
 
 		//If player is pressing the interaction key
-		if (Input.GetKeyDown (KeyCode.E)) {
+		if (Input.GetKeyDown (KeyCode.E) && !fish.isFishing) {
 			//Fishing minigame interaction
 			if(canFish){
 				if (fish.isFishing) {
@@ -77,11 +79,6 @@ public float speed;
 			diving = true;
 		}
 
-		if(Input.GetKey(KeyCode.S) && isSwimming && diving){
-			transform.Translate(new Vector3(Time.deltaTime * speed * movementInput,Time.deltaTime * 6.0f * -1));
-			
-		}
-
 		if(Input.GetKeyDown(KeyCode.B)) {
 			ToggleUI();
        }
@@ -90,11 +87,19 @@ public float speed;
 
 	private void HandleMovement() {
 		if(!openUI && !performingAction) {
-			float translation = speed * Time.deltaTime;
+			float movementInputH = Input.GetAxis ("Horizontal");
+			float movementInputV = Input.GetAxis ("Vertical");
 			if(!isSwimming){
-				transform.Translate(new Vector3(Input.GetAxis("Horizontal") * translation, 0));
-			}else if(isSwimming){
-				transform.Translate(new Vector3 (Input.GetAxis("Horizontal") * translation, Input.GetAxis("Vertical") * translation));
+				rb.velocity = new Vector3(movementInputH * speed, rb.velocity.y);
+			}else if (isSwimming){
+				rb.velocity = new Vector3(movementInputH * speed, rb.velocity.y);
+				if(diving){
+					Vector3 dive = new Vector3(0.0f, movementInputV);
+					rb.velocity = dive * speed;
+				}
+			}
+			if(isUnderwater){
+				rb.velocity = new Vector3(movementInputH * 2.0f, movementInputV*2.0f + 1.0f);
 			}
 		}
 	}

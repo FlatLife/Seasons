@@ -129,20 +129,36 @@ public class Backpack : MonoBehaviour {
 			Destroy(GameObject.Find("Hover"));
 		}
 		if (to != null && from != null) {
-			Stack<Item> tmpTo = new Stack<Item>(to.Items);
-			to.AddItems(from.Items);
-			
-			if (tmpTo.Count == 0) {
-				from.ClearSlot();
+			if (to != from && 
+				to.GetComponent<Slot>().Items.Count > 0 && 
+				to.GetComponent<Slot>().CurrentItem.type == from.GetComponent<Slot>().CurrentItem.type) {
+				to.StackItems(from.Items);
+				if (from.Items.Count > 0) {
+					from.AddItems(from.Items);
+				} else {
+					from.ClearSlot();
+				}
+				from.GetComponent<Image>().color = Color.white;
+				to = null;
+				from = null;
+				hoverObject = null;
+				EmptySlot++;
 			} else {
-				from.AddItems(tmpTo);
+				Stack<Item> tmpTo = new Stack<Item>(to.Items);
+				to.AddItems(from.Items);
+			
+				if (tmpTo.Count == 0) {
+					from.ClearSlot();
+				} else {
+					from.AddItems(tmpTo);
+				}
+				from.GetComponent<Image>().color = Color.white;
+				to = null;
+				from = null;
+				hoverObject = null;
 			}
-			from.GetComponent<Image>().color = Color.white;
-			to = null;
-			from = null;
-			hoverObject = null;
 		}
-		}
+	}
 	}
 
 	public bool CheckItem(Item item){
