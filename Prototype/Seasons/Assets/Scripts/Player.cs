@@ -8,6 +8,8 @@ public class Player : MonoBehaviour {
 public float speed;
 	public Backpack backpack;
     public CraftTable craft;
+
+	public DestroyUI destroy;
 	private bool canTouch = false;
     private Collider2D objectColliderID;
     Fire fire;
@@ -20,6 +22,8 @@ public float speed;
 	public bool atFire = false;
 	public bool performingAction = false;
 	public float timeToCatch = 2.0f;
+
+	private bool openUI = false;
 
 
     // Use this for initialization
@@ -77,30 +81,50 @@ public float speed;
 			transform.Translate(new Vector3(Time.deltaTime * speed * movementInput,Time.deltaTime * 6.0f * -1,0), Space.World);
 			
 		}
-		if (!performingAction) {
-			transform.Translate (new Vector3 (Time.deltaTime * speed * movementInput, Time.deltaTime * speed * movementInput2, 0), Space.World);
-		}
+		// Shaye needs to fix this!! v (Currently allows vertical movement while on land)
+		//if (!performingAction) {
+		//	transform.Translate (new Vector3 (Time.deltaTime * speed * movementInput, Time.deltaTime * speed * movementInput2, 0), Space.World);
+		//}
+
+		if(Input.GetKeyDown(KeyCode.B)) {
+			ToggleUI();
+       }
 	}
     
 
-private void HandleMovement() {
-		// float translation = speed * Time.deltaTime;
-		// transform.Translate(new Vector3(Input.GetAxis("Horizontal") * translation, 0));
-        if(Input.GetKeyDown(KeyCode.B)) {
-            craft.Slot1.GetComponent<Image>().enabled = !craft.Slot1.GetComponent<Image>().enabled;
-            craft.Slot2.GetComponent<Image>().enabled = !craft.Slot2.GetComponent<Image>().enabled;
+	private void HandleMovement() {
+		if(!openUI && !performingAction) {
+			float translation = speed * Time.deltaTime;
+			transform.Translate(new Vector3(Input.GetAxis("Horizontal") * translation, 0));
+		}
+	}
+
+	private void ToggleUI() {
+		openUI = !openUI;
+		craft.Slot1.GetComponent<Image>().enabled = !craft.Slot1.GetComponent<Image>().enabled;
+        craft.Slot2.GetComponent<Image>().enabled = !craft.Slot2.GetComponent<Image>().enabled;
+		destroy.destroySlot.GetComponent<Image>().enabled = !destroy.destroySlot.GetComponent<Image>().enabled;
             
-            foreach(GameObject slot in backpack.allSlots) {
+        	foreach(GameObject slot in backpack.allSlots) {
                 slot.GetComponent<Image>().enabled = !slot.GetComponent<Image>().enabled;
                 slot.GetComponentInChildren<Text>().enabled = !slot.GetComponentInChildren<Text>().enabled;
             }
-            backpack.GetComponent<Image>().enabled = !backpack.GetComponent<Image>().enabled;
-            craft.GetComponent<Image>().enabled = !craft.GetComponent<Image>().enabled;
-            craft.enabled = !craft.enabled;
-            slot.GetComponent<Image>().enabled = !slot.GetComponent<Image>().enabled;
-            GameObject.Find("Canvas/CraftTableTest/CraftButton").GetComponent<Image>().enabled = !GameObject.Find("Canvas/CraftTableTest/CraftButton").GetComponent<Image>().enabled;
-            GameObject.Find("Canvas/CraftTableTest/CraftButton/Text").SetActive(!GameObject.Find("Canvas/CraftTableTest/CraftButton/Text").activeInHierarchy); 
-       }
+
+        backpack.GetComponent<Image>().enabled = !backpack.GetComponent<Image>().enabled;
+
+        craft.GetComponent<Image>().enabled = !craft.GetComponent<Image>().enabled;
+        craft.enabled = !craft.enabled;
+
+		destroy.GetComponent<Image>().enabled = !destroy.GetComponent<Image>().enabled;
+		destroy.enabled = !destroy.enabled;
+
+        slot.GetComponent<Image>().enabled = !slot.GetComponent<Image>().enabled;
+
+        GameObject.Find("Canvas/CraftTableTest/CraftButton").GetComponent<Image>().enabled = !GameObject.Find("Canvas/CraftTableTest/CraftButton").GetComponent<Image>().enabled;
+        GameObject.Find("Canvas/CraftTableTest/CraftButton/Text").SetActive(!GameObject.Find("Canvas/CraftTableTest/CraftButton/Text").activeInHierarchy); 
+
+		GameObject.Find("Canvas/DestroyUI/DestroyButton").GetComponent<Image>().enabled = !GameObject.Find("Canvas/DestroyUI/DestroyButton").GetComponent<Image>().enabled;
+        GameObject.Find("Canvas/DestroyUI/DestroyButton/Text").SetActive(!GameObject.Find("Canvas/DestroyUI/DestroyButton/Text").activeInHierarchy); 
 	}
 
 	private void OnTriggerEnter2D(Collider2D other){
