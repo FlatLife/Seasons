@@ -14,6 +14,14 @@ public class CookingUI : MonoBehaviour {
 	public GameObject Slot5;
 	public GameObject Slot6;
 
+	Slot tmp1;
+	Slot tmp2;
+	Slot tmp3;
+
+	bool cooking1 = false;
+	bool cooking2 = false;
+	bool cooking3 = false;
+
 	// Use this for initialization
 	void Awake () {
 		CreateCookingUI();
@@ -21,8 +29,33 @@ public class CookingUI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		//Update reference to what item is in the slot
+		tmp1 = Slot4.GetComponent<Slot>();
+        tmp2 = Slot5.GetComponent<Slot>();
+        tmp3 = Slot6.GetComponent<Slot>();
+		Fire fire = GameObject.Find("Fire").GetComponent<Fire>();
+
+		if(!tmp1.isEmpty){
+			if(tmp1.CurrentItem.type == ItemType.RAWFISH && !cooking1){		
+				fire.startCooking(1);
+				cooking1 = true;
+			}
+		}
+		if(!tmp2.isEmpty){
+			if(tmp2.CurrentItem.type == ItemType.RAWFISH && !cooking2){
+				fire.startCooking(2);
+				cooking2 = true;
+			}
+		}
+
+		if(!tmp3.isEmpty){
+			if(tmp3.CurrentItem.type == ItemType.RAWFISH && !cooking3){
+				fire.startCooking(3);
+				cooking3 = true;
+			}
+		}
 	}
+	
 
 	public void CreateCookingUI() {
 			Slot4 = (GameObject)Instantiate(slotPrefab);
