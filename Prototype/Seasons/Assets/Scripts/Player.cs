@@ -42,7 +42,7 @@ public float speed;
 		float movementInputV = Input.GetAxis ("Vertical");
 
 		//If player is pressing the interaction key
-		if (Input.GetKeyDown (KeyCode.E)) {
+		if (Input.GetKeyDown (KeyCode.E) && !fish.isFishing) {
 			//Fishing minigame interaction
 			if(canFish){
 				if (fish.isFishing) {

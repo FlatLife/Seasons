@@ -1888,7 +1888,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backpack: {fileID: 765439383}
-  fishChance: 1
+  fishChance: 0.5
   fishPrefab: {fileID: 4359664319608864, guid: 6baadb7079a8c4c8e8ac9c1d307abd1d, type: 2}
   isFishing: 0
   minigame: 0
