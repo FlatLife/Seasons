@@ -62,24 +62,24 @@ public class Fire : MonoBehaviour {
     public void startCooking(int position)
     {
         //Puts fish in position based on how many are already on the fire
-        if (position == 1)
+        if (position == 2)
         {
             food1 = Instantiate(itemPrefab);
             food1.position = new Vector3(getXCordinate() - 0.5f, getYCordinate() + 0.8f, 0);
-            food1.GetComponent<Food>().itemPosition = 1;
+            food1.GetComponent<Food>().itemPosition = 2;
             
         }
-        else if (position == 2)
+        else if (position == 3)
         {
             food2 = Instantiate(itemPrefab);
             food2.position = new Vector3(getXCordinate() + 0.5f, getYCordinate() + 0.8f, 0);
-            food2.GetComponent<Food>().itemPosition = 2;
+            food2.GetComponent<Food>().itemPosition = 3;
         }
-        else if(position == 0)
+        else if(position == 1)
         {
             food3 = Instantiate(itemPrefab);
             food3.position = new Vector3(getXCordinate(), getYCordinate() + 0.8f, 0);
-            food3.GetComponent<Food>().itemPosition = 0;
+            food3.GetComponent<Food>().itemPosition = 1;
         }
     }
 
