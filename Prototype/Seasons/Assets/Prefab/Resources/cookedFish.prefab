@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212443575951970832}
   - component: {fileID: 114335251306786740}
   m_Layer: 0
-  m_Name: CookedFish
+  m_Name: cookedFish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
