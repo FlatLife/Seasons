@@ -133,6 +133,7 @@ public float speed;
 			objectColliderID = other;
 			canTouch = true;
 		}
+			Debug.Log("ENTERING TRIGGER");
     }
 
 	private void OnCollisionUpdate() {
@@ -145,7 +146,7 @@ public float speed;
 	}
 
 	private void OnTriggerExit2D(Collider2D other){
-		if(other.tag == "Item")
+		if(other.tag == "Item" && other == objectColliderID)
         {
             canTouch = false;
         }
@@ -153,5 +154,6 @@ public float speed;
         {
             atFire = false;
         }
+		Debug.Log("EXIT TRIGGER");
     }
 }
