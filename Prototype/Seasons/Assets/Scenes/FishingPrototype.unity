@@ -966,7 +966,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1321193270}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 8256437b3d68f4e5ea65fe40bf29aa83, type: 2}
   m_IsTrigger: 1
   m_UsedByEffector: 1
   m_Offset: {x: 0, y: -55}
@@ -993,7 +993,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1321193270}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d76e958ce4209458898535c6a91b6d52, type: 3}
+  m_Script: {fileID: 11500000, guid: de2cf0112d7b646d580b0f9e4461c4b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1432318181
@@ -1781,13 +1781,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  maxSpeed: 5
   backpack: {fileID: 765439387}
   craft: {fileID: 966952895}
   destroy: {fileID: 2127732485}
   slot: {fileID: 114472974881531644, guid: 1046856afdf9c4d5891a11c611ccab04, type: 2}
   cookingUI: {fileID: 1527374877}
   isSwimming: 0
+  isUnderwater: 0
   diving: 0
   canFish: 0
   atFire: 0
