@@ -17,14 +17,18 @@ public class FishingSpot : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
+		if(other.tag == "Player"){
 		Player control = other.gameObject.GetComponent<Player>();
 		control.canFish = true;
+		}
 
 	}
 
 	void OnTriggerExit2D(Collider2D other)
 	{
-		Player control = other.gameObject.GetComponent<Player>();
-		control.canFish = false;
+		if(other.tag == "Player"){
+			Player control = other.gameObject.GetComponent<Player>();
+			control.canFish = false;
+		}
 	}
 }
