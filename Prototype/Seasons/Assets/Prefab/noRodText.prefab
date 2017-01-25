@@ -60,7 +60,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: You're cooked m8 you need a rod!
+  m_Text: I need a rod to be able to fish!
 --- !u!222 &222886125184619838
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -82,6 +82,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5.9379587, y: 2.7652311}
+  m_AnchoredPosition: {x: 54.29059, y: 2.7649994}
   m_SizeDelta: {x: 200, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
