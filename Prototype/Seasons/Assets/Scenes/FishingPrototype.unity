@@ -930,8 +930,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1321193273}
   - component: {fileID: 1321193272}
-  - component: {fileID: 1321193271}
   - component: {fileID: 1321193274}
+  - component: {fileID: 1321193271}
   m_Layer: 0
   m_Name: underwater
   m_TagString: Swim
@@ -952,11 +952,11 @@ AreaEffector2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_UseGlobalAngle: 0
-  m_ForceAngle: 90
-  m_ForceMagnitude: 10.5
+  m_ForceAngle: 0
+  m_ForceMagnitude: 10
   m_ForceVariation: 0
   m_ForceTarget: 0
-  m_Drag: 2
+  m_Drag: 10
   m_AngularDrag: 0
 --- !u!61 &1321193272
 BoxCollider2D:
