@@ -36,26 +36,41 @@ public class CookingUI : MonoBehaviour {
 		Fire fire = GameObject.Find("Fire").GetComponent<Fire>();
 
 		if(!tmp1.isEmpty){
-			if(tmp1.CurrentItem.type == ItemType.RAWFISH && !cooking1){		
+			if((tmp1.CurrentItem.type == ItemType.RAWFISH) && !cooking1){		
 				fire.startCooking(1);
 				cooking1 = true;
 			}
 		}
 		if(!tmp2.isEmpty){
-			if(tmp2.CurrentItem.type == ItemType.RAWFISH && !cooking2){
+			if((tmp2.CurrentItem.type == ItemType.RAWFISH) && !cooking2){
 				fire.startCooking(2);
 				cooking2 = true;
 			}
 		}
 
 		if(!tmp3.isEmpty){
-			if(tmp3.CurrentItem.type == ItemType.RAWFISH && !cooking3){
+			if((tmp3.CurrentItem.type == ItemType.RAWFISH) && !cooking3){
 				fire.startCooking(3);
 				cooking3 = true;
 			}
 		}
 	}
 	
+	public void ChangeItem(int position, string item){
+		if(position == 1){
+			tmp1.DestroyItem();
+			Item itemToAdd = Resources.Load<GameObject>(item).GetComponent<Item>();
+			tmp1.AddItem(itemToAdd);
+		} else if(position == 2){
+			tmp2.DestroyItem();
+			Item itemToAdd = Resources.Load<GameObject>(item).GetComponent<Item>();
+			tmp2.AddItem(itemToAdd);
+		} else if(position == 3){
+			tmp3.DestroyItem();
+			Item itemToAdd = Resources.Load<GameObject>(item).GetComponent<Item>();
+			tmp3.AddItem(itemToAdd);
+		}
+	}
 
 	public void CreateCookingUI() {
 			Slot4 = (GameObject)Instantiate(slotPrefab);
