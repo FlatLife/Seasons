@@ -14,13 +14,13 @@ public class CookingUI : MonoBehaviour {
 	public GameObject Slot5;
 	public GameObject Slot6;
 
-	Slot tmp1;
-	Slot tmp2;
-	Slot tmp3;
+	public Slot tmp1;
+	public Slot tmp2;
+	public Slot tmp3;
 
-	bool cooking1 = false;
-	bool cooking2 = false;
-	bool cooking3 = false;
+	public bool cooking1 = false;
+	public bool cooking2 = false;
+	public bool cooking3 = false;
 
 	// Use this for initialization
 	void Awake () {

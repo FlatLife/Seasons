@@ -8,6 +8,13 @@ public class Fire : MonoBehaviour {
     Transform food1;
     Transform food2;
     Transform food3;
+
+    private SpriteRenderer spriteRenderer;
+
+    public CookingUI cookingUI;
+    float timeCooked1;
+    float timeCooked2;
+    float timeCooked3;
     int frameIndex;
     float xCo;
     float yCo;
@@ -44,7 +51,49 @@ public class Fire : MonoBehaviour {
         if(frameIndex > 4){
             frameIndex = 0;
         }
-	}
+
+        //POSITION 1
+        if(cookingUI.cooking1){
+            if(!cookingUI.tmp1.isEmpty)
+            timeCooked1 = timeCooked1 + Time.deltaTime;
+            if (timeCooked1 >= 5 && food1.GetComponent<Food>().spriteRenderer.sprite == raw) 
+            {
+                food1.GetComponent<Food>().spriteRenderer.sprite = cooked;
+                if(food1.GetComponent<Food>().itemPosition == 1){
+                    cookingUI.ChangeItem(1, "CookedFish");
+            }
+            
+            if(timeCooked2 >= 10 && food1.GetComponent<Food>().spriteRenderer.sprite == cooked)
+            {
+                food1.GetComponent<Food>().spriteRenderer.sprite = burnt;
+                if(food1.GetComponent<Food>().itemPosition == 1){
+                    cookingUI.ChangeItem(2, "BurntFish");
+                    }
+                }
+            }
+        }
+
+          //POSITION 2
+        if(cookingUI.cooking2){
+            if(!cookingUI.tmp2.isEmpty)
+            timeCooked2 = timeCooked2 + Time.deltaTime;
+            if (timeCooked2 >= 5 && food2.GetComponent<Food>().spriteRenderer.sprite == raw) 
+            {
+                food2.GetComponent<Food>().spriteRenderer.sprite = cooked;
+                if(food2.GetComponent<Food>().itemPosition == 2){
+                    cookingUI.ChangeItem(2, "CookedFish");
+            }
+            
+            if(timeCooked2 >= 10 && food2.GetComponent<Food>().spriteRenderer.sprite == cooked)
+            {
+                food2.GetComponent<Food>().spriteRenderer.sprite = burnt;
+                if(food2.GetComponent<Food>().itemPosition == 2){
+                    cookingUI.ChangeItem(2, "BurntFish");
+                    }
+                }
+            }
+        }
+    }
 
     void OnTriggerEnter2D(Collider2D other)
 	{
@@ -67,28 +116,36 @@ public class Fire : MonoBehaviour {
             food1 = Instantiate(itemPrefab);
             food1.position = new Vector3(getXCordinate() - 0.5f, getYCordinate() + 0.8f, 0);
             food1.GetComponent<Food>().itemPosition = 2;
-            
+            food1.GetComponent<Food>().cooking = true;
+            timeCooked1 = Time.deltaTime;
         }
         else if (position == 3)
         {
             food2 = Instantiate(itemPrefab);
             food2.position = new Vector3(getXCordinate() + 0.5f, getYCordinate() + 0.8f, 0);
             food2.GetComponent<Food>().itemPosition = 3;
+            food2.GetComponent<Food>().cooking = true;
+            timeCooked2 = Time.deltaTime;
         }
         else if(position == 1)
         {
             food3 = Instantiate(itemPrefab);
             food3.position = new Vector3(getXCordinate(), getYCordinate() + 0.8f, 0);
             food3.GetComponent<Food>().itemPosition = 1;
+            food3.GetComponent<Food>().cooking = true;
+            timeCooked3 = Time.deltaTime;
         }
     }
 
     public void removeItem(int position){
         if(position == 1){
+            food1.GetComponent<Food>().cooking = false;
             Destroy(food1.gameObject);
         } else if(position == 2){
+            food2.GetComponent<Food>().cooking = false;
             Destroy(food2.gameObject);
         } else if(position == 3){
+            food3.GetComponent<Food>().cooking = false;
             Destroy(food3.gameObject);
         }
     }
