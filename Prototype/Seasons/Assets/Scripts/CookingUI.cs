@@ -37,13 +37,13 @@ public class CookingUI : MonoBehaviour {
 
 		if(!tmp1.isEmpty){
 			if((tmp1.CurrentItem.type == ItemType.RAWFISH) && !cooking1){		
-				fire.startCooking(1);
+				fire.startCooking(2);
 				cooking1 = true;
 			}
 		}
 		if(!tmp2.isEmpty){
 			if((tmp2.CurrentItem.type == ItemType.RAWFISH) && !cooking2){
-				fire.startCooking(2);
+				fire.startCooking(1);
 				cooking2 = true;
 			}
 		}

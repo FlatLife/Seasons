@@ -33,6 +33,7 @@ public class Fire : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        cookingUI = GameObject.Find("CookingUI").GetComponent<CookingUI>();
         // Get a reference to game object renderer and
         // cast it to a Sprite Renderer
         animRenderer = GetComponent<Renderer>() as SpriteRenderer;
@@ -104,10 +105,12 @@ public class Fire : MonoBehaviour {
         //POSITION 3
         if (cookingUI.cooking3)
         {
+            //if there is an item in the cooking slot
             if (!cookingUI.tmp3.isEmpty)
                 timeCooked3 = timeCooked3 + Time.deltaTime;
             if (timeCooked3 >= 5 && food3.GetComponent<Food>().spriteRenderer.sprite == raw)
             {
+                //set the sprite to the cooked sprite
                 food3.GetComponent<Food>().spriteRenderer.sprite = cooked;
                 if (food3.GetComponent<Food>().itemPosition == 3)
                 {
@@ -147,7 +150,6 @@ public class Fire : MonoBehaviour {
             food1 = Instantiate(itemPrefab);
             food1.position = new Vector3(getXCordinate() - 0.5f, getYCordinate() + 0.8f, 0);
             food1.GetComponent<Food>().itemPosition = 2;
-            food1.GetComponent<Food>().cooking = true;
             timeCooked1 = Time.deltaTime;
         }
         else if (position == 3)
@@ -155,7 +157,6 @@ public class Fire : MonoBehaviour {
             food2 = Instantiate(itemPrefab);
             food2.position = new Vector3(getXCordinate() + 0.5f, getYCordinate() + 0.8f, 0);
             food2.GetComponent<Food>().itemPosition = 3;
-            food2.GetComponent<Food>().cooking = true;
             timeCooked2 = Time.deltaTime;
         }
         else if(position == 1)
@@ -163,20 +164,16 @@ public class Fire : MonoBehaviour {
             food3 = Instantiate(itemPrefab);
             food3.position = new Vector3(getXCordinate(), getYCordinate() + 0.8f, 0);
             food3.GetComponent<Food>().itemPosition = 1;
-            food3.GetComponent<Food>().cooking = true;
             timeCooked3 = Time.deltaTime;
         }
     }
 
     public void removeItem(int position){
         if(position == 1){
-            food1.GetComponent<Food>().cooking = false;
-            Destroy(food1.gameObject);
-        } else if(position == 2){
-            food2.GetComponent<Food>().cooking = false;
             Destroy(food2.gameObject);
+        } else if(position == 2){
+            Destroy(food1.gameObject);
         } else if(position == 3){
-            food3.GetComponent<Food>().cooking = false;
             Destroy(food3.gameObject);
         }
     }
