@@ -15,7 +15,6 @@ public float speed;
     Fire fire;
     public Slot slot;
     public CookingUI cookingUI;
-
 	public bool isSwimming = false;
 	public bool isUnderwater = false;
 	public bool diving = false;
@@ -56,12 +55,11 @@ public float speed;
 			}
 			//Cooking minigame interaction
 			if(atFire){
-				GameObject.Find("Canvas/CookingUI").GetComponent<Image>().enabled = !GameObject.Find("Canvas/CookingUI").GetComponent<Image>().enabled;
-                cookingUI.Slot4.GetComponent<Image>().enabled = !cookingUI.Slot4.GetComponent<Image>().enabled;
-                cookingUI.Slot5.GetComponent<Image>().enabled = !cookingUI.Slot5.GetComponent<Image>().enabled;
-                cookingUI.Slot6.GetComponent<Image>().enabled = !cookingUI.Slot6.GetComponent<Image>().enabled;
+				foreach (Transform cookSlot in cookingUI.transform) {
+					cookSlot.GetComponent<Image>().enabled = !cookSlot.GetComponent<Image>().enabled;
+					cookingUI.GetComponent<Image>().enabled = !cookingUI.GetComponent<Image>().enabled;
+				}
 			}
-			
 		}
 
 		if (fish.minigame) {
@@ -137,6 +135,9 @@ public float speed;
 		if (other.tag == "Item") {
 			objectColliderID = other;
 			canTouch = true;
+		}
+		if (other.tag == "Fire") {
+			atFire = true;
 		}
     }
 
