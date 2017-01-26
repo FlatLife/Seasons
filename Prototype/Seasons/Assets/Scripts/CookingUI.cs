@@ -12,11 +12,7 @@ public class CookingUI : MonoBehaviour {
 	private RectTransform CookingUIRect;
 	public GameObject[] cookSlots;
 
-	public void Initialize(int slotNum) {
-		CreateCookingUI(slotNum);
-	}
-
-	public void CreateCookingUI(int slotCount) {
+	public void Initialize(int slotCount) {
 		cookSlots = new GameObject[slotCount];
 		this.transform.localScale = new Vector3(slotSize/30 * slotCount, slotSize/30, 0);
 		for (int i = 0; i < slotCount; i++) {
