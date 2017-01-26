@@ -15,12 +15,6 @@ public class CookingUI : MonoBehaviour {
 	public void Initialize(int slotNum) {
 		CreateCookingUI(slotNum);
 	}
-	
-	public void ChangeItem(int position, string item){
-		cookSlots[position].GetComponent<Slot>().DestroyItem();
-		Item itemToAdd = Resources.Load<GameObject>(item).GetComponent<Item>();
-		cookSlots[position].GetComponent<Slot>().AddItem(itemToAdd);
-	}
 
 	public void CreateCookingUI(int slotCount) {
 		cookSlots = new GameObject[slotCount];
