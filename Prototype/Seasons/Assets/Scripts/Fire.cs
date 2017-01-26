@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Fire : MonoBehaviour {
-    public Transform itemPrefab;
     public Canvas canvas;
     public int slotNum;
     private CookingUI cookingUI;
@@ -48,13 +47,18 @@ public class Fire : MonoBehaviour {
             frameIndex = 0;
         }
 
-        for (int i = 0; i < cookingUI.cookSlots.Length; i++) {
+        for (int i = 0; i < slotNum; i++) {
             Slot currentSlot = cookingUI.cookSlots[i].GetComponent<Slot>();
             if(currentSlot.Items.Count > 0 && currentSlot.CurrentItem.isFood) {
                 currentSlot.cookTime -= Time.deltaTime;
-                if (currentSlot.cookTime <= 0 && currentSlot.CurrentItem.type == ItemType.RAWFISH) {
-                    currentSlot.ClearSlot();
-                    currentSlot.AddItem(Resources.Load<Item>("cookedFish"));
+                if (currentSlot.cookTime <= 0) {
+                    if (currentSlot.CurrentItem.type == ItemType.RAWFISH) {
+                        currentSlot.ClearSlot();
+                        currentSlot.AddItem(Resources.Load<Item>("cookedFish"));
+                    } else if (currentSlot.CurrentItem.type == ItemType.COOKEDFISH) {
+                        currentSlot.ClearSlot();
+                        currentSlot.AddItem(Resources.Load<Item>("burntFish"));
+                    }
                     currentSlot.cookTime = 2;
                 }
             } else {
