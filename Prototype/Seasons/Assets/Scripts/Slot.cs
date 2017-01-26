@@ -69,6 +69,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 		this.items = new Stack<Item>(items);
 		stackTxt.text = items.Count > 1 ? items.Count.ToString() : string.Empty;
 		ChangeSprite(CurrentItem.spriteNeutral, CurrentItem.spriteHighlighted);
+		cookTime = 2;
 	}
 
 	public void StackItems(Stack<Item> items) {

@@ -52,18 +52,21 @@ public class Fire : MonoBehaviour {
             if(currentSlot.Items.Count > 0 && currentSlot.CurrentItem.isFood) {
                 currentSlot.cookTime -= Time.deltaTime;
                 if (currentSlot.cookTime <= 0) {
-                    if (currentSlot.CurrentItem.type == ItemType.RAWFISH) {
-                        currentSlot.ClearSlot();
-                        currentSlot.AddItem(Resources.Load<Item>("cookedFish"));
-                    } else if (currentSlot.CurrentItem.type == ItemType.COOKEDFISH) {
-                        currentSlot.ClearSlot();
-                        currentSlot.AddItem(Resources.Load<Item>("burntFish"));
-                    }
-                    currentSlot.cookTime = 2;
+                    cookFood(currentSlot, ItemType.RAWFISH, "cookedFish");
+                    cookFood(currentSlot, ItemType.COOKEDFISH, "burntFish");
+                    
                 }
             } else {
                 currentSlot.cookTime = 2;
             }
+        }
+    }
+
+    void cookFood(Slot slot, ItemType itemType, string prefabName) {
+        if (slot.CurrentItem.type == itemType && slot.cookTime <= 0) {
+            slot.ClearSlot();
+            slot.AddItem(Resources.Load<Item>(prefabName));
+            slot.cookTime = 2;
         }
     }
 }
