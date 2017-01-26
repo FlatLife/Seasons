@@ -143,6 +143,8 @@ public float speed;
 			if(isUnderwater){
 				rb.velocity = new Vector3(movementInputH * 2.0f, movementInputV*2.0f + 1.0f);
 			}
+		}else{
+			rb.velocity = new Vector3(0.0f, rb.velocity.y);
 		}
 	}
 
