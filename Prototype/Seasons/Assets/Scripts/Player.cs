@@ -118,6 +118,10 @@ public float speed;
 			diving = true;
 		}
 
+		if(isSwimming && Input.GetKeyDown(KeyCode.W)){
+			diving = false;
+		}
+
 		if(Input.GetKeyDown(KeyCode.B)) {
 			ToggleUI();
        }
@@ -131,10 +135,9 @@ public float speed;
 			if(!isSwimming){
 				rb.velocity = new Vector3(movementInputH * speed, rb.velocity.y);
 			}else if (isSwimming){
-				rb.velocity = new Vector3(movementInputH * speed, rb.velocity.y);
+				rb.velocity = new Vector3(movementInputH * speed/2, rb.velocity.y);
 				if(diving){
-					Vector3 dive = new Vector3(0.0f, movementInputV);
-					rb.velocity = dive * speed;
+					rb.velocity = new Vector3(movementInputH * speed/2, movementInputV * 10.0f);
 				}
 			}
 			if(isUnderwater){
