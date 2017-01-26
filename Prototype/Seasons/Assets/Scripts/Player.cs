@@ -96,8 +96,8 @@ public float speed;
 			if(atFire){
 				foreach (Transform cookSlot in cookingUI.transform) {
 					cookSlot.GetComponent<Image>().enabled = !cookSlot.GetComponent<Image>().enabled;
-					cookingUI.GetComponent<Image>().enabled = !cookingUI.GetComponent<Image>().enabled;
 				}
+				cookingUI.GetComponent<Image>().enabled = !cookingUI.GetComponent<Image>().enabled;
 			}
 		}
 
