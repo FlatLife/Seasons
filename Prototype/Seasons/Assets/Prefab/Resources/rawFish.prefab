@@ -71,6 +71,7 @@ MonoBehaviour:
   spriteNeutral: {fileID: 21300000, guid: 4af29c03b0e62490880ed4d350e1c9be, type: 3}
   spriteHighlighted: {fileID: 21300000, guid: 0764e749064254b508a7da538b97f395, type: 3}
   maxSize: 1
+  isFood: 1
 --- !u!212 &212487112175136312
 SpriteRenderer:
   m_ObjectHideFlags: 1
