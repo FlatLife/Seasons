@@ -198,7 +198,7 @@ RectTransform:
   - {fileID: 710024569}
   - {fileID: 401722971}
   m_Father: {fileID: 1768770959}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -731,7 +731,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 1768770960}
-  slotNum: 0
+  slotNum: 3
   animSprites:
   - {fileID: 21300000, guid: f12e08e3fe107b74d8e0903ee0c2178d, type: 3}
   - {fileID: 21300002, guid: f12e08e3fe107b74d8e0903ee0c2178d, type: 3}
@@ -877,7 +877,7 @@ RectTransform:
   - {fileID: 821542708}
   - {fileID: 767157299}
   m_Father: {fileID: 1768770959}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -1884,89 +1884,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1480370611}
---- !u!1 &1527374876
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1527374880}
-  - component: {fileID: 1527374879}
-  - component: {fileID: 1527374878}
-  - component: {fileID: 1527374877}
-  m_Layer: 5
-  m_Name: CookingUI
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1527374877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1527374876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27acdc457081946e2a69d90370257990, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slotPrefab: {fileID: 1032774612882832, guid: 1046856afdf9c4d5891a11c611ccab04, type: 2}
-  slotSize: 30
-  cookSlots: []
---- !u!114 &1527374878
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1527374876}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: c2e79cc99652d4b03b612983e0f46007, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
---- !u!222 &1527374879
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1527374876}
---- !u!224 &1527374880
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1527374876}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1768770959}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 107, y: 25}
-  m_SizeDelta: {x: 228, y: 143}
-  m_Pivot: {x: 0, y: 1}
 --- !u!1 &1597525232
 GameObject:
   m_ObjectHideFlags: 0
@@ -2139,7 +2056,6 @@ RectTransform:
   m_Children:
   - {fileID: 765439384}
   - {fileID: 966952892}
-  - {fileID: 1527374880}
   - {fileID: 2127732484}
   - {fileID: 687605758}
   - {fileID: 2050774510}
@@ -2653,7 +2569,7 @@ RectTransform:
   - {fileID: 872565359}
   - {fileID: 331595360}
   m_Father: {fileID: 1768770959}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -2866,7 +2782,7 @@ RectTransform:
   - {fileID: 1480370612}
   - {fileID: 2041957621}
   m_Father: {fileID: 1768770959}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -2956,7 +2872,7 @@ MonoBehaviour:
   craft: {fileID: 966952895}
   destroy: {fileID: 2127732485}
   slot: {fileID: 114472974881531644, guid: 1046856afdf9c4d5891a11c611ccab04, type: 2}
-  cookingUI: {fileID: 1527374877}
+  cookingUI: {fileID: 0}
   isSwimming: 0
   isUnderwater: 0
   diving: 0
@@ -3252,7 +3168,7 @@ RectTransform:
   m_Children:
   - {fileID: 1998895337}
   m_Father: {fileID: 1768770959}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
