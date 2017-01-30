@@ -53,9 +53,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 6
-  spriteNeutral: {fileID: 21300000, guid: 323209428b6c02445acd53d481e8454e, type: 3}
-  spriteHighlighted: {fileID: 21300000, guid: 323209428b6c02445acd53d481e8454e, type: 3}
+  spriteNeutral: {fileID: 21300000, guid: 7bdd07921fc56418daf1a22ae733108a, type: 3}
+  spriteHighlighted: {fileID: 21300000, guid: 4511ec19ac17840abb18f65de6920fae, type: 3}
   maxSize: 1
+  isFood: 0
 --- !u!212 &212687955446574218
 SpriteRenderer:
   m_ObjectHideFlags: 1
