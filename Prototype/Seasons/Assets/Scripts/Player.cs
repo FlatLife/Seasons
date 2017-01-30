@@ -25,7 +25,7 @@ public float speed;
 	public bool performingAction = false;
 	public float timeToCatch = 2.0f;
 
-	private bool openUI = false;
+	public bool openUI = false;
 	private Rigidbody2D rb; 
 
 	private Stat health;
@@ -73,11 +73,8 @@ public float speed;
 		if (Input.GetKeyDown(KeyCode.Alpha4)) {
 			thirst.CurrentVal-=10;
 		}
-		HandleMovement();
 		OnCollisionUpdate();
 		Fishing fish = GetComponent<Fishing> ();
-		float movementInputH = Input.GetAxis ("Horizontal");
-		float movementInputV = Input.GetAxis ("Vertical");
 
 		//If player is pressing the interaction key
 		if (Input.GetKeyDown (KeyCode.E) && !fish.isFishing) {
