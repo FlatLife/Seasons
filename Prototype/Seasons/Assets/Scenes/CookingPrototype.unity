@@ -2830,6 +2830,7 @@ MonoBehaviour:
   atFire: 0
   performingAction: 0
   timeToCatch: 2
+  openUI: 0
 --- !u!61 &2081458099
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2932,6 +2933,17 @@ MonoBehaviour:
   alertP: {fileID: 4312798782951526, guid: ba7c398a6e4444970903fe8f1c31c2cb, type: 2}
   rodAlert: {fileID: 0}
   canvas: {fileID: 0}
+  animExclamationSprites:
+  - {fileID: 21300000, guid: a8a4d41480d9a4c448b9e5fcc2c02186, type: 3}
+  - {fileID: 21300002, guid: a8a4d41480d9a4c448b9e5fcc2c02186, type: 3}
+  - {fileID: 21300004, guid: a8a4d41480d9a4c448b9e5fcc2c02186, type: 3}
+  - {fileID: 21300006, guid: a8a4d41480d9a4c448b9e5fcc2c02186, type: 3}
+  - {fileID: 21300008, guid: a8a4d41480d9a4c448b9e5fcc2c02186, type: 3}
+  - {fileID: 21300010, guid: a8a4d41480d9a4c448b9e5fcc2c02186, type: 3}
+  - {fileID: 21300012, guid: a8a4d41480d9a4c448b9e5fcc2c02186, type: 3}
+  - {fileID: 21300014, guid: a8a4d41480d9a4c448b9e5fcc2c02186, type: 3}
+  - {fileID: 21300016, guid: a8a4d41480d9a4c448b9e5fcc2c02186, type: 3}
+  - {fileID: 21300018, guid: a8a4d41480d9a4c448b9e5fcc2c02186, type: 3}
 --- !u!1 &2092461084
 GameObject:
   m_ObjectHideFlags: 0

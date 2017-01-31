@@ -13,8 +13,6 @@ public class CraftTable : MonoBehaviour {
 	public GameObject Slot2;
 
 
-
-
 	// Use this for initialization
 	void Awake () {
 		CreateLayout();
@@ -67,20 +65,57 @@ public class CraftTable : MonoBehaviour {
 	
 	public void CraftItem() {
 		CheckRecipe(ItemType.VINE, ItemType.STICK, "FishingRod");
+		CheckRecipe(ItemType.STICK, ItemType.WOOD, "Hoe");
+		CheckRecipe(ItemType.STICK, ItemType.ROCK, "Hatchet");
+		// CheckRecipe needs to check if item should be returned (in this case, the hatchet)
+		CheckRecipe(ItemType.HATCHET, ItemType.WOOD, "Bucket");
+		CheckRecipe(ItemType.STICK, ItemType.STICK, "FirePrep");
+		CheckRecipe(ItemType.BUCKET, ItemType.ICE, "Ice");
+		CheckRecipe(ItemType.VINE, ItemType.VINE, "Clothes");
+		CheckRecipeOneItem(ItemType.WOOD, "Stick");
+
+		//Other items that are made WITHOUT using CheckRecipe (usually put on something like a fire)
+		//Fresh Water = Seawater put on purifier (purifiers instantiated on the ground)
+		//Cooked/Burnt fish = Raw fish put on fire (fire instantiated on the ground)
+		//Lit Torch = Wood put on fire (fire instantiated on the ground)
+		
     }
 	public void CheckRecipe(ItemType type1, ItemType type2, string product) {
         Slot tmp1 = Slot1.GetComponent<Slot>();
         Slot tmp2 = Slot2.GetComponent<Slot>();
 
 		if(!tmp1.isEmpty && !tmp2.isEmpty) {
-		if((tmp1.CurrentItem.type == type1 && tmp2.CurrentItem.type == type2)
-        || (tmp1.CurrentItem.type == type2 && tmp2.CurrentItem.type == type1)){
-            Item result = Resources.Load<GameObject>(product).GetComponent<Item>();
-            BackPack.AddItem(result);
-			//BackPack.
-            tmp1.DestroyItem ();
-            tmp2.DestroyItem ();
-        }
+			if((tmp1.CurrentItem.type == type1 && tmp2.CurrentItem.type == type2)
+       		|| (tmp1.CurrentItem.type == type2 && tmp2.CurrentItem.type == type1)){
+            	Item result = Resources.Load<GameObject>(product).GetComponent<Item>();
+            	BackPack.AddItem(result);
+           		tmp1.DestroyItem ();
+           	 	tmp2.DestroyItem ();
+			}
+		} 
+	}
+
+	public void CheckRecipeOneItem(ItemType type, string product) {
+		Slot tmp1 = Slot1.GetComponent<Slot>();
+        Slot tmp2 = Slot2.GetComponent<Slot>();
+
+		// Checking if only one slot is empty (stops peeking on null error)
+		if ((tmp1.isEmpty && !tmp2.isEmpty) || (!tmp1.isEmpty && tmp2.isEmpty)) {
+			// Checks what slot is empty, so we know what slot to compare with (avoid null error)
+			if (tmp1.isEmpty) {
+				Debug.Log(tmp2.CurrentItem.type);
+				if (tmp2.CurrentItem.type == type) {
+					Item result = Resources.Load<GameObject>(product).GetComponent<Item>();
+            		BackPack.AddItem(result);
+					tmp2.DestroyItem();
+				}
+			} else if (tmp2.isEmpty){
+				if (tmp1.CurrentItem.type == type) {
+					Item result = Resources.Load<GameObject>(product).GetComponent<Item>();
+            		BackPack.AddItem(result);
+					tmp1.DestroyItem();
+				}
+			}
 		}
 	}
 }

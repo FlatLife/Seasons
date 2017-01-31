@@ -11,25 +11,26 @@ public class Fishing : MonoBehaviour {
 	public bool isFishing = false;
 	public bool minigame = false;
 	public bool hasCaught = false;
-	public Transform alertP;
 	public Transform rodAlert;
 	public Transform canvas;
-	Transform alert;
+	GameObject alert;
+
+
 
 	// Use this for initialization
 	void Start () {
-		
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (isFishing && !minigame) {
 			if(Random.Range(0f,1f) < fishChance  && Time.timeScale != 0){ 
-				alert = Instantiate(alertP);
+				alert = Instantiate(Resources.Load<GameObject>("alert"));
 				minigame = true;
 				Vector3 position = transform.position;
-				position.y += 2;
-				alert.position = position;
+				position.y += 3;
+				alert.transform.position = position;
 				Destroy (alert.gameObject, 2.0f);
 			}
 		}
@@ -38,7 +39,7 @@ public class Fishing : MonoBehaviour {
 			Backpack inv = backpack.GetComponent<Backpack> ();
 			Item item = (Resources.Load("rawFish") as GameObject).GetComponent<Item>();
 			inv.AddItem(item);
-			Destroy (alert.gameObject);
+			Destroy (alert);
 			stop ();
 
 		}
