@@ -1,47 +1,40 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class GameMaster : MonoBehaviour {
 
-	public bool fadingIn = false;
-	public float dayTime;
-	public float fadeTime;
-	public GameObject fade;
+	public float time;
 
-	private Text dayCount;
+	private GameObject health;
+	private GameObject thirst;
+	private GameObject hunger;
+	private GameObject warmth;
 
-	private int count = 1;
-	public float dayLength;
 
 	// Use this for initialization
 	void Start () {
-		dayCount = GameObject.Find("DayCount").GetComponent<Text>();
+		health = GameObject.Find("HealthBar");
+		thirst = GameObject.Find("ThirstBar");
+		hunger = GameObject.Find("HungerBar");
+		warmth = GameObject.Find("WarmthBar");
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		dayTime -= Time.deltaTime;
-		if(dayTime <= 0 && !fadingIn){
-			fade.GetComponent<ScreenFade>().FadeToBlack();
-		}
-
-		if(dayTime <= 0 && fade.GetComponent<SpriteRenderer>().color.a > 0.95f){
-			fadeTime -= Time.deltaTime;
-			if(!fadingIn){
-				dayCount.text = "Day " + ++count;
+		time -= Time.deltaTime;
+		if(time < 0f){
+			hunger.GetComponent<BarScript>().decrement(0.1f);
+			thirst.GetComponent<BarScript>().decrement(0.1f);
+			time = 5f;
+			if(hunger.GetComponent<BarScript>().barEmpty()){
+				health.GetComponent<BarScript>().decrement(0.05f);
 			}
-			fadingIn = true;
-		}
-
-		if(fadeTime <= 0 && fadingIn){
-			fade.GetComponent<ScreenFade>().FadeToClear();
-		}
-		if(fade.GetComponent<SpriteRenderer>().color.a < 0.05f && fadingIn){
-			dayTime = dayLength;
-			fadeTime = 2f;
-			fadingIn = false;
-		}
+			if(thirst.GetComponent<BarScript>().barEmpty()){
+				health.GetComponent<BarScript>().decrement(0.05f);
+			}
 	}
+	}
+
+
 }
