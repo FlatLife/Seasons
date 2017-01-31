@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6c8673cad5bb4a5089b7b7d1b1c5d2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationSpeed: 0.005
   animSprites:
   - {fileID: 21300002, guid: a8a4d41480d9a4c448b9e5fcc2c02186, type: 3}
   - {fileID: 21300004, guid: a8a4d41480d9a4c448b9e5fcc2c02186, type: 3}

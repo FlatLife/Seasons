@@ -2848,6 +2848,7 @@ GameObject:
   - component: {fileID: 2081458099}
   - component: {fileID: 2081458098}
   - component: {fileID: 2081458103}
+  - component: {fileID: 2081458104}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2880,6 +2881,7 @@ MonoBehaviour:
   atFire: 0
   performingAction: 0
   timeToCatch: 2
+  openUI: 0
 --- !u!61 &2081458099
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2956,7 +2958,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2081458097}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 46.47, y: 0, z: 1}
+  m_LocalPosition: {x: 53.97, y: -0.4, z: 1}
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_Children:
   - {fileID: 2092461089}
@@ -2980,9 +2982,20 @@ MonoBehaviour:
   isFishing: 0
   minigame: 0
   hasCaught: 0
-  alertP: {fileID: 4312798782951526, guid: ba7c398a6e4444970903fe8f1c31c2cb, type: 2}
   rodAlert: {fileID: 224182299289146694, guid: a75df00d2c24f42f9ae3ca489cac2229, type: 2}
   canvas: {fileID: 1768770959}
+--- !u!114 &2081458104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2081458097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20fb5b4c5d7f91043b3842cd0043c921, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
 --- !u!1 &2092461084
 GameObject:
   m_ObjectHideFlags: 0
