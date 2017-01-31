@@ -13,6 +13,9 @@ public class Item : MonoBehaviour {
 	public int maxSize;
 	public bool isFood;
 
+	private GameObject hunger;
+	private GameObject thirst;
+
 	public void Use() {
 		switch(type) {
 			case ItemType.FISHINGROD:
@@ -26,6 +29,10 @@ public class Item : MonoBehaviour {
 				break;
 			case ItemType.RAWFISH:
 				Debug.Log("Fished");
+				break;
+			case ItemType.COOKEDFISH:
+				hunger  = GameObject.Find("HungerBar");
+				hunger.GetComponent<BarScript>().increment(0.1f);
 				break;
 		}
 	}

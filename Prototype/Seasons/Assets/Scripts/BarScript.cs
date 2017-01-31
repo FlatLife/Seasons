@@ -33,4 +33,28 @@ public class BarScript : MonoBehaviour {
 		}
 	}
 
+	public void decrement(float amount){
+		if(fillAmount > 0f){
+			fillAmount -= amount;
+		}else{
+			fillAmount = 0f;
+		}
+	}
+
+	public void increment(float amount){
+		if(fillAmount < 1f){
+			fillAmount += amount;
+		}else{
+			fillAmount = 1f;
+		}
+	}
+
+	public bool barEmpty(){
+		if(fillAmount == 0f){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
 }
