@@ -70,7 +70,7 @@ public class CraftTable : MonoBehaviour {
 		// CheckRecipe needs to check if item should be returned (in this case, the hatchet)
 		CheckRecipe(ItemType.HATCHET, ItemType.WOOD, "Bucket");
 		CheckRecipe(ItemType.STICK, ItemType.STICK, "FirePrep");
-		CheckRecipe(ItemType.BUCKET, ItemType.ICE, "Fridge");
+		CheckRecipe(ItemType.BUCKET, ItemType.ICE, "Ice");
 		CheckRecipe(ItemType.VINE, ItemType.VINE, "Clothes");
 		CheckRecipeOneItem(ItemType.WOOD, "Stick");
 
@@ -79,7 +79,6 @@ public class CraftTable : MonoBehaviour {
 		//Cooked/Burnt fish = Raw fish put on fire (fire instantiated on the ground)
 		//Lit Torch = Wood put on fire (fire instantiated on the ground)
 		
-
     }
 	public void CheckRecipe(ItemType type1, ItemType type2, string product) {
         Slot tmp1 = Slot1.GetComponent<Slot>();
