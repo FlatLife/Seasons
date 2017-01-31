@@ -7,22 +7,20 @@ public class CookingUI : MonoBehaviour {
 
 	public GameObject slotPrefab;
 	public float slotSize;
-
-	private Backpack BackPack;
-	private RectTransform CookingUIRect;
 	public GameObject[] cookSlots;
 
 	public void Initialize(int slotCount) {
 		cookSlots = new GameObject[slotCount];
-		this.transform.localScale = new Vector3(slotSize/30 * slotCount, slotSize/30, 0);
+		RectTransform uiRect = this.GetComponent<RectTransform>();
+		uiRect.sizeDelta = new Vector3(slotSize * slotCount + slotSize, slotSize + slotSize/2, 0);
+		uiRect.position = new Vector3(400,200);
 		for (int i = 0; i < slotCount; i++) {
 			GameObject cookSlot = (GameObject)Instantiate(slotPrefab);
 			RectTransform slotRect = cookSlot.GetComponent<RectTransform>();
 			cookSlot.name = "Cook Slot " + i;
 			cookSlot.transform.SetParent(this.transform);
-			slotRect.localPosition = new Vector3((0.2f/slotCount) + (1.0f/slotCount) * i, -0.2f);
-			slotRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, slotSize);
-			slotRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, slotSize);
+			slotRect.localPosition = new Vector3(slotSize/(slotCount+1) + (slotSize/(slotCount+1) + slotSize) * i, -slotSize/4);
+			slotRect.sizeDelta = new Vector3(slotSize, slotSize);
 			cookSlot.GetComponent<Image>().enabled = false;
 			cookSlots[i] = cookSlot;
 		}
