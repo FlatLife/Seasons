@@ -1600,14 +1600,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e702c1986d09f14e81735226b43bd41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 1696044806}
-  slotNum: 3
+  canvas: {fileID: 0}
+  slotNum: 4
+  fireState: 0
+  lastFrame: 0
+  animationTime: 0.15
+  frameIndex: 0
   animSprites:
-  - {fileID: 21300000, guid: f12e08e3fe107b74d8e0903ee0c2178d, type: 3}
-  - {fileID: 21300002, guid: f12e08e3fe107b74d8e0903ee0c2178d, type: 3}
-  - {fileID: 21300004, guid: f12e08e3fe107b74d8e0903ee0c2178d, type: 3}
-  - {fileID: 21300006, guid: f12e08e3fe107b74d8e0903ee0c2178d, type: 3}
-  - {fileID: 21300008, guid: f12e08e3fe107b74d8e0903ee0c2178d, type: 3}
+  - {fileID: 21300000, guid: 1bbc60fd09d8f4b5ab23c70675e99411, type: 3}
+  - {fileID: 21300002, guid: 1bbc60fd09d8f4b5ab23c70675e99411, type: 3}
+  - {fileID: 21300004, guid: 1bbc60fd09d8f4b5ab23c70675e99411, type: 3}
+  - {fileID: 21300006, guid: 1bbc60fd09d8f4b5ab23c70675e99411, type: 3}
+  - {fileID: 21300008, guid: 1bbc60fd09d8f4b5ab23c70675e99411, type: 3}
+  - {fileID: 21300000, guid: 9fd6a6d132fce4af191d13b5883504d5, type: 3}
+  - {fileID: 21300002, guid: 9fd6a6d132fce4af191d13b5883504d5, type: 3}
+  - {fileID: 21300004, guid: 9fd6a6d132fce4af191d13b5883504d5, type: 3}
+  - {fileID: 21300006, guid: 9fd6a6d132fce4af191d13b5883504d5, type: 3}
+  - {fileID: 21300008, guid: 9fd6a6d132fce4af191d13b5883504d5, type: 3}
+  - {fileID: 21300000, guid: 24fa7083601324067a205e7b0c3b6192, type: 3}
+  - {fileID: 21300002, guid: 24fa7083601324067a205e7b0c3b6192, type: 3}
+  - {fileID: 21300004, guid: 24fa7083601324067a205e7b0c3b6192, type: 3}
+  - {fileID: 21300006, guid: 24fa7083601324067a205e7b0c3b6192, type: 3}
+  - {fileID: 21300008, guid: 24fa7083601324067a205e7b0c3b6192, type: 3}
+  - {fileID: 21300000, guid: f736242ba45744bee9ee196bede40f0f, type: 3}
 --- !u!212 &1334150588
 SpriteRenderer:
   m_ObjectHideFlags: 0
