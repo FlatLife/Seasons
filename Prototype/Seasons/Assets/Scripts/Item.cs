@@ -12,6 +12,7 @@ public class Item : MonoBehaviour {
 	public Sprite spriteHighlighted;
 	public int maxSize;
 	public bool isFood;
+	public bool isCrop;
 
 	private GameObject hunger;
 	private GameObject thirst;

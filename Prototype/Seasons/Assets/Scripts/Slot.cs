@@ -11,6 +11,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 	public Sprite slotEmpty;
 	public Sprite slotHighlighted;
 	public float cookTime = 2;
+	public float growTime = 5;
 	
 
 	public Stack<Item> Items {
