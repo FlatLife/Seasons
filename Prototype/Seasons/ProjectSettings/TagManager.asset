@@ -8,6 +8,7 @@ TagManager:
   - Fire
   - Swim
   - Beach
+  - Farm
   layers:
   - Default
   - TransparentFX
