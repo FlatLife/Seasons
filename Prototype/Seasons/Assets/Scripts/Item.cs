@@ -2,7 +2,7 @@
 
 
 public enum ItemType {NONE, FISHINGROD, STICK, WOOD, VINE, RAWFISH, COOKEDFISH, BURNTFISH, ROCK,
- SEAWATER, ICE, HATCHET, BUCKET, SEED, HOE, WATER, CARROT, CLOTHES};
+ SEAWATER, ICE, HATCHET, BUCKET, SEED, HOE, WATER, CARROT, CLOTHES, FIREPREP};
 
 
 public class Item : MonoBehaviour {
@@ -15,6 +15,8 @@ public class Item : MonoBehaviour {
 
 	private GameObject hunger;
 	private GameObject thirst;
+	private PlaceObjects builder;
+
 
 	public void Use() {
 		switch(type) {
@@ -33,6 +35,10 @@ public class Item : MonoBehaviour {
 			case ItemType.COOKEDFISH:
 				hunger  = GameObject.Find("HungerBar");
 				hunger.GetComponent<BarScript>().increment(0.1f);
+				break;
+			case ItemType.FIREPREP:
+				builder = GameObject.Find("Main Camera").GetComponent<PlaceObjects>();
+				builder.build("Fire", "PlaceFire");
 				break;
 		}
 	}

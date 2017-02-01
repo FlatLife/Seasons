@@ -5,6 +5,7 @@ using UnityEngine;
 public class Placeable : MonoBehaviour {
 
 	public bool colliding;
+	private Collider2D objectColliderID;
 	// Use this for initialization
 	void Start () {
 		
@@ -18,17 +19,19 @@ public class Placeable : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other){
 		if(other.tag != "Build"){
 			colliding = true;
+			objectColliderID = other;
 		}
 	}
 
 	void OnTriggerStay2D(Collider2D other){
 		if(other.tag != "Build"){
 			colliding = true;
+			objectColliderID = other;
 		}
 	}
 
 	void OnTriggerExit2D(Collider2D other){
-		if(other.tag != "Build"){
+		if(other.tag != "Build" && other == objectColliderID){
 			colliding = false;
 		}
 	}

@@ -87,6 +87,7 @@ public class CraftTable : MonoBehaviour {
 		if(!tmp1.isEmpty && !tmp2.isEmpty) {
 			if((tmp1.CurrentItem.type == type1 && tmp2.CurrentItem.type == type2)
        		|| (tmp1.CurrentItem.type == type2 && tmp2.CurrentItem.type == type1)){
+				   Debug.Log(product);
             	Item result = Resources.Load<GameObject>(product).GetComponent<Item>();
             	BackPack.AddItem(result);
            		tmp1.DestroyItem ();
