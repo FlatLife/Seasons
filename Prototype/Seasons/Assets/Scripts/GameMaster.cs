@@ -11,6 +11,8 @@ public class GameMaster : MonoBehaviour {
 	private GameObject hunger;
 	private GameObject warmth;
 
+	public bool isWinter;
+
 
 	// Use this for initialization
 	void Start () {
@@ -33,7 +35,10 @@ public class GameMaster : MonoBehaviour {
 			if(thirst.GetComponent<BarScript>().barEmpty()){
 				health.GetComponent<BarScript>().decrement(0.05f);
 			}
-	}
+			if(isWinter){
+				warmth.GetComponent<BarScript>().decrement(0.05f);
+			}
+		}
 	}
 
 
