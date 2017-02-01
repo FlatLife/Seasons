@@ -34,18 +34,21 @@ public class Backpack : MonoBehaviour {
 	void Update () {
 		if (hoverObject != null) {
 			Vector2 position;
-			RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform, Input.mousePosition, canvas.worldCamera, out position);
-			position.Set(position.x, position.y - hoverYOffset);
-			hoverObject.transform.position = canvas.transform.TransformPoint(position);
+			//RectTransformUtility.ScreenPointToLocalPointInRectangle(Camera.main.transform as RectTransform, Input.mousePosition, canvas.worldCamera, out position);
+			//position.Set(position.x, position.y - hoverYOffset);
+			//hoverObject.transform.position = canvas.transform.TransformPoint(position);
+			Vector3 screenMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+			hoverObject.transform.position = new Vector3(screenMousePosition.x, screenMousePosition.y, 0);
 		}
 	}
 
 	private void CreateLayout() {
 		allSlots = new List<GameObject>();
 		emptySlot = slots;
-		hoverYOffset = slotSize * 0.01f;
-		backpackWidth = (slots / rows) * (slotSize + 5f + slotPaddingLeft) + slotPaddingLeft;
-		backpackHeight = rows * (slotSize + 5f + slotPaddingTop) + slotPaddingTop;
+		//hoverYOffset = slotSize * 0.01f;
+		hoverYOffset = 0f;
+		backpackWidth = (slots / rows) * (slotSize + 4f + slotPaddingLeft) + slotPaddingLeft;
+		backpackHeight = rows * (slotSize + 4f + slotPaddingTop) + slotPaddingTop;
 		backpackRect = GetComponent<RectTransform>();
 		backpackRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, backpackWidth);
 		backpackRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, backpackHeight);
@@ -57,11 +60,10 @@ public class Backpack : MonoBehaviour {
 				RectTransform slotRect = newSlot.GetComponent<RectTransform>();
 				
 				newSlot.name = "Slot";
-				newSlot.transform.SetParent(this.transform.parent);
+				newSlot.transform.SetParent(this.transform);
 				//places the slots in the inventory in each column, then row
-				slotRect.localPosition = backpackRect.localPosition + new Vector3(slotPaddingLeft * (x + 1) + (slotSize * x), -slotPaddingTop * (y+1) - (slotSize * y));
-				slotRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, slotSize);
-				slotRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, slotSize);
+				slotRect.localPosition = new Vector3(slotPaddingLeft * (x + 1) + (slotSize * x), -slotPaddingTop * (y+1) - (slotSize * y));
+				slotRect.sizeDelta = new Vector3(slotSize, slotSize);
 				allSlots.Add(newSlot);
 				newSlot.GetComponent<Image>().enabled = false;
 			}
@@ -121,7 +123,6 @@ public class Backpack : MonoBehaviour {
 				hoverTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, clickedTransform.sizeDelta.x);
 				hoverTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, clickedTransform.sizeDelta.y);
 
-				hoverObject.transform.SetParent(GameObject.Find("Canvas").transform, true);
 				hoverObject.transform.localScale = from.gameObject.transform.localScale;
 			}
 		} else if (to == null) {
