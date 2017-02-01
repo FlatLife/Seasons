@@ -375,7 +375,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroySlot: {fileID: 0}
   slotPrefab: {fileID: 1032774612882832, guid: 1046856afdf9c4d5891a11c611ccab04, type: 2}
-  slotSize: 30
+  slotSize: 40
 --- !u!114 &548612500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1263,7 +1263,7 @@ Transform:
   m_GameObject: {fileID: 1064664321}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -99}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1440615830}
   m_RootOrder: 0
@@ -1419,9 +1419,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slots: 16
   rows: 4
-  slotPaddingLeft: 30
-  slotPaddingTop: 30
-  slotSize: 30
+  slotPaddingLeft: 20
+  slotPaddingTop: 20
+  slotSize: 40
   slotPrefab: {fileID: 1032774612882832, guid: 1046856afdf9c4d5891a11c611ccab04, type: 2}
   allSlots: []
   iconPrefab: {fileID: 1059737987419112, guid: 0ac614e9beb31402a9a39ea7c3a2f4f5, type: 2}
@@ -2366,7 +2366,7 @@ Canvas:
   m_GameObject: {fileID: 1696044803}
   m_Enabled: 1
   serializedVersion: 2
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 1064664325}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -3078,7 +3078,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotPrefab: {fileID: 1032774612882832, guid: 1046856afdf9c4d5891a11c611ccab04, type: 2}
-  slotSize: 30
+  slotSize: 40
   BackPack: {fileID: 1142074036}
   Slot1: {fileID: 0}
   Slot2: {fileID: 0}
