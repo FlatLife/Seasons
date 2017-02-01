@@ -37,8 +37,7 @@ public class Backpack : MonoBehaviour {
 			//RectTransformUtility.ScreenPointToLocalPointInRectangle(Camera.main.transform as RectTransform, Input.mousePosition, canvas.worldCamera, out position);
 			//position.Set(position.x, position.y - hoverYOffset);
 			//hoverObject.transform.position = canvas.transform.TransformPoint(position);
-			Vector3 screenMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-			hoverObject.transform.position = new Vector3(screenMousePosition.x, screenMousePosition.y, 0);
+			hoverObject.transform.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y-2f);
 		}
 	}
 
@@ -120,6 +119,7 @@ public class Backpack : MonoBehaviour {
 				RectTransform hoverTransform = hoverObject.GetComponent<RectTransform>();
 				RectTransform clickedTransform = clicked.GetComponent<RectTransform>();
 
+				hoverObject.transform.SetParent(GameObject.Find("Canvas").transform, true);
 				hoverTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, clickedTransform.sizeDelta.x);
 				hoverTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, clickedTransform.sizeDelta.y);
 
