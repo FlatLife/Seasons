@@ -18,7 +18,6 @@ public class Backpack : MonoBehaviour {
 	public GameObject iconPrefab;
 	private static GameObject hoverObject;
 	public Canvas canvas;
-	private float hoverYOffset;
 
 	public static int EmptySlot {
 		get { return emptySlot; }
@@ -33,10 +32,6 @@ public class Backpack : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (hoverObject != null) {
-			Vector2 position;
-			//RectTransformUtility.ScreenPointToLocalPointInRectangle(Camera.main.transform as RectTransform, Input.mousePosition, canvas.worldCamera, out position);
-			//position.Set(position.x, position.y - hoverYOffset);
-			//hoverObject.transform.position = canvas.transform.TransformPoint(position);
 			hoverObject.transform.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y-2f);
 		}
 	}
@@ -44,8 +39,6 @@ public class Backpack : MonoBehaviour {
 	private void CreateLayout() {
 		allSlots = new List<GameObject>();
 		emptySlot = slots;
-		//hoverYOffset = slotSize * 0.01f;
-		hoverYOffset = 0f;
 		backpackWidth = (slots / rows) * (slotSize + 4f + slotPaddingLeft) + slotPaddingLeft;
 		backpackHeight = rows * (slotSize + 4f + slotPaddingTop) + slotPaddingTop;
 		backpackRect = GetComponent<RectTransform>();
