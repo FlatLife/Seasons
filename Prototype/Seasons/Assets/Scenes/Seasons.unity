@@ -1600,7 +1600,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e702c1986d09f14e81735226b43bd41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
+  canvas: {fileID: 1696044806}
   slotNum: 4
   fireState: 0
   lastFrame: 0
