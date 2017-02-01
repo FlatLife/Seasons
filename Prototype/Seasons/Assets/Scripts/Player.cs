@@ -16,11 +16,15 @@ public float speed;
     private Collider2D objectColliderID;
     Fire fire;
     public Slot slot;
+
+    public CookingUI cookingUI;
+	public FarmingUI farmingUI;
 	public bool isSwimming = false;
 	public bool isUnderwater = false;
 	public bool diving = false;
 	public bool canFish = false;
 	public bool atFire = false;
+	public bool atFarm = false;
 	public bool performingAction = false;
 	public float timeToCatch = 2.0f;
 
@@ -95,6 +99,14 @@ public float speed;
 					cookSlot.GetComponent<Image>().enabled = !cookSlot.GetComponent<Image>().enabled;
 				}
 				cook.GetComponent<Image>().enabled = !cook.GetComponent<Image>().enabled;
+			}
+			
+			if (atFarm) {
+				//Debug.Log("Player entered Farm zone and pressed e");
+				foreach (Transform farmSlot in farmingUI.transform) {
+					farmSlot.GetComponent<Image>().enabled = !farmSlot.GetComponent<Image>().enabled;
+				}
+				farmingUI.GetComponent<Image>().enabled = !farmingUI.GetComponent<Image>().enabled;
 			}
 		}
 
@@ -184,6 +196,9 @@ public float speed;
 			objectColliderID = other;
 			atFire = true;
 		}
+		if (other.tag == "Farm") {
+			atFarm = true;
+		}
     }
 
 	private void OnCollisionUpdate() {
@@ -204,5 +219,8 @@ public float speed;
         {
             atFire = false;
         }
+		if (other.tag == "Farm") {
+			atFarm = false;
+		}
     }
 }
