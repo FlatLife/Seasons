@@ -25,7 +25,7 @@ public class PlaceObjects : MonoBehaviour {
 	void Update () {
 		if(buildMode){
 			if(hoverObject == null){
-				hoverObject = Instantiate(Resources.Load<GameObject>("PlaceFire"));
+				hoverObject = Instantiate(Resources.Load<GameObject>(placeItem));
 				hoverObject.name = "Hover";
 				hoverObject.layer = 2;
 			}
@@ -50,8 +50,8 @@ public class PlaceObjects : MonoBehaviour {
 		RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, 1000);
 		if(hit){
 			if (hit.collider.gameObject.tag == "Build" && canBuild) {
-				item = Instantiate(Resources.Load<GameObject>("Fire"));
-				item.name = "Fire";
+				item = Instantiate(Resources.Load<GameObject>(buildItem));
+				item.name = buildItem;
 				item.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 				item.transform.position = new Vector3 (item.transform.position.x, item.transform.position.y, item.transform.position.y + 0.2f);
 				buildMode = false;
