@@ -5,9 +5,15 @@ using UnityEngine;
 public class Fire : MonoBehaviour {
     public Canvas canvas;
     public int slotNum;
+    float burnTime = 50;
+
+    //burnState = 1(small), 2(medium), 3(large)
+    public int fireState;
+    public int lastFrame;
+    public float animationTime;
     private CookingUI cookingUI;
 
-    int frameIndex;
+    public int frameIndex;
     // An array with the sprites used for animation
     public Sprite[] animSprites;
 
@@ -29,35 +35,59 @@ public class Fire : MonoBehaviour {
         // cast it to a Sprite Renderer
         animRenderer = GetComponent<Renderer>() as SpriteRenderer;
         //Sets the animation to the first frame
-        frameIndex = 0;
+        frameIndex = 10;
         timeSinceLastFrame = 0;
+        lastFrame = 14;
+        fireState = 3;
     }
 
     // Update is called once per frame
     void Update () {
-        if(timeSinceLastFrame > 0.15){
-            animRenderer.sprite = animSprites[frameIndex];
-            timeSinceLastFrame = 0;
-            frameIndex++;
-        } else{
-            timeSinceLastFrame = timeSinceLastFrame + Time.deltaTime;
+        //if the fire is not dead
+        if(fireState > 0){
+            //changing state of the fire as time goes on
+            burnTime -= timeSinceLastFrame;
+            if(burnTime < 0){
+                //decrease fire state
+                changeState(fireState--, 0);          
+            }
+            //if its time to change the frame
+            if(timeSinceLastFrame > animationTime){
+                animRenderer.sprite = animSprites[frameIndex];
+                timeSinceLastFrame = 0;
+                frameIndex++;
+            } else{
+                timeSinceLastFrame = timeSinceLastFrame + Time.deltaTime;
+            }
+            //if we are at the last animation frame, reset it back to the first frame
+            if(frameIndex > lastFrame){
+                frameIndex = lastFrame - 4;
+            }
+        //if fire is dead, display deadFire sprite    
+        } else {
+            animRenderer.sprite = animSprites[15];
         }		    
-        //If we are at the last animation frame, reset it back to the first frame
-        if(frameIndex > 4){
-            frameIndex = 0;
-        }
 
         for (int i = 0; i < slotNum; i++) {
             Slot currentSlot = cookingUI.cookSlots[i].GetComponent<Slot>();
-            if(currentSlot.Items.Count > 0 && currentSlot.CurrentItem.isFood) {
-                currentSlot.cookTime -= Time.deltaTime;
-                if (currentSlot.cookTime <= 0) {
-                    cookFood(currentSlot, ItemType.RAWFISH, "cookedFish");
-                    cookFood(currentSlot, ItemType.COOKEDFISH, "burntFish");
-                    
+            //if checking the log slot
+            if(i == slotNum - 1){
+                if(currentSlot.Items.Count > 0 && currentSlot.CurrentItem.type == ItemType.STICK && fireState < 3){
+                    currentSlot.UseItem();
+                    changeState(fireState++, 1);
                 }
             } else {
-                currentSlot.cookTime = 2;
+                //check food slots               
+                if(currentSlot.Items.Count > 0 && currentSlot.CurrentItem.isFood) {
+                    currentSlot.cookTime -= Time.deltaTime;
+                    if (currentSlot.cookTime <= 0) {
+                        cookFood(currentSlot, ItemType.RAWFISH, "cookedFish");
+                        cookFood(currentSlot, ItemType.COOKEDFISH, "burntFish");
+                        
+                    }
+                } else {
+                    currentSlot.cookTime = 2;
+                }
             }
         }
     }
@@ -68,5 +98,16 @@ public class Fire : MonoBehaviour {
             slot.AddItem(Resources.Load<Item>(prefabName));
             slot.cookTime = 2;
         }
+    }
+
+    void changeState(int state, int increaseOrDecrease){
+        burnTime = 50;
+        //increase means to add fuel to the fire, causing the lastFrame to be increased
+        if(increaseOrDecrease == 1){
+            lastFrame += 5;
+        } else{
+            lastFrame -= 5;
+        }
+        frameIndex = (state - 1) * 5; 
     }
 }

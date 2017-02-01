@@ -836,13 +836,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 1768770960}
-  slotNum: 3
+  slotNum: 4
+  fireState: 0
+  lastFrame: 0
+  animationTime: 0.15
+  frameIndex: 0
   animSprites:
-  - {fileID: 21300000, guid: f12e08e3fe107b74d8e0903ee0c2178d, type: 3}
-  - {fileID: 21300002, guid: f12e08e3fe107b74d8e0903ee0c2178d, type: 3}
-  - {fileID: 21300004, guid: f12e08e3fe107b74d8e0903ee0c2178d, type: 3}
-  - {fileID: 21300006, guid: f12e08e3fe107b74d8e0903ee0c2178d, type: 3}
-  - {fileID: 21300008, guid: f12e08e3fe107b74d8e0903ee0c2178d, type: 3}
+  - {fileID: 21300000, guid: 1bbc60fd09d8f4b5ab23c70675e99411, type: 3}
+  - {fileID: 21300002, guid: 1bbc60fd09d8f4b5ab23c70675e99411, type: 3}
+  - {fileID: 21300004, guid: 1bbc60fd09d8f4b5ab23c70675e99411, type: 3}
+  - {fileID: 21300006, guid: 1bbc60fd09d8f4b5ab23c70675e99411, type: 3}
+  - {fileID: 21300008, guid: 1bbc60fd09d8f4b5ab23c70675e99411, type: 3}
+  - {fileID: 21300000, guid: 9fd6a6d132fce4af191d13b5883504d5, type: 3}
+  - {fileID: 21300002, guid: 9fd6a6d132fce4af191d13b5883504d5, type: 3}
+  - {fileID: 21300004, guid: 9fd6a6d132fce4af191d13b5883504d5, type: 3}
+  - {fileID: 21300006, guid: 9fd6a6d132fce4af191d13b5883504d5, type: 3}
+  - {fileID: 21300008, guid: 9fd6a6d132fce4af191d13b5883504d5, type: 3}
+  - {fileID: 21300000, guid: 24fa7083601324067a205e7b0c3b6192, type: 3}
+  - {fileID: 21300002, guid: 24fa7083601324067a205e7b0c3b6192, type: 3}
+  - {fileID: 21300004, guid: 24fa7083601324067a205e7b0c3b6192, type: 3}
+  - {fileID: 21300006, guid: 24fa7083601324067a205e7b0c3b6192, type: 3}
+  - {fileID: 21300008, guid: 24fa7083601324067a205e7b0c3b6192, type: 3}
+  - {fileID: 21300000, guid: f736242ba45744bee9ee196bede40f0f, type: 3}
 --- !u!212 &593215813
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2272,7 +2287,7 @@ Canvas:
   m_GameObject: {fileID: 1768770958}
   m_Enabled: 1
   serializedVersion: 2
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 2092461085}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -2798,6 +2813,7 @@ GameObject:
   - component: {fileID: 2081458099}
   - component: {fileID: 2081458098}
   - component: {fileID: 2081458103}
+  - component: {fileID: 2081458104}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2930,20 +2946,20 @@ MonoBehaviour:
   isFishing: 0
   minigame: 0
   hasCaught: 0
-  alertP: {fileID: 4312798782951526, guid: ba7c398a6e4444970903fe8f1c31c2cb, type: 2}
   rodAlert: {fileID: 0}
   canvas: {fileID: 0}
-  animExclamationSprites:
-  - {fileID: 21300000, guid: a8a4d41480d9a4c448b9e5fcc2c02186, type: 3}
-  - {fileID: 21300002, guid: a8a4d41480d9a4c448b9e5fcc2c02186, type: 3}
-  - {fileID: 21300004, guid: a8a4d41480d9a4c448b9e5fcc2c02186, type: 3}
-  - {fileID: 21300006, guid: a8a4d41480d9a4c448b9e5fcc2c02186, type: 3}
-  - {fileID: 21300008, guid: a8a4d41480d9a4c448b9e5fcc2c02186, type: 3}
-  - {fileID: 21300010, guid: a8a4d41480d9a4c448b9e5fcc2c02186, type: 3}
-  - {fileID: 21300012, guid: a8a4d41480d9a4c448b9e5fcc2c02186, type: 3}
-  - {fileID: 21300014, guid: a8a4d41480d9a4c448b9e5fcc2c02186, type: 3}
-  - {fileID: 21300016, guid: a8a4d41480d9a4c448b9e5fcc2c02186, type: 3}
-  - {fileID: 21300018, guid: a8a4d41480d9a4c448b9e5fcc2c02186, type: 3}
+--- !u!114 &2081458104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2081458097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20fb5b4c5d7f91043b3842cd0043c921, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
 --- !u!1 &2092461084
 GameObject:
   m_ObjectHideFlags: 0
