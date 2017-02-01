@@ -37,7 +37,7 @@ Transform:
   m_GameObject: {fileID: 1220559730177864}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 349.5, y: 170.1, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -67,11 +67,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e702c1986d09f14e81735226b43bd41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemPrefab: {fileID: 4057177441259352, guid: 05cc5609a849f654d8131240912b56be, type: 2}
-  raw: {fileID: 21300000, guid: fe913c90328885e4cb03b9519a7d9c6b, type: 3}
-  cooked: {fileID: 21300000, guid: 304121f0ceb0c6241bc6ffbecfa4c225, type: 3}
-  burnt: {fileID: 21300000, guid: 323209428b6c02445acd53d481e8454e, type: 3}
+  canvas: {fileID: 0}
+  slotNum: 0
   cookingUI: {fileID: 0}
+  fireState: 0
+  lastFrame: 0
+  animationTime: 0
+  frameIndex: 0
   animSprites: []
 --- !u!212 &212156365741490534
 SpriteRenderer:
