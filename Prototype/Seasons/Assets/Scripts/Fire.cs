@@ -79,12 +79,14 @@ public class Fire : MonoBehaviour {
                 }
             } else {
                 //check food slots               
-                if(currentSlot.Items.Count > 0 && currentSlot.CurrentItem.isFood) {
-                    currentSlot.cookTime -= Time.deltaTime;
-                    if (currentSlot.cookTime <= 0) {
-                        cookFood(currentSlot, ItemType.RAWFISH, "cookedFish");
-                        cookFood(currentSlot, ItemType.COOKEDFISH, "burntFish");
-                        
+                if(currentSlot.Items.Count > 0) {
+                    if (currentSlot.CurrentItem.isFood) {
+                        currentSlot.cookTime -= Time.deltaTime;
+                        if (currentSlot.cookTime <= 0) {
+                            cookFood(currentSlot, ItemType.RAWFISH, "cookedFish");
+                            cookFood(currentSlot, ItemType.COOKEDFISH, "burntFish");
+                            
+                        }
                     }
                 } else {
                     currentSlot.cookTime = 2;
