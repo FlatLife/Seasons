@@ -10,12 +10,13 @@ public float speed;
 	public Canvas canvas;
 	public Backpack backpack;
     public CraftTable craft;
-
+	public CookingUI cook;
 	public DestroyUI destroy;
 	private bool canTouch = false;
     private Collider2D objectColliderID;
     Fire fire;
     public Slot slot;
+
     public CookingUI cookingUI;
 	public FarmingUI farmingUI;
 	public bool isSwimming = false;
@@ -93,10 +94,11 @@ public float speed;
 			}
 			//Cooking minigame interaction
 			if(atFire){
-				foreach (Transform cookSlot in cookingUI.transform) {
+				cook = objectColliderID.gameObject.GetComponent<Fire>().cookingUI;
+				foreach (Transform cookSlot in cook.transform) {
 					cookSlot.GetComponent<Image>().enabled = !cookSlot.GetComponent<Image>().enabled;
 				}
-				cookingUI.GetComponent<Image>().enabled = !cookingUI.GetComponent<Image>().enabled;
+				cook.GetComponent<Image>().enabled = !cook.GetComponent<Image>().enabled;
 			}
 			
 			if (atFarm) {
@@ -191,6 +193,7 @@ public float speed;
 			canTouch = true;
 		}
 		if (other.tag == "Fire") {
+			objectColliderID = other;
 			atFire = true;
 		}
 		if (other.tag == "Farm") {
@@ -212,7 +215,7 @@ public float speed;
         {
             canTouch = false;
         }
-        if (other.tag == "Fire")
+        if (other.tag == "Fire" && other == objectColliderID)
         {
             atFire = false;
         }

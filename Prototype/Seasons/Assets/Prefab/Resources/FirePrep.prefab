@@ -9,78 +9,60 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1220559730177864}
+  m_RootGameObject: {fileID: 1733119916935536}
   m_IsPrefabParent: 1
---- !u!1 &1220559730177864
+--- !u!1 &1733119916935536
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4486232395057952}
-  - component: {fileID: 212156365741490534}
-  - component: {fileID: 114293223721166008}
-  - component: {fileID: 61888812604014778}
+  - component: {fileID: 4469837941412412}
+  - component: {fileID: 212702833767304988}
+  - component: {fileID: 114202542752034756}
   m_Layer: 0
-  m_Name: Fire
-  m_TagString: Fire
+  m_Name: FirePrep
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4486232395057952
+--- !u!4 &4469837941412412
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1220559730177864}
+  m_GameObject: {fileID: 1733119916935536}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 349.5, y: 170.1, z: 0}
+  m_LocalPosition: {x: -3.6779952, y: 1.3800492, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61888812604014778
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1220559730177864}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Size: {x: 1.5, y: 2}
---- !u!114 &114293223721166008
+--- !u!114 &114202542752034756
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1220559730177864}
+  m_GameObject: {fileID: 1733119916935536}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e702c1986d09f14e81735226b43bd41, type: 3}
+  m_Script: {fileID: 11500000, guid: e217fa480781740208d799569bd39f51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
-  slotNum: 0
-  cookingUI: {fileID: 0}
-  fireState: 0
-  lastFrame: 0
-  animationTime: 0
-  frameIndex: 0
-  animSprites: []
---- !u!212 &212156365741490534
+  type: 18
+  spriteNeutral: {fileID: 21300000, guid: 7542e2a570b3748b4b8c7be02b8e6238, type: 3}
+  spriteHighlighted: {fileID: 21300000, guid: 7542e2a570b3748b4b8c7be02b8e6238, type: 3}
+  maxSize: 0
+  isFood: 0
+--- !u!212 &212702833767304988
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1220559730177864}
+  m_GameObject: {fileID: 1733119916935536}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -106,7 +88,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4ba73b2d35297674ab6916c740b4ae38, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7542e2a570b3748b4b8c7be02b8e6238, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
