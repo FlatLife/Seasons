@@ -29,27 +29,27 @@ public class PlaceObjects : MonoBehaviour {
 				hoverObject.name = "Hover";
 				hoverObject.layer = 2;
 			}
-			if(!hoverObject.GetComponent<Placeable>().colliding){
-				canBuild = true;
-				hoverObject.GetComponent<SpriteRenderer>().color = buildColor;
-			}else{
-				canBuild = false;
-				hoverObject.GetComponent<SpriteRenderer>().color = cantBuild;
-			}
-			Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-			pos.z = pos.y - 0.3f;
-			hoverObject.transform.position = pos;
-			if (Input.GetMouseButtonDown(0)) {
-				CastRay();
-			}
-		}
-	}
+			// Makes sure object isn't on top of something
+			canBuild = !hoverObject.GetComponent<Placeable>().colliding;
 
-	void CastRay() {
-		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-		RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, 1000);
-		if(hit){
-			if (hit.collider.gameObject.tag == "Build" && canBuild) {
+			// Makes sure object is being built close enough to the player
+			Vector3 centerPosition = Camera.main.transform.position + new Vector3(Screen.width/2, Screen.height/2 - 70);
+			Vector2 difference = Input.mousePosition - centerPosition;
+			float distance = difference.magnitude;
+			canBuild = canBuild ? distance < 200 : false;
+
+			// Makes sure object is not outside island
+			int layerMask = 1 << 8;
+			RaycastHit2D hit = Physics2D.Linecast(Camera.main.ScreenToWorldPoint(centerPosition), Camera.main.ScreenToWorldPoint(Input.mousePosition), layerMask);
+			canBuild = canBuild ? hit.collider == null : false;
+			
+
+			// Set hoverObject's position and colour
+			Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+			hoverObject.transform.position = new Vector3(pos.x, pos.y, pos.y - 0.3f);
+			hoverObject.GetComponent<SpriteRenderer>().color = canBuild ? buildColor : cantBuild;
+
+			if (Input.GetMouseButtonDown(0) && canBuild) {
 				item = Instantiate(Resources.Load<GameObject>(buildItem));
 				item.name = buildItem;
 				item.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
