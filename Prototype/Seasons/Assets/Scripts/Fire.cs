@@ -5,7 +5,7 @@ using UnityEngine;
 public class Fire : MonoBehaviour {
     public Canvas canvas;
     public int slotNum;
-    private CookingUI cookingUI;
+    public CookingUI cookingUI;
 
     int frameIndex;
     // An array with the sprites used for animation
@@ -18,13 +18,13 @@ public class Fire : MonoBehaviour {
     private float timeSinceLastFrame;    
 
     // Use this for initialization
-    void Start () {
+    void Awake () {
+        animRenderer = GetComponent<Renderer>() as SpriteRenderer;
+        canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
         cookingUI = Instantiate(Resources.Load<CookingUI>("CookingUI"));
         cookingUI.name = "CookingUI";
         cookingUI.Initialize(slotNum);
         cookingUI.transform.SetParent(canvas.transform);
-        GameObject.Find("Player").GetComponent<Player>().cookingUI = cookingUI;
-
         // Get a reference to game object renderer and
         // cast it to a Sprite Renderer
         animRenderer = GetComponent<Renderer>() as SpriteRenderer;
@@ -54,7 +54,6 @@ public class Fire : MonoBehaviour {
                 if (currentSlot.cookTime <= 0) {
                     cookFood(currentSlot, ItemType.RAWFISH, "cookedFish");
                     cookFood(currentSlot, ItemType.COOKEDFISH, "burntFish");
-                    
                 }
             } else {
                 currentSlot.cookTime = 2;
