@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class treeTop : MonoBehaviour {
+public class TreeTop : MonoBehaviour {
 
 	Item item;
 	public float spawnProbability;
-
-	public float rateOfFall;
+	float xPos;
+	public float coolDown = 5;
 
 	// Use this for initialization
 	void Start () {
@@ -17,20 +17,19 @@ public class treeTop : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if(Random.Range(0f,1f) < spawnProbability){
+		if(Random.Range(0f,1f) > spawnProbability && (coolDown <= 0)){
 			Item item = Instantiate(Resources.Load<Item>("Wood"));
-			item.transform.position = transform.position;
-			dropItem(item);
-			spawnProbability = 5;
+			Vector3 position = transform.position;
+			while(xPos < 6.5 && xPos > 2){
+				xPos = Random.Range(-5f, 14f);
+			}		
+			position.x += xPos;
+			item.transform.position = position;
+			item.gameObject.AddComponent<ItemDrop>();
+			coolDown = 5;
+		} else {
+			coolDown -= Time.deltaTime;
 		}
-		item.GetComponent<Item>();
-		//item.dropItem
 	}
 
-	void dropItem(Item item){
-		Vector3 position = item.transform.position;
-		position.y -= rateOfFall;
-		item.transform.position = position;
-		rateOfFall *= 1.1f;
-	}
 }
