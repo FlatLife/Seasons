@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e217fa480781740208d799569bd39f51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemName: Hoe
   type: 14
   spriteNeutral: {fileID: 21300000, guid: 5c1ac4e8818de44ac922304a4746a406, type: 3}
   spriteHighlighted: {fileID: 21300000, guid: 5c1ac4e8818de44ac922304a4746a406, type: 3}

@@ -7,6 +7,7 @@ public enum ItemType {NONE, FISHINGROD, STICK, WOOD, VINE, RAWFISH, COOKEDFISH, 
 
 public class Item : MonoBehaviour {
 
+	public string itemName;
 	public ItemType type;
 	public Sprite spriteNeutral;
 	public Sprite spriteHighlighted;

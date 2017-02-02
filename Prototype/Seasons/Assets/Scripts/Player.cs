@@ -13,6 +13,7 @@ public float speed;
 	public CookingUI cook;
 	public DestroyUI destroy;
 	private bool canTouch = false;
+	public bool switchSwimMode = false;
     private Collider2D objectColliderID;
     Fire fire;
     public Slot slot;
@@ -93,7 +94,9 @@ public float speed;
 				}
 			}
 			//Cooking minigame interaction
-			if(atFire){
+			if(atFire)
+			{
+				ToggleUI();
 				cook = objectColliderID.gameObject.GetComponent<Fire>().cookingUI;
 				foreach (Transform cookSlot in cook.transform) {
 					cookSlot.GetComponent<Image>().enabled = !cookSlot.GetComponent<Image>().enabled;
@@ -103,10 +106,21 @@ public float speed;
 			
 			if (atFarm) {
 				//Debug.Log("Player entered Farm zone and pressed e");
+				ToggleUI();
 				foreach (Transform farmSlot in farmingUI.transform) {
 					farmSlot.GetComponent<Image>().enabled = !farmSlot.GetComponent<Image>().enabled;
 				}
 				farmingUI.GetComponent<Image>().enabled = !farmingUI.GetComponent<Image>().enabled;
+			}
+
+			if(switchSwimMode){
+				isSwimming = !isSwimming;
+				Vector3 pos = transform.position;
+				if(isSwimming){
+					transform.position = new Vector3(pos.x - 2f, pos.y, pos.z);
+				}else{
+					transform.position = new Vector3(pos.x + 2f, pos.y, pos.z);
+				}
 			}
 		}
 
@@ -134,26 +148,26 @@ public float speed;
        }
 	}
     
-
-	private void HandleMovement() {
-		if(!openUI && !performingAction) {
-			float movementInputH = Input.GetAxis ("Horizontal");
-			float movementInputV = Input.GetAxis ("Vertical");
-			if(!isSwimming){
-				rb.velocity = new Vector3(movementInputH * speed, rb.velocity.y);
-			}else if (isSwimming){
-				rb.velocity = new Vector3(movementInputH * speed/2, rb.velocity.y);
-				if(diving){
-					rb.velocity = new Vector3(movementInputH * speed/2, movementInputV * 10.0f);
-				}
-			}
-			if(isUnderwater){
-				rb.velocity = new Vector3(movementInputH * 2.0f, movementInputV*2.0f + 1.0f);
-			}
-		}else{
-			rb.velocity = new Vector3(0.0f, rb.velocity.y);
-		}
-	}
+//movement handled in player2 script
+	// private void HandleMovement() {
+	// 	if(!openUI && !performingAction) {
+	// 		float movementInputH = Input.GetAxis ("Horizontal");
+	// 		float movementInputV = Input.GetAxis ("Vertical");
+	// 		if(!isSwimming){
+	// 			rb.velocity = new Vector3(movementInputH * speed, rb.velocity.y);
+	// 		}else if (isSwimming){
+	// 			rb.velocity = new Vector3(movementInputH * speed/2, rb.velocity.y);
+	// 			if(diving){
+	// 				rb.velocity = new Vector3(movementInputH * speed/2, movementInputV * 10.0f);
+	// 			}
+	// 		}
+	// 		if(isUnderwater){
+	// 			rb.velocity = new Vector3(movementInputH * 2.0f, movementInputV*2.0f + 1.0f);
+	// 		}
+	// 	}else{
+	// 		rb.velocity = new Vector3(0.0f, rb.velocity.y);
+	// 	}
+	// }
 
 	private void ToggleUI() {
 		openUI = !openUI;

@@ -7,6 +7,8 @@ using UnityEngine.EventSystems;
 public class Slot : MonoBehaviour, IPointerClickHandler {
 
     private Stack<Item> items;
+
+	public GameObject tooltip;
 	public Text stackTxt;
 	public Sprite slotEmpty;
 	public Sprite slotHighlighted;
@@ -117,6 +119,22 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 		if (eventData.button == PointerEventData.InputButton.Right) {
 			UseItem();
 		}
+	}
+
+	public void popup(){
+		if(!isEmpty){
+			tooltip = Instantiate(Resources.Load<GameObject>("Tooltip"));
+			tooltip.name = "tooltip";
+			tooltip.GetComponentInChildren<Text>().text = CurrentItem.itemName;
+			tooltip.transform.SetParent(GameObject.Find("Canvas").transform, false);
+			tooltip.transform.position = this.transform.position;
+			tooltip.transform.position = new Vector3(tooltip.transform.position.x + 100f ,tooltip.transform.position.y - 20f , -50f);
+		}
+	}
+
+
+	public void popupDestroy(){
+		Destroy(tooltip);
 	}
 
 	public void ClearSlot() {
