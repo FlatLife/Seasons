@@ -43,6 +43,10 @@ public class Item : MonoBehaviour {
 				builder = GameObject.Find("Main Camera").GetComponent<PlaceObjects>();
 				builder.build("Fire", "PlaceFire");
 				break;
+			case ItemType.HOE:
+				builder = GameObject.Find("Main Camera").GetComponent<PlaceObjects>();
+				builder.build("Farm", "PlaceFarm");
+				break;
 		}
 	}
 }
