@@ -90,8 +90,12 @@ public class CraftTable : MonoBehaviour {
 				   Debug.Log(product);
             	Item result = Resources.Load<GameObject>(product).GetComponent<Item>();
             	BackPack.AddItem(result);
-           		tmp1.DestroyItem ();
-           	 	tmp2.DestroyItem ();
+				if(!tmp1.CurrentItem.keepItem){
+           			tmp1.DestroyItem ();
+				}
+				if(!tmp2.CurrentItem.keepItem){
+           	 		tmp2.DestroyItem ();
+				}
 			}
 		} 
 	}
@@ -108,13 +112,17 @@ public class CraftTable : MonoBehaviour {
 				if (tmp2.CurrentItem.type == type) {
 					Item result = Resources.Load<GameObject>(product).GetComponent<Item>();
             		BackPack.AddItem(result);
-					tmp2.DestroyItem();
+					if(!tmp2.CurrentItem.keepItem){
+						tmp2.DestroyItem();
+					}
 				}
 			} else if (tmp2.isEmpty){
 				if (tmp1.CurrentItem.type == type) {
 					Item result = Resources.Load<GameObject>(product).GetComponent<Item>();
             		BackPack.AddItem(result);
-					tmp1.DestroyItem();
+					if(!tmp1.CurrentItem.keepItem){
+						tmp1.DestroyItem();
+					}
 				}
 			}
 		}
