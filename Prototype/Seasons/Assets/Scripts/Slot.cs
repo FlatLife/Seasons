@@ -124,4 +124,5 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 		ChangeSprite(slotEmpty, slotHighlighted);
 		stackTxt.text = string.Empty;
 	}
+
 }
