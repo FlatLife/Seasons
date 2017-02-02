@@ -72,6 +72,9 @@ MonoBehaviour:
   spriteHighlighted: {fileID: 21300000, guid: 2787b9807318843709962f7749857ed1, type: 3}
   maxSize: 5
   isFood: 0
+  isCrop: 0
+  isFinishedCrop: 1
+  keepItem: 0
 --- !u!212 &212481662739404272
 SpriteRenderer:
   m_ObjectHideFlags: 1

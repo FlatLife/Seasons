@@ -13,6 +13,7 @@ public class Item : MonoBehaviour {
 	public int maxSize;
 	public bool isFood;
 	public bool isCrop;
+	public bool isFinishedCrop;
 
 	private GameObject hunger;
 	private GameObject thirst;
