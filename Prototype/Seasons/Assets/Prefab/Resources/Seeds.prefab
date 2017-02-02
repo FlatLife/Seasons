@@ -67,12 +67,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e217fa480781740208d799569bd39f51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemName: Seeds
   type: 13
   spriteNeutral: {fileID: 21300000, guid: 448f52edf2bac48e79787efaf7ddb8e4, type: 3}
   spriteHighlighted: {fileID: 21300000, guid: 448f52edf2bac48e79787efaf7ddb8e4, type: 3}
   maxSize: 1
   isFood: 0
   isCrop: 1
+  keepItem: 0
 --- !u!212 &212897238256461434
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -36,7 +36,7 @@ public class Waves : MonoBehaviour {
 			points[i] = new Vector3(i * 0.5f, 0.15f * Mathf.Sin(i + 2*t), 0.0f);
 			points2D[i] = new Vector2(i * 0.5f, 0.15f * Mathf.Sin(i + 2*t));
 		}
-		effector.surfaceLevel = points[(int)Math.Ceiling(player.transform.position.x+7.3f)].y - 1;
+		effector.surfaceLevel = points[(int)Math.Abs(Math.Ceiling(player.transform.position.x+7.3f))].y - 1;
 		lineRenderer.SetPositions(points);
 		collider.points = points2D;
 	}

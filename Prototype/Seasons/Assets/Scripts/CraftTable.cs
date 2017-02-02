@@ -87,7 +87,6 @@ public class CraftTable : MonoBehaviour {
 		if(!tmp1.isEmpty && !tmp2.isEmpty) {
 			if((tmp1.CurrentItem.type == type1 && tmp2.CurrentItem.type == type2)
        		|| (tmp1.CurrentItem.type == type2 && tmp2.CurrentItem.type == type1)){
-				   Debug.Log(product);
             	Item result = Resources.Load<GameObject>(product).GetComponent<Item>();
             	BackPack.AddItem(result);
 				if(!tmp1.CurrentItem.keepItem){
@@ -108,7 +107,6 @@ public class CraftTable : MonoBehaviour {
 		if ((tmp1.isEmpty && !tmp2.isEmpty) || (!tmp1.isEmpty && tmp2.isEmpty)) {
 			// Checks what slot is empty, so we know what slot to compare with (avoid null error)
 			if (tmp1.isEmpty) {
-				Debug.Log(tmp2.CurrentItem.type);
 				if (tmp2.CurrentItem.type == type) {
 					Item result = Resources.Load<GameObject>(product).GetComponent<Item>();
             		BackPack.AddItem(result);
