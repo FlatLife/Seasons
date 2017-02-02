@@ -7,6 +7,7 @@ public class Fire : MonoBehaviour {
     public int slotNum;
     public CookingUI cookingUI;
     float burnTime = 50;
+    GameObject fireSpark;
 
     //burnState = 1(small), 2(medium), 3(large)
     public int fireState;
@@ -117,6 +118,11 @@ public class Fire : MonoBehaviour {
         burnTime = 50;
         lastFrame = 14;
         frameIndex = 10;
+    }
+
+    public void sparkFire(){
+        fireSpark = Instantiate(Resources.Load<GameObject>("sparkFire"));
+        fireSpark.transform.position = transform.position;
     }
 
 }
