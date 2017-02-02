@@ -23,12 +23,11 @@ public class Farming : MonoBehaviour {
 
             if(currentSlot.Items.Count > 0) {
                 if (currentSlot.CurrentItem.isCrop) {
-                    currentSlot.growTime -= Time.deltaTime;
+                    currentSlot.growTime -= !farmingUI.waterSlot.isEmpty && farmingUI.waterSlot.CurrentItem.type == ItemType.WATER ? (Time.deltaTime)*10 : Time.deltaTime;
                     if (currentSlot.growTime <= 0) {
-						if (farmingUI.waterSlot.CurrentItem.type == ItemType.WATER) {
-                        	growFood(currentSlot, ItemType.SEED, "Carrot");  
-							growFood(currentSlot, ItemType.CARROT, "Wood");
-						}
+            
+                        growFood(currentSlot, ItemType.SEED, "Carrot");  
+						growFood(currentSlot, ItemType.CARROT, "Wood");
                     }
                 }
             } else {
