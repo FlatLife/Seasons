@@ -16,6 +16,8 @@ public float speed;
 	public bool switchSwimMode = false;
     private Collider2D objectColliderID;
     Fire fire;
+	public int buttonSmash = 0;
+	float buttonPressed;
     public Slot slot;
 
     public CookingUI cookingUI;
@@ -94,14 +96,33 @@ public float speed;
 				}
 			}
 			//Cooking minigame interaction
-			if(atFire)
-			{
-				ToggleUI();
-				cook = objectColliderID.gameObject.GetComponent<Fire>().cookingUI;
-				foreach (Transform cookSlot in cook.transform) {
-					cookSlot.GetComponent<Image>().enabled = !cookSlot.GetComponent<Image>().enabled;
+
+			if(atFire){
+				fire = objectColliderID.gameObject.GetComponent<Fire>();
+				//if fire is dead and they press the interaction button
+				if(fire.fireState == 0){
+					buttonPressed = Time.deltaTime;
+					if(buttonPressed < 0.4){
+						buttonSmash++;
+					} else {
+						if(buttonSmash > 0){
+							buttonSmash--;
+						}
+					}	
+					//if they have pressed the button fast enough, enough times
+					if(buttonSmash == 10){
+						fire.startFire();
+						buttonSmash = 0;
+					}
+				} else {
+					//if fire is alive open cookingUI
+					ToggleUI();
+					cook = objectColliderID.gameObject.GetComponent<Fire>().cookingUI;
+					foreach (Transform cookSlot in cook.transform) {
+						cookSlot.GetComponent<Image>().enabled = !cookSlot.GetComponent<Image>().enabled;
+					}
+					cook.GetComponent<Image>().enabled = !cook.GetComponent<Image>().enabled;
 				}
-				cook.GetComponent<Image>().enabled = !cook.GetComponent<Image>().enabled;
 			}
 			
 			if (atFarm) {

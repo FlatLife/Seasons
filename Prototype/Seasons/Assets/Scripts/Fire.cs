@@ -7,6 +7,7 @@ public class Fire : MonoBehaviour {
     public int slotNum;
     public CookingUI cookingUI;
     float burnTime = 50;
+    GameObject fireSpark;
 
     //burnState = 1(small), 2(medium), 3(large)
     public int fireState;
@@ -36,10 +37,8 @@ public class Fire : MonoBehaviour {
         // cast it to a Sprite Renderer
         animRenderer = GetComponent<Renderer>() as SpriteRenderer;
         //Sets the animation to the first frame
-        frameIndex = 10;
         timeSinceLastFrame = 0;
-        lastFrame = 14;
-        fireState = 3;
+        fireState = 0;
     }
 
     // Update is called once per frame
@@ -113,4 +112,17 @@ public class Fire : MonoBehaviour {
         }
         frameIndex = (state - 1) * 5; 
     }
+
+    public void startFire(){
+        fireState = 3;
+        burnTime = 50;
+        lastFrame = 14;
+        frameIndex = 10;
+    }
+
+    public void sparkFire(){
+        fireSpark = Instantiate(Resources.Load<GameObject>("sparkFire"));
+        fireSpark.transform.position = transform.position;
+    }
+
 }
