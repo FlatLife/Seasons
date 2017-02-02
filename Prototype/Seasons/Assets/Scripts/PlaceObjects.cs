@@ -40,8 +40,8 @@ public class PlaceObjects : MonoBehaviour {
 
 			// Makes sure object is not outside island
 			int layerMask = 1 << 8 | 1 << 9;
-			RaycastHit2D hit = Physics2D.Linecast(Camera.main.ScreenToWorldPoint(centerPosition), Camera.main.ScreenToWorldPoint(Input.mousePosition), layerMask);
-			canBuild = canBuild ? hit.collider == null : false;
+			int hit = Physics2D.LinecastNonAlloc(Camera.main.ScreenToWorldPoint(centerPosition), Camera.main.ScreenToWorldPoint(Input.mousePosition), new RaycastHit2D[1], layerMask);
+			canBuild = canBuild ? hit == 0 : false;
 			
 
 			// Set hoverObject's position and colour
