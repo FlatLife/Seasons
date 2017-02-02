@@ -18,6 +18,8 @@ public class Item : MonoBehaviour {
 	private GameObject thirst;
 	private PlaceObjects builder;
 
+	public bool keepItem;
+
 
 	public void Use() {
 		switch(type) {
