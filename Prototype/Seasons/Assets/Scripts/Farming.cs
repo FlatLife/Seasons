@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Farming : MonoBehaviour {
 
@@ -22,10 +23,14 @@ public class Farming : MonoBehaviour {
             Slot currentSlot = farmingUI.farmSlots[i].GetComponent<Slot>();
 
             if(currentSlot.Items.Count > 0) {
+                if (!currentSlot.CurrentItem.isFinishedCrop) {
+                    currentSlot.GetComponent<Button>().interactable = false;
+                } else {
+                    currentSlot.GetComponent<Button>().interactable = true;
+                }
                 if (currentSlot.CurrentItem.isCrop) {
                     currentSlot.growTime -= !farmingUI.waterSlot.isEmpty && farmingUI.waterSlot.CurrentItem.type == ItemType.WATER ? (Time.deltaTime)*10 : Time.deltaTime;
                     if (currentSlot.growTime <= 0) {
-            
                         growFood(currentSlot, ItemType.SEED, "Carrot");  
 						growFood(currentSlot, ItemType.CARROT, "Wood");
                     }

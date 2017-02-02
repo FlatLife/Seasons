@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 222353496628026612}
   - component: {fileID: 114517304666550314}
   m_Layer: 5
-  m_Name: Tooltip 1
+  m_Name: Tooltip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
