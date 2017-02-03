@@ -74,6 +74,7 @@ MonoBehaviour:
   maxSize: 1
   isFood: 0
   isCrop: 0
+  isFinishedCrop: 0
   keepItem: 0
 --- !u!212 &212613441945083074
 SpriteRenderer:

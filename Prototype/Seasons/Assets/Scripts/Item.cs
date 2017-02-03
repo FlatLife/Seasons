@@ -19,9 +19,8 @@ public class Item : MonoBehaviour {
 	private GameObject hunger;
 	private GameObject thirst;
 	private PlaceObjects builder;
-
 	public bool keepItem;
-
+	public int durability;
 
 	public void Use() {
 		switch(type) {
