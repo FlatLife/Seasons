@@ -9,6 +9,7 @@ public class DayCycle : MonoBehaviour {
 	public float dayTime;
 	public float fadeTime;
 	public GameObject fade;
+	bool bottleHasSpawned;
 
 	private Text dayCount;
 
@@ -25,6 +26,7 @@ public class DayCycle : MonoBehaviour {
 		dayTime -= Time.deltaTime;
 		if(dayTime <= 0 && !fadingIn){
 			fade.GetComponent<ScreenFade>().FadeToBlack();
+			bottleHasSpawned = false;
 		}
 
 		if(dayTime <= 0 && fade.GetComponent<SpriteRenderer>().color.a > 0.95f){
@@ -36,6 +38,11 @@ public class DayCycle : MonoBehaviour {
 		}
 
 		if(fadeTime <= 0 && fadingIn){
+			//spawn message in a bottle when day starts
+			if(bottleHasSpawned != true){
+				GameObject bottle = Instantiate(Resources.Load<GameObject>("messageBottle"));
+				bottleHasSpawned = true;
+			}
 			fade.GetComponent<ScreenFade>().FadeToClear();
 		}
 		if(fade.GetComponent<SpriteRenderer>().color.a < 0.05f && fadingIn){
