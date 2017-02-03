@@ -92,14 +92,21 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 	}
 
 	public void UseItem() {
-		if (!isEmpty) {
-			items.Pop().Use();
-			stackTxt.text = items.Count > 1 ? items.Count.ToString() : string.Empty;
-
-			if (isEmpty) {
-				ChangeSprite(slotEmpty, slotHighlighted);
-				Backpack.EmptySlot++;
+		// If an items durability is set to -1, it means it doesnt have durability
+		
+		if (CurrentItem.durability == 0) {
+			if (!isEmpty) {
+				items.Pop().Use();
+				stackTxt.text = items.Count > 1 ? items.Count.ToString() : string.Empty;
+				if (isEmpty) {
+					ChangeSprite(slotEmpty, slotHighlighted);
+					Backpack.EmptySlot++;
+				}
 			}
+		} else {
+			CurrentItem.Use();
+			Debug.Log(CurrentItem.durability);
+			CurrentItem.durability--;
 		}
 	}
 
