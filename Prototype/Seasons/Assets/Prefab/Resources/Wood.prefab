@@ -74,7 +74,9 @@ MonoBehaviour:
   maxSize: 5
   isFood: 0
   isCrop: 0
+  isFinishedCrop: 0
   keepItem: 0
+  durability: 0
 --- !u!212 &212481662739404272
 SpriteRenderer:
   m_ObjectHideFlags: 1

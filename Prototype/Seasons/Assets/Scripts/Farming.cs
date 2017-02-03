@@ -19,15 +19,18 @@ public class Farming : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        // Cycles through each slot in our array of farming slots
 		for (int i = 0; i < slotNum; i++) {
             Slot currentSlot = farmingUI.farmSlots[i].GetComponent<Slot>();
 
             if(currentSlot.Items.Count > 0) {
+                // this chunk of code is to ensure the player can only remove the crop once it's finished growing
                 if (!currentSlot.CurrentItem.isFinishedCrop) {
                     currentSlot.GetComponent<Button>().interactable = false;
                 } else {
                     currentSlot.GetComponent<Button>().interactable = true;
                 }
+                // checks that our item in the slot is a crop and not a random item before we make it grow
                 if (currentSlot.CurrentItem.isCrop) {
                     currentSlot.growTime -= !farmingUI.waterSlot.isEmpty && farmingUI.waterSlot.CurrentItem.type == ItemType.WATER ? (Time.deltaTime)*10 : Time.deltaTime;
                     if (currentSlot.growTime <= 0) {
