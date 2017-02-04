@@ -7,14 +7,15 @@ public class Farming : MonoBehaviour {
 
 	public Canvas canvas;
     public int slotNum;
-    private FarmingUI farmingUI;
+    public FarmingUI farmingUI;
 	// Use this for initialization
-	void Start () {
+
+	void Awake () {
+		canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
 		farmingUI = Instantiate(Resources.Load<FarmingUI>("FarmingUI"));
         farmingUI.name = "FarmingUI";
         farmingUI.Initialize(slotNum);
         farmingUI.transform.SetParent(canvas.transform);
-        GameObject.Find("Player").GetComponent<Player>().farmingUI = farmingUI;
 	}
 	
 	// Update is called once per frame
@@ -32,7 +33,7 @@ public class Farming : MonoBehaviour {
                 }
                 // checks that our item in the slot is a crop and not a random item before we make it grow
                 if (currentSlot.CurrentItem.isCrop) {
-                    currentSlot.growTime -= !farmingUI.waterSlot.isEmpty && farmingUI.waterSlot.CurrentItem.type == ItemType.WATER ? (Time.deltaTime)*10 : Time.deltaTime;
+					currentSlot.growTime -= !farmingUI.waterSlot.isEmpty && farmingUI.waterSlot.CurrentItem.type == ItemType.FRESHWATER ? (Time.deltaTime)*10 : Time.deltaTime;
                     if (currentSlot.growTime <= 0) {
                         growFood(currentSlot, ItemType.SEED, "Carrot");  
 						growFood(currentSlot, ItemType.CARROT, "Wood");

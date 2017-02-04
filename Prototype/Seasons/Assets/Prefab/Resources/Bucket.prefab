@@ -52,13 +52,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e217fa480781740208d799569bd39f51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 12
+  itemName: Bucket
+  type: 11
   spriteNeutral: {fileID: 21300000, guid: 33714b92aeb8747618554ed9962a301f, type: 3}
   spriteHighlighted: {fileID: 21300000, guid: 33714b92aeb8747618554ed9962a301f, type: 3}
   maxSize: 1
   isFood: 0
   isCrop: 0
+  isFinishedCrop: 0
   keepItem: 1
+  durability: 0
 --- !u!212 &212983457028428912
 SpriteRenderer:
   m_ObjectHideFlags: 1

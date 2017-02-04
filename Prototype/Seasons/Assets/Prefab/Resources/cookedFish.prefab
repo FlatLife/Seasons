@@ -52,11 +52,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e217fa480781740208d799569bd39f51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemName: Cooked Fish
   type: 6
   spriteNeutral: {fileID: 21300000, guid: 25f262db250fb49c39c0bfff5f4d6269, type: 3}
   spriteHighlighted: {fileID: 21300000, guid: 5e3b99ef80e7f4a7883dddce81430f25, type: 3}
   maxSize: 1
   isFood: 1
+  isCrop: 0
+  isFinishedCrop: 0
+  keepItem: 0
+  durability: 0
 --- !u!212 &212443575951970832
 SpriteRenderer:
   m_ObjectHideFlags: 1
