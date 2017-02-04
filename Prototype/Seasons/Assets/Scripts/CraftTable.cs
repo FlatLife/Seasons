@@ -64,15 +64,16 @@ public class CraftTable : MonoBehaviour {
 	}
 	
 	public void CraftItem() {
+		CheckRecipeOneItem(ItemType.WOOD, "Stick");
 		CheckRecipe(ItemType.VINE, ItemType.STICK, "FishingRod");
 		CheckRecipe(ItemType.STICK, ItemType.WOOD, "Hoe");
 		CheckRecipe(ItemType.STICK, ItemType.ROCK, "Hatchet");
 		// CheckRecipe needs to check if item should be returned (in this case, the hatchet)
-		CheckRecipe(ItemType.HATCHET, ItemType.WOOD, "FreshWater");
+		CheckRecipe(ItemType.HATCHET, ItemType.WOOD, "Bucket");
 		CheckRecipe(ItemType.STICK, ItemType.STICK, "FirePrep");
 		CheckRecipe(ItemType.BUCKET, ItemType.ICE, "Ice");
 		CheckRecipe(ItemType.VINE, ItemType.VINE, "Clothes");
-		CheckRecipeOneItem(ItemType.WOOD, "Stick");
+		CheckRecipe(ItemType.BUCKET, ItemType.BUCKET, "WaterPurifierItem");
 
 		//Other items that are made WITHOUT using CheckRecipe (usually put on something like a fire)
 		//Fresh Water = Seawater put on purifier (purifiers instantiated on the ground)
@@ -87,7 +88,7 @@ public class CraftTable : MonoBehaviour {
 		if(!tmp1.isEmpty && !tmp2.isEmpty) {
 			if((tmp1.CurrentItem.type == type1 && tmp2.CurrentItem.type == type2)
        		|| (tmp1.CurrentItem.type == type2 && tmp2.CurrentItem.type == type1)){
-            	Item result = Resources.Load<GameObject>(product).GetComponent<Item>();
+				Item result = Resources.Load<GameObject>(product).GetComponent<Item>();
             	BackPack.AddItem(result);
 				if(!tmp1.CurrentItem.keepItem){
            			tmp1.DestroyItem ();

@@ -2,7 +2,8 @@
 
 
 public enum ItemType {NONE, FISHINGROD, STICK, WOOD, VINE, RAWFISH, COOKEDFISH, BURNTFISH, ROCK,
- SEAWATER, ICE, HATCHET, BUCKET, SEED, HOE, WATER, CARROT, CLOTHES, FIREPREP, BOTTLE};
+	ICE, HATCHET, BUCKET, SEED, HOE, SALTWATER, FRESHWATER, CARROT, CLOTHES, FIREPREP, BOTTLE, 
+	WATERPURIFIER};
 
 
 public class Item : MonoBehaviour {
@@ -51,6 +52,14 @@ public class Item : MonoBehaviour {
 				builder.build("Farm", "PlaceFarm");
 				durability--;
 				toBeDeleted = durability == 0;
+				break;
+			case ItemType.FRESHWATER:
+				thirst  = GameObject.Find("ThirstBar");
+				thirst.GetComponent<BarScript>().increment(0.3f);
+				break;
+			case ItemType.WATERPURIFIER:
+				builder = GameObject.Find("Main Camera").GetComponent<PlaceObjects>();
+				builder.build("WaterPurifier", "PlaceWater");
 				break;
 		}
 		return toBeDeleted;
