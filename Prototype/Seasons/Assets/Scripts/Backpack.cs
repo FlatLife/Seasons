@@ -63,36 +63,25 @@ public class Backpack : MonoBehaviour {
 	}
 
 	public bool AddItem(Item item) {
-		if (item.maxSize == 1) {
-			PlaceEmpty(item);
-			return true;
-		} else {
+		if (item.maxSize != 1 ) {
 			foreach (GameObject slot in allSlots) {
 				Slot tmp = slot.GetComponent<Slot>();
 				if (!tmp.isEmpty) {
 					if (tmp.CurrentItem.type == item.type && tmp.IsAvailable) {
-						tmp.AddItem(item);
+						tmp.deltaCount(1);
 						return true;
 					}
 				}
 			}
-			if (emptySlot > 0) {
-				PlaceEmpty(item);
-			}	
 		}
-
-		return false;
-	}
-
-	private bool PlaceEmpty(Item item) {
-		if (emptySlot > 0) {
-			foreach (GameObject slot in allSlots) {
-				Slot tmp = slot.GetComponent<Slot>();
-				if (tmp.isEmpty) {
-					tmp.AddItem(item);
-					emptySlot--;
-					return true;
-				}
+		foreach (GameObject slot in allSlots) {
+			Slot tmp = slot.GetComponent<Slot>();
+			if (tmp.isEmpty) {
+				Item newItem = Instantiate(item, tmp.transform);
+				newItem.GetComponent<SpriteRenderer>().enabled = false;
+				tmp.AddItem(newItem);
+				emptySlot--;
+				return true;
 			}
 		}
 		return false;
@@ -124,28 +113,34 @@ public class Backpack : MonoBehaviour {
 		}
 		if (to != null && from != null) {
 			if (to != from && 
-				to.GetComponent<Slot>().Items.Count > 0 && 
-				to.GetComponent<Slot>().CurrentItem.type == from.GetComponent<Slot>().CurrentItem.type) {
-				to.StackItems(from.Items);
-				if (from.Items.Count > 0) {
-					from.AddItems(from.Items);
+				!to.isEmpty && 
+				to.IsAvailable &&
+				to.CurrentItem.type == from.CurrentItem.type) {
+				int toAdd = from.ItemCount;
+				int toCountBefore = to.ItemCount;
+				int toCountAfter = to.AddItems(to.CurrentItem, to.ItemCount + from.ItemCount);
+				if ((toAdd - (toCountAfter - toCountBefore)) != 0) {
+					from.AddItems(from.CurrentItem, (toAdd - (toCountAfter - toCountBefore)));
 				} else {
 					from.ClearSlot();
 				}
+
 				from.GetComponent<Image>().color = Color.white;
 				to = null;
 				from = null;
 				hoverObject = null;
 				EmptySlot++;
+			} else if (to == from) {
+				from.GetComponent<Image>().color = Color.white;
+				to = null;
+				from = null;
+				hoverObject = null;
 			} else {
-				Stack<Item> tmpTo = new Stack<Item>(to.Items);
-				to.AddItems(from.Items);
-			
-				if (tmpTo.Count == 0) {
-					from.ClearSlot();
-				} else {
-					from.AddItems(tmpTo);
-				}
+				Item fromItem = from.CurrentItem;
+				int fromCount = from.ItemCount;
+				from.AddItems(to.CurrentItem, to.ItemCount);
+				to.AddItems(fromItem, fromCount);
+
 				from.GetComponent<Image>().color = Color.white;
 				to = null;
 				from = null;
