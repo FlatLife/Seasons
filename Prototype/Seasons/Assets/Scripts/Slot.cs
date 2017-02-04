@@ -122,10 +122,18 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 		if(!isEmpty){
 			tooltip = Instantiate(Resources.Load<GameObject>("Tooltip"));
 			tooltip.name = "tooltip";
-			tooltip.GetComponentInChildren<Text>().text = CurrentItem.itemName;
+			string name = CurrentItem.itemName;
+			int length = name.Length;
+			length = length * 10;
+			RectTransform tooltipRect = tooltip.GetComponent<RectTransform> ();
+			tooltipRect.sizeDelta = new Vector2(length, tooltipRect.sizeDelta.y);
+			Text tooltipText = tooltip.GetComponentInChildren<Text> ();
+			tooltipText.text = CurrentItem.itemName;
+			RectTransform tooltipTextRect = tooltipText.gameObject.GetComponent<RectTransform> ();
+			tooltipTextRect.sizeDelta = new Vector2 (length, tooltipTextRect.sizeDelta.y );
 			tooltip.transform.SetParent(GameObject.Find("Canvas").transform, false);
 			tooltip.transform.position = this.transform.position;
-			tooltip.transform.position = new Vector3(tooltip.transform.position.x + 100f ,tooltip.transform.position.y - 20f , -50f);
+			tooltip.transform.position = new Vector3(tooltip.transform.position.x + 60f ,tooltip.transform.position.y - 40f , -50f);
 		}
 	}
 

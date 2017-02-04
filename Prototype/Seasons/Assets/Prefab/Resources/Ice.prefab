@@ -52,11 +52,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e217fa480781740208d799569bd39f51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 10
+  itemName: Ice
+  type: 9
   spriteNeutral: {fileID: 21300000, guid: 599f48019187745259dddd0732993956, type: 3}
   spriteHighlighted: {fileID: 21300000, guid: 599f48019187745259dddd0732993956, type: 3}
   maxSize: 1
   isFood: 0
+  isCrop: 0
+  isFinishedCrop: 0
+  keepItem: 0
+  durability: 0
 --- !u!212 &212642415855751982
 SpriteRenderer:
   m_ObjectHideFlags: 1
