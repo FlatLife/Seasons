@@ -68,11 +68,12 @@ public class CraftTable : MonoBehaviour {
 		CheckRecipe(ItemType.STICK, ItemType.WOOD, "Hoe");
 		CheckRecipe(ItemType.STICK, ItemType.ROCK, "Hatchet");
 		// CheckRecipe needs to check if item should be returned (in this case, the hatchet)
-		CheckRecipe(ItemType.HATCHET, ItemType.WOOD, "FreshWater");
+		CheckRecipe(ItemType.HATCHET, ItemType.WOOD, "Bucket");
 		CheckRecipe(ItemType.STICK, ItemType.STICK, "FirePrep");
 		CheckRecipe(ItemType.BUCKET, ItemType.ICE, "Ice");
 		CheckRecipe(ItemType.VINE, ItemType.VINE, "Clothes");
 		CheckRecipeOneItem(ItemType.WOOD, "Stick");
+		CheckRecipe(ItemType.BUCKET, ItemType.BUCKET, "WaterPurifierItem");
 
 		//Other items that are made WITHOUT using CheckRecipe (usually put on something like a fire)
 		//Fresh Water = Seawater put on purifier (purifiers instantiated on the ground)

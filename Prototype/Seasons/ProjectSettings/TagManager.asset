@@ -10,6 +10,7 @@ TagManager:
   - Beach
   - Farm
   - Build
+  - WaterPurifier
   layers:
   - Default
   - TransparentFX

@@ -22,12 +22,14 @@ public float speed;
 
     public CookingUI cookingUI;
 	public FarmingUI farmingUI;
+	public WaterPurifierUI waterUI;
 	public bool isSwimming = false;
 	public bool isUnderwater = false;
 	public bool diving = false;
 	public bool canFish = false;
 	public bool atFire = false;
 	public bool atFarm = false;
+	public bool atWaterPurifier = false;
 	public bool performingAction = false;
 	public float timeToCatch = 2.0f;
 
@@ -128,10 +130,21 @@ public float speed;
 			if (atFarm) {
 				//Debug.Log("Player entered Farm zone and pressed e");
 				ToggleUI();
+				farmingUI = objectColliderID.gameObject.GetComponent<Farming>().farmingUI;
 				foreach (Transform farmSlot in farmingUI.transform) {
 					farmSlot.GetComponent<Image>().enabled = !farmSlot.GetComponent<Image>().enabled;
 				}
 				farmingUI.GetComponent<Image>().enabled = !farmingUI.GetComponent<Image>().enabled;
+			}
+
+			if (atWaterPurifier) {
+				//Debug.Log("Player entered Farm zone and pressed e");
+				ToggleUI();
+				waterUI = objectColliderID.gameObject.GetComponent<WaterPurifier>().WaterUI;
+				foreach (Transform waterSlot in waterUI.transform) {
+					waterSlot.GetComponent<Image>().enabled = !waterSlot.GetComponent<Image>().enabled;
+				}
+				waterUI.GetComponent<Image>().enabled = !waterUI.GetComponent<Image>().enabled;
 			}
 
 			if(switchSwimMode){
@@ -212,7 +225,8 @@ public float speed;
 		destroy.destroySlot.GetComponentInChildren<Text>().enabled = !destroy.destroySlot.GetComponentInChildren<Text>().enabled;
 		destroy.enabled = !destroy.enabled;
 
-        slot.GetComponent<Image>().enabled = !slot.GetComponent<Image>().enabled;
+		//dont know what this line does was giving me an error. disabled it and everything seems to run fine
+//        slot.GetComponent<Image>().enabled = !slot.GetComponent<Image>().enabled;
 
         GameObject.Find("Canvas/CraftTableTest/CraftButton").GetComponent<Image>().enabled = !GameObject.Find("Canvas/CraftTableTest/CraftButton").GetComponent<Image>().enabled;
         GameObject.Find("Canvas/CraftTableTest/CraftButton/Text").SetActive(!GameObject.Find("Canvas/CraftTableTest/CraftButton/Text").activeInHierarchy); 
@@ -232,7 +246,12 @@ public float speed;
 			atFire = true;
 		}
 		if (other.tag == "Farm") {
+			objectColliderID = other;
 			atFarm = true;
+		}
+		if (other.tag == "WaterPurifier") {
+			objectColliderID = other;
+			atWaterPurifier = true;
 		}
     }
 
@@ -254,8 +273,11 @@ public float speed;
         {
             atFire = false;
         }
-		if (other.tag == "Farm") {
+		if (other.tag == "Farm" && other == objectColliderID) {
 			atFarm = false;
+		}
+		if (other.tag == "WaterPurifier" && other == objectColliderID) {
+			atWaterPurifier = false;
 		}
     }
 }
