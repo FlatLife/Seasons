@@ -5,8 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class Slot : MonoBehaviour, IPointerClickHandler {
-
-    private Stack<Item> items;
+	private Item currentItem;
+	private int itemCount;
 
 	public GameObject tooltip;
 	public Text stackTxt;
@@ -15,31 +15,27 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 	public float cookTime = 2;
 	public float growTime = 5;
 	
+	public Item CurrentItem {
+		get {return currentItem;}
+		set {currentItem = value;}
+	}
 
-	public Stack<Item> Items {
-		get {return items;}
-		set {items = value;}
+	public int ItemCount {
+		get {return itemCount;}
+		set {itemCount = value;}
 	}
 
 	public bool isEmpty {
-		get {return items.Count == 0;}
+		get {return itemCount == 0;}
 	}
 
 	public bool IsAvailable {
-		get {return CurrentItem.maxSize > items.Count; }
-	}
-
-	public Item CurrentItem {
-		get {return items.Peek(); }
+		get {return CurrentItem.maxSize > itemCount; }
 	}
 
 	// Use this for initialization
 	void Start () {
-
-		//myItemType = ItemType.FISHINGROD;
-
-		//stack stuff
-		items = new Stack<Item>();
+		currentItem = null;
 		RectTransform slotRect = GetComponent<RectTransform>();
 		RectTransform txtRect = stackTxt.GetComponent<RectTransform>();
 		
@@ -49,37 +45,40 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 
 		txtRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, slotRect.sizeDelta.y);
 		txtRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, slotRect.sizeDelta.x);
-
-
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
 	}
 
 	public void AddItem(Item item) {
-		items.Push(item);
+		currentItem = item;
+		item.transform.SetParent(this.transform);
+		itemCount = 1;
 
-		if (items.Count > 1) {
-			stackTxt.text = items.Count.ToString();
-		}
-
-		ChangeSprite(item.spriteNeutral, item.spriteHighlighted);
+		stackTxt.text = itemCount > 1 ? itemCount.ToString() : string.Empty;
+		ChangeSprite(currentItem.spriteNeutral, currentItem.spriteHighlighted);
 	}
 
-	public void AddItems(Stack<Item> items) {
-		this.items = new Stack<Item>(items);
-		stackTxt.text = items.Count > 1 ? items.Count.ToString() : string.Empty;
-		ChangeSprite(CurrentItem.spriteNeutral, CurrentItem.spriteHighlighted);
-		cookTime = 2;
+	public void deltaCount(int change) {
+		itemCount += change;
+		stackTxt.text = itemCount > 1 ? itemCount.ToString() : string.Empty;
 	}
 
-	public void StackItems(Stack<Item> items) {
-		int maxSize = items.Peek().maxSize;
-		while(items.Count > 0 && this.items.Count < maxSize) {
-			this.AddItem(items.Pop());
+	// Returned int is the number of items that were able to be added.
+	public int AddItems(Item item, int count) {
+		int addedCount = 0;
+		itemCount = 0;
+		currentItem = item;
+		if (currentItem != null) {
+			while (itemCount < currentItem.maxSize && addedCount < count) {
+				itemCount += 1;
+				addedCount++;
+			}
+			ChangeSprite(CurrentItem.spriteNeutral, CurrentItem.spriteHighlighted);
+			currentItem.transform.SetParent(this.transform);
+		} else {
+			itemCount = 0;
+			ChangeSprite(slotEmpty, slotHighlighted);
 		}
+		stackTxt.text = itemCount > 1 ? itemCount.ToString() : string.Empty;
+		return addedCount;
 	}
 
 	private void ChangeSprite(Sprite neutral, Sprite highlighted) {
@@ -92,30 +91,21 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 	}
 
 	public void UseItem() {
-		// If an items durability is set to -1, it means it doesnt have durability
-		
-		if (CurrentItem.durability == 0) {
-			if (!isEmpty) {
-				items.Pop().Use();
-				stackTxt.text = items.Count > 1 ? items.Count.ToString() : string.Empty;
-				if (isEmpty) {
-					ChangeSprite(slotEmpty, slotHighlighted);
-					Backpack.EmptySlot++;
-				}
+		if (!isEmpty) {
+			bool toDelete = currentItem.Use();
+			if (toDelete) {
+				DestroyItem();
 			}
-		} else {
-			CurrentItem.Use();
-			Debug.Log(CurrentItem.durability);
-			CurrentItem.durability--;
+			
 		}
 	}
 
 	public void DestroyItem() {
 		if (!isEmpty) {
-			items.Pop();
-			stackTxt.text = items.Count > 1 ? items.Count.ToString() : string.Empty;
-
+			itemCount--;
+			stackTxt.text = itemCount > 1 ? itemCount.ToString() : string.Empty;
 			if (isEmpty) {
+				Destroy(currentItem.gameObject);
 				ChangeSprite(slotEmpty, slotHighlighted);
 				Backpack.EmptySlot++;
 			}
@@ -145,7 +135,8 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 	}
 
 	public void ClearSlot() {
-		items.Clear();
+		itemCount = 0;
+		Destroy(currentItem);
 		ChangeSprite(slotEmpty, slotHighlighted);
 		stackTxt.text = string.Empty;
 	}

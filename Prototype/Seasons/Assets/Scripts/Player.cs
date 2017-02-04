@@ -240,7 +240,7 @@ public float speed;
         //If near an item on the ground pick it up first
 		if (canTouch) {
 			if (Input.GetKeyDown(KeyCode.E)) {
-				backpack.AddItem(objectColliderID.GetComponent<Item>());
+				backpack.AddItem(objectColliderID.gameObject.GetComponent<Item>());
 			}
 		}
 	}

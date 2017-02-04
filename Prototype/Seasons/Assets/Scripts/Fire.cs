@@ -72,13 +72,13 @@ public class Fire : MonoBehaviour {
             Slot currentSlot = cookingUI.cookSlots[i].GetComponent<Slot>();
             //if checking the log slot
             if(i == slotNum - 1){
-                if(currentSlot.Items.Count > 0 && currentSlot.CurrentItem.type == ItemType.STICK && fireState < 3){
+                if(!currentSlot.isEmpty && currentSlot.CurrentItem.type == ItemType.STICK && fireState < 3){
                     currentSlot.UseItem();
                     changeState(fireState++, 1);
                 }
             } else {
                 //check food slots               
-                if(currentSlot.Items.Count > 0) {
+                if(!currentSlot.isEmpty) {
                     if (currentSlot.CurrentItem.isFood) {
                         currentSlot.cookTime -= Time.deltaTime;
                         if (currentSlot.cookTime <= 0) {

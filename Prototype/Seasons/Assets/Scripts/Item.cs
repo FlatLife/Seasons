@@ -22,7 +22,9 @@ public class Item : MonoBehaviour {
 	public bool keepItem;
 	public int durability;
 
-	public void Use() {
+	// Returns boolean for whether the item should be deleted or not
+	public bool Use() {
+		bool toBeDeleted = true;
 		switch(type) {
 			case ItemType.FISHINGROD:
 				Debug.Log("FishingRodded");
@@ -47,8 +49,11 @@ public class Item : MonoBehaviour {
 			case ItemType.HOE:
 				builder = GameObject.Find("Main Camera").GetComponent<PlaceObjects>();
 				builder.build("Farm", "PlaceFarm");
+				durability--;
+				toBeDeleted = durability == 0;
 				break;
 		}
+		return toBeDeleted;
 	}
 }
 

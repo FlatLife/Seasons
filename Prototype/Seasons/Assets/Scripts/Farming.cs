@@ -23,7 +23,7 @@ public class Farming : MonoBehaviour {
 		for (int i = 0; i < slotNum; i++) {
             Slot currentSlot = farmingUI.farmSlots[i].GetComponent<Slot>();
 
-            if(currentSlot.Items.Count > 0) {
+            if(!currentSlot.isEmpty) {
                 // this chunk of code is to ensure the player can only remove the crop once it's finished growing
                 if (!currentSlot.CurrentItem.isFinishedCrop) {
                     currentSlot.GetComponent<Button>().interactable = false;
