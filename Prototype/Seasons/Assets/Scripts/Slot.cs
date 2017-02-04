@@ -143,7 +143,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 			tooltipTextRect.sizeDelta = new Vector2 (length, tooltipTextRect.sizeDelta.y );
 			tooltip.transform.SetParent(GameObject.Find("Canvas").transform, false);
 			tooltip.transform.position = this.transform.position;
-			tooltip.transform.position = new Vector3(tooltip.transform.position.x + 100f ,tooltip.transform.position.y - 20f , -50f);
+			tooltip.transform.position = new Vector3(tooltip.transform.position.x + 60f ,tooltip.transform.position.y - 40f , -50f);
 		}
 	}
 
