@@ -101,7 +101,7 @@ public class Backpack : MonoBehaviour {
 				RectTransform hoverTransform = hoverObject.GetComponent<RectTransform>();
 				RectTransform clickedTransform = clicked.GetComponent<RectTransform>();
 
-				hoverObject.transform.SetParent(GameObject.Find("Overlay").transform, true);
+				hoverObject.transform.SetParent(GameObject.Find("Canvas").transform, true);
 				hoverTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, clickedTransform.sizeDelta.x);
 				hoverTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, clickedTransform.sizeDelta.y);
 
