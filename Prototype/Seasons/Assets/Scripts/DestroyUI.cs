@@ -25,9 +25,9 @@ public class DestroyUI : MonoBehaviour {
 		RectTransform destroySlotRect = destroySlot.GetComponent<RectTransform>();
 		DestroyUIRect = GetComponent<RectTransform>();
 		destroySlot.name = "DestroySlot";
-		destroySlot.transform.SetParent(this.transform.parent);
+		destroySlot.transform.SetParent(this.transform);
 
-		destroySlotRect.localPosition = DestroyUIRect.localPosition + new Vector3(100, -30);
+		destroySlotRect.localPosition = new Vector3(46, -20);
 		destroySlotRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, slotSize);
 		destroySlotRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, slotSize);
 

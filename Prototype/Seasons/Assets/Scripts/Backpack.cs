@@ -39,8 +39,8 @@ public class Backpack : MonoBehaviour {
 	private void CreateLayout() {
 		allSlots = new List<GameObject>();
 		emptySlot = slots;
-		backpackWidth = (slots / rows) * (slotSize + 4f + slotPaddingLeft) + slotPaddingLeft;
-		backpackHeight = rows * (slotSize + 4f + slotPaddingTop) + slotPaddingTop;
+		backpackWidth = (slots / rows) * (slotSize + slotPaddingLeft) + slotPaddingLeft;
+		backpackHeight = rows * (slotSize + slotPaddingTop) + slotPaddingTop;
 		backpackRect = GetComponent<RectTransform>();
 		backpackRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, backpackWidth);
 		backpackRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, backpackHeight);
@@ -101,7 +101,7 @@ public class Backpack : MonoBehaviour {
 				RectTransform hoverTransform = hoverObject.GetComponent<RectTransform>();
 				RectTransform clickedTransform = clicked.GetComponent<RectTransform>();
 
-				hoverObject.transform.SetParent(GameObject.Find("Canvas").transform, true);
+				hoverObject.transform.SetParent(GameObject.Find("Overlay").transform, true);
 				hoverTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, clickedTransform.sizeDelta.x);
 				hoverTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, clickedTransform.sizeDelta.y);
 

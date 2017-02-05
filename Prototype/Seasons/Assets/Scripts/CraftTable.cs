@@ -40,18 +40,18 @@ public class CraftTable : MonoBehaviour {
 	
 
 			//Slot1.GetComponent<Button>().interactable = false;
-			Slot1.transform.SetParent(this.transform.parent);
-			Slot2.transform.SetParent(this.transform.parent);
+			Slot1.transform.SetParent(this.transform);
+			Slot2.transform.SetParent(this.transform);
 
 
 			//Debug.Log(CraftTableRect.localPosition);
 
 			//places the slots in the inventory in each column, then row
-			slotRect1.localPosition = CraftTableRect.localPosition + new Vector3(60, -20);
+			slotRect1.localPosition = new Vector3(60, -20);
 			slotRect1.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, slotSize);
 			slotRect1.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, slotSize);
 
-			slotRect2.localPosition = CraftTableRect.localPosition + new Vector3(130, -20);			
+			slotRect2.localPosition = new Vector3(130, -20);			
 			slotRect2.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, slotSize);
 			slotRect2.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, slotSize);
 
