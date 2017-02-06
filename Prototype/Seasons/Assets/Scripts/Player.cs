@@ -316,6 +316,11 @@ public class Player : MonoBehaviour {
 		if (canTouch) {
 			if (Input.GetKeyDown(KeyCode.E)) {
 				backpack.AddItem(itemColliderID.gameObject.GetComponent<Item>());
+				Destroy (itemColliderID.gameObject);
+				itemColliderID = null;
+				atUse = false;
+				canTouch = false;
+
 			}
 		}
 	}

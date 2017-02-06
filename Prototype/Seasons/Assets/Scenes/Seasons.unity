@@ -1083,7 +1083,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4159817130778964, guid: 9aba511c3e4714256beb365cc4b69cc6, type: 2}
       propertyPath: m_RootOrder
-      value: 25
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 1684253346322146, guid: 9aba511c3e4714256beb365cc4b69cc6, type: 2}
       propertyPath: m_Name
@@ -1993,7 +1993,7 @@ BuoyancyEffector2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_SurfaceLevel: 0
-  m_Density: 2
+  m_Density: 1
   m_LinearDrag: 5
   m_AngularDrag: 5
   m_FlowAngle: 0
@@ -2160,7 +2160,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4835320355876936, guid: a9a9dabd35aee804eafb7b53fd8821e3, type: 2}
       propertyPath: m_RootOrder
-      value: 27
+      value: 28
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a9a9dabd35aee804eafb7b53fd8821e3, type: 2}
@@ -2447,7 +2447,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4100614752942378, guid: 5872a3cb36465834296d8588d2a52b3e, type: 2}
       propertyPath: m_RootOrder
-      value: 26
+      value: 27
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5872a3cb36465834296d8588d2a52b3e, type: 2}
@@ -3639,14 +3639,14 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1440615824}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 4, y: 11}
+  m_Size: {x: 1, y: 3}
 --- !u!114 &1440615833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4044,12 +4044,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 15
       objectReference: {fileID: 0}
-    - target: {fileID: 114930357241536834, guid: c21b97a7f79c045e18f78e641af1087a,
-        type: 2}
-      propertyPath: spriteHighlighted
-      value: 
-      objectReference: {fileID: 21300000, guid: 79d79964b6c4c4c22ba5fc96c0ffb591,
-        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c21b97a7f79c045e18f78e641af1087a, type: 2}
   m_IsPrefabParent: 0
@@ -4091,14 +4085,6 @@ Prefab:
     - target: {fileID: 4659344256071094, guid: 3eeab4aec5a154ce8b7ff13300a9e0f2, type: 2}
       propertyPath: m_RootOrder
       value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 4659344256071094, guid: 3eeab4aec5a154ce8b7ff13300a9e0f2, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4659344256071094, guid: 3eeab4aec5a154ce8b7ff13300a9e0f2, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3eeab4aec5a154ce8b7ff13300a9e0f2, type: 2}
@@ -5118,6 +5104,16 @@ Prefab:
       propertyPath: m_Name
       value: Wood
       objectReference: {fileID: 0}
+    - target: {fileID: 61919293718259124, guid: 2778460b7cfec4433915d457e131badb,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 61919293718259124, guid: 2778460b7cfec4433915d457e131badb,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2778460b7cfec4433915d457e131badb, type: 2}
   m_IsPrefabParent: 0
@@ -5516,24 +5512,6 @@ Prefab:
     - target: {fileID: 4662518567844124, guid: a15bd9530329f40e7b849e9b9ed86199, type: 2}
       propertyPath: m_RootOrder
       value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 4662518567844124, guid: a15bd9530329f40e7b849e9b9ed86199, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4662518567844124, guid: a15bd9530329f40e7b849e9b9ed86199, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 212613441945083074, guid: a15bd9530329f40e7b849e9b9ed86199,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 212613441945083074, guid: a15bd9530329f40e7b849e9b9ed86199,
-        type: 2}
-      propertyPath: m_SortingLayerID
-      value: -223357243
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a15bd9530329f40e7b849e9b9ed86199, type: 2}
