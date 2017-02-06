@@ -11,6 +11,8 @@ TagManager:
   - Farm
   - Build
   - WaterPurifier
+  - RightWall
+  - LeftWall
   layers:
   - Default
   - TransparentFX

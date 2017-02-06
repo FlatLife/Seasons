@@ -38,6 +38,7 @@ public class Player : MonoBehaviour {
 	public bool canFish = false;
 	public bool atFire = false;
 	public bool atFarm = false;
+	public bool atUse = false;
 	public bool atWaterPurifier = false;
 	public bool performingAction = false;
 	public float timeToCatch = 2.0f;
@@ -290,19 +291,23 @@ public class Player : MonoBehaviour {
 			
 			objectColliderID = other;
 			Debug.Log(objectColliderID + " Enter");
+			atUse = true;
 			canTouch = true;
 		}
 		if (other.tag == "Fire") {
 			objectColliderID = other;
 			//canTouch = false;
+			atUse = true;
 			atFire = true;
 		}
 		if (other.tag == "Farm") {
 			objectColliderID = other;
+			atUse = true;
 			atFarm = true;
 		}
 		if (other.tag == "WaterPurifier") {
 			objectColliderID = other;
+			atUse = true;
 			atWaterPurifier = true;
 		}
     }
@@ -320,16 +325,20 @@ public class Player : MonoBehaviour {
 		if(other.tag == "Item" && other == objectColliderID)
         {
 			Debug.Log(objectColliderID + " Exit");
+			atUse = false;
             canTouch = false;
         }
         if (other.tag == "Fire" && other == objectColliderID)
         {
+			atUse = true;
             atFire = false;
         }
 		if (other.tag == "Farm" && other == objectColliderID) {
+			atUse = true;
 			atFarm = false;
 		}
 		if (other.tag == "WaterPurifier" && other == objectColliderID) {
+			atUse = true;
 			atWaterPurifier = false;
 		}
     }
