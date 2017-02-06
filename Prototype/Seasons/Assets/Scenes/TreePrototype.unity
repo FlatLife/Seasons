@@ -849,7 +849,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: 5
-  isWinter: 0
 --- !u!4 &736878755
 Transform:
   m_ObjectHideFlags: 0
@@ -1526,8 +1525,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0e1b6c2eb2ae4f41a39a4f033726750, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnProbability: 0
-  coolDown: 5
+  spawnProbability: 0.99
+  coolDown: 20
 --- !u!1 &1142074035
 GameObject:
   m_ObjectHideFlags: 0
@@ -1998,6 +1997,9 @@ MonoBehaviour:
   atFire: 0
   atFarm: 0
   atUse: 0
+  fireUIOpen: 0
+  farmUIOpen: 0
+  waterUIOpen: 0
   atWaterPurifier: 0
   performingAction: 0
   timeToCatch: 2
