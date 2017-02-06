@@ -37,13 +37,13 @@ public class Farming : MonoBehaviour {
                     } else {
                         currentSlot.GetComponent<Button>().interactable = true;
                     }
-                    if (currentSlot.CurrentItem.type == ItemType.SEED && currentSlot.isGrowing == false) {
+                    if (currentSlot.CurrentItem.type == ItemType.CARROTSEED && currentSlot.isGrowing == false) {
                         currentSlot.growTime = carrotGrowTime;
                         currentSlot.isGrowing = true;
                     }
 					currentSlot.growTime -= !farmingUI.waterSlot.isEmpty && farmingUI.waterSlot.CurrentItem.type == ItemType.FRESHWATER ? (Time.deltaTime)*10 : Time.deltaTime;
                     if (currentSlot.growTime <= 0) {
-                        growFood(currentSlot, ItemType.SEED, "Carrot");  
+                        growFood(currentSlot, ItemType.CARROTSEED, "Carrot");  
 						growFood(currentSlot, ItemType.CARROT, "Wood");
                     }
                 }
