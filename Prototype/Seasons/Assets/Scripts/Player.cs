@@ -245,6 +245,7 @@ public float speed;
 		}
 		if (other.tag == "Fire") {
 			objectColliderID = other;
+			//canTouch = false;
 			atFire = true;
 		}
 		if (other.tag == "Farm") {
