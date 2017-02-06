@@ -12,7 +12,6 @@ public class StatsMaster : MonoBehaviour {
 	private GameObject hunger;
 	private GameObject warmth;
 
-	public bool isWinter;
 
 
 	// Use this for initialization
@@ -36,7 +35,7 @@ public class StatsMaster : MonoBehaviour {
 			if(thirst.GetComponent<BarScript>().barEmpty()){
 				health.GetComponent<BarScript>().decrement(0.005f);
 			}
-			if(isWinter){
+			if(GameMaster.isWinter){
 				warmth.GetComponent<BarScript>().decrement(0.005f);
 			}
 		}

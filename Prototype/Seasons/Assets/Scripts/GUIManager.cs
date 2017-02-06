@@ -5,6 +5,8 @@ using UnityEngine;
 public class GUIManager : MonoBehaviour {
 	public Player player;
 
+	public GameObject pauseMenu;
+
 	private GameObject popup;
 
 	// Use this for initialization
@@ -23,5 +25,11 @@ public class GUIManager : MonoBehaviour {
 		}else{
 			Destroy(popup);
 		}
+
+		if (Input.GetKey(KeyCode.Escape))
+        {
+            // If user presses ESC, show the pause menu in pause mode
+            pauseMenu.GetComponent<PauseMenuManager>().ShowPause();
+        }
 	}
 }

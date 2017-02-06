@@ -19,6 +19,7 @@ public class DayCycle : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		dayCountText = GameObject.Find("DayCount").GetComponent<Text>();
+		GameMaster.dayCount = dayCount;
 	}
 	
 	// Update is called once per frame
@@ -34,6 +35,9 @@ public class DayCycle : MonoBehaviour {
 			if(!fadingIn){
 				dayCountText.text = "Day " + ++dayCount;
 				GameMaster.dayCount = dayCount;
+				if(dayCount % 5 == 0){
+					GameMaster.isWinter = !GameMaster.isWinter;
+				}
 			}
 			fadingIn = true;
 		}
