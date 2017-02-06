@@ -50,7 +50,6 @@ public class Player : MonoBehaviour {
 	public float timeToCatch = 2.0f;
 
 	public bool openUI = false;
-	private Rigidbody2D rb; 
 
 	private Stat health;
 	private Stat hunger;
@@ -79,7 +78,6 @@ public class Player : MonoBehaviour {
 	}
     // Use this for initialization
     void Start () {
-		rb = GetComponent<Rigidbody2D>();
 		animRenderer = GetComponent<Renderer>() as SpriteRenderer;
 		frameIndex = 0;
 		timeSinceLastFrame = 0;
