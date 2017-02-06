@@ -25,9 +25,13 @@ public class WaterPurifier : MonoBehaviour {
 				waterPurify -= Time.deltaTime;
 				if (waterPurify <= 0) {
 					WaterUI.FreshWaterSlot.ClearSlot ();
-					WaterUI.FreshWaterSlot.AddItem (Resources.Load<Item> ("FreshWater"));
+					Item water = Instantiate(Resources.Load<Item> ("FreshWater"));
+					water.transform.position = new Vector3 (0,20f,0);
+					WaterUI.FreshWaterSlot.AddItem (water);
 					WaterUI.SaltWaterSlot.ClearSlot ();
-					WaterUI.SaltWaterSlot.AddItem(Resources.Load<Item>("Bucket"));
+					Item bucket = Instantiate(Resources.Load<Item> ("Bucket"));
+					bucket.transform.position = new Vector3 (0,20f,0);
+					WaterUI.SaltWaterSlot.AddItem(bucket);
 					waterPurify = 3f;
 				}
 			}

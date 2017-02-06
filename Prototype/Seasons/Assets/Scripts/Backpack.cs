@@ -78,6 +78,7 @@ public class Backpack : MonoBehaviour {
 			Slot tmp = slot.GetComponent<Slot>();
 			if (tmp.isEmpty) {
 				Item newItem = Instantiate(item, tmp.transform);
+				newItem.transform.position = new Vector3 (0,20f,0);
 				newItem.GetComponent<SpriteRenderer>().enabled = false;
 				tmp.AddItem(newItem);
 				emptySlot--;

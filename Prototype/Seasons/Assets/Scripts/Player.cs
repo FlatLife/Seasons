@@ -151,9 +151,9 @@ public float speed;
 				isSwimming = !isSwimming;
 				Vector3 pos = transform.position;
 				if(isSwimming){
-					transform.position = new Vector3(pos.x - 2f, pos.y, pos.z);
+					transform.position = new Vector3(-21.33625f, 0.5240731f, pos.z);
 				}else{
-					transform.position = new Vector3(pos.x + 2f, pos.y, pos.z);
+					transform.position = new Vector3(-19.33625f, 0.2520248f, pos.z);
 				}
 			}
 		}
@@ -238,7 +238,9 @@ public float speed;
 	private void OnTriggerEnter2D(Collider2D other){
         //Collision with item on the ground
 		if (other.tag == "Item") {
+			
 			objectColliderID = other;
+			Debug.Log(objectColliderID + " Enter");
 			canTouch = true;
 		}
 		if (other.tag == "Fire") {
@@ -267,6 +269,7 @@ public float speed;
 	private void OnTriggerExit2D(Collider2D other){
 		if(other.tag == "Item" && other == objectColliderID)
         {
+			Debug.Log(objectColliderID + " Exit");
             canTouch = false;
         }
         if (other.tag == "Fire" && other == objectColliderID)
