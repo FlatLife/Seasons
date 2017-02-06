@@ -20,6 +20,7 @@ public class FishingSpot : MonoBehaviour {
 		if(other.tag == "Player"){
 		Player control = other.gameObject.GetComponent<Player>();
 		control.canFish = true;
+		control.atUse = true;
 		}
 
 	}
@@ -29,6 +30,7 @@ public class FishingSpot : MonoBehaviour {
 		if(other.tag == "Player"){
 			Player control = other.gameObject.GetComponent<Player>();
 			control.canFish = false;
+			control.atUse = false;
 		}
 	}
 }

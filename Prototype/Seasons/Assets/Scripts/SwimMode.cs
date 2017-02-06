@@ -19,6 +19,7 @@ public class SwimMode : MonoBehaviour {
 		if(other.tag == "Player"){
 			Player control = other.gameObject.GetComponent<Player>();
 			control.switchSwimMode = true;
+			control.atUse = true;
 		}
 	}
 
@@ -26,6 +27,7 @@ public class SwimMode : MonoBehaviour {
 		if(other.tag == "Player"){
 			Player control = other.gameObject.GetComponent<Player>();
 			control.switchSwimMode = false;
+			control.atUse = false;
 		}
 	}
 }
