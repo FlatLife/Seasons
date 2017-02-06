@@ -20,9 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4992663420600348}
   - component: {fileID: 212026086190287266}
-  - component: {fileID: 61057702727133964}
-  - component: {fileID: 61812979880921152}
   - component: {fileID: 114820606493971906}
+  - component: {fileID: 60842142759137036}
   m_Layer: 0
   m_Name: Farm
   m_TagString: Farm
@@ -37,28 +36,14 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1627226248832430}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.04, y: -1.47, z: 0}
+  m_LocalPosition: {x: 1.1322763, y: -1.9794302, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61057702727133964
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1627226248832430}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Size: {x: 5, y: 2}
---- !u!61 &61812979880921152
-BoxCollider2D:
+--- !u!60 &60842142759137036
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -69,8 +54,49 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Size: {x: 3.48, y: 1.45}
+  m_Points:
+    m_Paths:
+    - - {x: 0.28708744, y: -0.649348}
+      - {x: 1.7701528, y: 0.02452135}
+      - {x: 2.3270874, y: 0.27145612}
+      - {x: 2.513218, y: 0.4891956}
+      - {x: 2.4854784, y: 0.6432177}
+      - {x: 2.3569345, y: 0.7801528}
+      - {x: 2.106782, y: 0.83321786}
+      - {x: 2.0461307, y: 0.83241343}
+      - {x: 2.0809572, y: 0.9593483}
+      - {x: 2.0324132, y: 1.1309571}
+      - {x: 1.9846742, y: 1.2156312}
+      - {x: 1.7630653, y: 1.3109571}
+      - {x: 1.4414561, y: 1.3140223}
+      - {x: 1.2574339, y: 1.2832179}
+      - {x: 1.0735638, y: 1.2185436}
+      - {x: 0.8850198, y: 1.1446741}
+      - {x: 0.7166296, y: 1.0716088}
+      - {x: 0.47808552, y: 0.9877393}
+      - {x: -0.12869668, y: 0.76321805}
+      - {x: -0.3917616, y: 0.65015244}
+      - {x: -0.88015276, y: 0.43402243}
+      - {x: -1.2133706, y: 0.27160895}
+      - {x: -1.4717615, y: 0.17547858}
+      - {x: -1.7641752, y: 0.0585438}
+      - {x: -2.0241752, y: -0.08226061}
+      - {x: -2.2840014, y: -0.29419827}
+      - {x: -2.3456316, y: -0.4777391}
+      - {x: -2.2932181, y: -0.7241752}
+      - {x: -2.2516088, y: -0.8373933}
+      - {x: -2.1345215, y: -0.88658905}
+      - {x: -2.0167818, y: -0.921762}
+      - {x: -1.9237168, y: -0.8816087}
+      - {x: -1.8577392, y: -0.93386936}
+      - {x: -1.8824135, y: -1.0638697}
+      - {x: -1.8585438, y: -1.203218}
+      - {x: -1.7238697, y: -1.326283}
+      - {x: -1.6091956, y: -1.3978922}
+      - {x: -1.4922607, y: -1.3840225}
+      - {x: -1.3437169, y: -1.3532176}
+      - {x: -0.9790428, y: -1.2124133}
+      - {x: -0.7798471, y: -1.1293483}
 --- !u!114 &114820606493971906
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -88,6 +114,8 @@ MonoBehaviour:
   farmingUI: {fileID: 0}
   carrotGrowTime: 15
   potatoGrowTime: 30
+  strawberryGrowTime: 30
+  pineappleGrowTime: 60
 --- !u!212 &212026086190287266
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -117,9 +145,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 283c16f02347446cfbc93dc9ca0bc238, type: 3}
+  m_SortingLayerID: 1783861835
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: 0e4e8789ae4974e43af4ca830e8d4148, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
