@@ -19,6 +19,7 @@ public class Backpack : MonoBehaviour {
 	private static GameObject hoverObject;
 	public Canvas canvas;
 
+
 	public static int EmptySlot {
 		get { return emptySlot; }
 		set { emptySlot = value;}
