@@ -160,6 +160,7 @@ public class Player : MonoBehaviour {
 						if(buttonSmash == 10){
 							fire.startFire();
 							playingFireStart = false;
+							animRenderer.sprite = animSprites[0];
 							buttonSmash = 0;
 						}
 						break;
