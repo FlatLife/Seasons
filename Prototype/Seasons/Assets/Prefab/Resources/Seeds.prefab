@@ -67,10 +67,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e217fa480781740208d799569bd39f51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Seeds
+  itemName: Potato Seeds
   type: 12
-  spriteNeutral: {fileID: 21300000, guid: 2373dce6f3770461bbc0045f8656c0ec, type: 3}
-  spriteHighlighted: {fileID: 21300000, guid: 2373dce6f3770461bbc0045f8656c0ec, type: 3}
+  spriteNeutral: {fileID: 21300000, guid: 6226fecf0e9c446c690ddac4138ae4a6, type: 3}
+  spriteHighlighted: {fileID: 21300000, guid: 6226fecf0e9c446c690ddac4138ae4a6, type: 3}
   maxSize: 1
   isFood: 0
   isCrop: 1
@@ -108,7 +108,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2373dce6f3770461bbc0045f8656c0ec, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6226fecf0e9c446c690ddac4138ae4a6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
