@@ -9,6 +9,7 @@ public enum ItemType {NONE, FISHINGROD, STICK, WOOD, VINE, RAWFISH, COOKEDFISH, 
 public class Item : MonoBehaviour {
 
 	public string itemName;
+	public string itemUse;
 	public ItemType type;
 	public Sprite spriteNeutral;
 	public Sprite spriteHighlighted;
@@ -28,25 +29,15 @@ public class Item : MonoBehaviour {
 
 	// Returns boolean for whether the item should be deleted or not
 	public bool Use() {
-		bool toBeDeleted = true;
+		bool toBeDeleted = false;
 		switch(type) {
-			case ItemType.FISHINGROD:
-				toBeDeleted = false;
-				break;
-			case ItemType.STICK:
-			toBeDeleted = false;
-				break;
-			case ItemType.VINE:
-				toBeDeleted = false;
-				break;
-			case ItemType.RAWFISH:
-				toBeDeleted = false;
-				break;
-			case ItemType.COOKEDFISH:
+		case ItemType.COOKEDFISH:
+				toBeDeleted = true;
 				hunger  = GameObject.Find("HungerBar");
 				hunger.GetComponent<BarScript>().increment(0.1f);
 				break;
 			case ItemType.FIREPREP:
+				toBeDeleted = true;
 				builder = GameObject.Find("Main Camera").GetComponent<PlaceObjects>();
 				builder.build("Fire", "PlaceFire");
 				break;
@@ -57,7 +48,6 @@ public class Item : MonoBehaviour {
 				toBeDeleted = durability == 0;
 				break;
 			case ItemType.FRESHWATER:
-				toBeDeleted = false;
 				thirst  = GameObject.Find("ThirstBar");
 				thirst.GetComponent<BarScript>().increment(0.3f);
 				slot.DestroyItem ();
@@ -71,7 +61,6 @@ public class Item : MonoBehaviour {
 				slot.AddItem(newItem);
 				break;
 			case ItemType.SALTWATER:
-				toBeDeleted = false;
 				slot.DestroyItem ();
 				newItem = Instantiate(Resources.Load<GameObject>("Bucket").GetComponent<Item>(), slot.transform);
 				collider = newItem.gameObject.GetComponent<BoxCollider2D>();
@@ -84,11 +73,11 @@ public class Item : MonoBehaviour {
 
 				break;
 			case ItemType.WATERPURIFIER:
+				toBeDeleted = true;
 				builder = GameObject.Find("Main Camera").GetComponent<PlaceObjects>();
 				builder.build("WaterPurifier", "PlaceWater");
 				break;
 			case ItemType.BUCKET:
-				toBeDeleted = false;
 				bool nearWater = GameObject.Find ("Player").GetComponent<Player> ().switchSwimMode;
 				if (nearWater) {
 				slot.DestroyItem ();
