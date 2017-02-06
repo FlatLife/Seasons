@@ -19,6 +19,7 @@ public class DayCycle : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		dayCountText = GameObject.Find("DayCount").GetComponent<Text>();
+		GameMaster.dayCount = dayCount;
 	}
 	
 	// Update is called once per frame
