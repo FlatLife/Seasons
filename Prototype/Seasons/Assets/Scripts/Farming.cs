@@ -13,7 +13,7 @@ public class Farming : MonoBehaviour {
     public int carrotGrowTime = 15;
     public int potatoGrowTime = 45;
 	public int strawberryGrowTime = 30;
-	public int pineappleGrowTime = 60;
+	public int pineappleGrowTime = 6;
 	// Use this for initialization
 
 	void Awake () {
@@ -39,18 +39,24 @@ public class Farming : MonoBehaviour {
                     } else {
                         currentSlot.GetComponent<Button>().interactable = true;
                     }
-                    if (currentSlot.CurrentItem.type == ItemType.CARROTSEED && currentSlot.isGrowing == false) {
-                        currentSlot.growTime = carrotGrowTime;
-                        currentSlot.isGrowing = true;
-                    }
-					//if (currentSlot.CurrentItem.type == ItemType.POTATOSEED && currentSlot.isGrowing == false) {
-						//currentSlot.growTime = potatoGrowTime;
-						//currentSlot.isGrowing = true;
-					//}
+                    CheckFood(currentSlot);
 					currentSlot.growTime -= !farmingUI.waterSlot.isEmpty && farmingUI.waterSlot.CurrentItem.type == ItemType.FRESHWATER ? (Time.deltaTime)*10 : Time.deltaTime;
-                    if (currentSlot.growTime <= 0) {
-                        growFood(currentSlot, ItemType.CARROTSEED, "Carrot");  
-						growFood(currentSlot, ItemType.CARROT, "Wood");
+                    if ((currentSlot.CurrentItem.type == ItemType.CARROTSEED ||
+                     currentSlot.CurrentItem.type == ItemType.CARROTGROW) && currentSlot.growTime <= 0) {
+                        growFood(currentSlot, ItemType.CARROTSEED, "CarrotGrow");  
+						growFood(currentSlot, ItemType.CARROTGROW, "Carrot");
+                    } else if ((currentSlot.CurrentItem.type == ItemType.POTATOSEED ||
+                    currentSlot.CurrentItem.type == ItemType.POTATOGROW) && currentSlot.growTime <= 0) {
+                        growFood(currentSlot, ItemType.POTATOSEED, "PotatoGrow");  
+						growFood(currentSlot, ItemType.POTATOGROW, "Potato");
+                    } else if ((currentSlot.CurrentItem.type == ItemType.PINEAPPLESEED ||
+                    currentSlot.CurrentItem.type == ItemType.PINEAPPLEGROW) && currentSlot.growTime <= 0) {
+                        growFood(currentSlot, ItemType.PINEAPPLESEED, "PineappleGrow");  
+						growFood(currentSlot, ItemType.PINEAPPLEGROW, "Pineapple");
+                    } else if ((currentSlot.CurrentItem.type == ItemType.STRAWBERRYSEED ||
+                    currentSlot.CurrentItem.type == ItemType.STRAWBERRYGROW) && currentSlot.growTime <= 0) {
+                        growFood(currentSlot, ItemType.STRAWBERRYSEED, "StrawberryGrow");  
+						growFood(currentSlot, ItemType.STRAWBERRYGROW, "Strawberries");
                     }
                 }
             } else {
@@ -59,6 +65,21 @@ public class Farming : MonoBehaviour {
         }
     }
 
+    public void CheckFood(Slot slot) {
+        if (slot.CurrentItem.type == ItemType.CARROTSEED && slot.isGrowing == false) {
+            slot.growTime = carrotGrowTime;
+            slot.isGrowing = true;
+        } else if (slot.CurrentItem.type == ItemType.POTATOSEED && slot.isGrowing == false) {
+            slot.growTime = potatoGrowTime;
+            slot.isGrowing = true;
+        } else if (slot.CurrentItem.type == ItemType.PINEAPPLESEED && slot.isGrowing == false) {
+            slot.growTime = pineappleGrowTime;
+            slot.isGrowing = true;
+        } else if (slot.CurrentItem.type == ItemType.STRAWBERRYSEED && slot.isGrowing == false) {
+            slot.growTime = strawberryGrowTime;
+            slot.isGrowing = true;
+        }
+    }
 
 	public void growFood(Slot slot, ItemType itemType, string prefabName) {
         if (slot.CurrentItem.type == itemType && slot.growTime <= 0) {
