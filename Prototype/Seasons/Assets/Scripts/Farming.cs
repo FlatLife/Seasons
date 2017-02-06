@@ -5,9 +5,13 @@ using UnityEngine.UI;
 
 public class Farming : MonoBehaviour {
 
+    public ItemType type;
 	public Canvas canvas;
     public int slotNum;
     public FarmingUI farmingUI;
+
+    public int carrotGrowTime = 15;
+    public int potatoGrowTime = 30;
 	// Use this for initialization
 
 	void Awake () {
@@ -25,14 +29,18 @@ public class Farming : MonoBehaviour {
             Slot currentSlot = farmingUI.farmSlots[i].GetComponent<Slot>();
 
             if(!currentSlot.isEmpty) {
-                // this chunk of code is to ensure the player can only remove the crop once it's finished growing
-                if (!currentSlot.CurrentItem.isFinishedCrop) {
-                    currentSlot.GetComponent<Button>().interactable = false;
-                } else {
-                    currentSlot.GetComponent<Button>().interactable = true;
-                }
                 // checks that our item in the slot is a crop and not a random item before we make it grow
                 if (currentSlot.CurrentItem.isCrop) {
+                     // this chunk of code is to ensure the player can only remove the crop once it's finished growing
+                    if (!currentSlot.CurrentItem.isFinishedCrop) {
+                        currentSlot.GetComponent<Button>().interactable = false;
+                    } else {
+                        currentSlot.GetComponent<Button>().interactable = true;
+                    }
+                    if (currentSlot.CurrentItem.type == ItemType.SEED && currentSlot.isGrowing == false) {
+                        currentSlot.growTime = carrotGrowTime;
+                        currentSlot.isGrowing = true;
+                    }
 					currentSlot.growTime -= !farmingUI.waterSlot.isEmpty && farmingUI.waterSlot.CurrentItem.type == ItemType.FRESHWATER ? (Time.deltaTime)*10 : Time.deltaTime;
                     if (currentSlot.growTime <= 0) {
                         growFood(currentSlot, ItemType.SEED, "Carrot");  
@@ -40,7 +48,7 @@ public class Farming : MonoBehaviour {
                     }
                 }
             } else {
-                currentSlot.growTime = 5;
+                currentSlot.GetComponent<Button>().interactable = true;
             }
         }
     }
@@ -50,7 +58,9 @@ public class Farming : MonoBehaviour {
         if (slot.CurrentItem.type == itemType && slot.growTime <= 0) {
             slot.ClearSlot();
             slot.AddItem(Resources.Load<Item>(prefabName));
-            slot.growTime = 5;
+            slot.growTime = carrotGrowTime;
+            slot.isGrowing = false;
+            slot.GetComponent<Button>().interactable = true;
         }
 	}
 }
