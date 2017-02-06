@@ -38,7 +38,7 @@ public class Fire : MonoBehaviour {
         animRenderer = GetComponent<Renderer>() as SpriteRenderer;
         //Sets the animation to the first frame
         timeSinceLastFrame = 0;
-        fireState = 0;
+        fireState = -1;
     }
 
     // Update is called once per frame

@@ -5,7 +5,16 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 
-public float speed;
+	public float speed;
+
+	//animation
+	int frameIndex;
+	public float animationSpeed;
+    public Sprite[] animSprites;
+    SpriteRenderer animRenderer;
+	float timeSinceLastFrame; 
+	public bool playingFireStart = false;
+	public bool playingCastRod = false;
 
 	public Canvas canvas;
 	public Backpack backpack;
@@ -64,10 +73,29 @@ public float speed;
     // Use this for initialization
     void Start () {
 		rb = GetComponent<Rigidbody2D>();
+		animRenderer = GetComponent<Renderer>() as SpriteRenderer;
+		frameIndex = 0;
+		timeSinceLastFrame = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		//animation
+		if(playingFireStart){
+			if(frameIndex < 13){				
+				if(timeSinceLastFrame > animationSpeed){
+				animRenderer.sprite = animSprites[frameIndex];
+				timeSinceLastFrame = 0;
+				frameIndex++;
+				} else{
+					timeSinceLastFrame = timeSinceLastFrame + Time.deltaTime;
+				}	
+			} else {
+				fire = objectColliderID.gameObject.GetComponent<Fire>();
+				fire.fireState = 0;
+			}
+		}
+
 		//keys to test bars
 		if (Input.GetKeyDown(KeyCode.Alpha1)) {
 			health.CurrentVal-=10;
@@ -101,32 +129,52 @@ public float speed;
 
 			if(atFire){
 				fire = objectColliderID.gameObject.GetComponent<Fire>();
-				//if fire is dead and they press the interaction button
-				if(fire.fireState == 0){
-					buttonPressed = Time.deltaTime;
-					if(buttonPressed < 0.4){
-						buttonSmash++;
-					} else {
-						if(buttonSmash > 0){
-							buttonSmash--;
+				switch (fire.fireState){
+					//if player hasnt begun to start the fire
+					case -1:
+						if(!playingFireStart){
+							frameIndex = 1;
+							timeSinceLastFrame = 0;
+							playingFireStart = true;
 						}
-					}	
-					//if they have pressed the button fast enough, enough times
-					if(buttonSmash == 10){
-						fire.startFire();
-						buttonSmash = 0;
-					}
-				} else {
-					//if fire is alive open cookingUI
-					ToggleUI();
-					cook = objectColliderID.gameObject.GetComponent<Fire>().cookingUI;
-					foreach (Transform cookSlot in cook.transform) {
-						cookSlot.GetComponent<Image>().enabled = !cookSlot.GetComponent<Image>().enabled;
-					}
-					cook.GetComponent<Image>().enabled = !cook.GetComponent<Image>().enabled;
+						break;
+					//if player is starting the fire
+					case 0:
+						//choosing the right animation frame
+						if(frameIndex == 13){
+							animRenderer.sprite = animSprites[frameIndex];
+							frameIndex--;
+						} else {
+							animRenderer.sprite = animSprites[frameIndex];
+							frameIndex++;
+						}
+						buttonPressed = Time.deltaTime;
+						if(buttonPressed < 0.4){
+							buttonSmash++;
+						} else {
+							if(buttonSmash > 0){
+								buttonSmash--;
+							}
+						}	
+						//if they have pressed the button fast enough, enough times
+						if(buttonSmash == 10){
+							fire.startFire();
+							playingFireStart = false;
+							buttonSmash = 0;
+						}
+						break;
+					//if the fire is started
+					default:
+						ToggleUI();
+						cook = objectColliderID.gameObject.GetComponent<Fire>().cookingUI;
+						foreach (Transform cookSlot in cook.transform) {
+							cookSlot.GetComponent<Image>().enabled = !cookSlot.GetComponent<Image>().enabled;
+						}
+						cook.GetComponent<Image>().enabled = !cook.GetComponent<Image>().enabled;
+						break;
 				}
 			}
-			
+
 			if (atFarm) {
 				//Debug.Log("Player entered Farm zone and pressed e");
 				ToggleUI();
