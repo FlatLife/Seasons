@@ -68,13 +68,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Raw Fish
+  itemUse: 
   type: 5
-  spriteNeutral: {fileID: 21300000, guid: 4af29c03b0e62490880ed4d350e1c9be, type: 3}
-  spriteHighlighted: {fileID: 21300000, guid: 0764e749064254b508a7da538b97f395, type: 3}
+  spriteNeutral: {fileID: 21300000, guid: ae484d4c578fb4c809e9e2e2782bf091, type: 3}
+  spriteHighlighted: {fileID: 21300000, guid: ae484d4c578fb4c809e9e2e2782bf091, type: 3}
   maxSize: 1
   isFood: 1
   isCrop: 0
   isFinishedCrop: 0
+  message: 
+  slot: {fileID: 0}
   keepItem: 0
   durability: 0
 --- !u!212 &212487112175136312
@@ -108,7 +111,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fe913c90328885e4cb03b9519a7d9c6b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ae484d4c578fb4c809e9e2e2782bf091, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
