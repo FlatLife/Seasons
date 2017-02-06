@@ -187,11 +187,7 @@ public class Player : MonoBehaviour {
 					//if the fire is started
 					default:
 						ToggleUI();
-						cook = objectColliderID.gameObject.GetComponent<Fire>().cookingUI;
-						foreach (Transform cookSlot in cook.transform) {
-							cookSlot.GetComponent<Image>().enabled = !cookSlot.GetComponent<Image>().enabled;
-						}
-						cook.GetComponent<Image>().enabled = !cook.GetComponent<Image>().enabled;
+						ToggleCookingUI();
 						break;
 				}
 			}
@@ -199,21 +195,13 @@ public class Player : MonoBehaviour {
 			if (atFarm) {
 				//Debug.Log("Player entered Farm zone and pressed e");
 				ToggleUI();
-				farmingUI = objectColliderID.gameObject.GetComponent<Farming>().farmingUI;
-				foreach (Transform farmSlot in farmingUI.transform) {
-					farmSlot.GetComponent<Image>().enabled = !farmSlot.GetComponent<Image>().enabled;
-				}
-				farmingUI.GetComponent<Image>().enabled = !farmingUI.GetComponent<Image>().enabled;
+				ToggleFarmUI();
 			}
 
 			if (atWaterPurifier) {
 				//Debug.Log("Player entered Farm zone and pressed e");
 				ToggleUI();
-				waterUI = objectColliderID.gameObject.GetComponent<WaterPurifier>().WaterUI;
-				foreach (Transform waterSlot in waterUI.transform) {
-					waterSlot.GetComponent<Image>().enabled = !waterSlot.GetComponent<Image>().enabled;
-				}
-				waterUI.GetComponent<Image>().enabled = !waterUI.GetComponent<Image>().enabled;
+				ToggleWaterUI();
 			}
 
 			if(switchSwimMode){
@@ -248,29 +236,15 @@ public class Player : MonoBehaviour {
 
 		if(Input.GetKeyDown(KeyCode.B)) {
 			ToggleUI();
+			if(atFire){
+				ToggleCookingUI();
+			}else if(atFarm){
+				ToggleFarmUI();
+			}else if(atWaterPurifier){
+				ToggleWaterUI();
+			}
        }
 	}
-    
-//movement handled in player2 script
-	// private void HandleMovement() {
-	// 	if(!openUI && !performingAction) {
-	// 		float movementInputH = Input.GetAxis ("Horizontal");
-	// 		float movementInputV = Input.GetAxis ("Vertical");
-	// 		if(!isSwimming){
-	// 			rb.velocity = new Vector3(movementInputH * speed, rb.velocity.y);
-	// 		}else if (isSwimming){
-	// 			rb.velocity = new Vector3(movementInputH * speed/2, rb.velocity.y);
-	// 			if(diving){
-	// 				rb.velocity = new Vector3(movementInputH * speed/2, movementInputV * 10.0f);
-	// 			}
-	// 		}
-	// 		if(isUnderwater){
-	// 			rb.velocity = new Vector3(movementInputH * 2.0f, movementInputV*2.0f + 1.0f);
-	// 		}
-	// 	}else{
-	// 		rb.velocity = new Vector3(0.0f, rb.velocity.y);
-	// 	}
-	// }
 
 	private void ToggleUI() {
 		openUI = !openUI;
@@ -361,4 +335,28 @@ public class Player : MonoBehaviour {
 			atWaterPurifier = false;
 		}
     }
+
+	private void ToggleWaterUI(){
+		waterUI = objectColliderID.gameObject.GetComponent<WaterPurifier>().WaterUI;
+		foreach (Transform waterSlot in waterUI.transform) {
+			waterSlot.GetComponent<Image>().enabled = !waterSlot.GetComponent<Image>().enabled;
+		}
+		waterUI.GetComponent<Image>().enabled = !waterUI.GetComponent<Image>().enabled;
+	}
+
+	private void ToggleFarmUI(){
+		farmingUI = objectColliderID.gameObject.GetComponent<Farming>().farmingUI;
+		foreach (Transform farmSlot in farmingUI.transform) {
+			farmSlot.GetComponent<Image>().enabled = !farmSlot.GetComponent<Image>().enabled;
+		}
+		farmingUI.GetComponent<Image>().enabled = !farmingUI.GetComponent<Image>().enabled;
+	}
+
+	private void ToggleCookingUI(){
+		cook = objectColliderID.gameObject.GetComponent<Fire>().cookingUI;
+		foreach (Transform cookSlot in cook.transform) {
+			cookSlot.GetComponent<Image>().enabled = !cookSlot.GetComponent<Image>().enabled;
+		}
+		cook.GetComponent<Image>().enabled = !cook.GetComponent<Image>().enabled;
+	}
 }
