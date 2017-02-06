@@ -196,21 +196,21 @@ public class Player : MonoBehaviour {
 					//if the fire is started
 					default:
 						ToggleUI();
-						ToggleCookingUI();
+						//ToggleCookingUI();
 						break;
 				}
 			}
 
 			if (atFarm) {
-				//Debug.Log("Player entered Farm zone and pressed e");
+				Debug.Log("Player entered Farm zone and pressed e");
 				ToggleUI();
-				ToggleFarmUI();
+				//ToggleFarmUI();
 			}
 
 			if (atWaterPurifier) {
 				//Debug.Log("Player entered Farm zone and pressed e");
 				ToggleUI();
-				ToggleWaterUI();
+				//ToggleWaterUI();
 			}
 
 			if(switchSwimMode){
