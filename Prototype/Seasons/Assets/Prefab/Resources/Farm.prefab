@@ -82,8 +82,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a8771e9471804bbb88aa386bcd1a96d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   canvas: {fileID: 0}
   slotNum: 8
+  farmingUI: {fileID: 0}
+  carrotGrowTime: 15
+  potatoGrowTime: 30
 --- !u!212 &212026086190287266
 SpriteRenderer:
   m_ObjectHideFlags: 1

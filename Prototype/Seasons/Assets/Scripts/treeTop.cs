@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TreeTop : MonoBehaviour {
+public class treeTop : MonoBehaviour {
 
 	Item item;
 	int itemChoice;
@@ -19,7 +19,7 @@ public class TreeTop : MonoBehaviour {
 	void Update () {
 
 		if(Random.Range(0f,1f) > spawnProbability && (coolDown <= 0)){
-			itemChoice = Random.Range(0, 4);
+			itemChoice = Random.Range(0, 7);
 			switch (itemChoice){
 				case 0:
 					item = Instantiate(Resources.Load<Item>("Wood"));
@@ -28,11 +28,20 @@ public class TreeTop : MonoBehaviour {
 					item = Instantiate(Resources.Load<Item>("Stick"));
 					break;
 				case 2:
-					item = Instantiate(Resources.Load<Item>("Seeds"));
+					item = Instantiate(Resources.Load<Item>("StrawberrySeeds"));
 					break;
 				case 3:
 					item = Instantiate(Resources.Load<Item>("Vine"));
-					break;		
+					break;
+				case 4:
+					item = Instantiate(Resources.Load<Item>("PineappleSeeds"));
+					break;
+				case 5:
+					item = Instantiate(Resources.Load<Item>("PotatoSeeds"));
+					break;
+				case 6:
+					item = Instantiate(Resources.Load<Item>("CarrotSeeds"));
+					break;
 			}
 			//getting a random x axis change, has to not be between 2 and 6.5
 			xAxisChange = Random.Range(-5f, 14f);

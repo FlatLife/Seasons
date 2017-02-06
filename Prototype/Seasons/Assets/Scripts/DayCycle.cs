@@ -11,14 +11,17 @@ public class DayCycle : MonoBehaviour {
 	public GameObject fade;
 	bool bottleHasSpawned;
 
-	private Text dayCount;
+	private Text dayCountText;
 
-	private int count = 1;
+	public static int dayCount = 1;
 	public float dayLength;
 
 	// Use this for initialization
 	void Start () {
-		dayCount = GameObject.Find("DayCount").GetComponent<Text>();
+		dayCountText = GameObject.Find("DayCount").GetComponent<Text>();
+		GameMaster.dayCount = dayCount;
+		GameObject bottle = Instantiate(Resources.Load<GameObject>("messageBottle"));
+		bottle.GetComponent<Item>().message = "message" + dayCount;
 	}
 	
 	// Update is called once per frame
@@ -32,7 +35,11 @@ public class DayCycle : MonoBehaviour {
 		if(dayTime <= 0 && fade.GetComponent<SpriteRenderer>().color.a > 0.95f){
 			fadeTime -= Time.deltaTime;
 			if(!fadingIn){
-				dayCount.text = "Day " + ++count;
+				dayCountText.text = "Day " + ++dayCount;
+				GameMaster.dayCount = dayCount;
+				if(dayCount % 5 == 0){
+					GameMaster.isWinter = !GameMaster.isWinter;
+				}
 			}
 			fadingIn = true;
 		}
@@ -41,6 +48,7 @@ public class DayCycle : MonoBehaviour {
 			//spawn message in a bottle when day starts
 			if(bottleHasSpawned != true){
 				GameObject bottle = Instantiate(Resources.Load<GameObject>("messageBottle"));
+				bottle.GetComponent<Item>().message = "message" + dayCount;
 				bottleHasSpawned = true;
 			}
 			fade.GetComponent<ScreenFade>().FadeToClear();

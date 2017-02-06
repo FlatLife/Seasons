@@ -23,7 +23,10 @@ public class Player : MonoBehaviour {
 	public DestroyUI destroy;
 	private bool canTouch = false;
 	public bool switchSwimMode = false;
-    private Collider2D objectColliderID;
+    private Collider2D itemColliderID;
+	private Collider2D farmColliderID;
+	private Collider2D fireColliderID;
+	private Collider2D waterColliderID;
     Fire fire;
 	public int buttonSmash = 0;
 	float buttonPressed;
@@ -39,12 +42,14 @@ public class Player : MonoBehaviour {
 	public bool atFire = false;
 	public bool atFarm = false;
 	public bool atUse = false;
+	public bool fireUIOpen = false;
+	public bool farmUIOpen = false;
+	public bool waterUIOpen = false;
 	public bool atWaterPurifier = false;
 	public bool performingAction = false;
 	public float timeToCatch = 2.0f;
 
 	public bool openUI = false;
-	private Rigidbody2D rb; 
 
 	private Stat health;
 	private Stat hunger;
@@ -73,7 +78,6 @@ public class Player : MonoBehaviour {
 	}
     // Use this for initialization
     void Start () {
-		rb = GetComponent<Rigidbody2D>();
 		animRenderer = GetComponent<Renderer>() as SpriteRenderer;
 		frameIndex = 0;
 		timeSinceLastFrame = 0;
@@ -81,7 +85,7 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//animation
+		//animation for starting fire
 		if(playingFireStart){
 			if(frameIndex < 13){				
 				if(timeSinceLastFrame > animationSpeed){
@@ -92,8 +96,23 @@ public class Player : MonoBehaviour {
 					timeSinceLastFrame = timeSinceLastFrame + Time.deltaTime;
 				}	
 			} else {
-				fire = objectColliderID.gameObject.GetComponent<Fire>();
+				fire = fireColliderID.gameObject.GetComponent<Fire>();
 				fire.fireState = 0;
+			}
+		}
+		//animation for casting rod
+		if(playingCastRod){
+			if(frameIndex < 34){
+				if(timeSinceLastFrame > animationSpeed){
+				animRenderer.sprite = animSprites[frameIndex];
+				timeSinceLastFrame = 0;
+				frameIndex++;
+				} else{
+					timeSinceLastFrame = timeSinceLastFrame + Time.deltaTime;
+				}	
+			} else {
+				playingCastRod = false;
+				animRenderer.sprite = animSprites[0];
 			}
 		}
 
@@ -121,6 +140,10 @@ public class Player : MonoBehaviour {
 				performingAction = false;
 				fish.stop ();
 			} else {
+				//setting up animation values to play
+				playingCastRod = true;
+				timeSinceLastFrame = 0;
+				frameIndex = 14;
 				performingAction = true;
 				timeToCatch = 2.0f;
 				fish.fish ();
@@ -129,7 +152,7 @@ public class Player : MonoBehaviour {
 			//Cooking minigame interaction
 
 			if(atFire){
-				fire = objectColliderID.gameObject.GetComponent<Fire>();
+				fire = fireColliderID.gameObject.GetComponent<Fire>();
 				switch (fire.fireState){
 					//if player hasnt begun to start the fire
 					case -1:
@@ -137,6 +160,11 @@ public class Player : MonoBehaviour {
 							frameIndex = 1;
 							timeSinceLastFrame = 0;
 							playingFireStart = true;
+                            //getting the position that the player should be at
+                            Vector3 pos = fire.transform.position;
+                            pos.y += 0.8f;
+                            pos.x -= 0.75f;
+                            transform.position = pos;
 						}
 						break;
 					//if player is starting the fire
@@ -168,11 +196,7 @@ public class Player : MonoBehaviour {
 					//if the fire is started
 					default:
 						ToggleUI();
-						cook = objectColliderID.gameObject.GetComponent<Fire>().cookingUI;
-						foreach (Transform cookSlot in cook.transform) {
-							cookSlot.GetComponent<Image>().enabled = !cookSlot.GetComponent<Image>().enabled;
-						}
-						cook.GetComponent<Image>().enabled = !cook.GetComponent<Image>().enabled;
+						ToggleCookingUI();
 						break;
 				}
 			}
@@ -180,28 +204,20 @@ public class Player : MonoBehaviour {
 			if (atFarm) {
 				//Debug.Log("Player entered Farm zone and pressed e");
 				ToggleUI();
-				farmingUI = objectColliderID.gameObject.GetComponent<Farming>().farmingUI;
-				foreach (Transform farmSlot in farmingUI.transform) {
-					farmSlot.GetComponent<Image>().enabled = !farmSlot.GetComponent<Image>().enabled;
-				}
-				farmingUI.GetComponent<Image>().enabled = !farmingUI.GetComponent<Image>().enabled;
+				ToggleFarmUI();
 			}
 
 			if (atWaterPurifier) {
 				//Debug.Log("Player entered Farm zone and pressed e");
 				ToggleUI();
-				waterUI = objectColliderID.gameObject.GetComponent<WaterPurifier>().WaterUI;
-				foreach (Transform waterSlot in waterUI.transform) {
-					waterSlot.GetComponent<Image>().enabled = !waterSlot.GetComponent<Image>().enabled;
-				}
-				waterUI.GetComponent<Image>().enabled = !waterUI.GetComponent<Image>().enabled;
+				ToggleWaterUI();
 			}
 
 			if(switchSwimMode){
 				isSwimming = !isSwimming;
 				Vector3 pos = transform.position;
 				if(isSwimming){
-					transform.position = new Vector3(-21.33625f, 0.5240731f, pos.z);
+					transform.position = new Vector3(-21.33625f, -0.53626f, pos.z);
 				}else{
 					transform.position = new Vector3(-19.33625f, 0.2520248f, pos.z);
 				}
@@ -219,41 +235,12 @@ public class Player : MonoBehaviour {
 			}
 		}
 
-		if(isSwimming && Input.GetKeyDown(KeyCode.S)){
-			diving = true;
-		}
-
-		if(isSwimming && Input.GetKeyDown(KeyCode.W)){
-			diving = false;
-		}
-
-		if(Input.GetKeyDown(KeyCode.B)) {
+		if(Input.GetKeyDown(KeyCode.Q)) {
 			ToggleUI();
        }
 	}
-    
-//movement handled in player2 script
-	// private void HandleMovement() {
-	// 	if(!openUI && !performingAction) {
-	// 		float movementInputH = Input.GetAxis ("Horizontal");
-	// 		float movementInputV = Input.GetAxis ("Vertical");
-	// 		if(!isSwimming){
-	// 			rb.velocity = new Vector3(movementInputH * speed, rb.velocity.y);
-	// 		}else if (isSwimming){
-	// 			rb.velocity = new Vector3(movementInputH * speed/2, rb.velocity.y);
-	// 			if(diving){
-	// 				rb.velocity = new Vector3(movementInputH * speed/2, movementInputV * 10.0f);
-	// 			}
-	// 		}
-	// 		if(isUnderwater){
-	// 			rb.velocity = new Vector3(movementInputH * 2.0f, movementInputV*2.0f + 1.0f);
-	// 		}
-	// 	}else{
-	// 		rb.velocity = new Vector3(0.0f, rb.velocity.y);
-	// 	}
-	// }
 
-	private void ToggleUI() {
+	public void ToggleUI() {
 		openUI = !openUI;
 		craft.Slot1.GetComponent<Image>().enabled = !craft.Slot1.GetComponent<Image>().enabled;
         craft.Slot2.GetComponent<Image>().enabled = !craft.Slot2.GetComponent<Image>().enabled;
@@ -283,30 +270,36 @@ public class Player : MonoBehaviour {
 
 		GameObject.Find("Canvas/DestroyUI/DestroyButton").GetComponent<Image>().enabled = !GameObject.Find("Canvas/DestroyUI/DestroyButton").GetComponent<Image>().enabled;
         GameObject.Find("Canvas/DestroyUI/DestroyButton/Text").SetActive(!GameObject.Find("Canvas/DestroyUI/DestroyButton/Text").activeInHierarchy); 
+
+		if(atFire){
+			ToggleCookingUI();
+		}else if(atFarm){
+			ToggleFarmUI();
+		}else if(atWaterPurifier){
+			ToggleWaterUI();
+		}
 	}
 
-	private void OnTriggerEnter2D(Collider2D other){
+	private void OnTriggerStay2D(Collider2D other){
         //Collision with item on the ground
 		if (other.tag == "Item") {
-			
-			objectColliderID = other;
-			Debug.Log(objectColliderID + " Enter");
+			itemColliderID = other;
 			atUse = true;
 			canTouch = true;
 		}
 		if (other.tag == "Fire") {
-			objectColliderID = other;
+			fireColliderID = other;
 			//canTouch = false;
 			atUse = true;
 			atFire = true;
 		}
 		if (other.tag == "Farm") {
-			objectColliderID = other;
+			farmColliderID = other;
 			atUse = true;
 			atFarm = true;
 		}
 		if (other.tag == "WaterPurifier") {
-			objectColliderID = other;
+			waterColliderID = other;
 			atUse = true;
 			atWaterPurifier = true;
 		}
@@ -316,30 +309,71 @@ public class Player : MonoBehaviour {
         //If near an item on the ground pick it up first
 		if (canTouch) {
 			if (Input.GetKeyDown(KeyCode.E)) {
-				backpack.AddItem(objectColliderID.gameObject.GetComponent<Item>());
+				backpack.AddItem(itemColliderID.gameObject.GetComponent<Item>());
+				Destroy (itemColliderID.gameObject);
+				itemColliderID = null;
+				atUse = false;
+				canTouch = false;
+
 			}
 		}
 	}
 
 	private void OnTriggerExit2D(Collider2D other){
-		if(other.tag == "Item" && other == objectColliderID)
+		if(other.tag == "Item" && other == itemColliderID)
         {
-			Debug.Log(objectColliderID + " Exit");
+			itemColliderID = null;
 			atUse = false;
             canTouch = false;
         }
-        if (other.tag == "Fire" && other == objectColliderID)
+        if (other.tag == "Fire" && other == fireColliderID)
         {
-			atUse = true;
+			atUse = false;
             atFire = false;
+			if (fireUIOpen) {
+				ToggleCookingUI ();
+			}
         }
-		if (other.tag == "Farm" && other == objectColliderID) {
-			atUse = true;
+		if (other.tag == "Farm" && other == farmColliderID) {
+			atUse = false;
 			atFarm = false;
+			if (farmUIOpen) {
+				ToggleFarmUI ();
+			}
 		}
-		if (other.tag == "WaterPurifier" && other == objectColliderID) {
-			atUse = true;
+		if (other.tag == "WaterPurifier" && other == waterColliderID) {
+			atUse = false;
 			atWaterPurifier = false;
+			if (waterUIOpen) {
+				ToggleWaterUI ();
+			}
 		}
     }
+
+	private void ToggleWaterUI(){
+		waterUIOpen = !waterUIOpen;
+		waterUI = waterColliderID.gameObject.GetComponent<WaterPurifier>().WaterUI;
+		foreach (Transform waterSlot in waterUI.transform) {
+			waterSlot.GetComponent<Image>().enabled = !waterSlot.GetComponent<Image>().enabled;
+		}
+		waterUI.GetComponent<Image>().enabled = !waterUI.GetComponent<Image>().enabled;
+	}
+
+	private void ToggleFarmUI(){
+		farmUIOpen = !farmUIOpen;
+		farmingUI = farmColliderID.gameObject.GetComponent<Farming>().farmingUI;
+		foreach (Transform farmSlot in farmingUI.transform) {
+			farmSlot.GetComponent<Image>().enabled = !farmSlot.GetComponent<Image>().enabled;
+		}
+		farmingUI.GetComponent<Image>().enabled = !farmingUI.GetComponent<Image>().enabled;
+	}
+
+	private void ToggleCookingUI(){
+		fireUIOpen = !fireUIOpen;
+		cook = fireColliderID.gameObject.GetComponent<Fire>().cookingUI;
+		foreach (Transform cookSlot in cook.transform) {
+			cookSlot.GetComponent<Image>().enabled = !cookSlot.GetComponent<Image>().enabled;
+		}
+		cook.GetComponent<Image>().enabled = !cook.GetComponent<Image>().enabled;
+	}
 }

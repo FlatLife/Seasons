@@ -93,6 +93,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 
 	public void UseItem() {
 		if (!isEmpty) {
+			currentItem.slot = this;
 			bool toDelete = currentItem.Use();
 			if (toDelete) {
 				DestroyItem();
@@ -124,17 +125,37 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 			tooltip = Instantiate(Resources.Load<GameObject>("Tooltip"));
 			tooltip.name = "tooltip";
 			string name = CurrentItem.itemName;
-			int length = name.Length;
-			length = length * 10;
+			string use = CurrentItem.itemUse;
+			int lengthName = name.Length;
+			int lengthUse = use.Length;
+			lengthName = lengthName * 10;
+			lengthUse = lengthUse * 8;
 			RectTransform tooltipRect = tooltip.GetComponent<RectTransform> ();
-			tooltipRect.sizeDelta = new Vector2(length, tooltipRect.sizeDelta.y);
+			tooltipRect.sizeDelta = new Vector2(lengthName, tooltipRect.sizeDelta.y);
 			Text tooltipText = tooltip.GetComponentInChildren<Text> ();
 			tooltipText.text = CurrentItem.itemName;
 			RectTransform tooltipTextRect = tooltipText.gameObject.GetComponent<RectTransform> ();
-			tooltipTextRect.sizeDelta = new Vector2 (length, tooltipTextRect.sizeDelta.y );
+			tooltipTextRect.sizeDelta = new Vector2 (lengthName, tooltipTextRect.sizeDelta.y );
 			tooltip.transform.SetParent(GameObject.Find("Canvas").transform, false);
 			tooltip.transform.position = this.transform.position;
 			tooltip.transform.position = new Vector3(tooltip.transform.position.x + 60f ,tooltip.transform.position.y - 40f , -50f);
+			Component[] images = tooltip.GetComponentsInChildren<Image> ();
+			if(lengthUse > 0){
+				foreach (Image image in images) {
+					if (image.gameObject.name == "Desc") {
+						image.enabled = true;
+						image.gameObject.GetComponentInChildren<Text> ().text = CurrentItem.itemUse;
+						image.gameObject.GetComponentInChildren<Text> ().rectTransform.sizeDelta = new Vector2 (lengthUse, tooltipTextRect.sizeDelta.y );
+						image.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2 (lengthUse, tooltipTextRect.sizeDelta.y );
+					}
+				}
+			}else{
+				foreach (Image image in images) {
+					if (image.gameObject.name == "Desc") {
+						image.enabled = false;
+					}
+				}
+			}
 		}
 	}
 
