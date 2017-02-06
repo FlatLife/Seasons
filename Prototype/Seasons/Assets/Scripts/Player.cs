@@ -283,7 +283,6 @@ public class Player : MonoBehaviour {
 		if (other.tag == "Item") {
 			
 			objectColliderID = other;
-			Debug.Log(objectColliderID + " Enter");
 			atUse = true;
 			canTouch = true;
 		}
@@ -317,7 +316,6 @@ public class Player : MonoBehaviour {
 	private void OnTriggerExit2D(Collider2D other){
 		if(other.tag == "Item" && other == objectColliderID)
         {
-			Debug.Log(objectColliderID + " Exit");
 			atUse = false;
             canTouch = false;
         }
