@@ -35,6 +35,9 @@ public class DayCycle : MonoBehaviour {
 			if(!fadingIn){
 				dayCountText.text = "Day " + ++dayCount;
 				GameMaster.dayCount = dayCount;
+				if(dayCount % 5 == 0){
+					GameMaster.isWinter = !GameMaster.isWinter;
+				}
 			}
 			fadingIn = true;
 		}
