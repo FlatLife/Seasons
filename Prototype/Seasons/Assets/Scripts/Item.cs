@@ -35,7 +35,27 @@ public class Item : MonoBehaviour {
 		case ItemType.COOKEDFISH:
 				toBeDeleted = true;
 				hunger  = GameObject.Find("HungerBar");
+				hunger.GetComponent<BarScript>().increment(0.15f);
+				break;
+			case ItemType.CARROT:
+				toBeDeleted = true;
+				hunger = GameObject.Find("HungerBar");
 				hunger.GetComponent<BarScript>().increment(0.1f);
+				break;
+			case ItemType.POTATO:
+				toBeDeleted = true;
+				hunger = GameObject.Find("HungerBar");
+				hunger.GetComponent<BarScript>().increment(0.2f);
+				break;
+			case ItemType.STRAWBERRIES:
+				toBeDeleted = true;
+				hunger = GameObject.Find("HungerBar");
+				hunger.GetComponent<BarScript>().increment(0.3f);
+				break;
+			case ItemType.PINEAPPLE:
+				toBeDeleted = true;
+				hunger = GameObject.Find("HungerBar");
+				hunger.GetComponent<BarScript>().increment(0.4f);
 				break;
 			case ItemType.FIREPREP:
 				toBeDeleted = true;
