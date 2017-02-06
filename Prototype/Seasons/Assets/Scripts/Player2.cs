@@ -91,6 +91,9 @@ public class Player2 : MonoBehaviour {
 	}
 
 	void OnTriggerExit2D (Collider2D other) {
+		if (other.tag == "Beach") {
+			onBeach = false;
+		}
 		if (other.tag == "Swim") {
 			underwater = false;
 		}
