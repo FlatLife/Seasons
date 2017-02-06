@@ -81,7 +81,7 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//animation
+		//animation for starting fire
 		if(playingFireStart){
 			if(frameIndex < 13){				
 				if(timeSinceLastFrame > animationSpeed){
@@ -94,6 +94,21 @@ public class Player : MonoBehaviour {
 			} else {
 				fire = objectColliderID.gameObject.GetComponent<Fire>();
 				fire.fireState = 0;
+			}
+		}
+		//animation for casting rod
+		if(playingCastRod){
+			if(frameIndex < 34){
+				if(timeSinceLastFrame > animationSpeed){
+				animRenderer.sprite = animSprites[frameIndex];
+				timeSinceLastFrame = 0;
+				frameIndex++;
+				} else{
+					timeSinceLastFrame = timeSinceLastFrame + Time.deltaTime;
+				}	
+			} else {
+				playingCastRod = false;
+				animRenderer.sprite = animSprites[0];
 			}
 		}
 
@@ -121,6 +136,10 @@ public class Player : MonoBehaviour {
 				performingAction = false;
 				fish.stop ();
 			} else {
+				//setting up animation values to play
+				playingCastRod = true;
+				timeSinceLastFrame = 0;
+				frameIndex = 14;
 				performingAction = true;
 				timeToCatch = 2.0f;
 				fish.fish ();
