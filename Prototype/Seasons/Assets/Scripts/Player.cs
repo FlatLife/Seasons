@@ -149,8 +149,8 @@ public class Player : MonoBehaviour {
 				fish.fish ();
 				}
 			}
+			
 			//Cooking minigame interaction
-
 			if(atFire){
 				fire = fireColliderID.gameObject.GetComponent<Fire>();
 				switch (fire.fireState){
