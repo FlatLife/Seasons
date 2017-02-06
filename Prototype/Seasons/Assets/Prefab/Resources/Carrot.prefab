@@ -53,6 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Carrot
+  itemUse: Right-Click to eat
   type: 16
   spriteNeutral: {fileID: 21300000, guid: 0492471e0520b4aaaaa9ba71ca2e6f3c, type: 3}
   spriteHighlighted: {fileID: 21300000, guid: 0492471e0520b4aaaaa9ba71ca2e6f3c, type: 3}
@@ -60,6 +61,7 @@ MonoBehaviour:
   isFood: 0
   isCrop: 1
   isFinishedCrop: 0
+  slot: {fileID: 0}
   keepItem: 0
   durability: 0
 --- !u!212 &212424804570473318

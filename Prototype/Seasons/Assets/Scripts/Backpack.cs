@@ -79,7 +79,10 @@ public class Backpack : MonoBehaviour {
 			Slot tmp = slot.GetComponent<Slot>();
 			if (tmp.isEmpty) {
 				Item newItem = Instantiate(item, tmp.transform);
-				newItem.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+				BoxCollider2D collider = newItem.gameObject.GetComponent<BoxCollider2D>();
+				if(collider != null){
+					collider.enabled = false;
+				}
 				newItem.transform.position = new Vector3 (0,20f,0);
 				newItem.GetComponent<SpriteRenderer>().enabled = false;
 				tmp.AddItem(newItem);

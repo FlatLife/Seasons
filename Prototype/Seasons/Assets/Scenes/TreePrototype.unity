@@ -1944,7 +1944,7 @@ MonoBehaviour:
   speed: 5
   animationSpeed: 0.05
   animSprites:
-  - {fileID: 21300000, guid: d608490b1329a8e4aa995c317a318e3e, type: 3}
+  - {fileID: 21300000, guid: e4338354634f84e278235bd606324c5b, type: 3}
   - {fileID: 21300000, guid: e4338354634f84e278235bd606324c5b, type: 3}
   - {fileID: 21300002, guid: e4338354634f84e278235bd606324c5b, type: 3}
   - {fileID: 21300004, guid: e4338354634f84e278235bd606324c5b, type: 3}
@@ -1958,6 +1958,26 @@ MonoBehaviour:
   - {fileID: 21300020, guid: e4338354634f84e278235bd606324c5b, type: 3}
   - {fileID: 21300022, guid: e4338354634f84e278235bd606324c5b, type: 3}
   - {fileID: 21300024, guid: e4338354634f84e278235bd606324c5b, type: 3}
+  - {fileID: 21300000, guid: 3b7ebe73a97b74bc389bca50e5344164, type: 3}
+  - {fileID: 21300002, guid: 3b7ebe73a97b74bc389bca50e5344164, type: 3}
+  - {fileID: 21300004, guid: 3b7ebe73a97b74bc389bca50e5344164, type: 3}
+  - {fileID: 21300006, guid: 3b7ebe73a97b74bc389bca50e5344164, type: 3}
+  - {fileID: 21300008, guid: 3b7ebe73a97b74bc389bca50e5344164, type: 3}
+  - {fileID: 21300010, guid: 3b7ebe73a97b74bc389bca50e5344164, type: 3}
+  - {fileID: 21300012, guid: 3b7ebe73a97b74bc389bca50e5344164, type: 3}
+  - {fileID: 21300014, guid: 3b7ebe73a97b74bc389bca50e5344164, type: 3}
+  - {fileID: 21300016, guid: 3b7ebe73a97b74bc389bca50e5344164, type: 3}
+  - {fileID: 21300018, guid: 3b7ebe73a97b74bc389bca50e5344164, type: 3}
+  - {fileID: 21300020, guid: 3b7ebe73a97b74bc389bca50e5344164, type: 3}
+  - {fileID: 21300022, guid: 3b7ebe73a97b74bc389bca50e5344164, type: 3}
+  - {fileID: 21300024, guid: 3b7ebe73a97b74bc389bca50e5344164, type: 3}
+  - {fileID: 21300026, guid: 3b7ebe73a97b74bc389bca50e5344164, type: 3}
+  - {fileID: 21300028, guid: 3b7ebe73a97b74bc389bca50e5344164, type: 3}
+  - {fileID: 21300030, guid: 3b7ebe73a97b74bc389bca50e5344164, type: 3}
+  - {fileID: 21300032, guid: 3b7ebe73a97b74bc389bca50e5344164, type: 3}
+  - {fileID: 21300034, guid: 3b7ebe73a97b74bc389bca50e5344164, type: 3}
+  - {fileID: 21300036, guid: 3b7ebe73a97b74bc389bca50e5344164, type: 3}
+  - {fileID: 21300038, guid: 3b7ebe73a97b74bc389bca50e5344164, type: 3}
   playingFireStart: 0
   playingCastRod: 0
   canvas: {fileID: 1696044806}
@@ -1977,6 +1997,7 @@ MonoBehaviour:
   canFish: 0
   atFire: 0
   atFarm: 0
+  atUse: 0
   atWaterPurifier: 0
   performingAction: 0
   timeToCatch: 2
@@ -1992,17 +2013,17 @@ PolygonCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 3.5}
   m_Points:
     m_Paths:
-    - - {x: -1.141035, y: -4.353905}
-      - {x: -1.5654838, y: -4.6083274}
-      - {x: -1.5072954, y: -5.014357}
-      - {x: -1.1031401, y: -5.2595673}
-      - {x: 1.3586038, y: -5.2566576}
-      - {x: 1.8778253, y: -5.0516324}
-      - {x: 1.9282842, y: -4.5154257}
-      - {x: 1.4763504, y: -4.266317}
+    - - {x: -0.2302426, y: -4.7781096}
+      - {x: -0.41763663, y: -4.870336}
+      - {x: -0.42183048, y: -4.964451}
+      - {x: -0.37949756, y: -5.0599413}
+      - {x: 0.41038242, y: -5.019602}
+      - {x: 0.58025813, y: -5.014202}
+      - {x: 0.68062377, y: -4.9396305}
+      - {x: 0.50317514, y: -4.8152876}
 --- !u!50 &1440615828
 Rigidbody2D:
   serializedVersion: 4
@@ -2054,7 +2075,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d608490b1329a8e4aa995c317a318e3e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e4338354634f84e278235bd606324c5b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2066,7 +2087,7 @@ Transform:
   m_GameObject: {fileID: 1440615824}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -1}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1593699357}
   m_Father: {fileID: 0}

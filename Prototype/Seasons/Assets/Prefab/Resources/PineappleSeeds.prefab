@@ -9,45 +9,45 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1901715344620038}
+  m_RootGameObject: {fileID: 1089000958205160}
   m_IsPrefabParent: 1
---- !u!1 &1901715344620038
+--- !u!1 &1089000958205160
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4716020094331568}
-  - component: {fileID: 212517344704380526}
-  - component: {fileID: 114650247141675934}
-  - component: {fileID: 61666452585513516}
+  - component: {fileID: 4835320355876936}
+  - component: {fileID: 212743006742740890}
+  - component: {fileID: 114345998458763036}
+  - component: {fileID: 61610726035092916}
   m_Layer: 0
   m_Name: PineappleSeeds
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4716020094331568
+--- !u!4 &4835320355876936
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1901715344620038}
+  m_GameObject: {fileID: 1089000958205160}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.491587, y: 1.5949289, z: 1.5}
+  m_LocalPosition: {x: -8.21, y: 1.51, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61666452585513516
+--- !u!61 &61610726035092916
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1901715344620038}
+  m_GameObject: {fileID: 1089000958205160}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -55,13 +55,13 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
---- !u!114 &114650247141675934
+  m_Size: {x: 0.8, y: 0.5}
+--- !u!114 &114345998458763036
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1901715344620038}
+  m_GameObject: {fileID: 1089000958205160}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e217fa480781740208d799569bd39f51, type: 3}
@@ -77,12 +77,12 @@ MonoBehaviour:
   isFinishedCrop: 0
   keepItem: 0
   durability: 0
---- !u!212 &212517344704380526
+--- !u!212 &212743006742740890
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1901715344620038}
+  m_GameObject: {fileID: 1089000958205160}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0

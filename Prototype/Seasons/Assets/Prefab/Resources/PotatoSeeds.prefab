@@ -9,19 +9,19 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1668899557333820}
+  m_RootGameObject: {fileID: 1178860528635572}
   m_IsPrefabParent: 1
---- !u!1 &1668899557333820
+--- !u!1 &1178860528635572
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4055529922928884}
-  - component: {fileID: 212761889207884532}
-  - component: {fileID: 114699413759463620}
-  - component: {fileID: 61567758770389574}
+  - component: {fileID: 4883434855046726}
+  - component: {fileID: 212920620716723712}
+  - component: {fileID: 114349210033198254}
+  - component: {fileID: 61097562897300470}
   m_Layer: 0
   m_Name: PotatoSeeds
   m_TagString: Item
@@ -29,25 +29,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4055529922928884
+--- !u!4 &4883434855046726
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1668899557333820}
+  m_GameObject: {fileID: 1178860528635572}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.491587, y: 1.5949289, z: 1.5}
+  m_LocalPosition: {x: 1.2347573, y: 2.7439036, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61567758770389574
+--- !u!61 &61097562897300470
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1668899557333820}
+  m_GameObject: {fileID: 1178860528635572}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -55,20 +55,20 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
---- !u!114 &114699413759463620
+  m_Size: {x: 0.8, y: 0.5}
+--- !u!114 &114349210033198254
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1668899557333820}
+  m_GameObject: {fileID: 1178860528635572}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e217fa480781740208d799569bd39f51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Potato Seed
-  type: 21
+  type: 22
   spriteNeutral: {fileID: 21300000, guid: 6226fecf0e9c446c690ddac4138ae4a6, type: 3}
   spriteHighlighted: {fileID: 21300000, guid: 6226fecf0e9c446c690ddac4138ae4a6, type: 3}
   maxSize: 1
@@ -77,12 +77,12 @@ MonoBehaviour:
   isFinishedCrop: 0
   keepItem: 0
   durability: 0
---- !u!212 &212761889207884532
+--- !u!212 &212920620716723712
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1668899557333820}
+  m_GameObject: {fileID: 1178860528635572}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0

@@ -8,7 +8,7 @@ public class CraftTable : MonoBehaviour {
 	public float slotSize;
 
 	public Backpack BackPack;
-	private RectTransform CraftTableRect;
+	//private RectTransform CraftTableRect;
 	public GameObject Slot1;
 	public GameObject Slot2;
 
@@ -33,7 +33,7 @@ public class CraftTable : MonoBehaviour {
 			RectTransform slotRect1 = Slot1.GetComponent<RectTransform>();
 			RectTransform slotRect2 = Slot2.GetComponent<RectTransform>();
 
-			CraftTableRect = GetComponent<RectTransform>();
+			//CraftTableRect = GetComponent<RectTransform>();
 
 			Slot1.name = "Slot1";
 			Slot2.name = "Slot2";
@@ -50,6 +50,7 @@ public class CraftTable : MonoBehaviour {
 			slotRect1.localPosition = new Vector3(60, -20);
 			slotRect1.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, slotSize);
 			slotRect1.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, slotSize);
+			
 
 			slotRect2.localPosition = new Vector3(130, -20);			
 			slotRect2.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, slotSize);
@@ -73,7 +74,7 @@ public class CraftTable : MonoBehaviour {
 		CheckRecipe(ItemType.STICK, ItemType.STICK, "FirePrep");
 		CheckRecipe(ItemType.BUCKET, ItemType.ICE, "Ice");
 		CheckRecipe(ItemType.VINE, ItemType.VINE, "Clothes");
-		CheckRecipe(ItemType.BUCKET, ItemType.BUCKET, "WaterPurifierItem");
+		CheckRecipe(ItemType.SEAWEED, ItemType.ROCK, "WaterPurifierItem");
 
 		//Other items that are made WITHOUT using CheckRecipe (usually put on something like a fire)
 		//Fresh Water = Seawater put on purifier (purifiers instantiated on the ground)
