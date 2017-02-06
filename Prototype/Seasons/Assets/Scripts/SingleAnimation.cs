@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SingleAnimation : MonoBehaviour {
 
-	int frameIndex;
+	public int frameIndex;
     // An array with the sprites used for animation
 	public float animationSpeed;
     public Sprite[] animSprites;
