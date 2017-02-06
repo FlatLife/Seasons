@@ -42,6 +42,9 @@ public class Player : MonoBehaviour {
 	public bool atFire = false;
 	public bool atFarm = false;
 	public bool atUse = false;
+	public bool fireUIOpen = false;
+	public bool farmUIOpen = false;
+	public bool waterUIOpen = false;
 	public bool atWaterPurifier = false;
 	public bool performingAction = false;
 	public float timeToCatch = 2.0f;
@@ -234,27 +237,12 @@ public class Player : MonoBehaviour {
 			}
 		}
 
-		if(isSwimming && Input.GetKeyDown(KeyCode.S)){
-			diving = true;
-		}
-
-		if(isSwimming && Input.GetKeyDown(KeyCode.W)){
-			diving = false;
-		}
-
-		if(Input.GetKeyDown(KeyCode.B)) {
+		if(Input.GetKeyDown(KeyCode.Q)) {
 			ToggleUI();
-			if(atFire){
-				ToggleCookingUI();
-			}else if(atFarm){
-				ToggleFarmUI();
-			}else if(atWaterPurifier){
-				ToggleWaterUI();
-			}
        }
 	}
 
-	private void ToggleUI() {
+	public void ToggleUI() {
 		openUI = !openUI;
 		craft.Slot1.GetComponent<Image>().enabled = !craft.Slot1.GetComponent<Image>().enabled;
         craft.Slot2.GetComponent<Image>().enabled = !craft.Slot2.GetComponent<Image>().enabled;
@@ -284,6 +272,14 @@ public class Player : MonoBehaviour {
 
 		GameObject.Find("Canvas/DestroyUI/DestroyButton").GetComponent<Image>().enabled = !GameObject.Find("Canvas/DestroyUI/DestroyButton").GetComponent<Image>().enabled;
         GameObject.Find("Canvas/DestroyUI/DestroyButton/Text").SetActive(!GameObject.Find("Canvas/DestroyUI/DestroyButton/Text").activeInHierarchy); 
+
+		if(atFire){
+			ToggleCookingUI();
+		}else if(atFarm){
+			ToggleFarmUI();
+		}else if(atWaterPurifier){
+			ToggleWaterUI();
+		}
 	}
 
 	private void OnTriggerStay2D(Collider2D other){
@@ -336,18 +332,28 @@ public class Player : MonoBehaviour {
         {
 			atUse = false;
             atFire = false;
+			if (fireUIOpen) {
+				ToggleCookingUI ();
+			}
         }
 		if (other.tag == "Farm" && other == farmColliderID) {
 			atUse = false;
 			atFarm = false;
+			if (farmUIOpen) {
+				ToggleFarmUI ();
+			}
 		}
 		if (other.tag == "WaterPurifier" && other == waterColliderID) {
 			atUse = false;
 			atWaterPurifier = false;
+			if (waterUIOpen) {
+				ToggleWaterUI ();
+			}
 		}
     }
 
 	private void ToggleWaterUI(){
+		waterUIOpen = !waterUIOpen;
 		waterUI = waterColliderID.gameObject.GetComponent<WaterPurifier>().WaterUI;
 		foreach (Transform waterSlot in waterUI.transform) {
 			waterSlot.GetComponent<Image>().enabled = !waterSlot.GetComponent<Image>().enabled;
@@ -356,6 +362,7 @@ public class Player : MonoBehaviour {
 	}
 
 	private void ToggleFarmUI(){
+		farmUIOpen = !farmUIOpen;
 		farmingUI = farmColliderID.gameObject.GetComponent<Farming>().farmingUI;
 		foreach (Transform farmSlot in farmingUI.transform) {
 			farmSlot.GetComponent<Image>().enabled = !farmSlot.GetComponent<Image>().enabled;
@@ -364,6 +371,7 @@ public class Player : MonoBehaviour {
 	}
 
 	private void ToggleCookingUI(){
+		fireUIOpen = !fireUIOpen;
 		cook = fireColliderID.gameObject.GetComponent<Fire>().cookingUI;
 		foreach (Transform cookSlot in cook.transform) {
 			cookSlot.GetComponent<Image>().enabled = !cookSlot.GetComponent<Image>().enabled;
