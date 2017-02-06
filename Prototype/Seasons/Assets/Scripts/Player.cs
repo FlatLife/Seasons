@@ -159,6 +159,11 @@ public class Player : MonoBehaviour {
 							frameIndex = 1;
 							timeSinceLastFrame = 0;
 							playingFireStart = true;
+                            //getting the position that the player should be at
+                            Vector3 pos = fire.transform.position;
+                            pos.y += 0.8f;
+                            pos.x -= 0.75f;
+                            transform.position = pos;
 						}
 						break;
 					//if player is starting the fire
