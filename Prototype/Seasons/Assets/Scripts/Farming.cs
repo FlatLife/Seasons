@@ -11,7 +11,9 @@ public class Farming : MonoBehaviour {
     public FarmingUI farmingUI;
 
     public int carrotGrowTime = 15;
-    public int potatoGrowTime = 30;
+    public int potatoGrowTime = 45;
+	public int strawberryGrowTime = 30;
+	public int pineappleGrowTime = 60;
 	// Use this for initialization
 
 	void Awake () {
@@ -41,6 +43,10 @@ public class Farming : MonoBehaviour {
                         currentSlot.growTime = carrotGrowTime;
                         currentSlot.isGrowing = true;
                     }
+					//if (currentSlot.CurrentItem.type == ItemType.POTATOSEED && currentSlot.isGrowing == false) {
+						//currentSlot.growTime = potatoGrowTime;
+						//currentSlot.isGrowing = true;
+					//}
 					currentSlot.growTime -= !farmingUI.waterSlot.isEmpty && farmingUI.waterSlot.CurrentItem.type == ItemType.FRESHWATER ? (Time.deltaTime)*10 : Time.deltaTime;
                     if (currentSlot.growTime <= 0) {
                         growFood(currentSlot, ItemType.CARROTSEED, "Carrot");  

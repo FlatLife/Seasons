@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114930357241536834}
   - component: {fileID: 61245561608167878}
   m_Layer: 0
-  m_Name: Seeds
+  m_Name: CarrotSeeds
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,10 +67,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e217fa480781740208d799569bd39f51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Seeds
+  itemName: Carrot Seed
   type: 12
-  spriteNeutral: {fileID: 21300000, guid: 2373dce6f3770461bbc0045f8656c0ec, type: 3}
-  spriteHighlighted: {fileID: 21300000, guid: 2373dce6f3770461bbc0045f8656c0ec, type: 3}
+  spriteNeutral: {fileID: 21300000, guid: 79d79964b6c4c4c22ba5fc96c0ffb591, type: 3}
+  spriteHighlighted: {fileID: 21300000, guid: 0492471e0520b4aaaaa9ba71ca2e6f3c, type: 3}
   maxSize: 1
   isFood: 0
   isCrop: 1
@@ -108,7 +108,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2373dce6f3770461bbc0045f8656c0ec, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 79d79964b6c4c4c22ba5fc96c0ffb591, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
