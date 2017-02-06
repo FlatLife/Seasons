@@ -11,8 +11,8 @@ public class Farming : MonoBehaviour {
     public FarmingUI farmingUI;
 
     public int carrotGrowTime = 15;
-    public int potatoGrowTime = 45;
-	public int strawberryGrowTime = 30;
+    public int potatoGrowTime = 30;
+	public int strawberryGrowTime = 45;
 	public int pineappleGrowTime = 60;
 	// Use this for initialization
 
