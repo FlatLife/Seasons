@@ -35,6 +35,9 @@ public class Player2 : MonoBehaviour {
 	  	float verticalInput = Input.GetAxis("Vertical");
 		Player player = transform.GetComponent<Player>();
 		bool swimming = this.GetComponent<Player>().isSwimming;
+		if(player.playingCastRod || player.playingFireStart){
+			animRenderer.flipX = false;
+		}
 		if(swimming){
 			speed = waterSpeed;
 			this.GetComponent<Rigidbody2D>().gravityScale = 1;
