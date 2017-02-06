@@ -129,7 +129,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 			int lengthName = name.Length;
 			int lengthUse = use.Length;
 			lengthName = lengthName * 10;
-			lengthUse = lengthUse * 10;
+			lengthUse = lengthUse * 8;
 			RectTransform tooltipRect = tooltip.GetComponent<RectTransform> ();
 			tooltipRect.sizeDelta = new Vector2(lengthName, tooltipRect.sizeDelta.y);
 			Text tooltipText = tooltip.GetComponentInChildren<Text> ();

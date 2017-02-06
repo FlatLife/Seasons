@@ -21,12 +21,7 @@ public class Placeable : MonoBehaviour {
 			objectColliderID = other;
 		Debug.Log (objectColliderID);
 	}
-
-	void OnTriggerStay2D(Collider2D other){
 		
-			colliding = true;
-			objectColliderID = other;
-	}
 
 	void OnTriggerExit2D(Collider2D other){
 		if(other == objectColliderID){
