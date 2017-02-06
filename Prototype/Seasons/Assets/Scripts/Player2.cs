@@ -2,7 +2,13 @@
 
 public class Player2 : MonoBehaviour {
 	public float speed;
-
+	int walkingFrameIndex;
+	public float animationSpeed;
+	private Sprite[] walkingSprites;
+	private int skipFrames;
+	public Sprite standingSprite;
+    SpriteRenderer animRenderer;
+	float timeSinceLastFrame; 
 	public float maxSpeed;
 	public float waterSpeed;
 	public float landSpeed;
@@ -14,6 +20,14 @@ public class Player2 : MonoBehaviour {
 	private bool atRightWall;
 	private bool atOceanFloor;
 
+	void Start()
+	{
+		animRenderer = GetComponent<Renderer>() as SpriteRenderer;
+		walkingSprites = Resources.LoadAll<Sprite>("PlayerWalk");
+		Debug.Log(walkingSprites.Length);
+		walkingFrameIndex = 0;
+		skipFrames = 1;
+	}
 
 	// Update is called once per frame
 	void Update () {
@@ -30,6 +44,7 @@ public class Player2 : MonoBehaviour {
 			this.GetComponent<Rigidbody2D>().gravityScale = 0;
 			this.GetComponent<BoxCollider2D>().enabled = false;
 		}
+
 		// Move the player object
 		if(!swimming){
 			if(!player.openUI && !player.playingFireStart){
@@ -37,6 +52,21 @@ public class Player2 : MonoBehaviour {
 					this.GetComponent<Rigidbody2D>().velocity = new Vector3(horizontalInput * speed,verticalInput * speed + horizontalInput,0);
 				} else {
 					this.GetComponent<Rigidbody2D>().velocity = new Vector3(horizontalInput * speed,verticalInput * speed,0);
+				}
+				
+				// Animate walking
+				if (horizontalInput != 0 || verticalInput != 0 ) {
+					if(timeSinceLastFrame > animationSpeed){
+						animRenderer.flipX = horizontalInput < 0 ? true : horizontalInput > 0 ? false : animRenderer.flipX;
+						animRenderer.sprite = walkingSprites[walkingFrameIndex];
+						timeSinceLastFrame = 0;
+						skipFrames = skipFrames == 1 ? 2 : 1;
+						walkingFrameIndex = (walkingFrameIndex+skipFrames)%walkingSprites.Length;
+					} else{
+						timeSinceLastFrame = timeSinceLastFrame + Time.deltaTime;
+					}
+				} else {
+					animRenderer.sprite = standingSprite;
 				}
 			}else{
 				this.GetComponent<Rigidbody2D>().velocity = new Vector3(0.0f, 0.0f);
