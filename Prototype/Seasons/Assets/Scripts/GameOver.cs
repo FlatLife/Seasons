@@ -11,8 +11,10 @@ public class GameOver : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		DaysSurvived.text = "You Survived " + GameMaster.dayCount + " Days!";
-		HighScoreDaysSurvived.text = "Highscore: " + GameMaster.dayCount + " Days!";
+		if(DaysSurvived != null){
+			DaysSurvived.text = "You Survived " + GameMaster.dayCount + " Days!";
+			HighScoreDaysSurvived.text = "Highscore: " + GameMaster.dayCount + " Days!";
+		}
 	}
 	
 	// Update is called once per frame
