@@ -63,12 +63,8 @@ public class Fire : MonoBehaviour {
             if(frameIndex > lastFrame){
                 frameIndex = lastFrame - 4;
             }
-        //if fire is dead, display deadFire sprite    
-        } else {
-            animRenderer.sprite = animSprites[15];
-        }		    
-
-        for (int i = 0; i < slotNum; i++) {
+            
+            for (int i = 0; i < slotNum; i++) {
             Slot currentSlot = cookingUI.cookSlots[i].GetComponent<Slot>();
             //if checking the log slot
             if(i == slotNum - 1){
@@ -92,6 +88,12 @@ public class Fire : MonoBehaviour {
                 }
             }
         }
+        //if fire is dead, display deadFire sprite    
+        } else {
+            animRenderer.sprite = animSprites[15];
+        }		    
+
+        
     }
 
     void cookFood(Slot slot, ItemType itemType, string prefabName) {
