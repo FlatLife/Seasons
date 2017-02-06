@@ -39,24 +39,18 @@ public class Farming : MonoBehaviour {
                     } else {
                         currentSlot.GetComponent<Button>().interactable = true;
                     }
+
                     CheckFood(currentSlot);
 					currentSlot.growTime -= !farmingUI.waterSlot.isEmpty && farmingUI.waterSlot.CurrentItem.type == ItemType.FRESHWATER ? (Time.deltaTime)*10 : Time.deltaTime;
-                    if ((currentSlot.CurrentItem.type == ItemType.CARROTSEED ||
-                     currentSlot.CurrentItem.type == ItemType.CARROTGROW) && currentSlot.growTime <= 0) {
-                        growFood(currentSlot, ItemType.CARROTSEED, "CarrotGrow");  
-						growFood(currentSlot, ItemType.CARROTGROW, "Carrot");
-                    } else if ((currentSlot.CurrentItem.type == ItemType.POTATOSEED ||
-                    currentSlot.CurrentItem.type == ItemType.POTATOGROW) && currentSlot.growTime <= 0) {
-                        growFood(currentSlot, ItemType.POTATOSEED, "PotatoGrow");  
-						growFood(currentSlot, ItemType.POTATOGROW, "Potato");
-                    } else if ((currentSlot.CurrentItem.type == ItemType.PINEAPPLESEED ||
-                    currentSlot.CurrentItem.type == ItemType.PINEAPPLEGROW) && currentSlot.growTime <= 0) {
-                        growFood(currentSlot, ItemType.PINEAPPLESEED, "PineappleGrow");  
-						growFood(currentSlot, ItemType.PINEAPPLEGROW, "Pineapple");
-                    } else if ((currentSlot.CurrentItem.type == ItemType.STRAWBERRYSEED ||
-                    currentSlot.CurrentItem.type == ItemType.STRAWBERRYGROW) && currentSlot.growTime <= 0) {
-                        growFood(currentSlot, ItemType.STRAWBERRYSEED, "StrawberryGrow");  
-						growFood(currentSlot, ItemType.STRAWBERRYGROW, "Strawberries");
+                    
+                    if (currentSlot.CurrentItem.type == ItemType.CARROTSEED && currentSlot.growTime <= 0) { 
+						growFood(currentSlot, ItemType.CARROTSEED, "Carrot");
+                    } else if (currentSlot.CurrentItem.type == ItemType.POTATOSEED && currentSlot.growTime <= 0) {
+						growFood(currentSlot, ItemType.POTATOSEED, "Potato");
+                    } else if (currentSlot.CurrentItem.type == ItemType.PINEAPPLESEED && currentSlot.growTime <= 0) {
+						growFood(currentSlot, ItemType.PINEAPPLESEED, "Pineapple");
+                    } else if (currentSlot.CurrentItem.type == ItemType.STRAWBERRYSEED && currentSlot.growTime <= 0) { 
+						growFood(currentSlot, ItemType.STRAWBERRYSEED, "Strawberries");
                     }
                 }
             } else {
