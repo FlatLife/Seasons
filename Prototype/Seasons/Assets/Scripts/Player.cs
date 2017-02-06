@@ -200,7 +200,7 @@ public class Player : MonoBehaviour {
 				isSwimming = !isSwimming;
 				Vector3 pos = transform.position;
 				if(isSwimming){
-					transform.position = new Vector3(-21.33625f, 0.5240731f, pos.z);
+					transform.position = new Vector3(-21.33625f, -0.53626f, pos.z);
 				}else{
 					transform.position = new Vector3(-19.33625f, 0.2520248f, pos.z);
 				}
@@ -329,15 +329,15 @@ public class Player : MonoBehaviour {
         }
         if (other.tag == "Fire" && other == objectColliderID)
         {
-			atUse = true;
+			atUse = false;
             atFire = false;
         }
 		if (other.tag == "Farm" && other == objectColliderID) {
-			atUse = true;
+			atUse = false;
 			atFarm = false;
 		}
 		if (other.tag == "WaterPurifier" && other == objectColliderID) {
-			atUse = true;
+			atUse = false;
 			atWaterPurifier = false;
 		}
     }
