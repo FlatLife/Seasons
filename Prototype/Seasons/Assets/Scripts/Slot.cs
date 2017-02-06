@@ -13,7 +13,8 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 	public Sprite slotEmpty;
 	public Sprite slotHighlighted;
 	public float cookTime = 2;
-	public float growTime = 5;
+	public float growTime;
+	public bool isGrowing;
 	
 	public Item CurrentItem {
 		get {return currentItem;}
