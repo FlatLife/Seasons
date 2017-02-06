@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114400863699613038}
   m_Layer: 0
   m_Name: PlaceFarm
-  m_TagString: Farm
+  m_TagString: Build
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

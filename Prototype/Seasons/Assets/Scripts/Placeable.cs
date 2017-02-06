@@ -17,21 +17,19 @@ public class Placeable : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
-		if(other.tag != "Build"){
 			colliding = true;
 			objectColliderID = other;
-		}
+		Debug.Log (objectColliderID);
 	}
 
 	void OnTriggerStay2D(Collider2D other){
-		if(other.tag != "Build"){
+		
 			colliding = true;
 			objectColliderID = other;
-		}
 	}
 
 	void OnTriggerExit2D(Collider2D other){
-		if(other.tag != "Build" && other == objectColliderID){
+		if(other == objectColliderID){
 			colliding = false;
 		}
 	}

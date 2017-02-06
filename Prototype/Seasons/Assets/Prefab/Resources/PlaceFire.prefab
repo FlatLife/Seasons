@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114840435619372646}
   m_Layer: 0
   m_Name: PlaceFire
-  m_TagString: Fire
+  m_TagString: Build
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53,9 +53,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: -0.1}
+  m_Offset: {x: 0, y: -0.2}
   serializedVersion: 2
-  m_Size: {x: 2, y: 0.7}
+  m_Size: {x: 2.5, y: 1.4}
 --- !u!114 &114840435619372646
 MonoBehaviour:
   m_ObjectHideFlags: 1
