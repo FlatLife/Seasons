@@ -23,7 +23,10 @@ public class Player : MonoBehaviour {
 	public DestroyUI destroy;
 	private bool canTouch = false;
 	public bool switchSwimMode = false;
-    private Collider2D objectColliderID;
+    private Collider2D itemColliderID;
+	private Collider2D farmColliderID;
+	private Collider2D fireColliderID;
+	private Collider2D waterColliderID;
     Fire fire;
 	public int buttonSmash = 0;
 	float buttonPressed;
@@ -92,7 +95,7 @@ public class Player : MonoBehaviour {
 					timeSinceLastFrame = timeSinceLastFrame + Time.deltaTime;
 				}	
 			} else {
-				fire = objectColliderID.gameObject.GetComponent<Fire>();
+				fire = fireColliderID.gameObject.GetComponent<Fire>();
 				fire.fireState = 0;
 			}
 		}
@@ -148,7 +151,7 @@ public class Player : MonoBehaviour {
 			//Cooking minigame interaction
 
 			if(atFire){
-				fire = objectColliderID.gameObject.GetComponent<Fire>();
+				fire = fireColliderID.gameObject.GetComponent<Fire>();
 				switch (fire.fireState){
 					//if player hasnt begun to start the fire
 					case -1:
@@ -278,27 +281,26 @@ public class Player : MonoBehaviour {
         GameObject.Find("Canvas/DestroyUI/DestroyButton/Text").SetActive(!GameObject.Find("Canvas/DestroyUI/DestroyButton/Text").activeInHierarchy); 
 	}
 
-	private void OnTriggerEnter2D(Collider2D other){
+	private void OnTriggerStay2D(Collider2D other){
         //Collision with item on the ground
 		if (other.tag == "Item") {
-			
-			objectColliderID = other;
+			itemColliderID = other;
 			atUse = true;
 			canTouch = true;
 		}
 		if (other.tag == "Fire") {
-			objectColliderID = other;
+			fireColliderID = other;
 			//canTouch = false;
 			atUse = true;
 			atFire = true;
 		}
 		if (other.tag == "Farm") {
-			objectColliderID = other;
+			farmColliderID = other;
 			atUse = true;
 			atFarm = true;
 		}
 		if (other.tag == "WaterPurifier") {
-			objectColliderID = other;
+			waterColliderID = other;
 			atUse = true;
 			atWaterPurifier = true;
 		}
@@ -308,34 +310,35 @@ public class Player : MonoBehaviour {
         //If near an item on the ground pick it up first
 		if (canTouch) {
 			if (Input.GetKeyDown(KeyCode.E)) {
-				backpack.AddItem(objectColliderID.gameObject.GetComponent<Item>());
+				backpack.AddItem(itemColliderID.gameObject.GetComponent<Item>());
 			}
 		}
 	}
 
 	private void OnTriggerExit2D(Collider2D other){
-		if(other.tag == "Item" && other == objectColliderID)
+		if(other.tag == "Item" && other == itemColliderID)
         {
+			itemColliderID = null;
 			atUse = false;
             canTouch = false;
         }
-        if (other.tag == "Fire" && other == objectColliderID)
+        if (other.tag == "Fire" && other == fireColliderID)
         {
 			atUse = false;
             atFire = false;
         }
-		if (other.tag == "Farm" && other == objectColliderID) {
+		if (other.tag == "Farm" && other == farmColliderID) {
 			atUse = false;
 			atFarm = false;
 		}
-		if (other.tag == "WaterPurifier" && other == objectColliderID) {
+		if (other.tag == "WaterPurifier" && other == waterColliderID) {
 			atUse = false;
 			atWaterPurifier = false;
 		}
     }
 
 	private void ToggleWaterUI(){
-		waterUI = objectColliderID.gameObject.GetComponent<WaterPurifier>().WaterUI;
+		waterUI = waterColliderID.gameObject.GetComponent<WaterPurifier>().WaterUI;
 		foreach (Transform waterSlot in waterUI.transform) {
 			waterSlot.GetComponent<Image>().enabled = !waterSlot.GetComponent<Image>().enabled;
 		}
@@ -343,7 +346,7 @@ public class Player : MonoBehaviour {
 	}
 
 	private void ToggleFarmUI(){
-		farmingUI = objectColliderID.gameObject.GetComponent<Farming>().farmingUI;
+		farmingUI = farmColliderID.gameObject.GetComponent<Farming>().farmingUI;
 		foreach (Transform farmSlot in farmingUI.transform) {
 			farmSlot.GetComponent<Image>().enabled = !farmSlot.GetComponent<Image>().enabled;
 		}
@@ -351,7 +354,7 @@ public class Player : MonoBehaviour {
 	}
 
 	private void ToggleCookingUI(){
-		cook = objectColliderID.gameObject.GetComponent<Fire>().cookingUI;
+		cook = fireColliderID.gameObject.GetComponent<Fire>().cookingUI;
 		foreach (Transform cookSlot in cook.transform) {
 			cookSlot.GetComponent<Image>().enabled = !cookSlot.GetComponent<Image>().enabled;
 		}
