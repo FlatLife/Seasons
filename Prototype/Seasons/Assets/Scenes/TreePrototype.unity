@@ -2107,6 +2107,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  animationSpeed: 0
+  standingSprite: {fileID: 21300000, guid: fbc5b5eb0fda34a4b9f93d07fbd0460d, type: 3}
   maxSpeed: 5
   waterSpeed: 5
   landSpeed: 5

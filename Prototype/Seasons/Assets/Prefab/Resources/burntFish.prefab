@@ -53,13 +53,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Burnt Fish
+  itemUse: 
   type: 7
-  spriteNeutral: {fileID: 21300000, guid: 7bdd07921fc56418daf1a22ae733108a, type: 3}
-  spriteHighlighted: {fileID: 21300000, guid: 4511ec19ac17840abb18f65de6920fae, type: 3}
+  spriteNeutral: {fileID: 21300000, guid: b5b3204ad98084cdb925bb0639e6c80e, type: 3}
+  spriteHighlighted: {fileID: 21300000, guid: b5b3204ad98084cdb925bb0639e6c80e, type: 3}
   maxSize: 1
   isFood: 0
   isCrop: 0
   isFinishedCrop: 0
+  message: 
+  slot: {fileID: 0}
   keepItem: 0
   durability: 0
 --- !u!212 &212687955446574218
@@ -93,7 +96,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 323209428b6c02445acd53d481e8454e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b5b3204ad98084cdb925bb0639e6c80e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
