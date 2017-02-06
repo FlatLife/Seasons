@@ -12,8 +12,7 @@ public class SingleAnimation : MonoBehaviour {
     // Reference to the renderer of the sprite
     // game object
     SpriteRenderer animRenderer;
-
-    private float timeSinceLastFrame; 
+    float timeSinceLastFrame; 
 	// Use this for initialization
 	void Start () {
 		//Sets the animation to the first frame
