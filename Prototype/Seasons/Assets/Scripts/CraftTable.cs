@@ -8,7 +8,7 @@ public class CraftTable : MonoBehaviour {
 	public float slotSize;
 
 	public Backpack BackPack;
-	private RectTransform CraftTableRect;
+	//private RectTransform CraftTableRect;
 	public GameObject Slot1;
 	public GameObject Slot2;
 
@@ -33,7 +33,7 @@ public class CraftTable : MonoBehaviour {
 			RectTransform slotRect1 = Slot1.GetComponent<RectTransform>();
 			RectTransform slotRect2 = Slot2.GetComponent<RectTransform>();
 
-			CraftTableRect = GetComponent<RectTransform>();
+			//CraftTableRect = GetComponent<RectTransform>();
 
 			Slot1.name = "Slot1";
 			Slot2.name = "Slot2";
@@ -50,6 +50,7 @@ public class CraftTable : MonoBehaviour {
 			slotRect1.localPosition = new Vector3(60, -20);
 			slotRect1.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, slotSize);
 			slotRect1.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, slotSize);
+			
 
 			slotRect2.localPosition = new Vector3(130, -20);			
 			slotRect2.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, slotSize);

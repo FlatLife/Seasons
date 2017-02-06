@@ -20,6 +20,8 @@ public class DayCycle : MonoBehaviour {
 	void Start () {
 		dayCountText = GameObject.Find("DayCount").GetComponent<Text>();
 		GameMaster.dayCount = dayCount;
+		GameObject bottle = Instantiate(Resources.Load<GameObject>("messageBottle"));
+		bottle.GetComponent<Item>().message = "message" + dayCount;
 	}
 	
 	// Update is called once per frame
@@ -46,6 +48,7 @@ public class DayCycle : MonoBehaviour {
 			//spawn message in a bottle when day starts
 			if(bottleHasSpawned != true){
 				GameObject bottle = Instantiate(Resources.Load<GameObject>("messageBottle"));
+				bottle.GetComponent<Item>().message = "message" + dayCount;
 				bottleHasSpawned = true;
 			}
 			fade.GetComponent<ScreenFade>().FadeToClear();

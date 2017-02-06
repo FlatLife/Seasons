@@ -18,6 +18,7 @@ public class Item : MonoBehaviour {
 	public bool isCrop;
 	public bool isFinishedCrop;
 
+	public string message;
 	public Slot slot;
 	private Item newItem;
 	private BoxCollider2D collider;
@@ -90,6 +91,11 @@ public class Item : MonoBehaviour {
 				newItem.GetComponent<SpriteRenderer>().enabled = false;
 				slot.AddItem(newItem);
 				}
+				break;
+			case ItemType.BOTTLE:
+				toBeDeleted = true;
+				GameObject scroll = Instantiate (Resources.Load<GameObject> (message));
+				scroll.transform.position = GameObject.Find ("Player").transform.position;
 				break;
 		}
 		return toBeDeleted;

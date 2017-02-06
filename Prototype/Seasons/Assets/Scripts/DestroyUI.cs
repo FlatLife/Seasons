@@ -7,7 +7,7 @@ public class DestroyUI : MonoBehaviour {
 
 	public GameObject destroySlot;
 	public GameObject slotPrefab;
-	private RectTransform DestroyUIRect;
+	//private RectTransform DestroyUIRect;
 	public float slotSize;
 
 	// Use this for initialization
@@ -23,7 +23,7 @@ public class DestroyUI : MonoBehaviour {
 	public void CreateDestroyUI() {
 		destroySlot = (GameObject)Instantiate(slotPrefab);
 		RectTransform destroySlotRect = destroySlot.GetComponent<RectTransform>();
-		DestroyUIRect = GetComponent<RectTransform>();
+		//DestroyUIRect = GetComponent<RectTransform>();
 		destroySlot.name = "DestroySlot";
 		destroySlot.transform.SetParent(this.transform);
 
