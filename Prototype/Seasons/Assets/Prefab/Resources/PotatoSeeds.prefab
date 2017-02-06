@@ -37,7 +37,7 @@ Transform:
   m_GameObject: {fileID: 1178860528635572}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.2347573, y: 2.7439036, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -68,6 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Potato Seed
+  itemUse: 
   type: 22
   spriteNeutral: {fileID: 21300000, guid: 6226fecf0e9c446c690ddac4138ae4a6, type: 3}
   spriteHighlighted: {fileID: 21300000, guid: 6226fecf0e9c446c690ddac4138ae4a6, type: 3}
@@ -75,6 +76,8 @@ MonoBehaviour:
   isFood: 0
   isCrop: 1
   isFinishedCrop: 0
+  message: 
+  slot: {fileID: 0}
   keepItem: 0
   durability: 0
 --- !u!212 &212920620716723712
