@@ -93,6 +93,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 
 	public void UseItem() {
 		if (!isEmpty) {
+			currentItem.slot = this;
 			bool toDelete = currentItem.Use();
 			if (toDelete) {
 				DestroyItem();
