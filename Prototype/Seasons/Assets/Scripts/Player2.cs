@@ -24,7 +24,6 @@ public class Player2 : MonoBehaviour {
 	{
 		animRenderer = GetComponent<Renderer>() as SpriteRenderer;
 		walkingSprites = Resources.LoadAll<Sprite>("PlayerWalk");
-		Debug.Log(walkingSprites.Length);
 		walkingFrameIndex = 0;
 		skipFrames = 1;
 	}
@@ -52,7 +51,7 @@ public class Player2 : MonoBehaviour {
 		if(!swimming){
 			if(!player.openUI && !player.playingFireStart && !player.playingCastRod){
 				if (onBeach) {
-					this.GetComponent<Rigidbody2D>().velocity = new Vector3(horizontalInput * speed,verticalInput * speed + horizontalInput,0);
+					this.GetComponent<Rigidbody2D>().velocity = new Vector3(horizontalInput * speed,verticalInput * speed + horizontalInput * 2,0);
 				} else {
 					this.GetComponent<Rigidbody2D>().velocity = new Vector3(horizontalInput * speed,verticalInput * speed,0);
 				}
