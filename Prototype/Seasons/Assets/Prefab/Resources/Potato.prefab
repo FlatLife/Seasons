@@ -73,16 +73,16 @@ MonoBehaviour:
   spriteNeutral: {fileID: 21300000, guid: a2910dba4e39040768c78a6f7fdea1a2, type: 3}
   spriteHighlighted: {fileID: 21300000, guid: a2910dba4e39040768c78a6f7fdea1a2, type: 3}
   maxSize: 1
-  isFood: 0
+  isFood: 1
   isCrop: 0
   isFinishedCrop: 1
   message: 
   slot: {fileID: 0}
   keepItem: 0
   durability: 0
-  cookTime: 0
+  cookTime: 25
   growTime: 0
-  nextItem: 
+  nextItem: BakedPotato
 --- !u!212 &212914109539944828
 SpriteRenderer:
   m_ObjectHideFlags: 1
