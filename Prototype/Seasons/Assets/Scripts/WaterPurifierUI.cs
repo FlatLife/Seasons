@@ -9,8 +9,12 @@ public class WaterPurifierUI : MonoBehaviour {
 	public float slotSize;
 	private Backpack BackPack;
 	private RectTransform WaterUIRect;
+
+	public GameObject info;
 	public Slot FreshWaterSlot;
 	public Slot SaltWaterSlot;
+
+
 
 	public void Initialize() {
 		RectTransform uiRect = this.GetComponent<RectTransform>();
@@ -35,5 +39,13 @@ public class WaterPurifierUI : MonoBehaviour {
 		SaltWaterRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, slotSize);
 		SaltWaterRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, slotSize);
 		SaltWaterSlot.GetComponent<Image>().enabled = false;
+
+		info = Instantiate(Resources.Load<GameObject>("Info"));
+		info.transform.SetParent(this.transform);
+		info.GetComponent<InformationPopup>().info = "WaterHelp";
+		info.GetComponent<RectTransform>().localPosition = new Vector3(200, -25);
+		info.GetComponent<RectTransform>().sizeDelta = new Vector3(25,25);
+		info.GetComponent<Image>().enabled = false;
+
 	}
 }
