@@ -29,6 +29,7 @@ public class Item : MonoBehaviour {
 	public bool keepItem;
 	public int durability;
 	public int cookTime;
+	public int growTime;
 	public string nextItem;
 
 	// Returns boolean for whether the item should be deleted or not
@@ -68,7 +69,9 @@ public class Item : MonoBehaviour {
 			case ItemType.PINEAPPLE:
 				toBeDeleted = true;
 				hunger = GameObject.Find("HungerBar");
-				hunger.GetComponent<BarScript>().increment(0.4f);
+				thirst = GameObject.Find("ThirstBar");
+				hunger.GetComponent<BarScript>().increment(0.3f);
+				thirst.GetComponent<BarScript>().increment(0.1f);
 				break;
 			case ItemType.FIREPREP:
 				toBeDeleted = true;
