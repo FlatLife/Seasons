@@ -85,7 +85,9 @@ public class Fire : MonoBehaviour {
 
                         if (currentSlot.cookTime <= 0) {
                             currentSlot.ClearSlot();
-                            currentSlot.AddItem(Instantiate(Resources.Load<Item>(currentSlot.CurrentItem.nextItem)));
+                            Item item = Instantiate(Resources.Load<Item>(currentSlot.CurrentItem.nextItem));
+                            currentSlot.AddItem(item);
+                            item.transform.position = new Vector3 (0,20f,0);
                             currentSlot.isCooking = false;
                         }
                     }
