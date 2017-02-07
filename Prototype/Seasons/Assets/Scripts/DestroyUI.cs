@@ -7,6 +7,7 @@ public class DestroyUI : MonoBehaviour {
 
 	public GameObject destroySlot;
 	public GameObject slotPrefab;
+	public GameObject info;
 	//private RectTransform DestroyUIRect;
 	public float slotSize;
 
@@ -30,7 +31,14 @@ public class DestroyUI : MonoBehaviour {
 		destroySlotRect.localPosition = new Vector3(46, -20);
 		destroySlotRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, slotSize);
 		destroySlotRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, slotSize);
+		
+		info = Instantiate(Resources.Load<GameObject>("Info"));
+		info.transform.SetParent(this.transform);
+		info.GetComponent<InformationPopup>().info = "DestroyHelp";
+		info.GetComponent<RectTransform>().localPosition = new Vector3(105, -25);
+		info.GetComponent<RectTransform>().sizeDelta = new Vector3(25,25);
 
+		info.GetComponent<Image>().enabled = false;
 		destroySlot.GetComponent<Image>().enabled = false;
 	}
 

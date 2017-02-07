@@ -382,10 +382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0e1b6c2eb2ae4f41a39a4f033726750, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 0}
-  itemChoice: 0
   spawnProbability: 0
-  xAxisChange: 0
   coolDown: 5
 --- !u!212 &315841529
 SpriteRenderer:
@@ -843,6 +840,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroySlot: {fileID: 0}
   slotPrefab: {fileID: 1032774612882832, guid: 1046856afdf9c4d5891a11c611ccab04, type: 2}
+  info: {fileID: 0}
   slotSize: 40
 --- !u!114 &548612500
 MonoBehaviour:
@@ -2893,10 +2891,12 @@ MonoBehaviour:
   rows: 4
   slotPaddingLeft: 20
   slotPaddingTop: 20
+  slotPaddingVeryTop: 50
   slotSize: 40
   slotPrefab: {fileID: 1032774612882832, guid: 1046856afdf9c4d5891a11c611ccab04, type: 2}
   allSlots: []
   iconPrefab: {fileID: 1059737987419112, guid: 0ac614e9beb31402a9a39ea7c3a2f4f5, type: 2}
+  info: {fileID: 0}
   canvas: {fileID: 1696044806}
 --- !u!114 &1142074037
 MonoBehaviour:
@@ -2946,7 +2946,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 30, y: -50}
+  m_AnchoredPosition: {x: 30, y: -33}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1254516786
@@ -5665,6 +5665,7 @@ MonoBehaviour:
   BackPack: {fileID: 1142074036}
   Slot1: {fileID: 0}
   Slot2: {fileID: 0}
+  info: {fileID: 0}
 --- !u!114 &2102721540
 MonoBehaviour:
   m_ObjectHideFlags: 0
