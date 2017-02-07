@@ -244,6 +244,7 @@ public class Player : MonoBehaviour {
 		openUI = !openUI;
 		craft.Slot1.GetComponent<Image>().enabled = !craft.Slot1.GetComponent<Image>().enabled;
         craft.Slot2.GetComponent<Image>().enabled = !craft.Slot2.GetComponent<Image>().enabled;
+		craft.info.GetComponent<Image>().enabled = !craft.info.GetComponent<Image>().enabled;
 		craft.Slot1.GetComponentInChildren<Text>().enabled = !craft.Slot1.GetComponentInChildren<Text>().enabled;
 		craft.Slot2.GetComponentInChildren<Text>().enabled = !craft.Slot2.GetComponentInChildren<Text>().enabled;
 		destroy.destroySlot.GetComponent<Image>().enabled = !destroy.destroySlot.GetComponent<Image>().enabled;
@@ -254,10 +255,12 @@ public class Player : MonoBehaviour {
             }
 
         backpack.GetComponent<Image>().enabled = !backpack.GetComponent<Image>().enabled;
+		backpack.info.GetComponent<Image>().enabled = !backpack.GetComponent<Image>().enabled;
 
         craft.GetComponent<Image>().enabled = !craft.GetComponent<Image>().enabled;
         craft.enabled = !craft.enabled;
 
+		destroy.info.GetComponent<Image>().enabled = !destroy.info.GetComponent<Image>().enabled;
 		destroy.GetComponent<Image>().enabled = !destroy.GetComponent<Image>().enabled;
 		destroy.destroySlot.GetComponentInChildren<Text>().enabled = !destroy.destroySlot.GetComponentInChildren<Text>().enabled;
 		destroy.enabled = !destroy.enabled;

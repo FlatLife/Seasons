@@ -9,13 +9,14 @@ public class Backpack : MonoBehaviour {
 	private float backpackWidth, backpackHeight; 
 	public int slots;
 	public int rows;
-	public float slotPaddingLeft, slotPaddingTop;
+	public float slotPaddingLeft, slotPaddingTop, slotPaddingVeryTop;
 	public float slotSize;
 	public GameObject slotPrefab;
 	public List<GameObject> allSlots;
 	private static int emptySlot;	
 	private Slot from, to;
 	public GameObject iconPrefab;
+	public GameObject info;
 	private static GameObject hoverObject;
 	public Canvas canvas;
 
@@ -41,10 +42,17 @@ public class Backpack : MonoBehaviour {
 		allSlots = new List<GameObject>();
 		emptySlot = slots;
 		backpackWidth = (slots / rows) * (slotSize + slotPaddingLeft) + slotPaddingLeft;
-		backpackHeight = rows * (slotSize + slotPaddingTop) + slotPaddingTop;
+		backpackHeight = rows * (slotSize + slotPaddingTop) + slotPaddingTop + 30;
 		backpackRect = GetComponent<RectTransform>();
 		backpackRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, backpackWidth);
 		backpackRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, backpackHeight);
+
+		info = Instantiate(Resources.Load<GameObject>("Info"));
+		info.transform.SetParent(this.transform);
+		info.GetComponent<InformationPopup>().info = "InvHelp";
+		info.GetComponent<RectTransform>().localPosition = new Vector3(230, -25);
+		info.GetComponent<RectTransform>().sizeDelta = new Vector3(25,25);
+		info.GetComponent<Image>().enabled = false;
 		int columns = slots / rows;
 
 		for (int y = 0; y < rows; y++) {
@@ -55,7 +63,11 @@ public class Backpack : MonoBehaviour {
 				newSlot.name = "Slot";
 				newSlot.transform.SetParent(this.transform);
 				//places the slots in the inventory in each column, then row
-				slotRect.localPosition = new Vector3(slotPaddingLeft * (x + 1) + (slotSize * x), -slotPaddingTop * (y+1) - (slotSize * y));
+				if(y == 0){
+					slotRect.localPosition = new Vector3(slotPaddingLeft * (x + 1) + (slotSize * x), -slotPaddingVeryTop * (y+1) - (slotSize * y));
+				}else{
+					slotRect.localPosition = new Vector3(slotPaddingLeft * (x + 1) + (slotSize * x), (-slotPaddingTop * (y+1)) - 30 - (slotSize * y));
+				}
 				slotRect.sizeDelta = new Vector3(slotSize, slotSize);
 				allSlots.Add(newSlot);
 				newSlot.GetComponent<Image>().enabled = false;

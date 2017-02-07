@@ -11,6 +11,7 @@ public class CraftTable : MonoBehaviour {
 	//private RectTransform CraftTableRect;
 	public GameObject Slot1;
 	public GameObject Slot2;
+	public GameObject info;
 
 
 	// Use this for initialization
@@ -56,8 +57,15 @@ public class CraftTable : MonoBehaviour {
 			slotRect2.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, slotSize);
 			slotRect2.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, slotSize);
 
+			info = Instantiate(Resources.Load<GameObject>("Info"));
+			info.transform.SetParent(this.transform);
+			info.GetComponent<InformationPopup>().info = "CraftHelp";
+			info.GetComponent<RectTransform>().localPosition = new Vector3(200, -25);
+			info.GetComponent<RectTransform>().sizeDelta = new Vector3(25,25);
 			
+
 			
+			info.GetComponent<Image>().enabled = false;
 			Slot1.GetComponent<Image>().enabled = false;
 			Slot2.GetComponent<Image>().enabled = false;
 	
