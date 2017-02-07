@@ -3,7 +3,8 @@
 
 public enum ItemType {NONE, FISHINGROD, STICK, WOOD, VINE, RAWFISH, COOKEDFISH, BURNTFISH, ROCK,
 	ICE, HATCHET, BUCKET, CARROTSEED, HOE, SALTWATER, FRESHWATER, CARROT, CLOTHES, FIREPREP, BOTTLE, 
-	WATERPURIFIER, SEAWEED, POTATOSEED, PINEAPPLESEED, STRAWBERRYSEED, POTATO, PINEAPPLE, STRAWBERRIES };
+	WATERPURIFIER, SEAWEED, POTATOSEED, PINEAPPLESEED, STRAWBERRYSEED, POTATO, PINEAPPLE, STRAWBERRIES,
+	RAWTROUT, RAWSALMON, RAWGUPPY, COOKEDTROUT, COOKEDSALMON, COOKEDGUPPY };
 
 
 public class Item : MonoBehaviour {
@@ -27,15 +28,27 @@ public class Item : MonoBehaviour {
 	private PlaceObjects builder;
 	public bool keepItem;
 	public int durability;
+	public int cookTime;
+	public string nextItem;
 
 	// Returns boolean for whether the item should be deleted or not
 	public bool Use() {
 		bool toBeDeleted = false;
 		switch(type) {
-		case ItemType.COOKEDFISH:
+			case ItemType.COOKEDGUPPY:
 				toBeDeleted = true;
 				hunger  = GameObject.Find("HungerBar");
 				hunger.GetComponent<BarScript>().increment(0.15f);
+				break;
+			case ItemType.COOKEDTROUT:
+				toBeDeleted = true;
+				hunger  = GameObject.Find("HungerBar");
+				hunger.GetComponent<BarScript>().increment(0.30f);
+				break;
+			case ItemType.COOKEDSALMON:
+				toBeDeleted = true;
+				hunger  = GameObject.Find("HungerBar");
+				hunger.GetComponent<BarScript>().increment(0.45f);
 				break;
 			case ItemType.CARROT:
 				toBeDeleted = true;
