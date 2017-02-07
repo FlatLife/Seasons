@@ -116,19 +116,7 @@ public class Player : MonoBehaviour {
 			}
 		}
 
-		//keys to test bars
-		if (Input.GetKeyDown(KeyCode.Alpha1)) {
-			health.CurrentVal-=10;
-		}
-		if (Input.GetKeyDown(KeyCode.Alpha2)) {
-			hunger.CurrentVal-=10;
-		}
-		if (Input.GetKeyDown(KeyCode.Alpha3)) {
-			warmth.CurrentVal-=10;
-		}
-		if (Input.GetKeyDown(KeyCode.Alpha4)) {
-			thirst.CurrentVal-=10;
-		}
+		
 		OnCollisionUpdate();
 		Fishing fish = GetComponent<Fishing> ();
 

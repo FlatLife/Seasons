@@ -26,31 +26,29 @@ public class Farming : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        // Cycles through each slot in our array of farming slots
 		for (int i = 0; i < slotNum; i++) {
             Slot currentSlot = farmingUI.farmSlots[i].GetComponent<Slot>();
 
             if(!currentSlot.isEmpty) {
-                // checks that our item in the slot is a crop and not a random item before we make it grow
+                if (!currentSlot.CurrentItem.isFinishedCrop) {
+                    currentSlot.GetComponent<Button>().interactable = false;
+                } else {
+                    currentSlot.GetComponent<Button>().interactable = true;
+                }
                 if (currentSlot.CurrentItem.isCrop) {
-                     // this chunk of code is to ensure the player can only remove the crop once it's finished growing
-                    if (!currentSlot.CurrentItem.isFinishedCrop) {
-                        currentSlot.GetComponent<Button>().interactable = false;
-                    } else {
-                        currentSlot.GetComponent<Button>().interactable = true;
+                    if (currentSlot.isGrowing == false) {
+                        currentSlot.growTime = currentSlot.CurrentItem.growTime;
+                        currentSlot.isGrowing = true;
                     }
 
-                    CheckFood(currentSlot);
-					currentSlot.growTime -= !farmingUI.waterSlot.isEmpty && farmingUI.waterSlot.CurrentItem.type == ItemType.FRESHWATER ? (Time.deltaTime)*10 : Time.deltaTime;
-                    
-                    if (currentSlot.CurrentItem.type == ItemType.CARROTSEED && currentSlot.growTime <= 0) { 
-						growFood(currentSlot, ItemType.CARROTSEED, "Carrot");
-                    } else if (currentSlot.CurrentItem.type == ItemType.POTATOSEED && currentSlot.growTime <= 0) {
-						growFood(currentSlot, ItemType.POTATOSEED, "Potato");
-                    } else if (currentSlot.CurrentItem.type == ItemType.PINEAPPLESEED && currentSlot.growTime <= 0) {
-						growFood(currentSlot, ItemType.PINEAPPLESEED, "Pineapple");
-                    } else if (currentSlot.CurrentItem.type == ItemType.STRAWBERRYSEED && currentSlot.growTime <= 0) { 
-						growFood(currentSlot, ItemType.STRAWBERRYSEED, "Strawberries");
+                    currentSlot.growTime -= Time.deltaTime;
+
+                    if (currentSlot.growTime <= 0) {
+                        currentSlot.ClearSlot();
+                        Item item = Instantiate(Resources.Load<Item>(currentSlot.CurrentItem.nextItem));
+                        currentSlot.AddItem(item);
+                        item.transform.position = new Vector3 (0,20f,0);
+                        currentSlot.isGrowing = false;
                     }
                 }
             } else {
@@ -58,30 +56,4 @@ public class Farming : MonoBehaviour {
             }
         }
     }
-
-    public void CheckFood(Slot slot) {
-        if (slot.CurrentItem.type == ItemType.CARROTSEED && slot.isGrowing == false) {
-            slot.growTime = carrotGrowTime;
-            slot.isGrowing = true;
-        } else if (slot.CurrentItem.type == ItemType.POTATOSEED && slot.isGrowing == false) {
-            slot.growTime = potatoGrowTime;
-            slot.isGrowing = true;
-        } else if (slot.CurrentItem.type == ItemType.PINEAPPLESEED && slot.isGrowing == false) {
-            slot.growTime = pineappleGrowTime;
-            slot.isGrowing = true;
-        } else if (slot.CurrentItem.type == ItemType.STRAWBERRYSEED && slot.isGrowing == false) {
-            slot.growTime = strawberryGrowTime;
-            slot.isGrowing = true;
-        }
-    }
-
-	public void growFood(Slot slot, ItemType itemType, string prefabName) {
-        if (slot.CurrentItem.type == itemType && slot.growTime <= 0) {
-            slot.ClearSlot();
-            slot.AddItem(Resources.Load<Item>(prefabName));
-            slot.growTime = carrotGrowTime;
-            slot.isGrowing = false;
-            slot.GetComponent<Button>().interactable = true;
-        }
-	}
 }

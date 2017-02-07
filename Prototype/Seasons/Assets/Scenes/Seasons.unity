@@ -382,6 +382,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0e1b6c2eb2ae4f41a39a4f033726750, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnProbability: 0
+  coolDown: 20
 --- !u!212 &315841529
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3654,7 +3656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backpack: {fileID: 1142074035}
-  fishChance: 0.05
+  fishChance: 0.001
   fishPrefab: {fileID: 4057177441259352, guid: 05cc5609a849f654d8131240912b56be, type: 2}
   isFishing: 0
   minigame: 0
