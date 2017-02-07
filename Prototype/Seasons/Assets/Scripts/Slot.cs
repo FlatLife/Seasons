@@ -12,10 +12,10 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 	public Text stackTxt;
 	public Sprite slotEmpty;
 	public Sprite slotHighlighted;
-	public float cookTime = 2;
+	public float cookTime;
 	public float growTime;
 	public bool isGrowing;
-	
+	public bool isCooking;
 	public Item CurrentItem {
 		get {return currentItem;}
 		set {currentItem = value;}
