@@ -255,7 +255,7 @@ public class Player : MonoBehaviour {
             }
 
         backpack.GetComponent<Image>().enabled = !backpack.GetComponent<Image>().enabled;
-		backpack.info.GetComponent<Image>().enabled = !backpack.GetComponent<Image>().enabled;
+		backpack.info.GetComponent<Image>().enabled = !backpack.info.GetComponent<Image>().enabled;
 
         craft.GetComponent<Image>().enabled = !craft.GetComponent<Image>().enabled;
         craft.enabled = !craft.enabled;
