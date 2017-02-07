@@ -65,6 +65,8 @@ MonoBehaviour:
   slot: {fileID: 0}
   keepItem: 0
   durability: 0
+  cookTime: 0
+  nextItem: 
 --- !u!212 &212443575951970832
 SpriteRenderer:
   m_ObjectHideFlags: 1

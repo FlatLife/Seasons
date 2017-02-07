@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Fishing : MonoBehaviour {
 
  private Transform text;
@@ -14,6 +15,8 @@ public class Fishing : MonoBehaviour {
 	public Transform rodAlert;
 	public Transform canvas;
 	GameObject alert;
+	//Used to spawn items in backpack for fishing
+	Item item;
 
 
 
@@ -37,7 +40,15 @@ public class Fishing : MonoBehaviour {
 
 		if (minigame && hasCaught) {
 			Backpack inv = backpack.GetComponent<Backpack> ();
-			Item item = (Resources.Load("rawFish") as GameObject).GetComponent<Item>();
+			float randNum = Random.Range(0f,1f);
+			//Random chance of catching different fish
+			if (randNum < 0.6f) {
+				item = (Resources.Load("rawGuppy") as GameObject).GetComponent<Item>();
+			} else if (randNum > 0.6f && randNum < 0.9f) {
+				item = (Resources.Load("rawTrout") as GameObject).GetComponent<Item>();
+			} else if (randNum > 0.9f) {
+				item = (Resources.Load("rawSalmon") as GameObject).GetComponent<Item>();
+			}
 			inv.AddItem(item);
 			Destroy (alert);
 			stop ();

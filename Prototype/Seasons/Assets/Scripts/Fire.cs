@@ -76,15 +76,19 @@ public class Fire : MonoBehaviour {
                 //check food slots               
                 if(!currentSlot.isEmpty) {
                     if (currentSlot.CurrentItem.isFood) {
+                        if (currentSlot.isCooking == false) {
+                            currentSlot.cookTime = currentSlot.CurrentItem.cookTime;
+                            currentSlot.isCooking = true;
+                        }
+
                         currentSlot.cookTime -= Time.deltaTime;
+
                         if (currentSlot.cookTime <= 0) {
-                            cookFood(currentSlot, ItemType.RAWFISH, "cookedFish");
-                            cookFood(currentSlot, ItemType.COOKEDFISH, "burntFish");
-                            
+                            currentSlot.ClearSlot();
+                            currentSlot.AddItem(Instantiate(Resources.Load<Item>(currentSlot.CurrentItem.nextItem)));
+                            currentSlot.isCooking = false;
                         }
                     }
-                } else {
-                    currentSlot.cookTime = 2;
                 }
             }
         }
@@ -92,17 +96,8 @@ public class Fire : MonoBehaviour {
         } else {
             animRenderer.sprite = animSprites[15];
         }		    
-
-        
     }
 
-    void cookFood(Slot slot, ItemType itemType, string prefabName) {
-        if (slot.CurrentItem.type == itemType && slot.cookTime <= 0) {
-            slot.ClearSlot();
-            slot.AddItem(Resources.Load<Item>(prefabName));
-            slot.cookTime = 2;
-        }
-    }
 
     void changeState(int state, int increaseOrDecrease){
         burnTime = 50;
@@ -120,7 +115,7 @@ public class Fire : MonoBehaviour {
 
     public void startFire(){
         fireState = 3;
-        burnTime = 50;
+        burnTime = 150;
         lastFrame = 14;
         frameIndex = 10;
     }
