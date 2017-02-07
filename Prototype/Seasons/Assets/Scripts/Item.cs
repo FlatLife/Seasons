@@ -4,7 +4,7 @@
 public enum ItemType {NONE, FISHINGROD, STICK, WOOD, VINE, RAWFISH, COOKEDFISH, BURNTFISH, ROCK,
 	ICE, HATCHET, BUCKET, CARROTSEED, HOE, SALTWATER, FRESHWATER, CARROT, CLOTHES, FIREPREP, BOTTLE, 
 	WATERPURIFIER, SEAWEED, POTATOSEED, PINEAPPLESEED, STRAWBERRYSEED, POTATO, PINEAPPLE, STRAWBERRIES,
-	RAWTROUT, RAWSALMON, RAWGUPPY, COOKEDTROUT, COOKEDSALMON, COOKEDGUPPY };
+	RAWTROUT, RAWSALMON, RAWGUPPY, COOKEDTROUT, COOKEDSALMON, COOKEDGUPPY, BAKEDPOTATO, ROASTEDCARROT };
 
 
 public class Item : MonoBehaviour {
@@ -60,6 +60,11 @@ public class Item : MonoBehaviour {
 				toBeDeleted = true;
 				hunger = GameObject.Find("HungerBar");
 				hunger.GetComponent<BarScript>().increment(0.2f);
+				break;
+			case ItemType.BAKEDPOTATO:
+				toBeDeleted = true;
+				hunger = GameObject.Find("HungerBar");
+				hunger.GetComponent<BarScript>().increment(0.35f);
 				break;
 			case ItemType.STRAWBERRIES:
 				toBeDeleted = true;
