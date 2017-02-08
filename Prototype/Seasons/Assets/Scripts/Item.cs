@@ -33,6 +33,7 @@ public class Item : MonoBehaviour {
 	public int growTime;
 	public string nextItem;
 	public float zOffset;
+	public float instantiateTime;
 
 	// Variables for item falling
 	float fallSpeed = 5;
