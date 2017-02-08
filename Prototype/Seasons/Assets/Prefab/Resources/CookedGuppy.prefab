@@ -80,8 +80,10 @@ MonoBehaviour:
   slot: {fileID: 0}
   keepItem: 0
   durability: 0
-  cookTime: 2
+  cookTime: 30
+  growTime: 0
   nextItem: BurntFish
+  zOffset: 0
 --- !u!212 &212618138141483760
 SpriteRenderer:
   m_ObjectHideFlags: 1

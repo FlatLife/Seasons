@@ -11,13 +11,15 @@ public class FarmingUI : MonoBehaviour {
 	private RectTransform FarmingUIRect;
 	public Slot[] farmSlots;
 	public Slot waterSlot;
+	private RectTransform backpackRef;
 
 	
 	public void Initialize(int slotCount) {
+		backpackRef = GameObject.Find("Backpack").GetComponent<RectTransform>();
 		farmSlots = new Slot[slotCount];
 		RectTransform uiRect = this.GetComponent<RectTransform>();
 		uiRect.sizeDelta = new Vector3((slotSize * slotCount + slotSize) , (slotSize + slotSize/2) * 2, 0);
-		uiRect.position = new Vector3(350,550);
+		uiRect.position = new Vector3(backpackRef.rect.x + 280, -backpackRef.rect.y + 350);
 		for (int i = 0; i < slotCount; i++) {
 			Slot farmSlot = Instantiate(slotPrefab);
 			RectTransform slotRect = farmSlot.GetComponent<RectTransform>();
@@ -36,9 +38,10 @@ public class FarmingUI : MonoBehaviour {
 		waterSlot = Instantiate(slotPrefab);
 		waterSlot.name = "WaterSlot";
 		RectTransform waterRect = waterSlot.GetComponent<RectTransform>();
-		waterRect.localPosition = new Vector3(820,500);
-		waterRect.sizeDelta = new Vector3(slotSize, slotSize);
 		waterSlot.transform.SetParent(this.transform);
+		//waterRect.localPosition = new Vector3(uiRect.localPosition.x + uiRect.rect.width ,uiRect.localPosition.y);
+		waterRect.localPosition = new Vector3(uiRect.rect.width+(slotSize/2),-(uiRect.rect.height)/2+(slotSize/2));
+		waterRect.sizeDelta = new Vector3(slotSize, slotSize);	
 		waterSlot.GetComponent<Image>().enabled = false;
 		waterSlot.GetComponent<Image>().sprite = Resources.Load<Sprite>("slotUnhighlightedBucket");
 		SpriteState state =  new SpriteState();

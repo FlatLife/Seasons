@@ -80,8 +80,10 @@ MonoBehaviour:
   slot: {fileID: 0}
   keepItem: 0
   durability: 0
-  cookTime: 2
+  cookTime: 20
+  growTime: 0
   nextItem: CookedGuppy
+  zOffset: 0
 --- !u!212 &212734868702992326
 SpriteRenderer:
   m_ObjectHideFlags: 1
