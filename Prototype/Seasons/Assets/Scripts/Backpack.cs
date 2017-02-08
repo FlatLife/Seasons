@@ -9,7 +9,7 @@ public class Backpack : MonoBehaviour {
 	private float backpackWidth, backpackHeight; 
 	public int slots;
 	public int rows;
-	public float slotPaddingLeft, slotPaddingTop, slotPaddingVeryTop;
+	public float slotPaddingLeft, slotPaddingTop;
 	public float slotSize;
 	public GameObject slotPrefab;
 	public List<GameObject> allSlots;
@@ -63,7 +63,7 @@ public class Backpack : MonoBehaviour {
 				newSlot.transform.SetParent(this.transform);
 				//places the slots in the inventory in each column, then row
 				if(y == 0){
-					slotRect.localPosition = new Vector3(slotPaddingLeft * (x + 1) + (slotSize * x), -slotPaddingVeryTop * (y+1) - (slotSize * y));
+					slotRect.localPosition = new Vector3(slotPaddingLeft * (x + 1) + (slotSize * x), (-slotPaddingTop-30) * (y+1) - (slotSize * y));
 				}else{
 					slotRect.localPosition = new Vector3(slotPaddingLeft * (x + 1) + (slotSize * x), (-slotPaddingTop * (y+1)) - 30 - (slotSize * y));
 				}

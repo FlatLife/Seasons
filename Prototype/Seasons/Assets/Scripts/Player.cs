@@ -140,7 +140,6 @@ public class Player : MonoBehaviour {
 				}
 			}
 			}
-		}
 
 			if (fish.minigame) {
 				timeToCatch -= Time.deltaTime;
@@ -226,6 +225,7 @@ public class Player : MonoBehaviour {
 					transform.position = new Vector3(-19.33625f, 0.2520248f, pos.z);
 				}
 			}
+		}
 
 
 		if(Input.GetKeyDown(KeyCode.Q)) {
