@@ -38,23 +38,34 @@ public class Item : MonoBehaviour {
 	float fallSpeed = 5;
 	float yAxisEnd;
 	bool falling;
-	public bool isFalling {
-		get { return falling; }
-		set { falling = value;}
-	}
-
+	private Transform shadow;
+	private float shadowPositionY;
 	// Use this for initialization
-	void Start () {
+	public void InitializeFall () {
 		yAxisEnd = Random.Range(-2.5f, 4.5f);
+		shadow = transform.Find("Shadow");
+		if (shadow != null) {
+			shadowPositionY = shadow.transform.localPosition.y;
+			shadow.transform.position = new Vector3(transform.position.x, yAxisEnd, 0);
+			shadow.transform.localPosition = new Vector3(shadow.transform.localPosition.x, shadow.transform.localPosition.y + shadowPositionY, shadow.transform.localPosition.z);
+		}
+		falling = true;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if(falling && yAxisEnd < transform.position.y){
 			transform.Translate(Vector3.down * fallSpeed * Time.deltaTime);
-			transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y + zOffset);
-		} else { 
+			transform.position = new Vector3(transform.position.x, transform.position.y, yAxisEnd + zOffset);
+			if (shadow != null) {
+				shadow.transform.Translate(Vector3.up * fallSpeed * Time.deltaTime);
+			}
+		} else if (falling) { 
 			falling = false;
+			transform.position = new Vector3(transform.position.x, yAxisEnd, transform.position.z);
+			if (shadow != null) {
+				shadow.localPosition = new Vector3(shadow.localPosition.x, shadowPositionY, shadow.localPosition.z);
+			}
 		}
 	}
 

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4604063651993798}
   - component: {fileID: 212625854236746128}
   m_Layer: 0
-  m_Name: 'Shadow '
+  m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

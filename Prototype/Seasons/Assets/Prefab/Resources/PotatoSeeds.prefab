@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 4924761881166120}
   - component: {fileID: 212932705063849084}
   m_Layer: 0
-  m_Name: Shadow (3)
+  m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -113,7 +113,7 @@ MonoBehaviour:
   cookTime: 0
   growTime: 30
   nextItem: Potato
-  zOffset: 0.4
+  zOffset: 0.7
 --- !u!212 &212920620716723712
 SpriteRenderer:
   m_ObjectHideFlags: 1
