@@ -4,13 +4,23 @@ using UnityEngine;
 
 public class TreeSpawn : MonoBehaviour {
 	Item item;
+	List<Item> items = new List<Item>();
 	public float spawnProbability;
 	public float coolDown = 20;
 	public int removeTime;
 	
 	// Update is called once per frame
 	void Update () {
-		if(Random.Range(0f,1f) > spawnProbability && (coolDown <= 0)){
+		//check if any items have been picked up if the list is full
+		if(items.Count >= 10){
+			for(int i = items.Count - 1; i >= 0; i--){
+				if(items[i] == null){
+					items.RemoveAt(i);
+				}
+			}
+		}
+		//if it is time to spawn an item
+		if(coolDown <= 0){
 			int itemChoice = Random.Range(0, 4);
 			switch (itemChoice){
 				case 0:
@@ -47,11 +57,11 @@ public class TreeSpawn : MonoBehaviour {
 			}
 			//add the x axis change
 			item.transform.position = new Vector3(xAxisChange, transform.position.y, 0);
-			item.InitializeFall(removeTime);
+			item.InitializeFall();
 			//add item drop script
 			coolDown = 20;
-			} else {
+		} else {
 				coolDown -= Time.deltaTime;
-			}
 		}
+	}
 }
