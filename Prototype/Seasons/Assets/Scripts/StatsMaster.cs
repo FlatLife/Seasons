@@ -24,6 +24,11 @@ public class StatsMaster : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(GameMaster.isWinter){
+			warmth.GetComponent<BarScript>().decrement(0.0001f);
+		} else if(warmth.GetComponent<BarScript>().returnAmount() > 0.5f){				
+			warmth.GetComponent<BarScript>().decrement(0.00005f);
+		}
 		time -= Time.deltaTime;
 		if(time < 0f){
 			hunger.GetComponent<BarScript>().decrement(0.01f);
@@ -35,14 +40,9 @@ public class StatsMaster : MonoBehaviour {
 			if(thirst.GetComponent<BarScript>().barEmpty()){
 				health.GetComponent<BarScript>().decrement(0.005f);
 			}
-			if(GameMaster.isWinter){
-				warmth.GetComponent<BarScript>().decrement(0.005f);
-			}
 		}
 		if(health.GetComponent<BarScript>().barEmpty()){
 			SceneManager.LoadScene("GameOver");
 		}
 	}
-
-
 }
