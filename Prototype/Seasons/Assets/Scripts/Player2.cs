@@ -30,7 +30,6 @@ public class Player2 : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		 if(Time.timeScale == 0)return;
 	  	float horizontalInput = Input.GetAxis("Horizontal");
 	  	float verticalInput = Input.GetAxis("Vertical");
 		Player player = transform.GetComponent<Player>();

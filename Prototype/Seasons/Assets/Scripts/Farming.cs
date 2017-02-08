@@ -26,7 +26,6 @@ public class Farming : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-         if(Time.timeScale == 0)return;
 		for (int i = 0; i < slotNum; i++) {
             Slot currentSlot = farmingUI.farmSlots[i].GetComponent<Slot>();
 

@@ -22,7 +22,6 @@ public class Waves : MonoBehaviour {
 	}
 
 	void Update() {
-		 if(Time.timeScale == 0)return;
 		GameObject player = GameObject.FindGameObjectWithTag ("Player");
 		BuoyancyEffector2D effector = GetComponent<BuoyancyEffector2D> ();
 		LineRenderer lineRenderer = GetComponent<LineRenderer>();
