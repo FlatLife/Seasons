@@ -134,19 +134,19 @@ public class Player : MonoBehaviour {
 			//Fishing minigame interaction
 			if(canFish){
 				if (fish.isFishing && !fish.minigame) {
-				performingAction = false;
-				fish.stop ();
-			} else if(!fish.isFishing){
-				//setting up animation values to play
-				timeToCatch = 2.0f;
-				fish.fish ();
-				if(fish.isFishing){
-					performingAction = true;
-					playingCastRod = true;
-					timeSinceLastFrame = 0;
-					frameIndex = 14;
+					performingAction = false;
+					fish.stop ();
+				} else if(!fish.isFishing){
+					//setting up animation values to play
+					timeToCatch = 2.0f;
+					fish.fish ();
+					if(fish.isFishing){
+						performingAction = true;
+						playingCastRod = true;
+						timeSinceLastFrame = 0;
+						frameIndex = 14;
+					}
 				}
-			}
 			}
 
 			if (fish.minigame) {

@@ -63,6 +63,7 @@ public class Item : MonoBehaviour {
 			transform.position = new Vector3(transform.position.x, transform.position.y, yAxisEnd + zOffset);
 			if (shadow != null) {
 				shadow.transform.Translate(Vector3.up * fallSpeed * Time.deltaTime);
+				shadow.GetComponent<SpriteRenderer>().color = new Color(1,1,1,transform.position.y-shadow.position.y < 3f ? 1/(transform.position.y-shadow.position.y) : 0);
 			}
 		} else if (falling) { 
 			falling = false;
