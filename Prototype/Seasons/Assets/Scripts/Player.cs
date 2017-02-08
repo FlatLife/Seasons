@@ -68,10 +68,10 @@ public class Player : MonoBehaviour {
 		thirst = new Stat();
 		warmth = new Stat();
 		water = new Stat();
-		health.bar = GameObject.Find("Canvas/HealthBar").GetComponent<BarScript>();
-		hunger.bar = GameObject.Find("Canvas/HungerBar").GetComponent<BarScript>();
-		thirst.bar = GameObject.Find("Canvas/ThirstBar").GetComponent<BarScript>();
-		warmth.bar = GameObject.Find("Canvas/WarmthBar").GetComponent<BarScript>();
+		health.bar = GameObject.Find("Canvas/Stats/Health").GetComponent<BarScript>();
+		hunger.bar = GameObject.Find("Canvas/Stats/Hunger").GetComponent<BarScript>();
+		thirst.bar = GameObject.Find("Canvas/Stats/Thirst").GetComponent<BarScript>();
+		warmth.bar = GameObject.Find("Canvas/Stats/Warmth").GetComponent<BarScript>();
 		water.bar = GameObject.Find("Canvas/WaterBar").GetComponent<BarScript>();
 		health.currentVal = 100;
 		hunger.currentVal = 100;

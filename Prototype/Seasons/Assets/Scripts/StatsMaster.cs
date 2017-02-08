@@ -15,10 +15,10 @@ public class StatsMaster : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		health = GameObject.Find("HealthBar");
-		thirst = GameObject.Find("ThirstBar");
-		hunger = GameObject.Find("HungerBar");
-		warmth = GameObject.Find("WarmthBar");
+		health = GameObject.Find("Health");
+		thirst = GameObject.Find("Thirst");
+		hunger = GameObject.Find("Hunger");
+		warmth = GameObject.Find("Warmth");
 
 	}
 	
