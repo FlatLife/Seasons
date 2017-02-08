@@ -12,6 +12,7 @@ public class DayCycle : MonoBehaviour {
 	bool bottleHasSpawned;
 
 	private Text dayCountText;
+	private Text season;
 
 	public static int dayCount = 1;
 	public float dayLength;
@@ -19,6 +20,7 @@ public class DayCycle : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		dayCountText = GameObject.Find("DayCount").GetComponent<Text>();
+		season = GameObject.Find("Season").GetComponent<Text>();
 		GameMaster.dayCount = dayCount;
 		GameObject bottle = Instantiate(Resources.Load<GameObject>("messageBottle"));
 		bottle.GetComponent<Item>().message = "message" + dayCount;
@@ -39,6 +41,11 @@ public class DayCycle : MonoBehaviour {
 				GameMaster.dayCount = dayCount;
 				if(dayCount % 5 == 0){
 					GameMaster.isWinter = !GameMaster.isWinter;
+					if(GameMaster.isWinter){
+						season.text = "Winter";
+					} else {
+						season.text = "Summer";
+					}
 				}
 			}
 			fadingIn = true;
