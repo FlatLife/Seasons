@@ -28,6 +28,7 @@ public class Fishing : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		 if(Time.timeScale == 0)return;
 		if (isFishing && !minigame) {
 			delay -= Time.deltaTime;
 			if(Random.Range(0f,1f) < fishChance  && Time.timeScale != 0 && delay < 0f){ 

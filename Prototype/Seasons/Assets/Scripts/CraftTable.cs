@@ -59,7 +59,9 @@ public class CraftTable : MonoBehaviour {
 
 			info = Instantiate(Resources.Load<GameObject>("Info"));
 			info.transform.SetParent(this.transform);
-			info.GetComponent<InformationPopup>().info = "CraftHelp";
+			info.GetComponent<InformationPopup>().info = "Use this UI to create new Items. \nPlace an item in each slot to craft a new item if it matches a recipe.\n note: some recipes only need one slot with an item in it.";
+			info.GetComponent<InformationPopup>().width = 300;
+			info.GetComponent<InformationPopup>().height = 100;
 			info.GetComponent<RectTransform>().localPosition = new Vector3(200, -25);
 			info.GetComponent<RectTransform>().sizeDelta = new Vector3(25,25);
 			

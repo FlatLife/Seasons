@@ -23,6 +23,7 @@ public class PlaceObjects : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		 if(Time.timeScale == 0)return;
 		if(buildMode){
 			if(hoverObject == null){
 				hoverObject = Instantiate(Resources.Load<GameObject>(placeItem));
@@ -40,7 +41,7 @@ public class PlaceObjects : MonoBehaviour {
 
 			// Makes sure object is not outside island
 			int layerMask = 1 << 8 | 1 << 9;
-			int hit = Physics2D.LinecastNonAlloc(Camera.main.ScreenToWorldPoint(centerPosition), Camera.main.ScreenToWorldPoint(Input.mousePosition), new RaycastHit2D[1], layerMask);
+			int hit = Physics2D.LinecastNonAlloc(Camera.main.ScreenToWorldPoint(centerPosition - new Vector3(0, 4f,0)), Camera.main.ScreenToWorldPoint(Input.mousePosition), new RaycastHit2D[1], layerMask);
 			canBuild = canBuild ? hit == 0 : false;
 			
 

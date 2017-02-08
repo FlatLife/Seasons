@@ -6,23 +6,42 @@ using UnityEngine.UI;
 public class CookingUI : MonoBehaviour {
 
 	public GameObject slotPrefab;
+	public GameObject info;
 	public float slotSize;
 	public GameObject[] cookSlots;
 
 	public void Initialize(int slotCount) {
 		cookSlots = new GameObject[slotCount];
 		RectTransform uiRect = this.GetComponent<RectTransform>();
-		uiRect.sizeDelta = new Vector3(slotSize * slotCount + slotSize, slotSize + slotSize/2, 0);
-		uiRect.position = new Vector3(400,200);
+		uiRect.sizeDelta = new Vector3(280, 150);
+		uiRect.position = new Vector3(400,400);
+		info = Instantiate(Resources.Load<GameObject>("Info"));
+		info.transform.SetParent(this.transform);
+		info.GetComponent<InformationPopup>().info = "Use this UI to cook your food. \n Place items you wish to cook in the three slots at the top.\n Use the bottom slot to put wood on the fire and keep the fire going.";
+		info.GetComponent<InformationPopup>().width = 300;
+		info.GetComponent<InformationPopup>().height = 100;
+		info.GetComponent<RectTransform>().localPosition = new Vector3(250	, -25);
+		info.GetComponent<RectTransform>().sizeDelta = new Vector3(25,25);
+		info.GetComponent<Image>().enabled = false;
 		for (int i = 0; i < slotCount; i++) {
 			GameObject cookSlot = (GameObject)Instantiate(slotPrefab);
 			RectTransform slotRect = cookSlot.GetComponent<RectTransform>();
 			cookSlot.name = "Cook Slot " + i;
 			cookSlot.transform.SetParent(this.transform);
-			slotRect.localPosition = new Vector3(slotSize/(slotCount+1) + (slotSize/(slotCount+1) + slotSize) * i, -slotSize/4);
+			if(i < 3){
+				slotRect.localPosition = new Vector3(60 * (i+1), -30);
+			}else{
+				slotRect.localPosition = new Vector3(120, -90);
+				cookSlot.GetComponent<Image>().sprite = Resources.Load<Sprite>("slotUnhighlightedWood");;
+				SpriteState state =  new SpriteState();
+				state.highlightedSprite = Resources.Load<Sprite>("slotHighlightedWood");
+				cookSlot.GetComponent<Button>().spriteState = state;
+			}
 			slotRect.sizeDelta = new Vector3(slotSize, slotSize);
 			cookSlot.GetComponent<Image>().enabled = false;
 			cookSlots[i] = cookSlot;
+
+			
 		}
 	}
 }

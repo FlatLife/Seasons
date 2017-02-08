@@ -16,6 +16,7 @@ public class ItemDrop : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		 if(Time.timeScale == 0)return;
 		if(yAxisEnd < transform.position.y && falling){
 			transform.Translate(Vector3.down * speed * Time.deltaTime);
 		} else {
