@@ -15,7 +15,7 @@ public class GUIManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(player.atUse){
+		if(player.atUse && !player.performingAction){
 			if(popup == null){
 				popup = Instantiate(Resources.Load<GameObject>("EKey"), this.transform);
 			}

@@ -31,14 +31,14 @@ public class StatsMaster : MonoBehaviour {
 		}
 		time -= Time.deltaTime;
 		if(time < 0f){
-			hunger.GetComponent<BarScript>().decrement(0.01f);
-			thirst.GetComponent<BarScript>().decrement(0.01f);
+			hunger.GetComponent<BarScript>().decrement(0.03f);
+			thirst.GetComponent<BarScript>().decrement(0.05f);
 			time = 5f;
 			if(hunger.GetComponent<BarScript>().barEmpty()){
 				health.GetComponent<BarScript>().decrement(0.005f);
 			}
 			if(thirst.GetComponent<BarScript>().barEmpty()){
-				health.GetComponent<BarScript>().decrement(0.005f);
+				health.GetComponent<BarScript>().decrement(0.05f);
 			}
 		}
 		if(health.GetComponent<BarScript>().barEmpty()){

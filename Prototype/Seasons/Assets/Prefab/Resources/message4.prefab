@@ -9,45 +9,46 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1878230888786414}
+  m_RootGameObject: {fileID: 1628348344679334}
   m_IsPrefabParent: 1
---- !u!1 &1878230888786414
+--- !u!1 &1628348344679334
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4948804995336428}
-  - component: {fileID: 212897238256461434}
-  - component: {fileID: 114930357241536834}
-  - component: {fileID: 61245561608167878}
+  - component: {fileID: 4531729193828508}
+  - component: {fileID: 212001877695048776}
+  - component: {fileID: 114216691777416678}
+  - component: {fileID: 114106544461617150}
+  - component: {fileID: 61466947728441738}
   m_Layer: 0
-  m_Name: CarrotSeeds
-  m_TagString: Item
+  m_Name: message4
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4948804995336428
+--- !u!4 &4531729193828508
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1878230888786414}
+  m_GameObject: {fileID: 1628348344679334}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.58, y: 4.56, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61245561608167878
+--- !u!61 &61466947728441738
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1878230888786414}
+  m_GameObject: {fileID: 1628348344679334}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -55,40 +56,54 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 4, y: 4}
---- !u!114 &114930357241536834
+  m_Size: {x: 9, y: 8}
+--- !u!114 &114106544461617150
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1878230888786414}
+  m_GameObject: {fileID: 1628348344679334}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e217fa480781740208d799569bd39f51, type: 3}
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Carrot Seed
-  itemUse: 
-  type: 12
-  spriteNeutral: {fileID: 21300000, guid: 79d79964b6c4c4c22ba5fc96c0ffb591, type: 3}
-  spriteHighlighted: {fileID: 21300000, guid: 79d79964b6c4c4c22ba5fc96c0ffb591, type: 3}
-  maxSize: 1
-  isFood: 0
-  isCrop: 1
-  isFinishedCrop: 0
-  message: 
-  slot: {fileID: 0}
-  keepItem: 0
-  durability: 0
-  cookTime: 0
-  growTime: 15
-  nextItem: Carrot
---- !u!212 &212897238256461434
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114216691777416678}
+          m_MethodName: close
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
+--- !u!114 &114216691777416678
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1628348344679334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25e5c4d584f20984d9780d853f92f598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!212 &212001877695048776
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1878230888786414}
+  m_GameObject: {fileID: 1628348344679334}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -112,9 +127,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: -307886313
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 79d79964b6c4c4c22ba5fc96c0ffb591, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 74982f12d67d3a343a1a47a5f295e330, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

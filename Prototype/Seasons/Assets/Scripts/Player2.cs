@@ -49,7 +49,7 @@ public class Player2 : MonoBehaviour {
 
 		// Move the player object
 		if(!swimming){
-			if(!player.openUI && !player.playingFireStart && !player.playingCastRod){
+			if(!player.openUI && !player.playingFireStart && !player.performingAction){
 				if (onBeach) {
 					this.GetComponent<Rigidbody2D>().velocity = new Vector3(horizontalInput * speed,verticalInput * speed + horizontalInput * 2,0);
 				} else {
