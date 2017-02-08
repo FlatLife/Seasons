@@ -22,11 +22,18 @@ public class DayCycle : MonoBehaviour {
 	private Transform ocean;
 
 	Color[] colorStates = {new Color(0.988f, 0.613f, 0.378f, 1),
-						   new Color(0.866f, 0.82f, 0.725f, 1),
-						   new Color(0.7f, 0.85f, 0.95f, 1),
-						   new Color(0.7f, 0.85f, 0.95f, 1),
+						   new Color(0.95f, 0.95f, 0.95f, 1),
+						   new Color(1f, 1f, 1f, 1),
+						   new Color(1f, 1f, 1f, 1),
 						   new Color(0.988f, 0.613f, 0.378f, 1),
 						   new Color(0.113f, 0.329f, 0.439f, 1)};
+
+	Color[] skyStates = {new Color(0.988f, 0.413f, 0.278f, 1),
+						 new Color(0.5f, 0.8f, 0.95f, 1),
+						 new Color(0.5f, 0.8f, 0.95f, 1),
+						 new Color(0.988f, 0.613f, 0.378f, 1),
+						 new Color(0.053f, 0.129f, 0.239f, 1),
+						 new Color(0.053f, 0.129f, 0.239f, 1)};
 
 	int currentColorState = 1;
 
@@ -69,6 +76,7 @@ public class DayCycle : MonoBehaviour {
 		}
 
 		if(fadeTime <= 0 && fadingIn){
+			currentColorState = 1;
 			//spawn message in a bottle when day starts
 			if(bottleHasSpawned != true){
 				GameObject bottle = Instantiate(Resources.Load<GameObject>("messageBottle"));
@@ -78,7 +86,6 @@ public class DayCycle : MonoBehaviour {
 			fade.GetComponent<ScreenFade>().FadeToClear();
 		}
 		if(fade.GetComponent<SpriteRenderer>().color.a < 0.05f && fadingIn){
-			currentColorState = 1;
 			dayTime = dayLength;
 			fadeTime = 2f;
 			fadingIn = false;
@@ -87,17 +94,20 @@ public class DayCycle : MonoBehaviour {
 		float transition = (((dayLength - dayTime) / dayLength) * (colorStates.Length - 1)) % 1;	
 		if (((dayLength - dayTime) / dayLength) > ((1f / (colorStates.Length - 1)) * (currentColorState)) && (currentColorState + 1) < colorStates.Length) {
 			currentColorState++;
-		}
+		}			
 		
-		Color firstState = colorStates[currentColorState]; 
-		Color secondState = colorStates[currentColorState-1];
-		Color effectColour = new Color(((firstState.r - secondState.r) * transition) + secondState.r, 
+		Color tintColour = interpolateColor(colorStates[currentColorState], colorStates[currentColorState-1], transition);
+		Color skyColour = interpolateColor(skyStates[currentColorState], skyStates[currentColorState-1], transition);
+		island.GetComponent<SpriteRenderer>().color = tintColour;
+		tree.GetComponent<SpriteRenderer>().color = tintColour;
+		ocean.GetComponent<SpriteRenderer>().color = tintColour;
+		Camera.main.backgroundColor = skyColour;
+	}
+
+	Color interpolateColor(Color firstState, Color secondState, float transition) {
+		return new Color(((firstState.r - secondState.r) * transition) + secondState.r, 
 								 ((firstState.g - secondState.g) * transition) + secondState.g,
 								 ((firstState.b - secondState.b) * transition) + secondState.b,
 								   1);
-		island.GetComponent<SpriteRenderer>().color = effectColour;
-		tree.GetComponent<SpriteRenderer>().color = effectColour;
-		ocean.GetComponent<SpriteRenderer>().color = effectColour;
-		Camera.main.backgroundColor = effectColour;
 	}
 }
