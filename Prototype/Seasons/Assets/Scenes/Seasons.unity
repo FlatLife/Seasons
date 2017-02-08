@@ -606,7 +606,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0e1b6c2eb2ae4f41a39a4f033726750, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  item: {fileID: 0}
+  groundItems: []
+  itemChoice: 0
+  seedChoice: 0
   spawnProbability: 0
+  xAxisChange: 0
   coolDown: 20
 --- !u!212 &315841529
 SpriteRenderer:
@@ -5296,6 +5301,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1883274116}
   - component: {fileID: 1883274117}
+  - component: {fileID: 1883274118}
   m_Layer: 0
   m_Name: OceanFloor
   m_TagString: RightWall
@@ -5330,6 +5336,17 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 3, y: 0.1}
+--- !u!114 &1883274118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1883274115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e9dc337cda1c4f46bd31b3f810bae3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1907184317
 GameObject:
   m_ObjectHideFlags: 0
