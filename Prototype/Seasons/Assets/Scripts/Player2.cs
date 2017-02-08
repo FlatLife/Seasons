@@ -18,6 +18,7 @@ public class Player2 : MonoBehaviour {
 
 	private bool atRightWall;
 	private bool atOceanFloor;
+	public StatsMaster statsRef;
 
 	void Start()
 	{
