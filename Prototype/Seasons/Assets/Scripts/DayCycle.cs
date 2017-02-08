@@ -20,6 +20,7 @@ public class DayCycle : MonoBehaviour {
 	private Transform island;
 	private Transform tree;
 	private Transform ocean;
+	private Transform sunIcon;
 
 	Color[] colorStates = {new Color(0.988f, 0.613f, 0.378f, 1),
 						   new Color(0.95f, 0.95f, 0.95f, 1),
@@ -31,8 +32,8 @@ public class DayCycle : MonoBehaviour {
 	Color[] skyStates = {new Color(0.988f, 0.413f, 0.278f, 1),
 						 new Color(0.5f, 0.8f, 0.95f, 1),
 						 new Color(0.5f, 0.8f, 0.95f, 1),
+						 new Color(0.5f, 0.8f, 0.95f, 1),
 						 new Color(0.988f, 0.613f, 0.378f, 1),
-						 new Color(0.053f, 0.129f, 0.239f, 1),
 						 new Color(0.053f, 0.129f, 0.239f, 1)};
 
 	int currentColorState = 1;
@@ -48,6 +49,7 @@ public class DayCycle : MonoBehaviour {
 		island = GameObject.Find("Island").transform;
 		tree = GameObject.Find("Tree").transform;
 		ocean = GameObject.Find("Ocean Background").transform;
+		sunIcon = GameObject.Find("Canvas/Stats/Sun Icon").transform;
 	}
 	
 	// Update is called once per frame
@@ -102,6 +104,8 @@ public class DayCycle : MonoBehaviour {
 		tree.GetComponent<SpriteRenderer>().color = tintColour;
 		ocean.GetComponent<SpriteRenderer>().color = tintColour;
 		Camera.main.backgroundColor = skyColour;
+
+		sunIcon.localPosition = Vector3.Lerp(new Vector3(0-sunIcon.parent.GetComponent<RectTransform>().rect.width/2, sunIcon.localPosition.y), new Vector3(0+sunIcon.parent.GetComponent<RectTransform>().rect.width/2, sunIcon.localPosition.y),((dayLength - dayTime) / dayLength));
 	}
 
 	Color interpolateColor(Color firstState, Color secondState, float transition) {
