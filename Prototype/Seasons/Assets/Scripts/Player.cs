@@ -100,6 +100,7 @@ public class Player : MonoBehaviour {
 				fire.fireState = 0;
 			}
 		}
+
 		//animation for casting rod
 		if(playingCastRod){
 			if(frameIndex < 34){
@@ -116,39 +117,42 @@ public class Player : MonoBehaviour {
 			}
 		}
 
-		//keys to test bars
-		if (Input.GetKeyDown(KeyCode.Alpha1)) {
-			health.CurrentVal-=10;
-		}
-		if (Input.GetKeyDown(KeyCode.Alpha2)) {
-			hunger.CurrentVal-=10;
-		}
-		if (Input.GetKeyDown(KeyCode.Alpha3)) {
-			warmth.CurrentVal-=10;
-		}
-		if (Input.GetKeyDown(KeyCode.Alpha4)) {
-			thirst.CurrentVal-=10;
-		}
+		
 		OnCollisionUpdate();
 		Fishing fish = GetComponent<Fishing> ();
 
 		//If player is pressing the interaction key
-		if (Input.GetKeyDown (KeyCode.E) && !fish.isFishing) {
+		if (Input.GetKeyDown (KeyCode.E)) {
 			//Fishing minigame interaction
 			if(canFish){
-				if (fish.isFishing) {
+				if (fish.isFishing && !fish.minigame) {
 				performingAction = false;
 				fish.stop ();
-			} else {
+			} else if(!fish.isFishing){
 				//setting up animation values to play
-				playingCastRod = true;
-				timeSinceLastFrame = 0;
-				frameIndex = 14;
-				performingAction = true;
 				timeToCatch = 2.0f;
 				fish.fish ();
+				if(fish.isFishing){
+					performingAction = true;
+					playingCastRod = true;
+					timeSinceLastFrame = 0;
+					frameIndex = 14;
 				}
 			}
+			}
+		}
+
+			if (fish.minigame) {
+				timeToCatch -= Time.deltaTime;
+				if (timeToCatch < 0.0f) {
+					fish.minigame = false;
+					timeToCatch = 2.0f;
+				}else if(Input.GetKeyDown (KeyCode.E)){
+					fish.hasCaught = true;
+					performingAction = false;
+				}
+			}
+		
 			
 			//Cooking minigame interaction
 			if(atFire){
@@ -222,18 +226,7 @@ public class Player : MonoBehaviour {
 					transform.position = new Vector3(-19.33625f, 0.2520248f, pos.z);
 				}
 			}
-		}
 
-		if (fish.minigame) {
-			timeToCatch -= Time.deltaTime;
-			if (timeToCatch < 0.0f) {
-				fish.minigame = false;
-				timeToCatch = 2.0f;
-			}else if(Input.GetKeyDown (KeyCode.Space)){
-				fish.hasCaught = true;
-				performingAction = false;
-			}
-		}
 
 		if(Input.GetKeyDown(KeyCode.Q)) {
 			ToggleUI();
