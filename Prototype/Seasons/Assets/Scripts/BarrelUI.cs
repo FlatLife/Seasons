@@ -11,12 +11,24 @@ public class BarrelUI : MonoBehaviour {
 	private RectTransform barrelUIRect;
 	public Slot bucketEmptySlot;
 	public Slot bucketFillSlot;
-
+	public GameObject WaterBar;
+	public GameObject WaterMask;
+	public RectTransform WaterBarRect;
+	public RectTransform WaterMaskRect;
 
 	public void Initialize() {
+		WaterBar = GameObject.Find("WaterBar");
+		WaterMask = GameObject.Find("WaterBar/Mask");
+		WaterBarRect = WaterBar.GetComponent<RectTransform>();
+		WaterMaskRect = WaterMask.GetComponent<RectTransform>();
+		
 		RectTransform uiRect = this.GetComponent<RectTransform>();
 		uiRect.sizeDelta = new Vector3(200, 300, 0);
 		uiRect.position = new Vector3(600,400);
+		WaterBarRect.localPosition = new Vector3(180, -16);
+		WaterMaskRect.localPosition = new Vector3(7, -8);
+		WaterBar.transform.SetParent(this.transform);
+		WaterMask.transform.SetParent(this.WaterBar.transform);
 
 		bucketEmptySlot = Instantiate(slotPrefab);
 		bucketEmptySlot.name = "FreshWaterSlot";

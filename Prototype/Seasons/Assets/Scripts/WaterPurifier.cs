@@ -7,6 +7,7 @@ public class WaterPurifier : MonoBehaviour {
 	public Canvas canvas;
 	public WaterPurifierUI WaterUI;
 	public float waterPurify = 3f;
+	private GameObject water;
 	// Use this for initialization
 
 	void Awake () {
@@ -15,6 +16,7 @@ public class WaterPurifier : MonoBehaviour {
 		WaterUI.name = "WaterPurifierUI";
 		WaterUI.Initialize();
 		WaterUI.transform.SetParent(canvas.transform);
+		water = GameObject.Find("WaterBar");
 	}
 	
 	// Update is called once per frame
