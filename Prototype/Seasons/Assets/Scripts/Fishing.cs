@@ -13,6 +13,7 @@ public class Fishing : MonoBehaviour {
 	public bool minigame = false;
 	public bool hasCaught = false;
 	public Transform rodAlert;
+	public float delay;
 	public Transform canvas;
 	GameObject alert;
 	//Used to spawn items in backpack for fishing
@@ -28,13 +29,15 @@ public class Fishing : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (isFishing && !minigame) {
-			if(Random.Range(0f,1f) < fishChance  && Time.timeScale != 0){ 
+			delay -= Time.deltaTime;
+			if(Random.Range(0f,1f) < fishChance  && Time.timeScale != 0 && delay < 0f){ 
 				alert = Instantiate(Resources.Load<GameObject>("alert"));
 				minigame = true;
 				Vector3 position = transform.position;
 				position.y += 3;
 				alert.transform.position = position;
 				Destroy (alert.gameObject, 2.0f);
+				delay = 2f;
 			}
 		}
 
