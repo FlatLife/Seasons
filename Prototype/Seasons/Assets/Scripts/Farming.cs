@@ -41,7 +41,12 @@ public class Farming : MonoBehaviour {
                         currentSlot.isGrowing = true;
                     }
 
-                    currentSlot.growTime -= Time.deltaTime;
+                    if(GameMaster.isWinter){
+                        currentSlot.growTime -= Time.deltaTime/2;
+                    } else {
+                        currentSlot.growTime -= Time.deltaTime;
+                    }
+                    
 
                     if (currentSlot.growTime <= 0) {
                         currentSlot.ClearSlot();
