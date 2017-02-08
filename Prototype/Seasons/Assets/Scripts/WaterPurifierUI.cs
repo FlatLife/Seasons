@@ -11,8 +11,8 @@ public class WaterPurifierUI : MonoBehaviour {
 	private RectTransform WaterUIRect;
 
 	public GameObject info;
-	public Slot FreshWaterSlot;
-	public Slot SaltWaterSlot;
+	public Slot Slot1;
+	public Slot Slot2;
 
 
 
@@ -21,24 +21,24 @@ public class WaterPurifierUI : MonoBehaviour {
 		uiRect.sizeDelta = new Vector3(228, 123, 0);
 		uiRect.position = new Vector3(400,400);
 
-		FreshWaterSlot = Instantiate(slotPrefab);
-		FreshWaterSlot.name = "FreshWaterSlot";
-		RectTransform FreshwaterRect = FreshWaterSlot.GetComponent<RectTransform>();
-		FreshWaterSlot.transform.SetParent(this.transform);
+		Slot1 = Instantiate(slotPrefab);
+		Slot1.name = "Slot1";
+		RectTransform FreshwaterRect = Slot1.GetComponent<RectTransform>();
+		Slot1.transform.SetParent(this.transform);
 		FreshwaterRect.localPosition = new Vector3(60, -40);
 		FreshwaterRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, slotSize);
 		FreshwaterRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, slotSize);
 
-		FreshWaterSlot.GetComponent<Image>().enabled = false;
+		Slot1.GetComponent<Image>().enabled = false;
 
-		SaltWaterSlot = Instantiate(slotPrefab);
-		SaltWaterSlot.name = "SaltWaterSlot";
-		RectTransform SaltWaterRect = SaltWaterSlot.GetComponent<RectTransform>();
-		SaltWaterSlot.transform.SetParent(this.transform);
+		Slot2 = Instantiate(slotPrefab);
+		Slot2.name = "Slot2";
+		RectTransform SaltWaterRect = Slot2.GetComponent<RectTransform>();
+		Slot2.transform.SetParent(this.transform);
 		SaltWaterRect.localPosition = new Vector3(130, -40);
 		SaltWaterRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, slotSize);
 		SaltWaterRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, slotSize);
-		SaltWaterSlot.GetComponent<Image>().enabled = false;
+		Slot2.GetComponent<Image>().enabled = false;
 
 		info = Instantiate(Resources.Load<GameObject>("Info"));
 		info.transform.SetParent(this.transform);
