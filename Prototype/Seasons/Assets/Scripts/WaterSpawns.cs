@@ -7,7 +7,7 @@ public class WaterSpawns : MonoBehaviour {
 	Item item;
 	List<Item> groundItems = new List<Item>();
 	GameObject player;
-	float coolDown = 5;
+	float coolDown = 30;
 	float xAxis;
 	int itemChoice;
 	
@@ -47,7 +47,7 @@ public class WaterSpawns : MonoBehaviour {
 				}
 				xAxis = Random.Range(-42.8f, -21f);
 				item.transform.position = new Vector3(xAxis, -16, 0);
-				coolDown = 5;
+				coolDown = 30;
 			} else {
 				coolDown -= Time.deltaTime;
 			}
