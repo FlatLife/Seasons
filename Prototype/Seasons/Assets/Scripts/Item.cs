@@ -4,7 +4,8 @@
 public enum ItemType {NONE, FISHINGROD, STICK, WOOD, VINE, RAWFISH, COOKEDFISH, BURNTFISH, ROCK,
 	ICE, HATCHET, BUCKET, CARROTSEED, HOE, SALTWATER, FRESHWATER, CARROT, CLOTHES, FIREPREP, BOTTLE, 
 	WATERPURIFIER, SEAWEED, POTATOSEED, PINEAPPLESEED, STRAWBERRYSEED, POTATO, PINEAPPLE, STRAWBERRIES,
-	RAWTROUT, RAWSALMON, RAWGUPPY, COOKEDTROUT, COOKEDSALMON, COOKEDGUPPY, BAKEDPOTATO, ROASTEDCARROT };
+	RAWTROUT, RAWSALMON, RAWGUPPY, COOKEDTROUT, COOKEDSALMON, COOKEDGUPPY, BAKEDPOTATO, ROASTEDCARROT,
+	BARREL };
 
 
 public class Item : MonoBehaviour {
@@ -118,6 +119,11 @@ public class Item : MonoBehaviour {
 				toBeDeleted = true;
 				builder = GameObject.Find("Main Camera").GetComponent<PlaceObjects>();
 				builder.build("WaterPurifier", "PlaceWater");
+				break;
+			case ItemType.BARREL:
+				toBeDeleted = true;
+				builder = GameObject.Find("Main Camera").GetComponent<PlaceObjects>();
+				builder.build("Barrel", "PlaceBarrel");
 				break;
 			case ItemType.BUCKET:
 				bool nearWater = GameObject.Find ("Player").GetComponent<Player> ().switchSwimMode;
