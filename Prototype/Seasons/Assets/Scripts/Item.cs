@@ -39,11 +39,11 @@ public class Item : MonoBehaviour {
 	float yAxisEnd;
 	bool falling;
 	bool selfDestruct;
-	float timeLeft = 40;
+	float removeTime;
 	private Transform shadow;
 	private float shadowPositionY;
 	// Use this for initialization
-	public void InitializeFall () {
+	public void InitializeFall (float removeTime) {
 		yAxisEnd = Random.Range(-2.5f, 4.5f);
 		shadow = transform.Find("Shadow");
 		if (shadow != null) {
@@ -53,6 +53,7 @@ public class Item : MonoBehaviour {
 		}
 		falling = true;
 		selfDestruct = true;
+		this.removeTime = removeTime;
 	}
 	
 	// Update is called once per frame
@@ -71,8 +72,8 @@ public class Item : MonoBehaviour {
 			}
 		}
 		if (selfDestruct) {
-			timeLeft -= Time.deltaTime;
-			if (timeLeft <= 0) {
+			removeTime -= Time.deltaTime;
+			if (removeTime <= 0) {
 				Destroy(gameObject);
 			}
 		}
