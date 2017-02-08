@@ -20,6 +20,7 @@ public class Player : MonoBehaviour {
 	public Backpack backpack;
     public CraftTable craft;
 	public CookingUI cook;
+	public BarrelUI barrel;
 	public DestroyUI destroy;
 	private bool canTouch = false;
 	public bool switchSwimMode = false;
@@ -27,6 +28,7 @@ public class Player : MonoBehaviour {
 	private Collider2D farmColliderID;
 	private Collider2D fireColliderID;
 	private Collider2D waterColliderID;
+	private Collider2D barrelColliderID;
     Fire fire;
 	public int buttonSmash = 0;
 	float buttonPressed;
@@ -42,9 +44,11 @@ public class Player : MonoBehaviour {
 	public bool atFire = false;
 	public bool atFarm = false;
 	public bool atUse = false;
+	public bool atBarrel = false;
 	public bool fireUIOpen = false;
 	public bool farmUIOpen = false;
 	public bool waterUIOpen = false;
+	public bool barrelUIOpen = false;
 	public bool atWaterPurifier = false;
 	public bool performingAction = false;
 	public float timeToCatch = 2.0f;
@@ -228,6 +232,17 @@ public class Player : MonoBehaviour {
 				
 			}
 
+			if (atBarrel) {
+				//Debug.Log("Player entered Farm zone and pressed e");
+				if(openUI){
+					if(!barrelUIOpen){
+						ToggleBarrelUI();
+					}
+				}
+				ToggleUI();
+				
+			}
+
 			if(switchSwimMode){
 				isSwimming = !isSwimming;
 				Vector3 pos = transform.position;
@@ -250,6 +265,9 @@ public class Player : MonoBehaviour {
 				}
 				if(!farmUIOpen && atFarm){
 					ToggleFarmUI();
+				}
+				if(!barrelUIOpen && atBarrel) {
+					ToggleBarrelUI();
 				}
 			}
 			ToggleUI();
@@ -296,6 +314,8 @@ public class Player : MonoBehaviour {
 			ToggleFarmUI();
 		}else if(atWaterPurifier){
 			ToggleWaterUI();
+		}else if (atBarrel) {
+			ToggleBarrelUI();
 		}
 	}
 
@@ -326,6 +346,11 @@ public class Player : MonoBehaviour {
 			waterColliderID = other;
 			atUse = true;
 			atWaterPurifier = true;
+		}
+		if (other.tag == "Barrel") {
+			barrelColliderID = other;
+			atUse = true;
+			atBarrel = true;
 		}
     }
 
@@ -371,6 +396,14 @@ public class Player : MonoBehaviour {
 				ToggleWaterUI ();
 			}
 		}
+
+		if (other.tag == "Barrel" && other == barrelColliderID) {
+			atUse = false;
+			atBarrel = false;
+			if (barrelUIOpen) {
+				ToggleBarrelUI ();
+			}
+		}
     }
 
 	private void ToggleWaterUI(){
@@ -398,5 +431,14 @@ public class Player : MonoBehaviour {
 			cookSlot.GetComponent<Image>().enabled = !cookSlot.GetComponent<Image>().enabled;
 		}
 		cook.GetComponent<Image>().enabled = !cook.GetComponent<Image>().enabled;
+	}
+
+	private void ToggleBarrelUI(){
+		barrelUIOpen = !barrelUIOpen;
+		barrel = barrelColliderID.gameObject.GetComponent<Barrel>().BarrelUI;
+		foreach (Transform barrelSlot in barrel.transform) {
+			barrelSlot.GetComponent<Image>().enabled = !barrelSlot.GetComponent<Image>().enabled;
+		}
+		barrel.GetComponent<Image>().enabled = !barrel.GetComponent<Image>().enabled;
 	}
 }
