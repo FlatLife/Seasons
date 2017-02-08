@@ -19,7 +19,7 @@ public class TreeTop : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//if the amount of items on the ground is full
-		if(groundItems.Count >= 10){
+		if(groundItems.Count >= 5){
 			foreach(Item thing in groundItems){
 				if(thing == null){
 					groundItems.Remove(thing);

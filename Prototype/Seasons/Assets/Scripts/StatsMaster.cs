@@ -26,8 +26,8 @@ public class StatsMaster : MonoBehaviour {
 	void Update () {
 		time -= Time.deltaTime;
 		if(time < 0f){
-			hunger.GetComponent<BarScript>().decrement(0.03f);
-			thirst.GetComponent<BarScript>().decrement(0.05f);
+			hunger.GetComponent<BarScript>().decrement(0.02f);
+			thirst.GetComponent<BarScript>().decrement(0.03f);
 			time = 5f;
 			if(hunger.GetComponent<BarScript>().barEmpty()){
 				health.GetComponent<BarScript>().decrement(0.005f);
