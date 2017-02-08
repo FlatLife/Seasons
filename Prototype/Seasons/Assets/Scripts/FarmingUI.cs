@@ -40,5 +40,10 @@ public class FarmingUI : MonoBehaviour {
 		waterRect.sizeDelta = new Vector3(slotSize, slotSize);
 		waterSlot.transform.SetParent(this.transform);
 		waterSlot.GetComponent<Image>().enabled = false;
+		waterSlot.GetComponent<Image>().sprite = Resources.Load<Sprite>("slotUnhighlightedBucket");
+		SpriteState state =  new SpriteState();
+		state.highlightedSprite = Resources.Load<Sprite>("slotHighlightedBucket");
+		Button button = waterSlot.GetComponent<Button>();
+		button.spriteState = state;
 	}
 }
