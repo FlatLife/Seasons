@@ -33,12 +33,13 @@ public class Item : MonoBehaviour {
 	public int growTime;
 	public string nextItem;
 	public float zOffset;
-	public float instantiateTime;
 
 	// Variables for item falling
 	float fallSpeed = 5;
 	float yAxisEnd;
 	bool falling;
+	bool selfDestruct;
+	float timeLeft = 40;
 	private Transform shadow;
 	private float shadowPositionY;
 	// Use this for initialization
@@ -51,6 +52,7 @@ public class Item : MonoBehaviour {
 			shadow.transform.localPosition = new Vector3(shadow.transform.localPosition.x, shadow.transform.localPosition.y + shadowPositionY, shadow.transform.localPosition.z);
 		}
 		falling = true;
+		selfDestruct = true;
 	}
 	
 	// Update is called once per frame
@@ -66,6 +68,12 @@ public class Item : MonoBehaviour {
 			transform.position = new Vector3(transform.position.x, yAxisEnd, transform.position.z);
 			if (shadow != null) {
 				shadow.localPosition = new Vector3(shadow.localPosition.x, shadowPositionY, shadow.localPosition.z);
+			}
+		}
+		if (selfDestruct) {
+			timeLeft -= Time.deltaTime;
+			if (timeLeft <= 0) {
+				Destroy(gameObject);
 			}
 		}
 	}
