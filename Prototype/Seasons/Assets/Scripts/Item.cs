@@ -82,47 +82,40 @@ public class Item : MonoBehaviour {
 
 	// Returns boolean for whether the item should be deleted or not
 	public bool Use() {
+		hunger = GameObject.Find("Hunger");
+		thirst = GameObject.Find("Thirst");
 		bool toBeDeleted = false;
 		switch(type) {
 			case ItemType.COOKEDGUPPY:
 				toBeDeleted = true;
-				hunger  = GameObject.Find("HungerBar");
 				hunger.GetComponent<BarScript>().increment(0.15f);
 				break;
 			case ItemType.COOKEDTROUT:
 				toBeDeleted = true;
-				hunger  = GameObject.Find("HungerBar");
 				hunger.GetComponent<BarScript>().increment(0.30f);
 				break;
 			case ItemType.COOKEDSALMON:
 				toBeDeleted = true;
-				hunger  = GameObject.Find("HungerBar");
 				hunger.GetComponent<BarScript>().increment(0.45f);
 				break;
 			case ItemType.CARROT:
 				toBeDeleted = true;
-				hunger = GameObject.Find("HungerBar");
 				hunger.GetComponent<BarScript>().increment(0.1f);
 				break;
 			case ItemType.POTATO:
 				toBeDeleted = true;
-				hunger = GameObject.Find("HungerBar");
 				hunger.GetComponent<BarScript>().increment(0.2f);
 				break;
 			case ItemType.BAKEDPOTATO:
 				toBeDeleted = true;
-				hunger = GameObject.Find("HungerBar");
 				hunger.GetComponent<BarScript>().increment(0.35f);
 				break;
 			case ItemType.STRAWBERRIES:
 				toBeDeleted = true;
-				hunger = GameObject.Find("HungerBar");
 				hunger.GetComponent<BarScript>().increment(0.3f);
 				break;
 			case ItemType.PINEAPPLE:
 				toBeDeleted = true;
-				hunger = GameObject.Find("HungerBar");
-				thirst = GameObject.Find("ThirstBar");
 				hunger.GetComponent<BarScript>().increment(0.3f);
 				thirst.GetComponent<BarScript>().increment(0.1f);
 				break;
@@ -138,7 +131,6 @@ public class Item : MonoBehaviour {
 				toBeDeleted = durability == 0;
 				break;
 			case ItemType.FRESHWATER:
-				thirst  = GameObject.Find("ThirstBar");
 				thirst.GetComponent<BarScript>().increment(0.3f);
 				slot.DestroyItem ();
 				newItem = Instantiate(Resources.Load<GameObject>("Bucket").GetComponent<Item>(), slot.transform);
