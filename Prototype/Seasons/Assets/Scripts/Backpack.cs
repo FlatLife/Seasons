@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Backpack : MonoBehaviour {
 
 	private RectTransform backpackRect;
-	private float backpackWidth, backpackHeight; 
+	public float backpackWidth, backpackHeight; 
 	public int slots;
 	public int rows;
 	public float slotPaddingLeft, slotPaddingTop;

@@ -32,7 +32,7 @@ public class Fire : MonoBehaviour {
     // Use this for initialization
     void Awake () {
         player = GameObject.Find("Player");
-        warmth = GameObject.Find("WarmthBar");
+        warmth = GameObject.Find("Warmth");
         animRenderer = GetComponent<Renderer>() as SpriteRenderer;
         canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
         cookingUI = Instantiate(Resources.Load<CookingUI>("CookingUI"));

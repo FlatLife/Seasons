@@ -98,6 +98,18 @@ public class Item : MonoBehaviour {
 				toBeDeleted = true;
 				hunger.GetComponent<BarScript>().increment(0.45f);
 				break;
+			case ItemType.RAWGUPPY:
+				toBeDeleted = true;
+				thirst.GetComponent<BarScript>().increment(0.1f);
+				break;
+			case ItemType.RAWTROUT:
+				toBeDeleted = true;
+				thirst.GetComponent<BarScript>().increment(0.1f);
+				break;
+			case ItemType.RAWSALMON:
+				toBeDeleted = true;
+				thirst.GetComponent<BarScript>().increment(0.1f);
+				break;
 			case ItemType.CARROT:
 				toBeDeleted = true;
 				hunger.GetComponent<BarScript>().increment(0.1f);
