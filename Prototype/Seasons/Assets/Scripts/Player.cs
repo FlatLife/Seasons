@@ -266,7 +266,7 @@ public class Player : MonoBehaviour {
 		destroy.enabled = !destroy.enabled;
 
 		//dont know what this line does was giving me an error. disabled it and everything seems to run fine
-//        slot.GetComponent<Image>().enabled = !slot.GetComponent<Image>().enabled;
+			//slot.GetComponent<Image>().enabled = !slot.GetComponent<Image>().enabled;
 
         GameObject.Find("Canvas/CraftTableTest/CraftButton").GetComponent<Image>().enabled = !GameObject.Find("Canvas/CraftTableTest/CraftButton").GetComponent<Image>().enabled;
         GameObject.Find("Canvas/CraftTableTest/CraftButton/Text").SetActive(!GameObject.Find("Canvas/CraftTableTest/CraftButton/Text").activeInHierarchy); 
@@ -281,6 +281,11 @@ public class Player : MonoBehaviour {
 		}else if(atWaterPurifier){
 			ToggleWaterUI();
 		}
+	}
+
+	public void ToggleJournalUI() {
+		openUI = !openUI;
+		
 	}
 
 	private void OnTriggerStay2D(Collider2D other){

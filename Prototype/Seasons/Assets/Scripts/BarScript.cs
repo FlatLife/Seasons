@@ -49,6 +49,10 @@ public class BarScript : MonoBehaviour {
 		}
 	}
 
+	public float returnAmount(){
+		return fillAmount;
+	}
+
 	public bool barEmpty(){
 		if(fillAmount == 0f){
 			return true;
