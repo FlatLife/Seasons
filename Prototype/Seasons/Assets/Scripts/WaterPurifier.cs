@@ -21,19 +21,34 @@ public class WaterPurifier : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (!WaterUI.SaltWaterSlot.isEmpty && !WaterUI.FreshWaterSlot.isEmpty) {
-			if (WaterUI.SaltWaterSlot.CurrentItem.type == ItemType.SALTWATER
-			   && WaterUI.FreshWaterSlot.CurrentItem.type == ItemType.BUCKET) {
+		 if(Time.timeScale == 0)return;
+		if (!WaterUI.Slot1.isEmpty && !WaterUI.Slot2.isEmpty) {
+			if (WaterUI.Slot1.CurrentItem.type == ItemType.SALTWATER
+			   && WaterUI.Slot2.CurrentItem.type == ItemType.BUCKET) {
 				waterPurify -= Time.deltaTime;
 				if (waterPurify <= 0) {
-					WaterUI.FreshWaterSlot.ClearSlot ();
+					WaterUI.Slot2.ClearSlot ();
 					Item water = Instantiate(Resources.Load<Item> ("FreshWater"));
 					water.transform.position = new Vector3 (0,20f,0);
-					WaterUI.FreshWaterSlot.AddItem (water);
-					WaterUI.SaltWaterSlot.ClearSlot ();
+					WaterUI.Slot2.AddItem (water);
+					WaterUI.Slot1.ClearSlot ();
 					Item bucket = Instantiate(Resources.Load<Item> ("Bucket"));
 					bucket.transform.position = new Vector3 (0,20f,0);
-					WaterUI.SaltWaterSlot.AddItem(bucket);
+					WaterUI.Slot1.AddItem(bucket);
+					waterPurify = 3f;
+				}
+			}else if (WaterUI.Slot2.CurrentItem.type == ItemType.SALTWATER
+			   && WaterUI.Slot1.CurrentItem.type == ItemType.BUCKET) {
+				waterPurify -= Time.deltaTime;
+				if (waterPurify <= 0) {
+					WaterUI.Slot1.ClearSlot ();
+					Item water = Instantiate(Resources.Load<Item> ("FreshWater"));
+					water.transform.position = new Vector3 (0,20f,0);
+					WaterUI.Slot1.AddItem (water);
+					WaterUI.Slot2.ClearSlot ();
+					Item bucket = Instantiate(Resources.Load<Item> ("Bucket"));
+					bucket.transform.position = new Vector3 (0,20f,0);
+					WaterUI.Slot2.AddItem(bucket);
 					waterPurify = 3f;
 				}
 			}

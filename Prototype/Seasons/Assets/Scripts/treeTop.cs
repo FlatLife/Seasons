@@ -19,6 +19,7 @@ public class TreeTop : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		 if(Time.timeScale == 0)return;
 		//if the amount of items on the ground is full
 		if(groundItems.Count >= 5){
 			foreach(Item thing in groundItems){
@@ -60,7 +61,7 @@ public class TreeTop : MonoBehaviour {
 			groundItems.Add(item);
 			foreach(Item thing in groundItems){
 				if(thing == null){
-					groundItems.Remove(thing);
+					groundItems.Remove(item);
 				}
 			}
 			//getting a random x axis change, has to not be between 2 and 6.5

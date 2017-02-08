@@ -24,6 +24,7 @@ public class StatsMaster : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		 if(Time.timeScale == 0)return;
 		if(GameMaster.isWinter){
 			warmth.GetComponent<BarScript>().decrement(0.0001f);
 		} else if(warmth.GetComponent<BarScript>().returnAmount() > 0.5f){				

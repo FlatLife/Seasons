@@ -49,7 +49,9 @@ public class Backpack : MonoBehaviour {
 
 		info = Instantiate(Resources.Load<GameObject>("Info"));
 		info.transform.SetParent(this.transform);
-		info.GetComponent<InformationPopup>().info = "InvHelp";
+		info.GetComponent<InformationPopup>().info = "Use this UI to manage your inventory. \nPicked up items are placed in here.\n From here you can right click to use some items and also left click to pick up and move items to new slots.";
+		info.GetComponent<InformationPopup>().width = 300;
+		info.GetComponent<InformationPopup>().height = 100;
 		info.GetComponent<RectTransform>().localPosition = new Vector3(230, -25);
 		info.GetComponent<RectTransform>().sizeDelta = new Vector3(25,25);
 		info.GetComponent<Image>().enabled = false;
