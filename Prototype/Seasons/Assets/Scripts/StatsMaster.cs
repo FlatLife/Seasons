@@ -13,13 +13,13 @@ public class StatsMaster : MonoBehaviour {
 	private GameObject warmth;
 
 
-
 	// Use this for initialization
 	void Start () {
 		health = GameObject.Find("HealthBar");
 		thirst = GameObject.Find("ThirstBar");
 		hunger = GameObject.Find("HungerBar");
 		warmth = GameObject.Find("WarmthBar");
+
 	}
 	
 	// Update is called once per frame
@@ -40,7 +40,9 @@ public class StatsMaster : MonoBehaviour {
 				hunger.GetComponent<BarScript>().decrement(0.03f);
 				thirst.GetComponent<BarScript>().decrement(0.04f);
 			}
+
 			time = 5f;
+
 			if(hunger.GetComponent<BarScript>().barEmpty()){
 				health.GetComponent<BarScript>().decrement(0.005f);
 			}
