@@ -80,5 +80,6 @@ public class Fishing : MonoBehaviour {
 		isFishing = false;
 		minigame = false;
 		hasCaught = false;
+		delay = 2f;
 	}
 }
