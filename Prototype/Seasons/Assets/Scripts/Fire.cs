@@ -14,6 +14,10 @@ public class Fire : MonoBehaviour {
     public int lastFrame;
     public float animationTime;
 
+    GameObject player;
+    GameObject warmth;
+    float distanceFromPlayer;
+    public int fireHeatRange = 5;
 
     public int frameIndex;
     // An array with the sprites used for animation
@@ -27,6 +31,8 @@ public class Fire : MonoBehaviour {
 
     // Use this for initialization
     void Awake () {
+        player = GameObject.Find("Player");
+        warmth = GameObject.Find("WarmthBar");
         animRenderer = GetComponent<Renderer>() as SpriteRenderer;
         canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
         cookingUI = Instantiate(Resources.Load<CookingUI>("CookingUI"));
@@ -45,6 +51,12 @@ public class Fire : MonoBehaviour {
     void Update () {
         //if the fire is not dead
         if(fireState > 0){
+            //adjusting the players warmth
+            distanceFromPlayer = Vector3.Distance(player.transform.position, transform.position);
+            if(distanceFromPlayer < fireHeatRange){
+                warmth.GetComponent<BarScript>().increment(0.001f);
+            }
+
             //changing state of the fire as time goes on
             burnTime -= timeSinceLastFrame;
             if(burnTime < 0){
