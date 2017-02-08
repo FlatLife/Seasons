@@ -32,6 +32,31 @@ public class Item : MonoBehaviour {
 	public int cookTime;
 	public int growTime;
 	public string nextItem;
+	public float zOffset;
+
+	// Variables for item falling
+	float fallSpeed = 5;
+	float yAxisEnd;
+	bool falling;
+	public bool isFalling {
+		get { return falling; }
+		set { falling = value;}
+	}
+
+	// Use this for initialization
+	void Start () {
+		yAxisEnd = Random.Range(-2.5f, 4.5f);
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		if(falling && yAxisEnd < transform.position.y){
+			transform.Translate(Vector3.down * fallSpeed * Time.deltaTime);
+			transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y + zOffset);
+		} else { 
+			falling = false;
+		}
+	}
 
 	// Returns boolean for whether the item should be deleted or not
 	public bool Use() {
