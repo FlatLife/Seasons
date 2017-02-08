@@ -9,87 +9,96 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1077945959222898}
+  m_RootGameObject: {fileID: 1516160124528740}
   m_IsPrefabParent: 1
---- !u!1 &1077945959222898
+--- !u!1 &1516160124528740
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4157683567376566}
-  - component: {fileID: 212297533001155426}
-  - component: {fileID: 114937103318879446}
-  - component: {fileID: 61538832996203160}
+  - component: {fileID: 4304426908999460}
+  - component: {fileID: 212018318828027710}
+  - component: {fileID: 61362859995314694}
+  - component: {fileID: 114469674534759694}
+  - component: {fileID: 68109411733070324}
   m_Layer: 0
-  m_Name: FreshWater
-  m_TagString: Item
+  m_Name: Barrel
+  m_TagString: Barrel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4157683567376566
+--- !u!4 &4304426908999460
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1077945959222898}
+  m_GameObject: {fileID: 1516160124528740}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.148015, y: -2.103649, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalPosition: {x: 2.243635, y: 3.7217019, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61538832996203160
+--- !u!61 &61362859995314694
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1077945959222898}
+  m_GameObject: {fileID: 1516160124528740}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -1.4}
   serializedVersion: 2
-  m_Size: {x: 4, y: 4}
---- !u!114 &114937103318879446
+  m_Size: {x: 4.5, y: 2}
+--- !u!68 &68109411733070324
+EdgeCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1516160124528740}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: -0.2, y: -0.5}
+  m_Points:
+  - {x: -1.4643049, y: -1.010179}
+  - {x: -1.0434518, y: -0.75508356}
+  - {x: 0.21456623, y: -0.6417258}
+  - {x: 1.2275345, y: -0.76824474}
+  - {x: 1.6955986, y: -1.0474608}
+  - {x: 1.4651451, y: -1.387553}
+  - {x: 0.5374298, y: -1.5874584}
+  - {x: -0.36820507, y: -1.6045456}
+  - {x: -1.2724404, y: -1.4358869}
+  - {x: -1.464305, y: -1.010179}
+--- !u!114 &114469674534759694
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1077945959222898}
+  m_GameObject: {fileID: 1516160124528740}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e217fa480781740208d799569bd39f51, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e9d19331d4304d3bb0171b9eeeca507, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Fresh Water
-  itemUse: Right-Click to drink
-  type: 15
-  spriteNeutral: {fileID: 21300000, guid: 5a8d07f0baf3e48f6971bda81f79f08c, type: 3}
-  spriteHighlighted: {fileID: 21300000, guid: 5a8d07f0baf3e48f6971bda81f79f08c, type: 3}
-  maxSize: 1
-  isFood: 0
-  isCrop: 0
-  isFinishedCrop: 0
-  message: 
-  slot: {fileID: 0}
-  keepItem: 0
-  durability: 0
-  cookTime: 0
-  growTime: 0
-  nextItem: 
-  zOffset: 0
---- !u!212 &212297533001155426
+  canvas: {fileID: 0}
+  BarrelUI: {fileID: 0}
+--- !u!212 &212018318828027710
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1077945959222898}
+  m_GameObject: {fileID: 1516160124528740}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -115,7 +124,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5a8d07f0baf3e48f6971bda81f79f08c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6c1c088b3db5b4a4bab6284bbc17c873, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

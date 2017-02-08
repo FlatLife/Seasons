@@ -4,7 +4,8 @@
 public enum ItemType {NONE, FISHINGROD, STICK, WOOD, VINE, RAWFISH, COOKEDFISH, BURNTFISH, ROCK,
 	ICE, HATCHET, BUCKET, CARROTSEED, HOE, SALTWATER, FRESHWATER, CARROT, CLOTHES, FIREPREP, BOTTLE, 
 	WATERPURIFIER, SEAWEED, POTATOSEED, PINEAPPLESEED, STRAWBERRYSEED, POTATO, PINEAPPLE, STRAWBERRIES,
-	RAWTROUT, RAWSALMON, RAWGUPPY, COOKEDTROUT, COOKEDSALMON, COOKEDGUPPY };
+	RAWTROUT, RAWSALMON, RAWGUPPY, COOKEDTROUT, COOKEDSALMON, COOKEDGUPPY, BAKEDPOTATO, ROASTEDCARROT,
+	BARREL };
 
 
 public class Item : MonoBehaviour {
@@ -31,6 +32,42 @@ public class Item : MonoBehaviour {
 	public int cookTime;
 	public int growTime;
 	public string nextItem;
+	public float zOffset;
+
+	// Variables for item falling
+	float fallSpeed = 5;
+	float yAxisEnd;
+	bool falling;
+	private Transform shadow;
+	private float shadowPositionY;
+	// Use this for initialization
+	public void InitializeFall () {
+		yAxisEnd = Random.Range(-2.5f, 4.5f);
+		shadow = transform.Find("Shadow");
+		if (shadow != null) {
+			shadowPositionY = shadow.transform.localPosition.y;
+			shadow.transform.position = new Vector3(transform.position.x, yAxisEnd, 0);
+			shadow.transform.localPosition = new Vector3(shadow.transform.localPosition.x, shadow.transform.localPosition.y + shadowPositionY, shadow.transform.localPosition.z);
+		}
+		falling = true;
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		if(falling && yAxisEnd < transform.position.y){
+			transform.Translate(Vector3.down * fallSpeed * Time.deltaTime);
+			transform.position = new Vector3(transform.position.x, transform.position.y, yAxisEnd + zOffset);
+			if (shadow != null) {
+				shadow.transform.Translate(Vector3.up * fallSpeed * Time.deltaTime);
+			}
+		} else if (falling) { 
+			falling = false;
+			transform.position = new Vector3(transform.position.x, yAxisEnd, transform.position.z);
+			if (shadow != null) {
+				shadow.localPosition = new Vector3(shadow.localPosition.x, shadowPositionY, shadow.localPosition.z);
+			}
+		}
+	}
 
 	// Returns boolean for whether the item should be deleted or not
 	public bool Use() {
@@ -60,6 +97,11 @@ public class Item : MonoBehaviour {
 				toBeDeleted = true;
 				hunger = GameObject.Find("HungerBar");
 				hunger.GetComponent<BarScript>().increment(0.2f);
+				break;
+			case ItemType.BAKEDPOTATO:
+				toBeDeleted = true;
+				hunger = GameObject.Find("HungerBar");
+				hunger.GetComponent<BarScript>().increment(0.35f);
 				break;
 			case ItemType.STRAWBERRIES:
 				toBeDeleted = true;
@@ -113,6 +155,11 @@ public class Item : MonoBehaviour {
 				toBeDeleted = true;
 				builder = GameObject.Find("Main Camera").GetComponent<PlaceObjects>();
 				builder.build("WaterPurifier", "PlaceWater");
+				break;
+			case ItemType.BARREL:
+				toBeDeleted = true;
+				builder = GameObject.Find("Main Camera").GetComponent<PlaceObjects>();
+				builder.build("Barrel", "PlaceBarrel");
 				break;
 			case ItemType.BUCKET:
 				bool nearWater = GameObject.Find ("Player").GetComponent<Player> ().switchSwimMode;

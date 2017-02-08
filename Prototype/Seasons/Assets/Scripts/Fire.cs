@@ -6,7 +6,7 @@ public class Fire : MonoBehaviour {
     public Canvas canvas;
     public int slotNum;
     public CookingUI cookingUI;
-    float burnTime = 50;
+    float burnTime = 100;
     GameObject fireSpark;
 
     //burnState = 1(small), 2(medium), 3(large)
