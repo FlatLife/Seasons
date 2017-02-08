@@ -100,15 +100,15 @@ public class Item : MonoBehaviour {
 				break;
 			case ItemType.RAWGUPPY:
 				toBeDeleted = true;
-				thirst.GetComponent<BarScript>().increment(0.1f);
+				thirst.GetComponent<BarScript>().increment(0.05f);
 				break;
 			case ItemType.RAWTROUT:
 				toBeDeleted = true;
-				thirst.GetComponent<BarScript>().increment(0.1f);
+				thirst.GetComponent<BarScript>().increment(0.05f);
 				break;
 			case ItemType.RAWSALMON:
 				toBeDeleted = true;
-				thirst.GetComponent<BarScript>().increment(0.1f);
+				thirst.GetComponent<BarScript>().increment(0.05f);
 				break;
 			case ItemType.CARROT:
 				toBeDeleted = true;

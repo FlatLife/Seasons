@@ -6,4 +6,5 @@ public class GameMaster : MonoBehaviour {
 
 	public static int dayCount;
 	public static bool isWinter;
+	
 }
