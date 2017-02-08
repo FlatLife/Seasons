@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TreeTop : MonoBehaviour {
+public class TreeSpawn : MonoBehaviour {
 
 	Item item;
 	List<Item> groundItems = new List<Item>();
