@@ -17,6 +17,19 @@ public class DayCycle : MonoBehaviour {
 	public static int dayCount = 1;
 	public float dayLength;
 
+	private Transform island;
+	private Transform tree;
+	private Transform ocean;
+
+	Color[] colorStates = {new Color(0.988f, 0.613f, 0.378f, 1),
+						   new Color(0.866f, 0.82f, 0.725f, 1),
+						   new Color(0.7f, 0.85f, 0.95f, 1),
+						   new Color(0.7f, 0.85f, 0.95f, 1),
+						   new Color(0.988f, 0.613f, 0.378f, 1),
+						   new Color(0.113f, 0.329f, 0.439f, 1)};
+
+	int currentColorState = 1;
+
 	// Use this for initialization
 	void Start () {
 		dayCountText = GameObject.Find("DayCount").GetComponent<Text>();
@@ -24,6 +37,10 @@ public class DayCycle : MonoBehaviour {
 		GameMaster.dayCount = dayCount;
 		GameObject bottle = Instantiate(Resources.Load<GameObject>("messageBottle"));
 		bottle.GetComponent<Item>().message = "message" + dayCount;
+
+		island = GameObject.Find("Island").transform;
+		tree = GameObject.Find("Tree").transform;
+		ocean = GameObject.Find("Ocean Background").transform;
 	}
 	
 	// Update is called once per frame
@@ -61,9 +78,26 @@ public class DayCycle : MonoBehaviour {
 			fade.GetComponent<ScreenFade>().FadeToClear();
 		}
 		if(fade.GetComponent<SpriteRenderer>().color.a < 0.05f && fadingIn){
+			currentColorState = 1;
 			dayTime = dayLength;
 			fadeTime = 2f;
 			fadingIn = false;
 		}
+
+		float transition = (((dayLength - dayTime) / dayLength) * (colorStates.Length - 1)) % 1;	
+		if (((dayLength - dayTime) / dayLength) > ((1f / (colorStates.Length - 1)) * (currentColorState)) && (currentColorState + 1) < colorStates.Length) {
+			currentColorState++;
+		}
+		
+		Color firstState = colorStates[currentColorState]; 
+		Color secondState = colorStates[currentColorState-1];
+		Color effectColour = new Color(((firstState.r - secondState.r) * transition) + secondState.r, 
+								 ((firstState.g - secondState.g) * transition) + secondState.g,
+								 ((firstState.b - secondState.b) * transition) + secondState.b,
+								   1);
+		island.GetComponent<SpriteRenderer>().color = effectColour;
+		tree.GetComponent<SpriteRenderer>().color = effectColour;
+		ocean.GetComponent<SpriteRenderer>().color = effectColour;
+		Camera.main.backgroundColor = effectColour;
 	}
 }
