@@ -5,7 +5,6 @@ public class Player2 : MonoBehaviour {
 	int walkingFrameIndex;
 	public float animationSpeed;
 	private Sprite[] walkingSprites;
-	private int skipFrames;
 	public Sprite standingSprite;
     SpriteRenderer animRenderer;
 	float timeSinceLastFrame; 
@@ -25,7 +24,6 @@ public class Player2 : MonoBehaviour {
 		animRenderer = GetComponent<Renderer>() as SpriteRenderer;
 		walkingSprites = Resources.LoadAll<Sprite>("PlayerWalk");
 		walkingFrameIndex = 0;
-		skipFrames = 1;
 	}
 
 	// Update is called once per frame
@@ -62,8 +60,7 @@ public class Player2 : MonoBehaviour {
 						animRenderer.flipX = horizontalInput < 0 ? true : horizontalInput > 0 ? false : animRenderer.flipX;
 						animRenderer.sprite = walkingSprites[walkingFrameIndex];
 						timeSinceLastFrame = 0;
-						skipFrames = skipFrames == 1 ? 2 : 1;
-						walkingFrameIndex = (walkingFrameIndex+skipFrames)%walkingSprites.Length;
+						walkingFrameIndex = (walkingFrameIndex + 1) % walkingSprites.Length;
 					} else{
 						timeSinceLastFrame = timeSinceLastFrame + Time.deltaTime;
 					}
