@@ -456,11 +456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0e1b6c2eb2ae4f41a39a4f033726750, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 0}
-  groundItems: []
-  itemChoice: 0
   spawnProbability: 0
-  xAxisChange: 0
   coolDown: 20
 --- !u!212 &315841529
 SpriteRenderer:
@@ -1215,6 +1211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65f2379e6f1da4033a73a6b43b499d4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseGame: 0
 --- !u!114 &674800692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2283,7 +2280,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 910449256}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -50.26, y: -1.1, z: -2}
+  m_LocalPosition: {x: -50.26, y: -3.73, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2879,9 +2876,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 1
-  m_Offset: {x: 0, y: -0.045}
+  m_Offset: {x: 0, y: -0.3}
   serializedVersion: 2
-  m_Size: {x: 2.3, y: 2.93}
+  m_Size: {x: 2.3, y: 2.2}
 --- !u!4 &1105252299
 Transform:
   m_ObjectHideFlags: 0
@@ -4031,6 +4028,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65f2379e6f1da4033a73a6b43b499d4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseGame: 0
 --- !u!114 &1448284713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4720,7 +4718,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1440615826}
-  pauseMenu: {fileID: 0}
+  pauseMenu: {fileID: 1448284711}
 --- !u!1 &1696980427
 GameObject:
   m_ObjectHideFlags: 0
@@ -4805,7 +4803,7 @@ GameObject:
   - component: {fileID: 1712069497}
   - component: {fileID: 1712069496}
   - component: {fileID: 1712069498}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Island
   m_TagString: Untagged
   m_Icon: {fileID: 0}

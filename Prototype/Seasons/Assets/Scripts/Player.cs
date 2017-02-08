@@ -89,7 +89,6 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		 if(Time.timeScale == 0)return;
 		//animation for starting fire
 		if(playingFireStart){
 			if(frameIndex < 13){				

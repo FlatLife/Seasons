@@ -23,7 +23,7 @@ public class PlaceObjects : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		 if(Time.timeScale == 0)return;
+		if(Time.timeScale == 0)return;
 		if(buildMode){
 			if(hoverObject == null){
 				hoverObject = Instantiate(Resources.Load<GameObject>(placeItem));
