@@ -57,7 +57,7 @@ public class TreeSpawn : MonoBehaviour {
 			}
 			//add the x axis change
 			item.transform.position = new Vector3(xAxisChange, transform.position.y, 0);
-			item.InitializeFall(removeTime);
+			item.InitializeFall();
 			//add item drop script
 			coolDown = 20;
 		} else {
