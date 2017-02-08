@@ -37,6 +37,7 @@ public class PauseMenuManager : MonoBehaviour {
 			// If game is in pause mode, stop the timeScale value to 0
 			if(pauseGame) {
 				Time.timeScale = 0;
+				Time.fixedDeltaTime = 0;
 			}else{
 				Time.timeScale = 1f;
 			}

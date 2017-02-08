@@ -11,8 +11,8 @@ public class WaterPurifierUI : MonoBehaviour {
 	private RectTransform WaterUIRect;
 
 	public GameObject info;
-	public Slot FreshWaterSlot;
-	public Slot SaltWaterSlot;
+	public Slot Slot1;
+	public Slot Slot2;
 
 
 
@@ -21,28 +21,38 @@ public class WaterPurifierUI : MonoBehaviour {
 		uiRect.sizeDelta = new Vector3(228, 123, 0);
 		uiRect.position = new Vector3(400,400);
 
-		FreshWaterSlot = Instantiate(slotPrefab);
-		FreshWaterSlot.name = "FreshWaterSlot";
-		RectTransform FreshwaterRect = FreshWaterSlot.GetComponent<RectTransform>();
-		FreshWaterSlot.transform.SetParent(this.transform);
+		Slot1 = Instantiate(slotPrefab);
+		Slot1.name = "Slot1";
+		RectTransform FreshwaterRect = Slot1.GetComponent<RectTransform>();
+		Slot1.GetComponent<Image>().sprite = Resources.Load<Sprite>("slotUnhighlightedBucket");
+		SpriteState state =  new SpriteState();
+		state.highlightedSprite = Resources.Load<Sprite>("slotHighlightedBucket");
+		Button button = Slot1.GetComponent<Button>();
+		button.spriteState = state;
+		Slot1.transform.SetParent(this.transform);
 		FreshwaterRect.localPosition = new Vector3(60, -40);
 		FreshwaterRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, slotSize);
 		FreshwaterRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, slotSize);
 
-		FreshWaterSlot.GetComponent<Image>().enabled = false;
+		Slot1.GetComponent<Image>().enabled = false;
 
-		SaltWaterSlot = Instantiate(slotPrefab);
-		SaltWaterSlot.name = "SaltWaterSlot";
-		RectTransform SaltWaterRect = SaltWaterSlot.GetComponent<RectTransform>();
-		SaltWaterSlot.transform.SetParent(this.transform);
+		Slot2 = Instantiate(slotPrefab);
+		Slot2.name = "Slot2";
+		RectTransform SaltWaterRect = Slot2.GetComponent<RectTransform>();
+		Slot2.GetComponent<Image>().sprite = Resources.Load<Sprite>("slotUnhighlightedBucket");
+		state.highlightedSprite = Resources.Load<Sprite>("slotHighlightedBucket");
+		Slot2.GetComponent<Button>().spriteState = state;
+		Slot2.transform.SetParent(this.transform);
 		SaltWaterRect.localPosition = new Vector3(130, -40);
 		SaltWaterRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, slotSize);
 		SaltWaterRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, slotSize);
-		SaltWaterSlot.GetComponent<Image>().enabled = false;
+		Slot2.GetComponent<Image>().enabled = false;
 
 		info = Instantiate(Resources.Load<GameObject>("Info"));
 		info.transform.SetParent(this.transform);
-		info.GetComponent<InformationPopup>().info = "WaterHelp";
+		info.GetComponent<InformationPopup>().info = "Use this UI to purify salt water into fresh water. \nPlace an empty bucket in one slot and a bucket of salt water in the other then wait for the process to complete";
+		info.GetComponent<InformationPopup>().width = 300;
+		info.GetComponent<InformationPopup>().height = 100;
 		info.GetComponent<RectTransform>().localPosition = new Vector3(200, -25);
 		info.GetComponent<RectTransform>().sizeDelta = new Vector3(25,25);
 		info.GetComponent<Image>().enabled = false;

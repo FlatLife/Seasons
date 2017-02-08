@@ -93,6 +93,7 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		 if(Time.timeScale == 0)return;
 		//animation for starting fire
 		if(playingFireStart){
 			if(frameIndex < 13){				
@@ -250,9 +251,9 @@ public class Player : MonoBehaviour {
 				isSwimming = !isSwimming;
 				Vector3 pos = transform.position;
 				if(isSwimming){
-					transform.position = new Vector3(-21.33625f, -0.53626f, pos.z);
+					transform.position = new Vector3(-23.15025f,-2.443089f, pos.z);
 				}else{
-					transform.position = new Vector3(-19.33625f, 0.2520248f, pos.z);
+					transform.position = new Vector3(-19.81603f, -0.6278321f, pos.z);
 				}
 			}
 		}
@@ -366,7 +367,6 @@ public class Player : MonoBehaviour {
 				itemColliderID = null;
 				atUse = false;
 				canTouch = false;
-
 			}
 		}
 	}
