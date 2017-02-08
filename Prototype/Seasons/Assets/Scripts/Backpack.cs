@@ -59,7 +59,6 @@ public class Backpack : MonoBehaviour {
 			for (int x = 0; x < columns; x++) {
 				GameObject newSlot = (GameObject)Instantiate(slotPrefab);
 				RectTransform slotRect = newSlot.GetComponent<RectTransform>();
-				
 				newSlot.name = "Slot";
 				newSlot.transform.SetParent(this.transform);
 				//places the slots in the inventory in each column, then row
