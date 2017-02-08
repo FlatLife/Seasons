@@ -31,14 +31,21 @@ public class StatsMaster : MonoBehaviour {
 		}
 		time -= Time.deltaTime;
 		if(time < 0f){
-			hunger.GetComponent<BarScript>().decrement(0.03f);
-			thirst.GetComponent<BarScript>().decrement(0.05f);
+			//if it is winter
+			if(GameMaster.isWinter){
+				hunger.GetComponent<BarScript>().decrement(0.04f);
+				thirst.GetComponent<BarScript>().decrement(0.03f);
+				//if it is summer
+			} else {
+				hunger.GetComponent<BarScript>().decrement(0.03f);
+				thirst.GetComponent<BarScript>().decrement(0.04f);
+			}
 			time = 5f;
 			if(hunger.GetComponent<BarScript>().barEmpty()){
 				health.GetComponent<BarScript>().decrement(0.005f);
 			}
 			if(thirst.GetComponent<BarScript>().barEmpty()){
-				health.GetComponent<BarScript>().decrement(0.05f);
+				health.GetComponent<BarScript>().decrement(0.005f);
 			}
 		}
 		if(health.GetComponent<BarScript>().barEmpty()){
