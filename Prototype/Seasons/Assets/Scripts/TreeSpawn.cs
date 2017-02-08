@@ -5,12 +5,13 @@ using UnityEngine;
 public class TreeSpawn : MonoBehaviour {
 
 	Item item;
-	List<Item> groundItems = new List<Item>();
+	List<Item> spawnedItems = new List<Item>();
 	int itemChoice;
 	int seedChoice;
 	public float spawnProbability;
 	float xAxisChange;
 	public float coolDown = 20;
+	public int removeTime; 
 
 	// Use this for initialization
 	void Start () {
@@ -19,15 +20,8 @@ public class TreeSpawn : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//if the amount of items on the ground is full
-		if(groundItems.Count >= 5){
-			foreach(Item thing in groundItems){
-				if(thing == null){
-					groundItems.Remove(thing);
-				}
-			}
-		} else {
-			if(Random.Range(0f,1f) > spawnProbability && (coolDown <= 0)){
+		CheckExpiry(spawnedItems);
+		if(Random.Range(0f,1f) > spawnProbability && (coolDown <= 0)){
 			itemChoice = Random.Range(0, 4);
 			switch (itemChoice){
 				case 0:
@@ -57,12 +51,9 @@ public class TreeSpawn : MonoBehaviour {
 					}
 					break;
 			}
-			groundItems.Add(item);
-			foreach(Item thing in groundItems){
-				if(thing == null){
-					groundItems.Remove(item);
-				}
-			}
+			item.instantiateTime = Time.time;
+			spawnedItems.Add (item);
+
 			//getting a random x axis change, has to not be between 2 and 6.5
 			xAxisChange = Random.Range(-5f, 14f);
 			while(xAxisChange < 6.5 && xAxisChange > 2){
@@ -77,5 +68,17 @@ public class TreeSpawn : MonoBehaviour {
 				coolDown -= Time.deltaTime;
 			}
 		}	
+
+
+	public void CheckExpiry(List<Item> items) {
+		items.ForEach(CheckDestroyItem);
+	}
+
+
+	public void CheckDestroyItem(Item item) {
+		if ((item.instantiateTime + removeTime) < Time.time) {
+			Destroy(item.gameObject);
+			spawnedItems.Remove (item);
+		}
 	}
 }

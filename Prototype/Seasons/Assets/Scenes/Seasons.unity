@@ -608,6 +608,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnProbability: 0
   coolDown: 20
+  removeTime: 40
 --- !u!212 &315841529
 SpriteRenderer:
   m_ObjectHideFlags: 0
