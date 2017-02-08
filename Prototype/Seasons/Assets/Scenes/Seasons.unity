@@ -387,6 +387,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0e1b6c2eb2ae4f41a39a4f033726750, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnProbability: 0
+  coolDown: 20
 --- !u!212 &315841529
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3324,7 +3326,7 @@ MonoBehaviour:
   rows: 4
   slotPaddingLeft: 20
   slotPaddingTop: 20
-  slotPaddingVeryTop: 0
+  slotPaddingVeryTop: 50
   slotSize: 40
   slotPrefab: {fileID: 1032774612882832, guid: 1046856afdf9c4d5891a11c611ccab04, type: 2}
   allSlots: []
@@ -4227,6 +4229,7 @@ MonoBehaviour:
   minigame: 0
   hasCaught: 0
   rodAlert: {fileID: 224182299289146694, guid: a75df00d2c24f42f9ae3ca489cac2229, type: 2}
+  delay: 0
   canvas: {fileID: 1696044807}
 --- !u!114 &1440615826
 MonoBehaviour:
