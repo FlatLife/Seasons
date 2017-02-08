@@ -13,6 +13,7 @@ TagManager:
   - WaterPurifier
   - RightWall
   - LeftWall
+  - Barrel
   layers:
   - Default
   - TransparentFX
