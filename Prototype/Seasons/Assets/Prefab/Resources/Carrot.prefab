@@ -58,16 +58,16 @@ MonoBehaviour:
   spriteNeutral: {fileID: 21300000, guid: fa5da08d72b8c4d47b8518171feef751, type: 3}
   spriteHighlighted: {fileID: 21300000, guid: fa5da08d72b8c4d47b8518171feef751, type: 3}
   maxSize: 5
-  isFood: 0
+  isFood: 1
   isCrop: 0
   isFinishedCrop: 1
   message: 
   slot: {fileID: 0}
   keepItem: 0
   durability: 0
-  cookTime: 0
+  cookTime: 20
   growTime: 0
-  nextItem: 
+  nextItem: RoastedCarrot
 --- !u!212 &212424804570473318
 SpriteRenderer:
   m_ObjectHideFlags: 1

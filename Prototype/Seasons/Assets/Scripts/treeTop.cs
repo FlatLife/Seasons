@@ -7,6 +7,7 @@ public class TreeTop : MonoBehaviour {
 	Item item;
 	List<Item> groundItems = new List<Item>();
 	int itemChoice;
+	int seedChoice;
 	public float spawnProbability;
 	float xAxisChange;
 	public float coolDown = 20;
@@ -19,7 +20,7 @@ public class TreeTop : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//if the amount of items on the ground is full
-		if(groundItems.Count >= 10){
+		if(groundItems.Count >= 5){
 			foreach(Item thing in groundItems){
 				if(thing == null){
 					groundItems.Remove(thing);
@@ -27,7 +28,7 @@ public class TreeTop : MonoBehaviour {
 			}
 		} else {
 			if(Random.Range(0f,1f) > spawnProbability && (coolDown <= 0)){
-			itemChoice = Random.Range(0, 7);
+			itemChoice = Random.Range(0, 4);
 			switch (itemChoice){
 				case 0:
 					item = Instantiate(Resources.Load<Item>("Wood"));
@@ -36,19 +37,24 @@ public class TreeTop : MonoBehaviour {
 					item = Instantiate(Resources.Load<Item>("Stick"));
 					break;
 				case 2:
-					item = Instantiate(Resources.Load<Item>("StrawberrySeeds"));
-					break;
-				case 3:
 					item = Instantiate(Resources.Load<Item>("Vine"));
 					break;
-				case 4:
-					item = Instantiate(Resources.Load<Item>("PineappleSeeds"));
-					break;
-				case 5:
-					item = Instantiate(Resources.Load<Item>("PotatoSeeds"));
-					break;
-				case 6:
-					item = Instantiate(Resources.Load<Item>("CarrotSeeds"));
+				case 3:
+					seedChoice = Random.Range(0, 4);
+					switch (seedChoice){
+						case 0:
+							item = Instantiate(Resources.Load<Item>("StrawberrySeeds"));
+							break;
+						case 1:
+							item = Instantiate(Resources.Load<Item>("PineappleSeeds"));
+							break;
+						case 2:
+							item = Instantiate(Resources.Load<Item>("PotatoSeeds"));
+							break;
+						case 3:
+							item = Instantiate(Resources.Load<Item>("CarrotSeeds"));
+							break;
+					}
 					break;
 			}
 			groundItems.Add(item);
@@ -67,7 +73,6 @@ public class TreeTop : MonoBehaviour {
 			item.InitializeFall();
 			//add item drop script
 			coolDown = 20;
-			xAxisChange = 0;
 			} else {
 				coolDown -= Time.deltaTime;
 			}
