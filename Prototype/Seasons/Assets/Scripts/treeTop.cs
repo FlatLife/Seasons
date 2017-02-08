@@ -69,11 +69,9 @@ public class TreeTop : MonoBehaviour {
 					xAxisChange = Random.Range(-5f, 14f);
 			}
 			//add the x axis change
-			Vector3 position = transform.position;
-			position.x = xAxisChange;
-			item.transform.position = position;		
+			item.transform.position = new Vector3(xAxisChange, transform.position.y, 0);
+			item.isFalling = true;		
 			//add item drop script
-			item.gameObject.AddComponent<ItemDrop>();
 			coolDown = 20;
 			} else {
 				coolDown -= Time.deltaTime;
