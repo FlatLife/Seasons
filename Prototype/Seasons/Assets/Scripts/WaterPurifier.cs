@@ -19,6 +19,7 @@ public class WaterPurifier : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		 if(Time.timeScale == 0)return;
 		if (!WaterUI.Slot1.isEmpty && !WaterUI.Slot2.isEmpty) {
 			if (WaterUI.Slot1.CurrentItem.type == ItemType.SALTWATER
 			   && WaterUI.Slot2.CurrentItem.type == ItemType.BUCKET) {

@@ -12,8 +12,8 @@ public class Waves : MonoBehaviour {
 
 		LineRenderer lineRenderer = gameObject.GetComponent<LineRenderer>();
 		lineRenderer.material = new Material (Shader.Find("Particles/Additive (Soft)"));
-		lineRenderer.startWidth = 1.2f;
-		lineRenderer.endWidth = 1.2f;
+		lineRenderer.startWidth = 0.4f;
+		lineRenderer.endWidth = 0.4f;
 		lineRenderer.numPositions = lengthOfLineRenderer;
 		lineRenderer.numCornerVertices = 10;
 		lineRenderer.numCapVertices = 10;
@@ -22,7 +22,7 @@ public class Waves : MonoBehaviour {
 	}
 
 	void Update() {
-		
+		 if(Time.timeScale == 0)return;
 		GameObject player = GameObject.FindGameObjectWithTag ("Player");
 		BuoyancyEffector2D effector = GetComponent<BuoyancyEffector2D> ();
 		LineRenderer lineRenderer = GetComponent<LineRenderer>();
@@ -36,7 +36,7 @@ public class Waves : MonoBehaviour {
 			points[i] = new Vector3(i * 0.5f, 0.15f * Mathf.Sin(i + 2*t), 0.0f);
 			points2D[i] = new Vector2(i * 0.5f, 0.15f * Mathf.Sin(i + 2*t));
 		}
-		effector.surfaceLevel = points[(int)Math.Abs(Math.Ceiling(player.transform.position.x+7.3f))].y - 0.4f;
+		effector.surfaceLevel = points[(int)Math.Abs(Math.Ceiling(player.transform.position.x+7.3f))].y - 1.5f;
 		lineRenderer.SetPositions(points);
 		collider.points = points2D;
 	}

@@ -34,7 +34,9 @@ public class DestroyUI : MonoBehaviour {
 		
 		info = Instantiate(Resources.Load<GameObject>("Info"));
 		info.transform.SetParent(this.transform);
-		info.GetComponent<InformationPopup>().info = "DestroyHelp";
+		info.GetComponent<InformationPopup>().info = "Use this UI to delete unwanted items. \nPlace an item in the slot then click delete";
+		info.GetComponent<InformationPopup>().width = 200;
+		info.GetComponent<InformationPopup>().height = 70;
 		info.GetComponent<RectTransform>().localPosition = new Vector3(105, -25);
 		info.GetComponent<RectTransform>().sizeDelta = new Vector3(25,25);
 

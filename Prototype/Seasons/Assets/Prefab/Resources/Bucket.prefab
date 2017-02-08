@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Bucket
-  itemUse: Right-Click to use
+  itemUse: Right-Click to fill at beach
   type: 11
   spriteNeutral: {fileID: 21300000, guid: 7388d2e0735b64fdfbe102fc0ab1f707, type: 3}
   spriteHighlighted: {fileID: 21300000, guid: 7388d2e0735b64fdfbe102fc0ab1f707, type: 3}
@@ -61,9 +61,13 @@ MonoBehaviour:
   isFood: 0
   isCrop: 0
   isFinishedCrop: 0
+  message: 
   slot: {fileID: 0}
   keepItem: 1
   durability: 0
+  cookTime: 0
+  growTime: 0
+  nextItem: 
 --- !u!212 &212983457028428912
 SpriteRenderer:
   m_ObjectHideFlags: 1
