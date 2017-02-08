@@ -21,6 +21,7 @@ public class Player : MonoBehaviour {
     public CraftTable craft;
 	public CookingUI cook;
 	public BarrelUI barrel;
+	public BarrelUI barrelBarRef;
 	public DestroyUI destroy;
 	private bool canTouch = false;
 	public bool switchSwimMode = false;
@@ -59,26 +60,29 @@ public class Player : MonoBehaviour {
 	private Stat hunger;
 	private Stat thirst;
 	private Stat warmth;
-
+	private Stat water;
 	
 	private void Awake(){
 		health = new Stat();
 		hunger = new Stat();
 		thirst = new Stat();
 		warmth = new Stat();
+		water = new Stat();
 		health.bar = GameObject.Find("Canvas/HealthBar").GetComponent<BarScript>();
 		hunger.bar = GameObject.Find("Canvas/HungerBar").GetComponent<BarScript>();
 		thirst.bar = GameObject.Find("Canvas/ThirstBar").GetComponent<BarScript>();
 		warmth.bar = GameObject.Find("Canvas/WarmthBar").GetComponent<BarScript>();
+		water.bar = GameObject.Find("Canvas/WaterBar").GetComponent<BarScript>();
 		health.currentVal = 100;
 		hunger.currentVal = 100;
 		thirst.currentVal = 100;
 		warmth.currentVal = 100;
+		water.currentVal = 0;
 		health.Initialize();
 		hunger.Initialize();
 		thirst.Initialize();
 		warmth.Initialize();
-		
+		water.Initialize();
 	}
     // Use this for initialization
     void Start () {
@@ -440,5 +444,6 @@ public class Player : MonoBehaviour {
 			barrelSlot.GetComponent<Image>().enabled = !barrelSlot.GetComponent<Image>().enabled;
 		}
 		barrel.GetComponent<Image>().enabled = !barrel.GetComponent<Image>().enabled;
+		barrel.WaterMask.GetComponent<Image>().enabled = !barrel.WaterMask.GetComponent<Image>().enabled;
 	}
 }
