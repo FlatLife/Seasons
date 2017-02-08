@@ -205,15 +205,26 @@ public class Player : MonoBehaviour {
 			}
 
 			if (atFarm) {
-				Debug.Log("Player entered Farm zone and pressed e");
+				if(openUI){
+					if(!farmUIOpen){
+						ToggleFarmUI();
+					}
+				}
 				ToggleUI();
-				//ToggleFarmUI();
+					//ToggleFarmUI();
+				
 			}
 
 			if (atWaterPurifier) {
 				//Debug.Log("Player entered Farm zone and pressed e");
+				if(openUI){
+					if(!waterUIOpen){
+						ToggleWaterUI();
+					}
+				}
 				ToggleUI();
 				//ToggleWaterUI();
+				
 			}
 
 			if(switchSwimMode){
@@ -229,6 +240,17 @@ public class Player : MonoBehaviour {
 
 
 		if(Input.GetKeyDown(KeyCode.Q)) {
+			if(openUI){
+				if(!waterUIOpen && atWaterPurifier){
+					ToggleWaterUI();
+				}
+				if(!fireUIOpen && atFire){
+					ToggleCookingUI();
+				}
+				if(!farmUIOpen && atFarm){
+					ToggleFarmUI();
+				}
+			}
 			ToggleUI();
        }
 	}
