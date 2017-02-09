@@ -63,6 +63,13 @@ public class DayCycle : MonoBehaviour {
 		if(dayTime <= 0 && fade.GetComponent<SpriteRenderer>().color.a > 0.95f){
 			fadeTime -= Time.deltaTime;
 			if(!fadingIn){
+				currentColorState = 1;		
+				Color tintColour = colorStates[0];
+				island.GetComponent<SpriteRenderer>().color = tintColour;
+				tree.GetComponent<SpriteRenderer>().color = tintColour;
+				ocean.GetComponent<SpriteRenderer>().color = tintColour;
+				Camera.main.backgroundColor = skyStates[0];
+
 				dayCountText.text = "Day " + ++dayCount;
 				GameMaster.dayCount = dayCount;
 				if(dayCount % 5 == 0){
@@ -78,7 +85,6 @@ public class DayCycle : MonoBehaviour {
 		}
 
 		if(fadeTime <= 0 && fadingIn){
-			currentColorState = 1;
 			//spawn message in a bottle when day starts
 			if(bottleHasSpawned != true){
 				GameObject bottle = Instantiate(Resources.Load<GameObject>("messageBottle"));
@@ -93,17 +99,20 @@ public class DayCycle : MonoBehaviour {
 			fadingIn = false;
 		}
 
-		float transition = (((dayLength - dayTime) / dayLength) * (colorStates.Length - 1)) % 1;	
-		if (((dayLength - dayTime) / dayLength) > ((1f / (colorStates.Length - 1)) * (currentColorState)) && (currentColorState + 1) < colorStates.Length) {
-			currentColorState++;
-		}			
+		if (dayTime > 0) {
+			if (((dayLength - dayTime) / dayLength) > ((1f / (colorStates.Length - 1)) * (currentColorState)) && (currentColorState + 1) < colorStates.Length) {
+				currentColorState++;
+			}
+
+			float transition = (((dayLength - dayTime) / dayLength) * (colorStates.Length - 1)) % 1;		
+			Color tintColour = interpolateColor(colorStates[currentColorState], colorStates[currentColorState-1], transition);
+			Color skyColour = interpolateColor(skyStates[currentColorState], skyStates[currentColorState-1], transition);
+			island.GetComponent<SpriteRenderer>().color = tintColour;
+			tree.GetComponent<SpriteRenderer>().color = tintColour;
+			ocean.GetComponent<SpriteRenderer>().color = tintColour;
+			Camera.main.backgroundColor = skyColour;
+		}
 		
-		Color tintColour = interpolateColor(colorStates[currentColorState], colorStates[currentColorState-1], transition);
-		Color skyColour = interpolateColor(skyStates[currentColorState], skyStates[currentColorState-1], transition);
-		island.GetComponent<SpriteRenderer>().color = tintColour;
-		tree.GetComponent<SpriteRenderer>().color = tintColour;
-		ocean.GetComponent<SpriteRenderer>().color = tintColour;
-		Camera.main.backgroundColor = skyColour;
 
 		sunIcon.localPosition = Vector3.Lerp(new Vector3(0-sunIcon.parent.GetComponent<RectTransform>().rect.width/2, sunIcon.localPosition.y), new Vector3(0+sunIcon.parent.GetComponent<RectTransform>().rect.width/2, sunIcon.localPosition.y),((dayLength - dayTime) / dayLength));
 	}
