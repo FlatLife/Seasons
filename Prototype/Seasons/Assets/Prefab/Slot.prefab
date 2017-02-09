@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114472974881531644}
   - component: {fileID: 114821143611707128}
   - component: {fileID: 114654370296018498}
+  - component: {fileID: 114371678965688836}
   m_Layer: 5
   m_Name: Slot
   m_TagString: Untagged
@@ -81,6 +82,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 
+--- !u!114 &114371678965688836
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1032774612882832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eddadb484d72d24889c5fbf8f770622, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
 --- !u!114 &114472974881531644
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -139,24 +152,6 @@ MonoBehaviour:
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  - eventID: 2
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 114102215661674668, guid: 0c165b2fbb68642a89964c89ccc751d2,
-            type: 2}
-          m_MethodName: MoveItem
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 1032774612882832}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
