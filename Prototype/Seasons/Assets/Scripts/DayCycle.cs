@@ -70,7 +70,6 @@ public class DayCycle : MonoBehaviour {
 				ocean.GetComponent<SpriteRenderer>().color = tintColour;
 				Camera.main.backgroundColor = skyStates[0];
 
-				Debug.Log(currentColorState);
 				dayCountText.text = "Day " + ++dayCount;
 				GameMaster.dayCount = dayCount;
 				if(dayCount % 5 == 0){
