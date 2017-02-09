@@ -29,6 +29,18 @@ public class StatsMaster : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		StatChange();
+		SeasonStatChange();
+	}
+
+	public void SeasonStatChange() {
+		if(GameMaster.dayCount % 5 == 0) {
+			hungerConstant *= 1.25f;
+			warmthConstant *= 1.5f;
+			thirstConstant *= 1.3f;
+		}
+		if(GameMaster.isWinter) {
+			Fishing.fishChance *= 0.5f;
+		}
 	}
 
 	public void StatChange() {
