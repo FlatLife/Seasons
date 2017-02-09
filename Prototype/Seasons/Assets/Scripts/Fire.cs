@@ -81,7 +81,7 @@ public class Fire : MonoBehaviour {
             //if checking the log slot
             if(i == slotNum - 1){
                 if(!currentSlot.isEmpty && currentSlot.CurrentItem.type == ItemType.STICK && fireState < 3){
-                    currentSlot.UseItem();
+                    currentSlot.DestroyItem();
                     changeState(fireState++, 1);
                 }
             } else {
