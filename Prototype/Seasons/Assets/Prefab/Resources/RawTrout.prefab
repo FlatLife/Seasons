@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Raw Trout
-  itemUse: Use on Fire
+  itemUse: Right-Click to eat
   type: 28
   spriteNeutral: {fileID: 21300000, guid: 14f69bb33b8b6463eb72be2ac55c44ff, type: 3}
   spriteHighlighted: {fileID: 21300000, guid: 14f69bb33b8b6463eb72be2ac55c44ff, type: 3}

@@ -104,6 +104,10 @@ public class Item : MonoBehaviour {
 				toBeDeleted = true;
 				hunger.GetComponent<BarScript>().increment(0.1f);
 				break;
+		case ItemType.ROASTEDCARROT:
+			toBeDeleted = true;
+			hunger.GetComponent<BarScript>().increment(0.2f);
+			break;
 			case ItemType.POTATO:
 				toBeDeleted = true;
 				hunger.GetComponent<BarScript>().increment(0.2f);
