@@ -129,10 +129,6 @@ public class Player : MonoBehaviour {
 		
 		OnCollisionUpdate();
 		Fishing fish = GetComponent<Fishing> ();
-		//just for playtesting set player frame to one with rod
-		//if(!playingCastRod && fish.isFishing){
-		//	animRenderer.sprite = animSprites[33];
-	//	}
 		//If player is pressing the interaction key
 		if (Input.GetKeyDown (KeyCode.E)) {
 			//Fishing minigame interaction
