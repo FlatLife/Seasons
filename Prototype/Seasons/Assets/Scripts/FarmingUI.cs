@@ -36,15 +36,16 @@ public class FarmingUI : MonoBehaviour {
 			farmSlot.GetComponent<Image>().enabled = false;
 			farmSlots[i] = farmSlot;
 
+		}
+
 		info = Instantiate(Resources.Load<GameObject>("Info"));
 		info.transform.SetParent(this.transform);
 		info.GetComponent<InformationPopup>().info = "Use this UI to grow your crops. \n Place seeds in any of the 8 slots then wait for them to grow.\n Use the slot on the right to water crops and speed up growth.";
 		info.GetComponent<InformationPopup>().width = 300;
 		info.GetComponent<InformationPopup>().height = 100;
-		info.GetComponent<RectTransform>().localPosition = new Vector3(430	, -25);
+		info.GetComponent<RectTransform>().localPosition = new Vector3(428	, -40);
 		info.GetComponent<RectTransform>().sizeDelta = new Vector3(25,25);
 		info.GetComponent<Image>().enabled = false;
-		}
 
 		waterSlot = Instantiate(slotPrefab);
 		waterSlot.name = "WaterSlot";

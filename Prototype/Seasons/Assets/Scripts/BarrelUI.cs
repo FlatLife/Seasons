@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class BarrelUI : MonoBehaviour {
 
+	public GameObject info;
 	public Slot slotPrefab;
 	public float slotSize;
 	private Backpack BackPack;
@@ -51,5 +52,26 @@ public class BarrelUI : MonoBehaviour {
 		bucketEmptySlot.GetComponent<Image>().enabled = false;
 		bucketFillSlot.GetComponent<Image>().enabled = false;
 		WaterMask.SetActive(false);
+
+		bucketEmptySlot.GetComponent<Image>().sprite = Resources.Load<Sprite>("slotUnhighlightedBucket");
+		SpriteState state =  new SpriteState();
+		state.highlightedSprite = Resources.Load<Sprite>("slotHighlightedBucket");
+		Button button = bucketEmptySlot.GetComponent<Button>();
+		button.spriteState = state;
+
+		bucketFillSlot.GetComponent<Image>().sprite = Resources.Load<Sprite>("slotUnhighlightedBucket");
+		SpriteState state2 =  new SpriteState();
+		state2.highlightedSprite = Resources.Load<Sprite>("slotHighlightedBucket");
+		Button button2 = bucketFillSlot.GetComponent<Button>();
+		button2.spriteState = state2;
+
+		info = Instantiate(Resources.Load<GameObject>("Info"));
+		info.transform.SetParent(this.transform);
+		info.GetComponent<InformationPopup>().info = "Use this UI to store your buckets of water.\n Place your filled bucket in the left slot to fill\n up the barrel, or place your empty bucket\n in the right slot to get water back out\n of the barrel.";
+		info.GetComponent<InformationPopup>().width = 300;
+		info.GetComponent<InformationPopup>().height = 130;
+		info.GetComponent<RectTransform>().localPosition = new Vector3(uiRect.rect.width - 25, -22);
+		info.GetComponent<RectTransform>().sizeDelta = new Vector3(25,25);
+		info.GetComponent<Image>().enabled = false;
 	}
 }
