@@ -362,14 +362,23 @@ public class Player : MonoBehaviour {
     }
 
 	private void OnCollisionUpdate() {
+		bool pickedUp = false;
         //If near an item on the ground pick it up first
 		if (canTouch) {
 			if (Input.GetKeyDown(KeyCode.E)) {
-				backpack.AddItem(itemColliderID.gameObject.GetComponent<Item>());
-				Destroy (itemColliderID.gameObject);
-				itemColliderID = null;
-				atUse = false;
-				canTouch = false;
+				if(itemColliderID.gameObject.GetComponent<Item>().type == ItemType.BOTTLE){
+					GameObject scroll = Instantiate (Resources.Load<GameObject> ("message" + GameMaster.dayCount));
+					scroll.transform.SetParent(canvas.transform);
+					scroll.transform.position = new Vector3(400,400);
+				}else{
+					pickedUp = backpack.AddItem(itemColliderID.gameObject.GetComponent<Item>());
+				}
+					if (pickedUp) {
+						Destroy (itemColliderID.gameObject);
+						itemColliderID = null;
+						atUse = false;
+						canTouch = false;
+					}
 			}
 		}
 	}
