@@ -322,6 +322,36 @@ public class Player : MonoBehaviour {
 		}
 	}
 
+	private void OnCollisionUpdate() {
+		bool pickedUp = false;
+		//If near an item on the ground pick it up first
+		if (canTouch) {
+			if (Input.GetKeyDown(KeyCode.E)) {
+				if (itemColliderID.gameObject.GetComponent<Item> ().type == ItemType.BOTTLE) {
+					GameObject scroll = Instantiate (Resources.Load<GameObject> ("message" + GameMaster.dayCount));
+					scroll.transform.SetParent (canvas.transform);
+					scroll.transform.position = new Vector3 (400, 400);
+					string note = itemColliderID.gameObject.GetComponent<Item> ().message;
+					itemColliderID.gameObject.GetComponent<Item> ().itemName = note;
+				}
+				pickedUp = backpack.AddItem (itemColliderID.gameObject.GetComponent<Item> ());
+				if (pickedUp) {
+					Destroy (itemColliderID.gameObject);
+					itemColliderID = null;
+					atUse = false;
+					canTouch = false;
+				} else {
+					GameObject full = Instantiate (Resources.Load<GameObject> ("InventoryFull"), canvas.transform);
+					RectTransform CanvasRect= canvas.GetComponent<RectTransform>();
+					Vector3 pos = Camera.main.WorldToScreenPoint (gameObject.transform.position);
+					pos.y += 170f;
+					full.transform.position = pos;
+					Destroy (full, 2f);
+				}
+			}
+		}
+	}
+
 	public void ToggleJournalUI() {
 		openUI = !openUI;
 		
@@ -356,29 +386,6 @@ public class Player : MonoBehaviour {
 			atBarrel = true;
 		}
     }
-
-	private void OnCollisionUpdate() {
-		bool pickedUp = false;
-        //If near an item on the ground pick it up first
-		if (canTouch) {
-			if (Input.GetKeyDown(KeyCode.E)) {
-				if (itemColliderID.gameObject.GetComponent<Item> ().type == ItemType.BOTTLE) {
-					GameObject scroll = Instantiate (Resources.Load<GameObject> ("message" + GameMaster.dayCount));
-					scroll.transform.SetParent (canvas.transform);
-					scroll.transform.position = new Vector3 (400, 400);
-					string note = itemColliderID.gameObject.GetComponent<Item> ().message;
-					itemColliderID.gameObject.GetComponent<Item> ().itemName = note;
-				}
-					pickedUp = backpack.AddItem (itemColliderID.gameObject.GetComponent<Item> ());
-					if (pickedUp) {
-						Destroy (itemColliderID.gameObject);
-						itemColliderID = null;
-						atUse = false;
-						canTouch = false;
-					}
-			}
-		}
-	}
 
 	private void OnTriggerExit2D(Collider2D other){
 		if(other.tag == "Item" && other == itemColliderID)
