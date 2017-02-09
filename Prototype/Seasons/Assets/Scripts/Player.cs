@@ -23,7 +23,7 @@ public class Player : MonoBehaviour {
 	public BarrelUI barrel;
 	public BarrelUI barrelBarRef;
 	public DestroyUI destroy;
-	private bool canTouch = false;
+	public bool canTouch = false;
 	public bool switchSwimMode = false;
     private Collider2D itemColliderID;
 	private Collider2D farmColliderID;

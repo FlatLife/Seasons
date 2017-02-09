@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GUIManager : MonoBehaviour {
 	public Player player;
@@ -19,8 +20,20 @@ public class GUIManager : MonoBehaviour {
 			if(popup == null){
 				popup = Instantiate(Resources.Load<GameObject>("EKey"), this.transform);
 			}
-			Vector3 pos = player.transform.position;
-			pos.y += 2f; 
+			if(player.canTouch){
+				popup.GetComponentInChildren<Text>().text = "Pick up";
+			}else if(player.canFish){
+				popup.GetComponentInChildren<Text>().text = "Cast Rod";
+			}else if(player.atFire){
+				popup.GetComponentInChildren<Text>().text = "Start/Open Fire";
+			}else if(player.atFarm){
+				popup.GetComponentInChildren<Text>().text = "Open Farm";
+			}else if(player.atBarrel){
+				popup.GetComponentInChildren<Text>().text = "Open Barrel";
+			}else if(player.switchSwimMode){
+				popup.GetComponentInChildren<Text>().text = "Jump in water";
+			}
+			Vector3 pos = new Vector3(35, 65, 0);
 			popup.transform.position = pos;
 		}else{
 			Destroy(popup);
