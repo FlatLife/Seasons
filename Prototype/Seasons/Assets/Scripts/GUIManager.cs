@@ -16,22 +16,38 @@ public class GUIManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(player.atUse && !player.performingAction){
+		if(player.atUse){
 			if(popup == null){
 				popup = Instantiate(Resources.Load<GameObject>("EKey"), this.transform);
 			}
 			if(player.canTouch){
 				popup.GetComponentInChildren<Text>().text = "Pick up";
 			}else if(player.canFish){
-				popup.GetComponentInChildren<Text>().text = "Cast Rod";
+				if(!player.GetComponent<Fishing>().isFishing){
+					popup.GetComponentInChildren<Text>().text = "Cast Rod";
+				}else if(player.GetComponent<Fishing>().isFishing && !player.GetComponent<Fishing>().minigame){
+					popup.GetComponentInChildren<Text>().text = "Exit Fishing";
+				}else if(player.GetComponent<Fishing>().isFishing && player.GetComponent<Fishing>().minigame){
+					popup.GetComponentInChildren<Text>().text = "Catch Fish!";
+				}
 			}else if(player.atFire){
-				popup.GetComponentInChildren<Text>().text = "Start/Open Fire";
+				if(!player.playingFireStart){
+					popup.GetComponentInChildren<Text>().text = "Start/Open Fire";
+				}else if(player.playingFireStart){
+					popup.GetComponentInChildren<Text>().text = "Mash to start Fire";
+				}
 			}else if(player.atFarm){
 				popup.GetComponentInChildren<Text>().text = "Open Farm";
 			}else if(player.atBarrel){
 				popup.GetComponentInChildren<Text>().text = "Open Barrel";
 			}else if(player.switchSwimMode){
-				popup.GetComponentInChildren<Text>().text = "Jump in water";
+				if(player.isSwimming){
+					popup.GetComponentInChildren<Text>().text = "Stop swimming";
+				}else if(!player.isSwimming){
+					popup.GetComponentInChildren<Text>().text = "Start Swimming";
+				}
+			}else if(player.atWaterPurifier){
+				popup.GetComponentInChildren<Text>().text = "Open Water purifier";
 			}
 			Vector3 pos = new Vector3(35, 65, 0);
 			popup.transform.position = pos;
