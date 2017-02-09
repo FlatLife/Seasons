@@ -27,7 +27,7 @@ public class WaterSpawns : MonoBehaviour {
 			}
 		}
 		//if it is time to spawn an item and the player is not in the water
-		if(coolDown <= 0 && !player.GetComponent<Player>().isSwimming){
+		if(coolDown <= 0 && !player.GetComponent<Player>().isSwimming && items.Count < 10){
 			itemChoice = Random.Range(0, 2);
 			switch (itemChoice){
 				case 0:
