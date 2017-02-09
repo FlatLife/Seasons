@@ -23,7 +23,7 @@ public class Player : MonoBehaviour {
 	public BarrelUI barrel;
 	public BarrelUI barrelBarRef;
 	public DestroyUI destroy;
-	private bool canTouch = false;
+	public bool canTouch = false;
 	public bool switchSwimMode = false;
     private Collider2D itemColliderID;
 	private Collider2D farmColliderID;
@@ -121,14 +121,18 @@ public class Player : MonoBehaviour {
 				}	
 			} else {
 				playingCastRod = false;
-				animRenderer.sprite = animSprites[0];
+				animRenderer.sprite = animSprites[33];
 			}
 		}
+		
 
 		
 		OnCollisionUpdate();
 		Fishing fish = GetComponent<Fishing> ();
-
+		//just for playtesting set player frame to one with rod
+		//if(!playingCastRod && fish.isFishing){
+		//	animRenderer.sprite = animSprites[33];
+	//	}
 		//If player is pressing the interaction key
 		if (Input.GetKeyDown (KeyCode.E)) {
 			//Fishing minigame interaction
@@ -173,8 +177,8 @@ public class Player : MonoBehaviour {
 							playingFireStart = true;
                             //getting the position that the player should be at
                             Vector3 pos = fire.transform.position;
-                            pos.y += 0.8f;
-                            pos.x -= 0.75f;
+                            pos.y += 0.90f;
+                            pos.x -= 0.68f;
                             transform.position = pos;
 						}
 						break;
@@ -444,5 +448,6 @@ public class Player : MonoBehaviour {
 		}
 		barrel.GetComponent<Image>().enabled = !barrel.GetComponent<Image>().enabled;
 		barrel.WaterMask.GetComponent<Image>().enabled = !barrel.WaterMask.GetComponent<Image>().enabled;
+		barrel.WaterMask.SetActive(!barrel.WaterMask.activeSelf);
 	}
 }
