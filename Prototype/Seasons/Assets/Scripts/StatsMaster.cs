@@ -77,6 +77,7 @@ public class StatsMaster : MonoBehaviour {
 				}
 				if (warmth.GetComponent<BarScript>().barEmpty()) {
 					health.GetComponent<BarScript>().decrement(healthConstant*2.5f);
+					hunger.GetComponent<BarScript>().decrement(hungerConstant*0.75f);
 				}
 			//Summer Values
 			} else {
