@@ -17,7 +17,8 @@ public class Waves : MonoBehaviour {
 		lineRenderer.numPositions = lengthOfLineRenderer;
 		lineRenderer.numCornerVertices = 10;
 		lineRenderer.numCapVertices = 10;
-		lineRenderer.sortingLayerName = "Water";
+		lineRenderer.sortingLayerName = "Background";
+		lineRenderer.sortingOrder = -1;
 
 	}
 
