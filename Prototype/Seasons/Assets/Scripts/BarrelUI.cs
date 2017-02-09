@@ -25,10 +25,11 @@ public class BarrelUI : MonoBehaviour {
 		RectTransform uiRect = this.GetComponent<RectTransform>();
 		uiRect.sizeDelta = new Vector3(200, 300, 0);
 		uiRect.position = new Vector3(600,400);
-		WaterBarRect.localPosition = new Vector3(180, -16);
-		WaterMaskRect.localPosition = new Vector3(7, -8);
 		WaterBar.transform.SetParent(this.transform);
 		WaterMask.transform.SetParent(this.WaterBar.transform);
+		WaterBarRect.localPosition = new Vector3(uiRect.rect.width/2 - WaterBarRect.rect.width/2, -slotSize*1.8f);
+		WaterMaskRect.localPosition = new Vector3(7, -8);
+		
 
 		bucketEmptySlot = Instantiate(slotPrefab);
 		bucketEmptySlot.name = "FreshWaterSlot";
@@ -37,13 +38,13 @@ public class BarrelUI : MonoBehaviour {
 
 		RectTransform bucketEmptyRect = bucketEmptySlot.GetComponent<RectTransform>();
 		bucketEmptySlot.transform.SetParent(this.transform);
-		bucketEmptyRect.localPosition = new Vector3(40, -20);
+		bucketEmptyRect.localPosition = new Vector3(48, -20);
 		bucketEmptyRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, slotSize);
 		bucketEmptyRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, slotSize);
 
 		RectTransform bucketFillRect = bucketFillSlot.GetComponent<RectTransform>();
 		bucketFillSlot.transform.SetParent(this.transform);
-		bucketFillRect.localPosition = new Vector3(100, -20);
+		bucketFillRect.localPosition = new Vector3(115, -20);
 		bucketFillRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, slotSize);
 		bucketFillRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, slotSize);
 

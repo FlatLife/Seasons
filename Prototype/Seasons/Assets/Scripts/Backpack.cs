@@ -20,6 +20,8 @@ public class Backpack : MonoBehaviour {
 	private static GameObject hoverObject;
 	public Canvas canvas;
 
+	public GameObject player;
+
 
 	public static int EmptySlot {
 		get { return emptySlot; }
@@ -35,6 +37,9 @@ public class Backpack : MonoBehaviour {
 	void Update () {
 		if (hoverObject != null) {
 			hoverObject.transform.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y-2f);
+			if(!player.GetComponent<Player>().openUI){
+				Destroy(hoverObject);
+			}
 		}
 	}
 
@@ -112,7 +117,6 @@ public class Backpack : MonoBehaviour {
 			if (!clicked.GetComponent<Slot>().isEmpty) {
 				from = clicked.GetComponent<Slot>();
 				from.GetComponent<Image>().color = Color.gray;
-
 				hoverObject = (GameObject)Instantiate(iconPrefab);
 				hoverObject.GetComponent<Image>().sprite = clicked.GetComponent<Image>().sprite;
 				hoverObject.name = "Hover";
