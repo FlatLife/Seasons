@@ -38,6 +38,8 @@ public class Backpack : MonoBehaviour {
 		if (hoverObject != null) {
 			hoverObject.transform.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y-2f);
 			if(!player.GetComponent<Player>().openUI){
+				from.GetComponent<Image> ().color = Color.white;
+				from = null;
 				Destroy(hoverObject);
 			}
 		}
