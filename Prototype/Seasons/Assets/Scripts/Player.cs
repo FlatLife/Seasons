@@ -362,13 +362,14 @@ public class Player : MonoBehaviour {
         //If near an item on the ground pick it up first
 		if (canTouch) {
 			if (Input.GetKeyDown(KeyCode.E)) {
-				if(itemColliderID.gameObject.GetComponent<Item>().type == ItemType.BOTTLE){
+				if (itemColliderID.gameObject.GetComponent<Item> ().type == ItemType.BOTTLE) {
 					GameObject scroll = Instantiate (Resources.Load<GameObject> ("message" + GameMaster.dayCount));
-					scroll.transform.SetParent(canvas.transform);
-					scroll.transform.position = new Vector3(400,400);
-				}else{
-					pickedUp = backpack.AddItem(itemColliderID.gameObject.GetComponent<Item>());
+					scroll.transform.SetParent (canvas.transform);
+					scroll.transform.position = new Vector3 (400, 400);
+					string note = itemColliderID.gameObject.GetComponent<Item> ().message;
+					itemColliderID.gameObject.GetComponent<Item> ().itemName = note;
 				}
+					pickedUp = backpack.AddItem (itemColliderID.gameObject.GetComponent<Item> ());
 					if (pickedUp) {
 						Destroy (itemColliderID.gameObject);
 						itemColliderID = null;
