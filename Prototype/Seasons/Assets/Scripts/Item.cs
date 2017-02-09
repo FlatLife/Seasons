@@ -185,9 +185,10 @@ public class Item : MonoBehaviour {
 				}
 				break;
 			case ItemType.BOTTLE:
-				toBeDeleted = true;
-				GameObject scroll = Instantiate (Resources.Load<GameObject> (message));
-				scroll.transform.position = GameObject.Find ("Player").transform.position;
+				toBeDeleted = false;
+				GameObject canvas = GameObject.Find ("Canvas");
+				GameObject scroll = Instantiate (Resources.Load<GameObject> (message), canvas.transform);
+				scroll.transform.position = new Vector3(400,400);
 				break;
 		}
 		return toBeDeleted;
