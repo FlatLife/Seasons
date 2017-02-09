@@ -23,7 +23,6 @@ public class Fishing : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		fishChance = 0.003f;
 	}
 	
 	// Update is called once per frame
@@ -57,6 +56,7 @@ public class Fishing : MonoBehaviour {
 			stop ();
 
 		}
+
 	}
 
 	public void fish(){

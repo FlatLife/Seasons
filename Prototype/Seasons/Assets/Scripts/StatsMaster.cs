@@ -7,6 +7,7 @@ public class StatsMaster : MonoBehaviour {
 
 	public float time;
 
+	private bool seasonChange;
 	private GameObject health;
 	private GameObject thirst;
 	private GameObject hunger;
@@ -29,17 +30,23 @@ public class StatsMaster : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		StatChange();
-		SeasonStatChange();
+		if(GameMaster.dayCount % 5 == 0 && seasonChange){
+			SeasonStatChange();
+			seasonChange = false;
+		}
+		if(GameMaster.dayCount % 5 == 1){
+			seasonChange = true;
+		}
 	}
 
 	public void SeasonStatChange() {
-		if(GameMaster.dayCount % 5 == 0) {
-			hungerConstant *= 1.25f;
-			warmthConstant *= 1.5f;
-			thirstConstant *= 1.3f;
-		}
-		if(GameMaster.isWinter) {
-			Fishing.fishChance *= 0.5f;
+		hungerConstant *= 1.25f;
+		warmthConstant *= 1.5f;
+		thirstConstant *= 1.3f;
+		if(!GameMaster.isWinter){
+			Fishing.fishChance = 0.003f;
+		}else if(GameMaster.isWinter){
+			Fishing.fishChance = 0.0015f;
 		}
 	}
 
