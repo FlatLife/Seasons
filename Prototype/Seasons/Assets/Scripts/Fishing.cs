@@ -7,7 +7,7 @@ public class Fishing : MonoBehaviour {
 
  private Transform text;
 	public GameObject backpack;
-	public static float fishChance;
+	public static float fishChance = 0.003f;
 	public Transform fishPrefab;
 	public bool isFishing = false;
 	public bool minigame = false;
