@@ -40,6 +40,7 @@ public class DayCycle : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		dayCount = 1;
 		dayCountText = GameObject.Find("DayCount").GetComponent<Text>();
 		season = GameObject.Find("Season").GetComponent<Text>();
 		GameMaster.dayCount = dayCount;
