@@ -444,5 +444,6 @@ public class Player : MonoBehaviour {
 		}
 		barrel.GetComponent<Image>().enabled = !barrel.GetComponent<Image>().enabled;
 		barrel.WaterMask.GetComponent<Image>().enabled = !barrel.WaterMask.GetComponent<Image>().enabled;
+		barrel.WaterMask.SetActive(!barrel.WaterMask.activeSelf);
 	}
 }
