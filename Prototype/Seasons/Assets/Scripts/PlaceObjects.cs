@@ -14,7 +14,7 @@ public class PlaceObjects : MonoBehaviour {
 	private string placeItem;
 
 	private Color buildColor = new Color (1,1,1, 0.5f);
-	private Color cantBuild = new Color (1,0,0, 0.5f);
+	private Color cantBuild = new Color (1,0,0, 1f);
 
 	// Use this for initialization
 	void Start () {
