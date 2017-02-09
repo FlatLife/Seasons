@@ -49,5 +49,6 @@ public class BarrelUI : MonoBehaviour {
 
 		bucketEmptySlot.GetComponent<Image>().enabled = false;
 		bucketFillSlot.GetComponent<Image>().enabled = false;
+		WaterMask.SetActive(false);
 	}
 }

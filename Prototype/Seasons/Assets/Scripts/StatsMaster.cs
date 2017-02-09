@@ -12,10 +12,10 @@ public class StatsMaster : MonoBehaviour {
 	private GameObject hunger;
 	private GameObject warmth;
 
-	private float warmthConstant = 0.02f;
-	private float hungerConstant = 0.02f;
-	private float thirstConstant = 0.02f;
-	private float healthConstant = 0.02f; 
+	public float warmthConstant = 0.0004f;
+	public float hungerConstant = 0.0004f;
+	public float thirstConstant = 0.0004f;
+	public float healthConstant = 0.0004f; 
 
 	// Use this for initialization
 	void Start () {
@@ -38,7 +38,7 @@ public class StatsMaster : MonoBehaviour {
 			if (GameMaster.isWinter) {
 				//Winter Warmth
 				if(warmth.GetComponent<BarScript>().returnAmount() > 0.5f) {
-					warmth.GetComponent<BarScript>().decrement(warmthConstant);
+					warmth.GetComponent<BarScript>().decrement(warmthConstant * 3);
 				} else {
 					warmth.GetComponent<BarScript>().decrement(warmthConstant*1.5f);
 				}
@@ -56,13 +56,14 @@ public class StatsMaster : MonoBehaviour {
 				if (hunger.GetComponent<BarScript>().barEmpty() && thirst.GetComponent<BarScript>().barEmpty()) {
 					health.GetComponent<BarScript>().decrement(healthConstant*2.5f);
 				}
+				if (warmth.GetComponent<BarScript>().barEmpty()) {
+					health.GetComponent<BarScript>().decrement(healthConstant*2.5f);
+				}
 			//Summer Values
 			} else {
 				//Summer Warmth
 				if(warmth.GetComponent<BarScript>().returnAmount() > 0.5f) {
 					warmth.GetComponent<BarScript>().decrement(warmthConstant*1.5f);
-				} else {
-					warmth.GetComponent<BarScript>().decrement(warmthConstant*1.1f);
 				}
 				//Summer Hunger
 				hunger.GetComponent<BarScript>().decrement(hungerConstant*0.75f);
@@ -80,7 +81,7 @@ public class StatsMaster : MonoBehaviour {
 				}
 			}
 			//Reset tick
-			time = 5f;
+			time = 0.1f;
 		}
 		//Game Over check
 		if(health.GetComponent<BarScript>().barEmpty()){
