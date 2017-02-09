@@ -7,7 +7,7 @@ public class Fishing : MonoBehaviour {
 
  private Transform text;
 	public GameObject backpack;
-	public float fishChance = 0.002f;
+	public static float fishChance;
 	public Transform fishPrefab;
 	public bool isFishing = false;
 	public bool minigame = false;
@@ -23,7 +23,7 @@ public class Fishing : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+		fishChance = 0.003f;
 	}
 	
 	// Update is called once per frame
