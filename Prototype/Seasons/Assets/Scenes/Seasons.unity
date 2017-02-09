@@ -622,7 +622,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnProbability: 0
   coolDown: 20
-  removeTime: 40
+  removeTime: 0
 --- !u!212 &315841529
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3220,7 +3220,7 @@ MonoBehaviour:
   maxSpeed: 15
   waterSpeed: 15
   landSpeed: 5
-  statsRef: {fileID: 1401996499}
+  statsRef: {fileID: 0}
 --- !u!61 &1440615832
 BoxCollider2D:
   m_ObjectHideFlags: 0
