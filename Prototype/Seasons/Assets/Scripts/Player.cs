@@ -358,6 +358,7 @@ public class Player : MonoBehaviour {
     }
 
 	private void OnCollisionUpdate() {
+		bool pickedUp = false;
         //If near an item on the ground pick it up first
 		if (canTouch) {
 			if (Input.GetKeyDown(KeyCode.E)) {
@@ -366,13 +367,14 @@ public class Player : MonoBehaviour {
 					scroll.transform.SetParent(canvas.transform);
 					scroll.transform.position = new Vector3(400,400);
 				}else{
-					backpack.AddItem(itemColliderID.gameObject.GetComponent<Item>());
+					pickedUp = backpack.AddItem(itemColliderID.gameObject.GetComponent<Item>());
 				}
-					Destroy (itemColliderID.gameObject);
-					itemColliderID = null;
-					atUse = false;
-					canTouch = false;
-				
+					if (pickedUp) {
+						Destroy (itemColliderID.gameObject);
+						itemColliderID = null;
+						atUse = false;
+						canTouch = false;
+					}
 			}
 		}
 	}
