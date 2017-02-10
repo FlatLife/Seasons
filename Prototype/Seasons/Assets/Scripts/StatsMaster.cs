@@ -41,7 +41,7 @@ public class StatsMaster : MonoBehaviour {
 
 	public void SeasonStatChange() {
 		hungerConstant *= 1.25f;
-		warmthConstant *= 1.5f;
+		warmthConstant *= 1.4f;
 		thirstConstant *= 1.3f;
 		if(!GameMaster.isWinter){
 			Fishing.fishChance = 0.003f;
@@ -59,7 +59,7 @@ public class StatsMaster : MonoBehaviour {
 				if(warmth.GetComponent<BarScript>().returnAmount() > 0.5f) {
 					warmth.GetComponent<BarScript>().decrement(warmthConstant * 3);
 				} else {
-					warmth.GetComponent<BarScript>().decrement(warmthConstant*1.5f);
+					warmth.GetComponent<BarScript>().decrement(warmthConstant*2);
 				}
 				//Winter Hunger
 				hunger.GetComponent<BarScript>().decrement(hungerConstant*1.5f);
@@ -83,7 +83,9 @@ public class StatsMaster : MonoBehaviour {
 			} else {
 				//Summer Warmth
 				if(warmth.GetComponent<BarScript>().returnAmount() > 0.5f) {
-					warmth.GetComponent<BarScript>().decrement(warmthConstant*1.5f);
+					warmth.GetComponent<BarScript>().decrement(warmthConstant);
+				} else {
+					warmth.GetComponent<BarScript>().decrement(warmthConstant*0.75f);
 				}
 				//Summer Hunger
 				hunger.GetComponent<BarScript>().decrement(hungerConstant*0.75f);
