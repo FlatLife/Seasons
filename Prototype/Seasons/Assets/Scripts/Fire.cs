@@ -27,7 +27,8 @@ public class Fire : MonoBehaviour {
     // game object
     SpriteRenderer animRenderer;
 
-    private float timeSinceLastFrame;    
+    private float timeSinceLastFrame; 
+    AudioSource sound;   
 
     // Use this for initialization
     void Awake () {
@@ -45,14 +46,24 @@ public class Fire : MonoBehaviour {
         //Sets the animation to the first frame
         timeSinceLastFrame = 0;
         fireState = -1;
+        sound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update () {
         //if the fire is not dead
         if(fireState > 0){
-            //adjusting the players warmth
+            if(!sound.isPlaying){
+                sound.Play();
+            }
+
+            //adjusting the sound volume
             distanceFromPlayer = Vector3.Distance(player.transform.position, transform.position);
+            if(distanceFromPlayer > 5){
+                sound.volume = 0;
+            }
+            sound.volume = (1 - distanceFromPlayer/5);
+            //adjusting the players warmth
             if(distanceFromPlayer < fireHeatRange){
                 warmth.GetComponent<BarScript>().increment(0.001f);
             }
@@ -108,6 +119,9 @@ public class Fire : MonoBehaviour {
         }
         //if fire is dead, display deadFire sprite    
         } else {
+            if(sound.isPlaying){
+                sound.Stop();
+            }
             animRenderer.sprite = animSprites[15];
         }		    
     }
