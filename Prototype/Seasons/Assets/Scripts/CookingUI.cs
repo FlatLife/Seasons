@@ -14,7 +14,7 @@ public class CookingUI : MonoBehaviour {
 		cookSlots = new GameObject[slotCount];
 		RectTransform uiRect = this.GetComponent<RectTransform>();
 		uiRect.sizeDelta = new Vector3(280, 150);
-		uiRect.position = new Vector3(500,400);
+		uiRect.position = new Vector3(510,330);
 		info = Instantiate(Resources.Load<GameObject>("Info"));
 		info.transform.SetParent(this.transform);
 		info.GetComponent<InformationPopup>().info = "Use this UI to cook your food. \n Place items you wish to cook in the three slots at the top.\n Use the bottom slot to put wood on the fire and keep the fire going.";
