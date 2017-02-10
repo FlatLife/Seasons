@@ -105,17 +105,13 @@ public class Player2 : MonoBehaviour {
 		}
 
      if(other.tag == "LeftWall") {
-         // If collided with the left wall, set
-         // the left wall flag to true
+
          atLeftWall = true;
       } else if(other.tag == "RightWall") {
-         // If collided with the right wall, set
-         // the right wall flag to true
+
          atRightWall = true;
       } 
 	  if(other.tag == "OceanFloor") {
-         // If collided with the right wall, set
-         // the right wall flag to true
          atOceanFloor = true;
       } 
 	}
@@ -128,17 +124,13 @@ public class Player2 : MonoBehaviour {
 			underwater = false;
 		}
 		 if(other.tag == "LeftWall") {
-         // If collided with the left wall, set
-         // the left wall flag to true
          atLeftWall = false;
       } else if(other.tag == "RightWall") {
-         // If collided with the right wall, set
-         // the right wall flag to true
+
          atRightWall = false;
       }
 	   if(other.tag == "OceanFloor") {
-         // If collided with the right wall, set
-         // the right wall flag to true
+
          atOceanFloor = false;
       }  
 	}
