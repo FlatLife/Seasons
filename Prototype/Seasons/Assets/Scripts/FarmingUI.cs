@@ -58,6 +58,8 @@ public class FarmingUI : MonoBehaviour {
 		waterSlot.GetComponent<Image>().sprite = Resources.Load<Sprite>("slotUnhighlightedBucket");
 		SpriteState state =  new SpriteState();
 		state.highlightedSprite = Resources.Load<Sprite>("slotHighlightedBucket");
+		waterSlot.GetComponent<Slot>().initialSprite = Resources.Load<Sprite>("slotUnhighlightedBucket");
+		waterSlot.GetComponent<Slot>().initial = state;
 		Button button = waterSlot.GetComponent<Button>();
 		button.spriteState = state;
 	}

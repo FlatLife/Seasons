@@ -57,12 +57,18 @@ public class BarrelUI : MonoBehaviour {
 		SpriteState state =  new SpriteState();
 		state.highlightedSprite = Resources.Load<Sprite>("slotHighlightedBucket");
 		Button button = bucketEmptySlot.GetComponent<Button>();
+		bucketEmptySlot.GetComponent<Slot>().initialSprite = Resources.Load<Sprite>("slotUnhighlightedBucket");
+		bucketEmptySlot.GetComponent<Slot>().initial = state;
+		button.spriteState = state;
 		button.spriteState = state;
 
 		bucketFillSlot.GetComponent<Image>().sprite = Resources.Load<Sprite>("slotUnhighlightedBucket");
 		SpriteState state2 =  new SpriteState();
 		state2.highlightedSprite = Resources.Load<Sprite>("slotHighlightedBucket");
 		Button button2 = bucketFillSlot.GetComponent<Button>();
+		bucketFillSlot.GetComponent<Slot>().initialSprite = Resources.Load<Sprite>("slotUnhighlightedBucket");
+		bucketFillSlot.GetComponent<Slot>().initial = state;
+		button2.spriteState = state;
 		button2.spriteState = state2;
 
 		info = Instantiate(Resources.Load<GameObject>("Info"));

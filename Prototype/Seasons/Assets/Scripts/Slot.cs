@@ -8,6 +8,8 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 	private Item currentItem;
 	private int itemCount;
 
+	public SpriteState initial;
+	public Sprite initialSprite;
 	public GameObject tooltip;
 	public Text stackTxt;
 	public Sprite slotEmpty;
@@ -83,12 +85,17 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 	}
 
 	private void ChangeSprite(Sprite neutral, Sprite highlighted) {
-		GetComponent<Image>().sprite = neutral;
-		SpriteState st = new SpriteState();
-		st.highlightedSprite = highlighted;
-		st.pressedSprite = neutral;
-
-		GetComponent<Button>().spriteState = st;
+		if(initial.highlightedSprite != null && currentItem == null){
+			GetComponent<Button>().spriteState = initial;
+			GetComponent<Image>().sprite = initialSprite;
+		}else{
+			GetComponent<Image>().sprite = neutral;
+			SpriteState st = new SpriteState();
+			st.highlightedSprite = highlighted;
+			st.pressedSprite = neutral;
+			GetComponent<Button>().spriteState = st;
+		}
+		
 	}
 
 	public void UseItem() {
