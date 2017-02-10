@@ -35,6 +35,7 @@ public class DayCycle : MonoBehaviour {
 						 new Color(0.053f, 0.129f, 0.239f, 1)};
 
 	int currentColorState = 1;
+	public Transform treeSnow;
 
 	// Use this for initialization
 	void Start () {
@@ -50,6 +51,7 @@ public class DayCycle : MonoBehaviour {
 		transformList.Add(GameObject.Find("Ocean Background").transform);
 		transformList.Add(GameObject.Find("Beach").transform);
 		transformList.Add(GameObject.Find("Pier").transform);
+		transformList.Add(treeSnow);
 		land = GameObject.Find("Land").transform;
 		transformList.Add(land);
 
@@ -79,9 +81,11 @@ public class DayCycle : MonoBehaviour {
 					if(GameMaster.isWinter){
 						season.text = "Winter";
 						land.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Snow");
+						treeSnow.GetComponent<SpriteRenderer>().enabled = true;
 					} else {
 						season.text = "Summer";
 						land.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Grass");
+						treeSnow.GetComponent<SpriteRenderer>().enabled = false;
 					}
 				}
 			}
