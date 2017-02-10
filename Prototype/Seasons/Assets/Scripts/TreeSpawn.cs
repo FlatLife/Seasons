@@ -20,7 +20,7 @@ public class TreeSpawn : MonoBehaviour {
 			}
 		}
 		//if it is time to spawn an item
-		if(coolDown <= 0){
+		if(coolDown <= 0 && items.Count < 10){
 			int itemChoice = Random.Range(0, 4);
 			switch (itemChoice){
 				case 0:
@@ -50,6 +50,7 @@ public class TreeSpawn : MonoBehaviour {
 					}
 					break;
 			}
+			items.Add(item);
 			//getting a random x axis change, has to not be between 2 and 6.5
 			float xAxisChange = Random.Range(-5f, 14f);
 			while(xAxisChange < 6.5 && xAxisChange > 2){
