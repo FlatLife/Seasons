@@ -39,20 +39,23 @@ public class Farming : MonoBehaviour {
                 if (!currentSlot.CurrentItem.isFinishedCrop) {
                     currentSlot.GetComponent<Button>().interactable = false;
                 } else {
+                    if(state < 3){
+                        state = 3;
+                    }
                     currentSlot.GetComponent<Button>().interactable = true;
                 }
                 if (currentSlot.CurrentItem.isCrop) {
+                    //seedling sprite
+                    if(state < 1){
+                        state = 1;
+                    }      
                     if (currentSlot.isGrowing == false) {
                         currentSlot.growTime = currentSlot.CurrentItem.growTime;
                         currentSlot.isGrowing = true;
-                        //seedling sprite
-                        if(state < 1){
-                            state = 1;
-                        }      
+                   
                     }
-
                     //if the crop is half grown change it to the half grown sprite
-                    if(currentSlot.CurrentItem.type == ItemType.CARROTSEED && currentSlot.CurrentItem.growTime < carrotGrowTime/2f){
+                    if((currentSlot.CurrentItem.type == ItemType.CARROTSEED) && (currentSlot.CurrentItem.growTime < carrotGrowTime/2f)){
                         if(state < 2){
                             state = 2; 
                         }          
@@ -99,14 +102,14 @@ public class Farming : MonoBehaviour {
             }
         }
         //if all the slots were empty set it back to the original sprite
-        if(emptySlots == slotNum){       
+        if(emptySlots >= slotNum){       
             state = 0;
-            emptySlots = 0;
         }
-        Debug.Log(state);
         //set the sprite to the correct state
         if(animRenderer.sprite != animSprites[state]){  
             animRenderer.sprite = animSprites[state];
         }
+        emptySlots = 0;
+        state = 0;
     }
 }

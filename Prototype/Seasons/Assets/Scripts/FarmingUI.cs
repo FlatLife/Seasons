@@ -10,7 +10,7 @@ public class FarmingUI : MonoBehaviour {
 	private Backpack BackPack;
 	private RectTransform FarmingUIRect;
 	public Slot[] farmSlots;
-
+	public Text text;
 	public GameObject info;
 	public Slot waterSlot;
 	private RectTransform backpackRef;
@@ -38,6 +38,14 @@ public class FarmingUI : MonoBehaviour {
 
 		}
 
+		text = Instantiate (Resources.Load<Text> ("Text"), this.transform);
+		RectTransform textRect = text.GetComponent<RectTransform> ();
+		textRect.anchorMin = new Vector2(0.5f, 1);
+		textRect.anchorMax = new Vector2(0.5f, 1);
+		textRect.pivot = new Vector2(0.5f, 0.5f);
+		textRect.anchoredPosition = new Vector3 (-5, 27);
+		text.text = "Farm";
+
 		info = Instantiate(Resources.Load<GameObject>("Info"));
 		info.transform.SetParent(this.transform);
 		info.GetComponent<InformationPopup>().info = "Use this UI to grow your crops. \n Place seeds in any of the 8 slots then wait for them to grow.\n Use the slot on the right to water crops and speed up growth.";
@@ -58,6 +66,8 @@ public class FarmingUI : MonoBehaviour {
 		waterSlot.GetComponent<Image>().sprite = Resources.Load<Sprite>("slotUnhighlightedBucket");
 		SpriteState state =  new SpriteState();
 		state.highlightedSprite = Resources.Load<Sprite>("slotHighlightedBucket");
+		waterSlot.GetComponent<Slot>().initialSprite = Resources.Load<Sprite>("slotUnhighlightedBucket");
+		waterSlot.GetComponent<Slot>().initial = state;
 		Button button = waterSlot.GetComponent<Button>();
 		button.spriteState = state;
 	}

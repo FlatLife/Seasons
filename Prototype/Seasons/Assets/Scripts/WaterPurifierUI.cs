@@ -13,13 +13,22 @@ public class WaterPurifierUI : MonoBehaviour {
 	public GameObject info;
 	public Slot Slot1;
 	public Slot Slot2;
+	public Text text;
 
 
 
 	public void Initialize() {		
 		RectTransform uiRect = this.GetComponent<RectTransform>();
 		uiRect.sizeDelta = new Vector3(228, 123, 0);
-		uiRect.position = new Vector3(400,400);
+		uiRect.position = new Vector3(525,494);
+
+		text = Instantiate (Resources.Load<Text> ("Text"), this.transform);
+		RectTransform textRect = text.GetComponent<RectTransform> ();
+		textRect.anchorMin = new Vector2(0.5f, 1);
+		textRect.anchorMax = new Vector2(0.5f, 1);
+		textRect.pivot = new Vector2(0.5f, 0.5f);
+		textRect.anchoredPosition = new Vector3 (-5, -27);
+		text.text = "Water Purifier";
 
 		Slot1 = Instantiate(slotPrefab);
 		Slot1.name = "Slot1";
@@ -27,6 +36,8 @@ public class WaterPurifierUI : MonoBehaviour {
 		Slot1.GetComponent<Image>().sprite = Resources.Load<Sprite>("slotUnhighlightedBucket");
 		SpriteState state =  new SpriteState();
 		state.highlightedSprite = Resources.Load<Sprite>("slotHighlightedBucket");
+		Slot1.GetComponent<Slot>().initialSprite = Resources.Load<Sprite>("slotUnhighlightedBucket");
+		Slot1.GetComponent<Slot>().initial = state;
 		Button button = Slot1.GetComponent<Button>();
 		button.spriteState = state;
 		Slot1.transform.SetParent(this.transform);
@@ -41,6 +52,8 @@ public class WaterPurifierUI : MonoBehaviour {
 		RectTransform SaltWaterRect = Slot2.GetComponent<RectTransform>();
 		Slot2.GetComponent<Image>().sprite = Resources.Load<Sprite>("slotUnhighlightedBucket");
 		state.highlightedSprite = Resources.Load<Sprite>("slotHighlightedBucket");
+		Slot2.GetComponent<Slot>().initialSprite = Resources.Load<Sprite>("slotUnhighlightedBucket");
+		Slot2.GetComponent<Slot>().initial = state;
 		Slot2.GetComponent<Button>().spriteState = state;
 		Slot2.transform.SetParent(this.transform);
 		SaltWaterRect.localPosition = new Vector3(130, -40);

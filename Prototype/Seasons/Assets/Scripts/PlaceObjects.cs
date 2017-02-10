@@ -27,7 +27,7 @@ public class PlaceObjects : MonoBehaviour {
 		if(buildMode){
 			if(hoverObject == null){
 				hoverObject = Instantiate(Resources.Load<GameObject>(placeItem));
-				hoverObject.name = "Hover";
+				hoverObject.name = "PlaceHover";
 				hoverObject.layer = 2;
 			}
 			// Makes sure object isn't on top of something

@@ -14,6 +14,7 @@ TagManager:
   - RightWall
   - LeftWall
   - Barrel
+  - OceanFloor
   layers:
   - Default
   - TransparentFX

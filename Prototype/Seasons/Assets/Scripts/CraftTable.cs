@@ -48,12 +48,12 @@ public class CraftTable : MonoBehaviour {
 			//Debug.Log(CraftTableRect.localPosition);
 
 			//places the slots in the inventory in each column, then row
-			slotRect1.localPosition = new Vector3(60, -20);
+			slotRect1.localPosition = new Vector3(60, -50);
 			slotRect1.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, slotSize);
 			slotRect1.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, slotSize);
 			
 
-			slotRect2.localPosition = new Vector3(130, -20);			
+			slotRect2.localPosition = new Vector3(130, -50);			
 			slotRect2.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, slotSize);
 			slotRect2.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, slotSize);
 
@@ -75,15 +75,13 @@ public class CraftTable : MonoBehaviour {
 	}
 	
 	public void CraftItem() {
-		CheckRecipeOneItem(ItemType.WOOD, "Stick");
+		CheckRecipeOneItem(ItemType.WOOD, "Stick", 2);
 		CheckRecipe(ItemType.VINE, ItemType.STICK, "FishingRod");
 		CheckRecipe(ItemType.STICK, ItemType.WOOD, "Hoe");
 		CheckRecipe(ItemType.STICK, ItemType.ROCK, "Hatchet");
 		// CheckRecipe needs to check if item should be returned (in this case, the hatchet)
 		CheckRecipe(ItemType.HATCHET, ItemType.WOOD, "Bucket");
 		CheckRecipe(ItemType.STICK, ItemType.STICK, "FirePrep");
-		CheckRecipe(ItemType.BUCKET, ItemType.ICE, "Ice");
-		CheckRecipe(ItemType.VINE, ItemType.VINE, "Clothes");
 		CheckRecipe(ItemType.SEAWEED, ItemType.ROCK, "WaterPurifierItem");
 		CheckRecipe(ItemType.WOOD, ItemType.WOOD, "BarrelItem");
 
@@ -112,7 +110,7 @@ public class CraftTable : MonoBehaviour {
 		} 
 	}
 
-	public void CheckRecipeOneItem(ItemType type, string product) {
+	public void CheckRecipeOneItem(ItemType type, string product, int quantity) {
 		Slot tmp1 = Slot1.GetComponent<Slot>();
         Slot tmp2 = Slot2.GetComponent<Slot>();
 
@@ -122,17 +120,25 @@ public class CraftTable : MonoBehaviour {
 			if (tmp1.isEmpty) {
 				if (tmp2.CurrentItem.type == type) {
 					Item result = Resources.Load<GameObject>(product).GetComponent<Item>();
-            		BackPack.AddItem(result);
-					if(!tmp2.CurrentItem.keepItem){
-						tmp2.DestroyItem();
+					if(BackPack.EmptySlots() >= quantity){
+						for(int i = 0; i < quantity; i++){
+            				BackPack.AddItem(result);
+						}
+						if(!tmp2.CurrentItem.keepItem){
+							tmp2.DestroyItem();
+						}
 					}
 				}
 			} else if (tmp2.isEmpty){
 				if (tmp1.CurrentItem.type == type) {
 					Item result = Resources.Load<GameObject>(product).GetComponent<Item>();
-            		BackPack.AddItem(result);
-					if(!tmp1.CurrentItem.keepItem){
-						tmp1.DestroyItem();
+            		if(BackPack.EmptySlots() >= quantity){
+						for(int i = 0; i < quantity; i++){
+            				BackPack.AddItem(result);
+						}
+						if(!tmp1.CurrentItem.keepItem){
+							tmp1.DestroyItem();
+						}
 					}
 				}
 			}

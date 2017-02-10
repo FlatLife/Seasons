@@ -8,6 +8,8 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 	private Item currentItem;
 	private int itemCount;
 
+	public SpriteState initial;
+	public Sprite initialSprite;
 	public GameObject tooltip;
 	public Text stackTxt;
 	public Sprite slotEmpty;
@@ -16,6 +18,8 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 	public float growTime;
 	public bool isGrowing;
 	public bool isCooking;
+
+
 	public Item CurrentItem {
 		get {return currentItem;}
 		set {currentItem = value;}
@@ -83,12 +87,17 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 	}
 
 	private void ChangeSprite(Sprite neutral, Sprite highlighted) {
-		GetComponent<Image>().sprite = neutral;
-		SpriteState st = new SpriteState();
-		st.highlightedSprite = highlighted;
-		st.pressedSprite = neutral;
-
-		GetComponent<Button>().spriteState = st;
+		if(initial.highlightedSprite != null && currentItem == null){
+			GetComponent<Button>().spriteState = initial;
+			GetComponent<Image>().sprite = initialSprite;
+		}else{
+			GetComponent<Image>().sprite = neutral;
+			SpriteState st = new SpriteState();
+			st.highlightedSprite = highlighted;
+			st.pressedSprite = neutral;
+			GetComponent<Button>().spriteState = st;
+		}
+		
 	}
 
 	public void UseItem() {
@@ -108,6 +117,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 			stackTxt.text = itemCount > 1 ? itemCount.ToString() : string.Empty;
 			if (isEmpty) {
 				Destroy(currentItem.gameObject);
+				currentItem = null;
 				ChangeSprite(slotEmpty, slotHighlighted);
 				Backpack.EmptySlot++;
 			}
@@ -122,6 +132,9 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 
 	public void popup(){
 		if(!isEmpty){
+			if(tooltip != null){
+				Destroy(tooltip);
+			}
 			tooltip = Instantiate(Resources.Load<GameObject>("Tooltip"));
 			tooltip.name = "tooltip";
 			string name = CurrentItem.itemName;
