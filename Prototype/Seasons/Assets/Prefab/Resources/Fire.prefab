@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114858536367244906}
   - component: {fileID: 68407020048145580}
   - component: {fileID: 61807384050617462}
+  - component: {fileID: 82013669182762136}
   m_Layer: 0
   m_Name: Fire
   m_TagString: Fire
@@ -37,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1748528900290490}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.9, y: -1.5, z: -1.5}
+  m_LocalPosition: {x: -3.5583534, y: -0.75063163, z: -1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -77,6 +78,98 @@ EdgeCollider2D:
   - {x: -0.6219828, y: -0.3375361}
   - {x: -0.70683384, y: -0.5393541}
   - {x: -0.6116388, y: -0.7435214}
+--- !u!82 &82013669182762136
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1748528900290490}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: ff7ab1c7989f64c30a212cb5e178d129, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 5
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0.2
+      value: 1
+      inSlope: -5.0019917
+      outSlope: -5.0019917
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.4
+      value: 0.5045082
+      inSlope: -1.677164
+      outSlope: -1.677164
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.65626913
+      value: 0.20942622
+      inSlope: -0.8502456
+      outSlope: -0.8502456
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: -0.533755
+      outSlope: -0.533755
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114858536367244906
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -94,6 +187,7 @@ MonoBehaviour:
   fireState: 0
   lastFrame: 0
   animationTime: 0.15
+  fireHeatRange: 5
   frameIndex: 0
   animSprites:
   - {fileID: 21300000, guid: 1bbc60fd09d8f4b5ab23c70675e99411, type: 3}
