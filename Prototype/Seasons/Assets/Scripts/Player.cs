@@ -173,8 +173,8 @@ public class Player : MonoBehaviour {
 							playingFireStart = true;
                             //getting the position that the player should be at
                             Vector3 pos = fire.transform.position;
-                            pos.y += 0.90f;
-                            pos.x -= 0.68f;
+                            pos.y += 0.30f;
+                            pos.x -= 0.70f;
                             transform.position = pos;
 						}
 						break;
