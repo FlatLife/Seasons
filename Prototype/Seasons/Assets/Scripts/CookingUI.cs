@@ -32,9 +32,11 @@ public class CookingUI : MonoBehaviour {
 				slotRect.localPosition = new Vector3(60 * (i+1), -30);
 			}else{
 				slotRect.localPosition = new Vector3(120, -90);
-				cookSlot.GetComponent<Image>().sprite = Resources.Load<Sprite>("slotUnhighlightedWood");;
+				cookSlot.GetComponent<Image>().sprite = Resources.Load<Sprite>("slotUnhighlightedWood");
 				SpriteState state =  new SpriteState();
 				state.highlightedSprite = Resources.Load<Sprite>("slotHighlightedWood");
+				cookSlot.GetComponent<Slot>().initialSprite = Resources.Load<Sprite>("slotUnhighlightedWood");
+				cookSlot.GetComponent<Slot>().initial = state;
 				cookSlot.GetComponent<Button>().spriteState = state;
 			}
 			slotRect.sizeDelta = new Vector3(slotSize, slotSize);
