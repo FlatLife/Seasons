@@ -99,14 +99,14 @@ public class Farming : MonoBehaviour {
             }
         }
         //if all the slots were empty set it back to the original sprite
-        if(emptySlots == slotNum){       
+        if(emptySlots >= slotNum){       
             state = 0;
-            emptySlots = 0;
         }
         Debug.Log(state);
         //set the sprite to the correct state
         if(animRenderer.sprite != animSprites[state]){  
             animRenderer.sprite = animSprites[state];
         }
+        emptySlots = 0;
     }
 }
