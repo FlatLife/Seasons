@@ -40,11 +40,11 @@ public class Player2 : MonoBehaviour {
 		if(swimming){
 			speed = waterSpeed;
 			this.GetComponent<Rigidbody2D>().gravityScale = 1;
-			this.GetComponent<BoxCollider2D>().enabled = true;
+			this.GetComponent<CapsuleCollider2D>().enabled = true;
 		}else{
 			speed = landSpeed;
 			this.GetComponent<Rigidbody2D>().gravityScale = 0;
-			this.GetComponent<BoxCollider2D>().enabled = false;
+			this.GetComponent<CapsuleCollider2D>().enabled = false;
 		}
 
 		// Move the player object
@@ -107,17 +107,13 @@ public class Player2 : MonoBehaviour {
 		}
 
      if(other.tag == "LeftWall") {
-         // If collided with the left wall, set
-         // the left wall flag to true
+
          atLeftWall = true;
       } else if(other.tag == "RightWall") {
-         // If collided with the right wall, set
-         // the right wall flag to true
+
          atRightWall = true;
       } 
 	  if(other.tag == "OceanFloor") {
-         // If collided with the right wall, set
-         // the right wall flag to true
          atOceanFloor = true;
       } 
 	}
@@ -130,17 +126,13 @@ public class Player2 : MonoBehaviour {
 			underwater = false;
 		}
 		 if(other.tag == "LeftWall") {
-         // If collided with the left wall, set
-         // the left wall flag to true
          atLeftWall = false;
       } else if(other.tag == "RightWall") {
-         // If collided with the right wall, set
-         // the right wall flag to true
+
          atRightWall = false;
       }
 	   if(other.tag == "OceanFloor") {
-         // If collided with the right wall, set
-         // the right wall flag to true
+
          atOceanFloor = false;
       }  
 	}

@@ -21,7 +21,8 @@ public class GUIManager : MonoBehaviour {
 				popup = Instantiate(Resources.Load<GameObject>("EKey"), this.transform);
 			}
 			if(player.canTouch){
-				popup.GetComponentInChildren<Text>().text = "Pick up";
+				string item = player.itemColliderID.gameObject.GetComponent<Item>().itemName;
+				popup.GetComponentInChildren<Text>().text = "Pick up " + item;
 			}else if(player.canFish){
 				if(!player.GetComponent<Fishing>().isFishing){
 					popup.GetComponentInChildren<Text>().text = "Cast Rod";
@@ -32,7 +33,12 @@ public class GUIManager : MonoBehaviour {
 				}
 			}else if(player.atFire){
 				if(!player.playingFireStart){
-					popup.GetComponentInChildren<Text>().text = "Start/Open Fire";
+					int state = player.fireColliderID.gameObject.GetComponent<Fire>().fireState;
+					if(state <= 0){
+						popup.GetComponentInChildren<Text>().text = "Start Fire";
+					}else {
+						popup.GetComponentInChildren<Text>().text = "Open Fire";
+					}
 				}else if(player.playingFireStart){
 					popup.GetComponentInChildren<Text>().text = "Mash to start Fire";
 				}
@@ -55,7 +61,7 @@ public class GUIManager : MonoBehaviour {
 			Destroy(popup);
 		}
 
-		if (Input.GetKey(KeyCode.Escape))
+		if (Input.GetKeyDown(KeyCode.P))
         {
             // If user presses ESC, show the pause menu in pause mode
             pauseMenu.GetComponent<PauseMenuManager>().ShowPause();

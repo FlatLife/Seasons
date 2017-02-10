@@ -57,7 +57,7 @@ MonoBehaviour:
   type: 18
   spriteNeutral: {fileID: 21300000, guid: 4780e62046f584009b1e8c6b90fbf25e, type: 3}
   spriteHighlighted: {fileID: 21300000, guid: 4780e62046f584009b1e8c6b90fbf25e, type: 3}
-  maxSize: 0
+  maxSize: 1
   isFood: 0
   isCrop: 0
   isFinishedCrop: 0

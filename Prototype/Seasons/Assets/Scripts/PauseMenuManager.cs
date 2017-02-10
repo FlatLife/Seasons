@@ -36,7 +36,7 @@ public class PauseMenuManager : MonoBehaviour {
 			if(pauseGame) {
 				Time.timeScale = 0;
 			}
-			if(Input.GetKeyDown(KeyCode.Escape)){
+			if(Input.GetKeyDown(KeyCode.P)){
 				Hide();
 			}
 		}
