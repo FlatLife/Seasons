@@ -36,7 +36,7 @@ public class Backpack : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (hoverObject != null) {
-			hoverObject.transform.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y-2f);
+			hoverObject.transform.position = new Vector3(Input.mousePosition.x -20f, Input.mousePosition.y+20f);
 			if(!player.GetComponent<Player>().openUI){
 				from.GetComponent<Image> ().color = Color.white;
 				from = null;
