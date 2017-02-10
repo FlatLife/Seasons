@@ -10,7 +10,10 @@ public class Player : MonoBehaviour {
 	//animation
 	int frameIndex;
 	public float animationSpeed;
+	public float fishIdleSpeed;
     public Sprite[] animSprites;
+	private Sprite[] fishingSprites;
+	private bool fishIdleDirection = false;
     SpriteRenderer animRenderer;
 	float timeSinceLastFrame; 
 	public bool playingFireStart = false;
@@ -61,6 +64,8 @@ public class Player : MonoBehaviour {
 	private Stat thirst;
 	private Stat warmth;
 	private Stat water;
+
+	private int frameSkip = 1;
 	
 	private void Awake(){
 		health = new Stat();
@@ -89,6 +94,7 @@ public class Player : MonoBehaviour {
 		animRenderer = GetComponent<Renderer>() as SpriteRenderer;
 		frameIndex = 0;
 		timeSinceLastFrame = 0;
+		fishingSprites = Resources.LoadAll<Sprite>("fishing");
 	}
 	
 	// Update is called once per frame
@@ -109,26 +115,38 @@ public class Player : MonoBehaviour {
 			}
 		}
 
+
+	Fishing fish = GetComponent<Fishing> ();
 		//animation for casting rod
 		if(playingCastRod){
-			if(frameIndex < 34){
+			if(frameIndex < 35){
 				if(timeSinceLastFrame > animationSpeed){
-				animRenderer.sprite = animSprites[frameIndex];
-				timeSinceLastFrame = 0;
-				frameIndex++;
+					animRenderer.sprite = fishingSprites[frameIndex];
+					timeSinceLastFrame = 0;
+					frameSkip = frameSkip == 1 ? 2 : 1;
+					frameIndex += frameSkip;
 				} else{
 					timeSinceLastFrame = timeSinceLastFrame + Time.deltaTime;
 				}	
 			} else {
 				playingCastRod = false;
-				animRenderer.sprite = animSprites[33];
+				frameIndex = 35;
+				timeSinceLastFrame = 0;
+			}
+		} else if (fish.isFishing && !fish.minigame) {
+			if (timeSinceLastFrame > fishIdleSpeed) {
+				animRenderer.sprite = fishingSprites[frameIndex];
+				frameIndex = fishIdleDirection ? frameIndex-1 : frameIndex+1;
+				fishIdleDirection = frameIndex >= 40 || frameIndex <= 35 ? !fishIdleDirection : fishIdleDirection; 				
+				timeSinceLastFrame = 0;
+			} else {
+				timeSinceLastFrame = timeSinceLastFrame + Time.deltaTime;
 			}
 		}
 		
 
 		
 		OnCollisionUpdate();
-		Fishing fish = GetComponent<Fishing> ();
 		//If player is pressing the interaction key
 		if (Input.GetKeyDown (KeyCode.E)) {
 			//Fishing minigame interaction
@@ -144,7 +162,7 @@ public class Player : MonoBehaviour {
 						performingAction = true;
 						playingCastRod = true;
 						timeSinceLastFrame = 0;
-						frameIndex = 14;
+						frameIndex = 0;
 					}
 				}
 			}

@@ -1,0 +1,658 @@
+fileFormatVersion: 2
+guid: 7a848203efa53fa45a2cc4c9a9e92e6c
+timeCreated: 1486732623
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: fishing_0
+    21300002: fishing_1
+    21300004: fishing_2
+    21300006: fishing_3
+    21300008: fishing_4
+    21300010: fishing_5
+    21300012: fishing_6
+    21300014: fishing_7
+    21300016: fishing_8
+    21300018: fishing_9
+    21300020: fishing_10
+    21300022: fishing_11
+    21300024: fishing_12
+    21300026: fishing_13
+    21300028: fishing_14
+    21300030: fishing_15
+    21300032: fishing_16
+    21300034: fishing_17
+    21300036: fishing_18
+    21300038: fishing_19
+    21300040: fishing_20
+    21300042: fishing_21
+    21300044: fishing_22
+    21300046: fishing_23
+    21300048: fishing_24
+    21300050: fishing_25
+    21300052: fishing_26
+    21300054: fishing_27
+    21300056: fishing_28
+    21300058: fishing_29
+    21300060: fishing_30
+    21300062: fishing_31
+    21300064: fishing_32
+    21300066: fishing_33
+    21300068: fishing_34
+    21300070: fishing_35
+    21300072: fishing_36
+    21300074: fishing_37
+    21300076: fishing_38
+    21300078: fishing_39
+    21300080: fishing_40
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: WebGL
+    maxTextureSize: 8192
+    textureFormat: 12
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 1
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: fishing_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 266
+        height: 399
+      alignment: 9
+      pivot: {x: 0.3, y: 0.36}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fishing_1
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 0
+        width: 266
+        height: 399
+      alignment: 9
+      pivot: {x: 0.3, y: 0.36}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fishing_2
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 0
+        width: 266
+        height: 399
+      alignment: 9
+      pivot: {x: 0.3, y: 0.36}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fishing_3
+      rect:
+        serializedVersion: 2
+        x: 798
+        y: 0
+        width: 266
+        height: 399
+      alignment: 9
+      pivot: {x: 0.3, y: 0.36}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fishing_4
+      rect:
+        serializedVersion: 2
+        x: 1064
+        y: 0
+        width: 266
+        height: 399
+      alignment: 9
+      pivot: {x: 0.3, y: 0.36}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fishing_5
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 0
+        width: 266
+        height: 399
+      alignment: 9
+      pivot: {x: 0.3, y: 0.36}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fishing_6
+      rect:
+        serializedVersion: 2
+        x: 1596
+        y: 0
+        width: 266
+        height: 399
+      alignment: 9
+      pivot: {x: 0.3, y: 0.36}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fishing_7
+      rect:
+        serializedVersion: 2
+        x: 1862
+        y: 0
+        width: 266
+        height: 399
+      alignment: 9
+      pivot: {x: 0.3, y: 0.36}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fishing_8
+      rect:
+        serializedVersion: 2
+        x: 2128
+        y: 0
+        width: 266
+        height: 399
+      alignment: 9
+      pivot: {x: 0.3, y: 0.36}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fishing_9
+      rect:
+        serializedVersion: 2
+        x: 2394
+        y: 0
+        width: 266
+        height: 399
+      alignment: 9
+      pivot: {x: 0.3, y: 0.36}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fishing_10
+      rect:
+        serializedVersion: 2
+        x: 2660
+        y: 0
+        width: 266
+        height: 399
+      alignment: 9
+      pivot: {x: 0.3, y: 0.36}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fishing_11
+      rect:
+        serializedVersion: 2
+        x: 2926
+        y: 0
+        width: 266
+        height: 399
+      alignment: 9
+      pivot: {x: 0.3, y: 0.36}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fishing_12
+      rect:
+        serializedVersion: 2
+        x: 3192
+        y: 0
+        width: 266
+        height: 399
+      alignment: 9
+      pivot: {x: 0.3, y: 0.36}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fishing_13
+      rect:
+        serializedVersion: 2
+        x: 3458
+        y: 0
+        width: 266
+        height: 399
+      alignment: 9
+      pivot: {x: 0.3, y: 0.36}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fishing_14
+      rect:
+        serializedVersion: 2
+        x: 3724
+        y: 0
+        width: 266
+        height: 399
+      alignment: 9
+      pivot: {x: 0.3, y: 0.36}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fishing_15
+      rect:
+        serializedVersion: 2
+        x: 3990
+        y: 0
+        width: 266
+        height: 399
+      alignment: 9
+      pivot: {x: 0.3, y: 0.36}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fishing_16
+      rect:
+        serializedVersion: 2
+        x: 4256
+        y: 0
+        width: 266
+        height: 399
+      alignment: 9
+      pivot: {x: 0.3, y: 0.36}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fishing_17
+      rect:
+        serializedVersion: 2
+        x: 4522
+        y: 0
+        width: 266
+        height: 399
+      alignment: 9
+      pivot: {x: 0.3, y: 0.36}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fishing_18
+      rect:
+        serializedVersion: 2
+        x: 4788
+        y: 0
+        width: 266
+        height: 399
+      alignment: 9
+      pivot: {x: 0.3, y: 0.36}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fishing_19
+      rect:
+        serializedVersion: 2
+        x: 5054
+        y: 0
+        width: 266
+        height: 399
+      alignment: 9
+      pivot: {x: 0.3, y: 0.36}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fishing_20
+      rect:
+        serializedVersion: 2
+        x: 5320
+        y: 0
+        width: 266
+        height: 399
+      alignment: 9
+      pivot: {x: 0.3, y: 0.36}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fishing_21
+      rect:
+        serializedVersion: 2
+        x: 5586
+        y: 0
+        width: 266
+        height: 399
+      alignment: 9
+      pivot: {x: 0.3, y: 0.36}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fishing_22
+      rect:
+        serializedVersion: 2
+        x: 5852
+        y: 0
+        width: 266
+        height: 399
+      alignment: 9
+      pivot: {x: 0.3, y: 0.36}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fishing_23
+      rect:
+        serializedVersion: 2
+        x: 6118
+        y: 0
+        width: 266
+        height: 399
+      alignment: 9
+      pivot: {x: 0.3, y: 0.36}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fishing_24
+      rect:
+        serializedVersion: 2
+        x: 6384
+        y: 0
+        width: 266
+        height: 399
+      alignment: 9
+      pivot: {x: 0.3, y: 0.36}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fishing_25
+      rect:
+        serializedVersion: 2
+        x: 6650
+        y: 0
+        width: 266
+        height: 399
+      alignment: 9
+      pivot: {x: 0.3, y: 0.36}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fishing_26
+      rect:
+        serializedVersion: 2
+        x: 6916
+        y: 0
+        width: 266
+        height: 399
+      alignment: 9
+      pivot: {x: 0.3, y: 0.36}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fishing_27
+      rect:
+        serializedVersion: 2
+        x: 7182
+        y: 0
+        width: 266
+        height: 399
+      alignment: 9
+      pivot: {x: 0.3, y: 0.36}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fishing_28
+      rect:
+        serializedVersion: 2
+        x: 7448
+        y: 0
+        width: 266
+        height: 399
+      alignment: 9
+      pivot: {x: 0.3, y: 0.36}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fishing_29
+      rect:
+        serializedVersion: 2
+        x: 7714
+        y: 0
+        width: 266
+        height: 399
+      alignment: 9
+      pivot: {x: 0.3, y: 0.36}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fishing_30
+      rect:
+        serializedVersion: 2
+        x: 7980
+        y: 0
+        width: 266
+        height: 399
+      alignment: 9
+      pivot: {x: 0.3, y: 0.36}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fishing_31
+      rect:
+        serializedVersion: 2
+        x: 8246
+        y: 0
+        width: 266
+        height: 399
+      alignment: 9
+      pivot: {x: 0.3, y: 0.36}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fishing_32
+      rect:
+        serializedVersion: 2
+        x: 8512
+        y: 0
+        width: 266
+        height: 399
+      alignment: 9
+      pivot: {x: 0.3, y: 0.36}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fishing_33
+      rect:
+        serializedVersion: 2
+        x: 8778
+        y: 0
+        width: 266
+        height: 399
+      alignment: 9
+      pivot: {x: 0.3, y: 0.36}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fishing_34
+      rect:
+        serializedVersion: 2
+        x: 9044
+        y: 0
+        width: 266
+        height: 399
+      alignment: 9
+      pivot: {x: 0.3, y: 0.36}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fishing_35
+      rect:
+        serializedVersion: 2
+        x: 9310
+        y: 0
+        width: 266
+        height: 399
+      alignment: 9
+      pivot: {x: 0.3, y: 0.36}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fishing_36
+      rect:
+        serializedVersion: 2
+        x: 9576
+        y: 0
+        width: 266
+        height: 399
+      alignment: 9
+      pivot: {x: 0.3, y: 0.36}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fishing_37
+      rect:
+        serializedVersion: 2
+        x: 9842
+        y: 0
+        width: 266
+        height: 399
+      alignment: 9
+      pivot: {x: 0.3, y: 0.36}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fishing_38
+      rect:
+        serializedVersion: 2
+        x: 10108
+        y: 0
+        width: 266
+        height: 399
+      alignment: 9
+      pivot: {x: 0.3, y: 0.36}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fishing_39
+      rect:
+        serializedVersion: 2
+        x: 10374
+        y: 0
+        width: 266
+        height: 399
+      alignment: 9
+      pivot: {x: 0.3, y: 0.36}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fishing_40
+      rect:
+        serializedVersion: 2
+        x: 10640
+        y: 0
+        width: 266
+        height: 399
+      alignment: 9
+      pivot: {x: 0.3, y: 0.36}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
