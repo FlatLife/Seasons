@@ -17,11 +17,9 @@ public class DayCycle : MonoBehaviour {
 	public static int dayCount = 1;
 	public float dayLength;
 
-	private Transform island;
-	private Transform tree;
-	private Transform ocean;
+	List<Transform> transformList = new List<Transform>();
 	private Transform sunIcon;
-
+	private Transform land;
 	Color[] colorStates = {new Color(0.988f, 0.613f, 0.378f, 1),
 						   new Color(0.95f, 0.95f, 0.95f, 1),
 						   new Color(1f, 1f, 1f, 1),
@@ -47,9 +45,16 @@ public class DayCycle : MonoBehaviour {
 		GameObject bottle = Instantiate(Resources.Load<GameObject>("messageBottle"));
 		bottle.GetComponent<Item>().message = "message" + dayCount;
 
-		island = GameObject.Find("Island").transform;
-		tree = GameObject.Find("Tree").transform;
-		ocean = GameObject.Find("Ocean Background").transform;
+		transformList.Add(GameObject.Find("Island").transform);
+		transformList.Add(GameObject.Find("Tree").transform);
+		transformList.Add(GameObject.Find("Ocean Background").transform);
+		transformList.Add(GameObject.Find("Beach").transform);
+		transformList.Add(GameObject.Find("Pier").transform);
+		land = GameObject.Find("Land").transform;
+		transformList.Add(land);
+
+		transformList.Add(GameObject.Find("Land").transform);
+
 		sunIcon = GameObject.Find("Canvas/Stats/Sun Icon").transform;
 	}
 	
@@ -65,11 +70,7 @@ public class DayCycle : MonoBehaviour {
 			fadeTime -= Time.deltaTime;
 			if(!fadingIn){
 				currentColorState = 1;		
-				Color tintColour = colorStates[0];
-				island.GetComponent<SpriteRenderer>().color = tintColour;
-				tree.GetComponent<SpriteRenderer>().color = tintColour;
-				ocean.GetComponent<SpriteRenderer>().color = tintColour;
-				Camera.main.backgroundColor = skyStates[0];
+				updateColor(transformList, colorStates[0], skyStates[0]);
 
 				dayCountText.text = "Day " + ++dayCount;
 				GameMaster.dayCount = dayCount;
@@ -77,8 +78,10 @@ public class DayCycle : MonoBehaviour {
 					GameMaster.isWinter = !GameMaster.isWinter;
 					if(GameMaster.isWinter){
 						season.text = "Winter";
+						land.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Snow");
 					} else {
 						season.text = "Summer";
+						land.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Grass");
 					}
 				}
 			}
@@ -108,10 +111,7 @@ public class DayCycle : MonoBehaviour {
 			float transition = (((dayLength - dayTime) / dayLength) * (colorStates.Length - 1)) % 1;		
 			Color tintColour = interpolateColor(colorStates[currentColorState], colorStates[currentColorState-1], transition);
 			Color skyColour = interpolateColor(skyStates[currentColorState], skyStates[currentColorState-1], transition);
-			island.GetComponent<SpriteRenderer>().color = tintColour;
-			tree.GetComponent<SpriteRenderer>().color = tintColour;
-			ocean.GetComponent<SpriteRenderer>().color = tintColour;
-			Camera.main.backgroundColor = skyColour;
+			updateColor(transformList, tintColour, skyColour);
 		}
 		
 
@@ -123,5 +123,12 @@ public class DayCycle : MonoBehaviour {
 								 ((firstState.g - secondState.g) * transition) + secondState.g,
 								 ((firstState.b - secondState.b) * transition) + secondState.b,
 								   1);
+	}
+
+	void updateColor(List<Transform> transformList, Color tintColour, Color skyColour) {
+		foreach (Transform toColor in transformList) {
+			toColor.GetComponent<SpriteRenderer>().color = tintColour;
+		}
+		Camera.main.backgroundColor = skyColour;
 	}
 }
