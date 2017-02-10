@@ -21,7 +21,7 @@ public class FarmingUI : MonoBehaviour {
 		farmSlots = new Slot[slotCount];
 		RectTransform uiRect = this.GetComponent<RectTransform>();
 		uiRect.sizeDelta = new Vector3((slotSize * slotCount + slotSize) , (slotSize + slotSize/2) * 2, 0);
-		uiRect.position = new Vector3(backpackRef.rect.x + 280, -backpackRef.rect.y + 350);
+		uiRect.position = new Vector3(backpackRef.rect.x + backpackRef.rect.width + 20, -backpackRef.rect.y + backpackRef.rect.height + 100);
 		for (int i = 0; i < slotCount; i++) {
 			Slot farmSlot = Instantiate(slotPrefab);
 			RectTransform slotRect = farmSlot.GetComponent<RectTransform>();
