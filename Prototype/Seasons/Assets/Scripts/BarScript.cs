@@ -42,7 +42,7 @@ public class BarScript : MonoBehaviour {
 	}
 
 	public void increment(float amount){
-		if(fillAmount < 1f){
+		if(fillAmount + amount < 1f){
 			fillAmount += amount;
 		}else{
 			fillAmount = 1f;
