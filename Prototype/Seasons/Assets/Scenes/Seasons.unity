@@ -3543,8 +3543,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  animationSpeed: 0.05
-  fishIdleSpeed: 0.1
+  animationSpeed: 0.015
+  fishIdleSpeed: 0.03
   animSprites:
   - {fileID: 21300000, guid: fbc5b5eb0fda34a4b9f93d07fbd0460d, type: 3}
   - {fileID: 21300000, guid: e4338354634f84e278235bd606324c5b, type: 3}
