@@ -10,7 +10,7 @@ public class FarmingUI : MonoBehaviour {
 	private Backpack BackPack;
 	private RectTransform FarmingUIRect;
 	public Slot[] farmSlots;
-
+	public Text text;
 	public GameObject info;
 	public Slot waterSlot;
 	private RectTransform backpackRef;
@@ -37,6 +37,14 @@ public class FarmingUI : MonoBehaviour {
 			farmSlots[i] = farmSlot;
 
 		}
+
+		text = Instantiate (Resources.Load<Text> ("Text"), this.transform);
+		RectTransform textRect = text.GetComponent<RectTransform> ();
+		textRect.anchorMin = new Vector2(0.5f, 1);
+		textRect.anchorMax = new Vector2(0.5f, 1);
+		textRect.pivot = new Vector2(0.5f, 0.5f);
+		textRect.anchoredPosition = new Vector3 (-5, 27);
+		text.text = "Farm";
 
 		info = Instantiate(Resources.Load<GameObject>("Info"));
 		info.transform.SetParent(this.transform);

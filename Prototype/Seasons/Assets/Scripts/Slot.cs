@@ -18,6 +18,8 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 	public float growTime;
 	public bool isGrowing;
 	public bool isCooking;
+
+
 	public Item CurrentItem {
 		get {return currentItem;}
 		set {currentItem = value;}
@@ -115,6 +117,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 			stackTxt.text = itemCount > 1 ? itemCount.ToString() : string.Empty;
 			if (isEmpty) {
 				Destroy(currentItem.gameObject);
+				currentItem = null;
 				ChangeSprite(slotEmpty, slotHighlighted);
 				Backpack.EmptySlot++;
 			}
