@@ -19,7 +19,7 @@ public class WaterPurifierUI : MonoBehaviour {
 	public void Initialize() {		
 		RectTransform uiRect = this.GetComponent<RectTransform>();
 		uiRect.sizeDelta = new Vector3(228, 123, 0);
-		uiRect.position = new Vector3(400,400);
+		uiRect.position = new Vector3(550,320);
 
 		Slot1 = Instantiate(slotPrefab);
 		Slot1.name = "Slot1";
