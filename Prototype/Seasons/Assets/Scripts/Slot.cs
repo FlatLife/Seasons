@@ -129,6 +129,9 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 
 	public void popup(){
 		if(!isEmpty){
+			if(tooltip != null){
+				Destroy(tooltip);
+			}
 			tooltip = Instantiate(Resources.Load<GameObject>("Tooltip"));
 			tooltip.name = "tooltip";
 			string name = CurrentItem.itemName;
