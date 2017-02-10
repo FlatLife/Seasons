@@ -136,8 +136,8 @@ public class Player : MonoBehaviour {
 		} else if (fish.isFishing && !fish.minigame) {
 			if (timeSinceLastFrame > fishIdleSpeed) {
 				animRenderer.sprite = fishingSprites[frameIndex];
+				fishIdleDirection = frameIndex >= 40 || frameIndex <= 34 ? !fishIdleDirection : fishIdleDirection; 
 				frameIndex = fishIdleDirection ? frameIndex-1 : frameIndex+1;
-				fishIdleDirection = frameIndex >= 40 || frameIndex <= 35 ? !fishIdleDirection : fishIdleDirection; 				
 				timeSinceLastFrame = 0;
 			} else {
 				timeSinceLastFrame = timeSinceLastFrame + Time.deltaTime;
