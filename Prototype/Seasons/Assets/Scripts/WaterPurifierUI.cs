@@ -13,13 +13,22 @@ public class WaterPurifierUI : MonoBehaviour {
 	public GameObject info;
 	public Slot Slot1;
 	public Slot Slot2;
+	public Text text;
 
 
 
 	public void Initialize() {		
 		RectTransform uiRect = this.GetComponent<RectTransform>();
 		uiRect.sizeDelta = new Vector3(228, 123, 0);
-		uiRect.position = new Vector3(550,320);
+		uiRect.position = new Vector3(525,494);
+
+		text = Instantiate (Resources.Load<Text> ("Text"), this.transform);
+		RectTransform textRect = text.GetComponent<RectTransform> ();
+		textRect.anchorMin = new Vector2(0.5f, 1);
+		textRect.anchorMax = new Vector2(0.5f, 1);
+		textRect.pivot = new Vector2(0.5f, 0.5f);
+		textRect.anchoredPosition = new Vector3 (-5, -27);
+		text.text = "Water Purifier";
 
 		Slot1 = Instantiate(slotPrefab);
 		Slot1.name = "Slot1";

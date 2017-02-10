@@ -19,7 +19,6 @@ public class Placeable : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other){
 			colliding = true;
 			objectColliderID = other;
-		Debug.Log (objectColliderID);
 	}
 		
 

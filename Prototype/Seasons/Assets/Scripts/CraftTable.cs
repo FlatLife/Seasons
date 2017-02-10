@@ -48,12 +48,12 @@ public class CraftTable : MonoBehaviour {
 			//Debug.Log(CraftTableRect.localPosition);
 
 			//places the slots in the inventory in each column, then row
-			slotRect1.localPosition = new Vector3(60, -20);
+			slotRect1.localPosition = new Vector3(60, -50);
 			slotRect1.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, slotSize);
 			slotRect1.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, slotSize);
 			
 
-			slotRect2.localPosition = new Vector3(130, -20);			
+			slotRect2.localPosition = new Vector3(130, -50);			
 			slotRect2.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, slotSize);
 			slotRect2.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, slotSize);
 

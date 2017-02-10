@@ -295,9 +295,14 @@ public class Player : MonoBehaviour {
             }
 
         backpack.GetComponent<Image>().enabled = !backpack.GetComponent<Image>().enabled;
+		backpack.GetComponentInChildren<Text>().enabled = !backpack.GetComponentInChildren<Text>().enabled;
 		backpack.info.GetComponent<Image>().enabled = !backpack.info.GetComponent<Image>().enabled;
 
         craft.GetComponent<Image>().enabled = !craft.GetComponent<Image>().enabled;
+		Text[] texts = craft.GetComponentsInChildren<Text> ();
+		foreach(Text text in texts) {
+			text.enabled = !text.enabled;
+		}
         craft.enabled = !craft.enabled;
 
 		destroy.info.GetComponent<Image>().enabled = !destroy.info.GetComponent<Image>().enabled;
@@ -433,7 +438,11 @@ public class Player : MonoBehaviour {
 		waterUIOpen = !waterUIOpen;
 		waterUI = waterColliderID.gameObject.GetComponent<WaterPurifier>().WaterUI;
 		foreach (Transform waterSlot in waterUI.transform) {
-			waterSlot.GetComponent<Image>().enabled = !waterSlot.GetComponent<Image>().enabled;
+			if (waterSlot.GetComponent<Image> () != null) {
+				waterSlot.GetComponent<Image> ().enabled = !waterSlot.GetComponent<Image> ().enabled;
+			} else {
+				waterSlot.GetComponent<Text> ().enabled = !waterSlot.GetComponent<Text> ().enabled;
+			}
 		}
 		waterUI.GetComponent<Image>().enabled = !waterUI.GetComponent<Image>().enabled;
 	}
@@ -442,7 +451,11 @@ public class Player : MonoBehaviour {
 		farmUIOpen = !farmUIOpen;
 		farmingUI = farmColliderID.gameObject.GetComponent<Farming>().farmingUI;
 		foreach (Transform farmSlot in farmingUI.transform) {
-			farmSlot.GetComponent<Image>().enabled = !farmSlot.GetComponent<Image>().enabled;
+			if (farmSlot.GetComponent<Image> () != null) {
+				farmSlot.GetComponent<Image> ().enabled = !farmSlot.GetComponent<Image> ().enabled;
+			} else {
+				farmSlot.GetComponent<Text> ().enabled = !farmSlot.GetComponent<Text> ().enabled;
+			}
 		}
 		farmingUI.GetComponent<Image>().enabled = !farmingUI.GetComponent<Image>().enabled;
 	}
@@ -451,7 +464,11 @@ public class Player : MonoBehaviour {
 		fireUIOpen = !fireUIOpen;
 		cook = fireColliderID.gameObject.GetComponent<Fire>().cookingUI;
 		foreach (Transform cookSlot in cook.transform) {
-			cookSlot.GetComponent<Image>().enabled = !cookSlot.GetComponent<Image>().enabled;
+			if (cookSlot.GetComponent<Image> () != null) {
+				cookSlot.GetComponent<Image> ().enabled = !cookSlot.GetComponent<Image> ().enabled;
+			} else {
+				cookSlot.GetComponent<Text> ().enabled = !cookSlot.GetComponent<Text> ().enabled;
+			}
 		}
 		cook.GetComponent<Image>().enabled = !cook.GetComponent<Image>().enabled;
 	}
@@ -460,7 +477,11 @@ public class Player : MonoBehaviour {
 		barrelUIOpen = !barrelUIOpen;
 		barrel = barrelColliderID.gameObject.GetComponent<Barrel>().BarrelUI;
 		foreach (Transform barrelSlot in barrel.transform) {
-			barrelSlot.GetComponent<Image>().enabled = !barrelSlot.GetComponent<Image>().enabled;
+			if (barrelSlot.GetComponent<Image> () != null) {
+				barrelSlot.GetComponent<Image> ().enabled = !barrelSlot.GetComponent<Image> ().enabled;
+			} else {
+				barrelSlot.GetComponent<Text> ().enabled = !barrelSlot.GetComponent<Text> ().enabled;
+			}
 		}
 		barrel.GetComponent<Image>().enabled = !barrel.GetComponent<Image>().enabled;
 		barrel.WaterMask.GetComponent<Image>().enabled = !barrel.WaterMask.GetComponent<Image>().enabled;
