@@ -25,9 +25,9 @@ public class Player : MonoBehaviour {
 	public DestroyUI destroy;
 	public bool canTouch = false;
 	public bool switchSwimMode = false;
-    private Collider2D itemColliderID;
+    public Collider2D itemColliderID; 
 	private Collider2D farmColliderID;
-	private Collider2D fireColliderID;
+	public Collider2D fireColliderID;
 	private Collider2D waterColliderID;
 	private Collider2D barrelColliderID;
     Fire fire;
@@ -93,6 +93,9 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(openUI && Input.GetKeyDown(KeyCode.Escape)){
+			ToggleUI();
+		}
 		//animation for starting fire
 		if(playingFireStart){
 			if(frameIndex < 13){				
@@ -174,7 +177,7 @@ public class Player : MonoBehaviour {
                             //getting the position that the player should be at
                             Vector3 pos = fire.transform.position;
                             pos.y += 0.30f;
-                            pos.x -= 0.70f;
+                            pos.x -= 1f;
                             transform.position = pos;
 						}
 						break;

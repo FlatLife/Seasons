@@ -69,7 +69,7 @@ EdgeCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0.3}
+  m_Offset: {x: 0, y: -0.52}
   m_Points:
   - {x: -0.6116388, y: -0.7435214}
   - {x: 0.59909654, y: -0.7431554}
