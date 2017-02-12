@@ -72,7 +72,9 @@ public class Player2 : MonoBehaviour {
 				}
 			}else{
 				this.GetComponent<Rigidbody2D>().velocity = new Vector3(0.0f, 0.0f);
-				animRenderer.sprite = standingSprite;
+				if (!transform.GetComponent<Fishing>().isFishing) {
+					animRenderer.sprite = standingSprite;
+				}
 			}
 		}else if(swimming){
 			if(!underwater){

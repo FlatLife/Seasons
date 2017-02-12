@@ -119,7 +119,7 @@ public class Player : MonoBehaviour {
 		}
 
 
-	Fishing fish = GetComponent<Fishing> ();
+		Fishing fish = GetComponent<Fishing> ();
 		//animation for casting rod
 		if(playingCastRod){
 			if(frameIndex < 35){
