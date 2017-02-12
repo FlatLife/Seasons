@@ -20,10 +20,10 @@ public class SwimmingAnimation : MonoBehaviour {
 		Debug.Log(angleDifference);
 		if (angle != oldAngle) {
 			angleDifference += oldAngle - angle;
-			angleDifference %= 180;
+			angleDifference %= 170;
 		}
 		//angleDifference = angleDifference > 120 ? 120 : angleDifference < -45 ? -45 : angleDifference;
-		angleDifference += angleDifference > 2 ? -2 : angleDifference < 2 ? 2 : 0;
+		angleDifference += angleDifference > 1 ? -1 : angleDifference < 1 ? 1 : 0;
 		legs.localRotation = Quaternion.Slerp(legs.localRotation, Quaternion.Euler(0,0,angleDifference), Time.deltaTime);
 		oldAngle = angle;
 
