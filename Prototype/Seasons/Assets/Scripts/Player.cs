@@ -317,10 +317,11 @@ public class Player : MonoBehaviour {
 		backpack.info.GetComponent<Image>().enabled = !backpack.info.GetComponent<Image>().enabled;
 
         craft.GetComponent<Image>().enabled = !craft.GetComponent<Image>().enabled;
-		Text[] texts = craft.GetComponentsInChildren<Text> ();
-		foreach(Text text in texts) {
-			text.enabled = !text.enabled;
-		}
+		//Text[] texts = craft.GetComponentsInChildren<Text> ();
+		//foreach(Text text in texts) {
+			//text.enabled = !text.enabled;
+		//}
+		GameObject.Find("Canvas/CraftTableTest/Text").GetComponent<Text>().enabled = !GameObject.Find("Canvas/CraftTableTest/Text").GetComponent<Text>().enabled;
         craft.enabled = !craft.enabled;
 
 		destroy.info.GetComponent<Image>().enabled = !destroy.info.GetComponent<Image>().enabled;
