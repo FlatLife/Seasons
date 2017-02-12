@@ -39,7 +39,7 @@ public class WaterSpawns : MonoBehaviour {
 			}
 			items.Add(item);
 			xAxis = Random.Range(-42.8f, -21f);
-			item.transform.position = new Vector3(xAxis, -16, 0);
+			item.transform.position = new Vector3(xAxis, -22.72, 0);
 			coolDown = 30;
 		} else {
 			coolDown -= Time.deltaTime;
