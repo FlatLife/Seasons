@@ -40,11 +40,9 @@ public class Player2 : MonoBehaviour {
 		if(swimming){
 			speed = waterSpeed;
 			this.GetComponent<Rigidbody2D>().gravityScale = 1;
-			this.GetComponent<CapsuleCollider2D>().enabled = true;
 		}else{
 			speed = landSpeed;
 			this.GetComponent<Rigidbody2D>().gravityScale = 0;
-			this.GetComponent<CapsuleCollider2D>().enabled = false;
 		}
 
 		// Move the player object
