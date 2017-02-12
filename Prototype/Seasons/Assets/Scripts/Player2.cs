@@ -20,6 +20,12 @@ public class Player2 : MonoBehaviour {
 	private bool atOceanFloor;
 	public StatsMaster statsRef;
 	private int frameSkip = 1;
+	public Transform torso;
+	public Transform legs;
+	public float rotationSpeed=0.2f;
+	private float oldAngle;
+	private float angleDifference = 0;
+
 
 	void Start()
 	{
@@ -36,13 +42,6 @@ public class Player2 : MonoBehaviour {
 		bool swimming = this.GetComponent<Player>().isSwimming;
 		if(player.playingCastRod || player.playingFireStart){
 			animRenderer.flipX = false;
-		}
-		if(swimming){
-			speed = waterSpeed;
-			this.GetComponent<Rigidbody2D>().gravityScale = 1;
-		}else{
-			speed = landSpeed;
-			this.GetComponent<Rigidbody2D>().gravityScale = 0;
 		}
 
 		// Move the player object
@@ -74,28 +73,31 @@ public class Player2 : MonoBehaviour {
 					animRenderer.sprite = standingSprite;
 				}
 			}
+			transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y - 0.3f);
 		}else if(swimming){
-			if(!underwater){
-				if(Input.GetKey(KeyCode.S)){
-					this.GetComponent<Rigidbody2D>().position = new Vector2(this.GetComponent<Rigidbody2D>().position.x, this.GetComponent<Rigidbody2D>().position.y - 2f);
-				}
-			}
-			if(!player.openUI && swimming && this.GetComponent<Rigidbody2D>().velocity.x <= maxSpeed 
-			&& this.GetComponent<Rigidbody2D>().velocity.y <= maxSpeed){
-				if(!underwater){
-					this.GetComponent<Rigidbody2D>().AddForce(new Vector2(horizontalInput * speed,0));
-				}else{
-					this.GetComponent<Rigidbody2D>().AddForce(new Vector2(horizontalInput * speed, verticalInput * speed));
-				}
+			if(!player.openUI){
+				this.GetComponent<Rigidbody2D>().velocity = new Vector2(horizontalInput * speed, verticalInput * speed);
 			}else{
 				this.GetComponent<Rigidbody2D>().AddForce(new Vector2(0.0f, this.GetComponent<Rigidbody2D>().velocity.y));
 			}
-		}
-		if(atRightWall || atLeftWall || atOceanFloor){
-			this.GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
-		}
-		if(!swimming){
-			transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y - 0.3f);
+			if(atRightWall || atLeftWall || atOceanFloor){
+				this.GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
+			}
+
+			float angle = (Mathf.Atan2(horizontalInput, verticalInput) * (180 / Mathf.PI)) * -1;
+			transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(0, 0, angle), Time.deltaTime * 2);
+			if (angle != oldAngle) {
+				angleDifference += oldAngle - angle;
+				angleDifference %= 160;
+			}
+			//angleDifference = angleDifference > 120 ? 120 : angleDifference < -45 ? -45 : angleDifference;
+			angleDifference += angleDifference > 1 ? -1 : angleDifference < 1 ? 1 : 0;
+			legs.localRotation = Quaternion.Slerp(legs.localRotation, Quaternion.Euler(0,0,angleDifference), Time.deltaTime);
+			oldAngle = angle;
+
+			transform.GetComponent<SpriteRenderer>().flipX = horizontalInput < 0;
+			torso.GetComponent<SpriteRenderer>().flipX = horizontalInput < 0;
+			legs.GetComponent<SpriteRenderer>().flipX = horizontalInput < 0;
 		}
 	}
 

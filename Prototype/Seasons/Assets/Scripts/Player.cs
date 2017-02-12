@@ -9,6 +9,9 @@ public class Player : MonoBehaviour {
 
 	//animation
 	int frameIndex;
+	public Sprite standingSprite;
+	public Transform torso;
+	public Transform legs;
 	public float animationSpeed;
 	public float fishIdleSpeed;
     public Sprite[] animSprites;
@@ -289,8 +292,18 @@ public class Player : MonoBehaviour {
 				isSwimming = !isSwimming;
 				Vector3 pos = transform.position;
 				if(isSwimming){
+					animRenderer.flipX = false;
+					animRenderer.sprite = Resources.Load<Sprite>("Head");
+					torso.GetComponent<SpriteRenderer>().enabled = true;
+					legs.GetComponent<SpriteRenderer>().enabled = true;
+					transform.GetComponent<PolygonCollider2D>().offset = new Vector2(0, 0.8f);
 					transform.position = new Vector3(-23.15025f,-2.443089f, pos.z);
 				}else{
+					animRenderer.sprite = standingSprite;
+					transform.rotation = new Quaternion();
+					torso.GetComponent<SpriteRenderer>().enabled = false;
+					legs.GetComponent<SpriteRenderer>().enabled = false;
+					transform.GetComponent<PolygonCollider2D>().offset = new Vector2(0, -0.3f);
 					transform.position = new Vector3(-19.81603f, -0.6278321f, pos.z);
 				}
 			}
