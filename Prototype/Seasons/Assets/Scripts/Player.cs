@@ -18,6 +18,7 @@ public class Player : MonoBehaviour {
 	float timeSinceLastFrame; 
 	public bool playingFireStart = false;
 	public bool playingCastRod = false;
+	private bool catchingFish = false;
 
 	public Canvas canvas;
 	public Backpack backpack;
@@ -146,8 +147,23 @@ public class Player : MonoBehaviour {
 				timeSinceLastFrame = timeSinceLastFrame + Time.deltaTime;
 			}
 		}
-		
 
+		if (catchingFish) {
+			if(frameIndex > 0){
+				if(timeSinceLastFrame > animationSpeed){
+					animRenderer.sprite = fishingSprites[frameIndex];
+					timeSinceLastFrame = 0;
+					frameSkip = frameSkip == 1 ? 2 : 1;
+					frameIndex -= frameSkip;
+				} else{
+					timeSinceLastFrame = timeSinceLastFrame + Time.deltaTime;
+				}	
+			} else {
+				fish.hasCaught = true;
+				catchingFish = false;
+				performingAction = false;
+			}
+		}
 		
 		OnCollisionUpdate();
 		//If player is pressing the interaction key
@@ -176,8 +192,10 @@ public class Player : MonoBehaviour {
 					fish.minigame = false;
 					timeToCatch = 2.0f;
 				}else if(Input.GetKeyDown (KeyCode.E)){
-					fish.hasCaught = true;
-					performingAction = false;
+					timeSinceLastFrame = 0;
+					frameIndex = 35;
+					catchingFish = true;
+					// performingAction = false;
 				}
 			}
 		
