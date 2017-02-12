@@ -3251,7 +3251,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 188
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -3301,7 +3301,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -3544,11 +3544,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  standingSprite: {fileID: 21300000, guid: aa969d86ba2b0d640ada6cba20976a2f, type: 3}
+  standingSprite: {fileID: 0}
   torso: {fileID: 1445723527}
   legs: {fileID: 2118111672}
   animationSpeed: 0.02
-  fishIdleSpeed: 0.07
+  fishIdleSpeed: 0
   animSprites:
   - {fileID: 21300000, guid: fbc5b5eb0fda34a4b9f93d07fbd0460d, type: 3}
   - {fileID: 21300000, guid: e4338354634f84e278235bd606324c5b, type: 3}

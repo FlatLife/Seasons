@@ -69,7 +69,7 @@ public class Player2 : MonoBehaviour {
 				}
 			}else{
 				this.GetComponent<Rigidbody2D>().velocity = new Vector3(0.0f, 0.0f);
-				if (!transform.GetComponent<Fishing>().isFishing) {
+				if (!transform.GetComponent<Fishing>().isFishing && !player.playingFireStart) {
 					animRenderer.sprite = standingSprite;
 				}
 			}

@@ -29,9 +29,6 @@ public class WaterPurifier : MonoBehaviour {
 		if(sound.isPlaying){
 			//adjusting the sound volume
             distanceFromPlayer = Vector3.Distance(player.transform.position, transform.position);
-            if(distanceFromPlayer > 5){
-                sound.volume = 0;
-            }
             sound.volume = (1 - distanceFromPlayer/5);
 		} 
 		if (!WaterUI.Slot1.isEmpty && !WaterUI.Slot2.isEmpty) {
