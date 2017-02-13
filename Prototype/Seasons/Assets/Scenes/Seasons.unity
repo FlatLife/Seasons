@@ -1045,7 +1045,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroySlot: {fileID: 0}
-  slotPrefab: {fileID: 1032774612882832, guid: 1046856afdf9c4d5891a11c611ccab04, type: 2}
+  slotPrefab: {fileID: 1073421940708546, guid: 1046856afdf9c4d5891a11c611ccab04, type: 2}
   info: {fileID: 0}
   slotSize: 40
 --- !u!114 &548612500
@@ -3055,7 +3055,7 @@ MonoBehaviour:
   slotPaddingLeft: 20
   slotPaddingTop: 20
   slotSize: 40
-  slotPrefab: {fileID: 1032774612882832, guid: 1046856afdf9c4d5891a11c611ccab04, type: 2}
+  slotPrefab: {fileID: 1073421940708546, guid: 1046856afdf9c4d5891a11c611ccab04, type: 2}
   allSlots: []
   iconPrefab: {fileID: 1059737987419112, guid: 0ac614e9beb31402a9a39ea7c3a2f4f5, type: 2}
   info: {fileID: 0}
@@ -3741,7 +3741,7 @@ MonoBehaviour:
   itemColliderID: {fileID: 0}
   fireColliderID: {fileID: 0}
   buttonSmash: 0
-  slot: {fileID: 114472974881531644, guid: 1046856afdf9c4d5891a11c611ccab04, type: 2}
+  slot: {fileID: 0}
   cookingUI: {fileID: 0}
   farmingUI: {fileID: 0}
   waterUI: {fileID: 0}
@@ -6517,7 +6517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41be18a96b2754d6b9da333c1e0dc880, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotPrefab: {fileID: 1032774612882832, guid: 1046856afdf9c4d5891a11c611ccab04, type: 2}
+  slotPrefab: {fileID: 1073421940708546, guid: 1046856afdf9c4d5891a11c611ccab04, type: 2}
   slotSize: 40
   BackPack: {fileID: 1142074036}
   Slot1: {fileID: 0}

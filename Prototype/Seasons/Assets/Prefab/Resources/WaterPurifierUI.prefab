@@ -40,11 +40,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fe9989bc9b7ed44fa8dfad35b2e8e1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotPrefab: {fileID: 114472974881531644, guid: 1046856afdf9c4d5891a11c611ccab04,
+  slotPrefab: {fileID: 114549727729511964, guid: 1046856afdf9c4d5891a11c611ccab04,
     type: 2}
   slotSize: 40
-  FreshWaterSlot: {fileID: 0}
-  SaltWaterSlot: {fileID: 0}
+  info: {fileID: 0}
+  Slot1: {fileID: 0}
+  Slot2: {fileID: 0}
+  text: {fileID: 0}
 --- !u!114 &114869203392117320
 MonoBehaviour:
   m_ObjectHideFlags: 1

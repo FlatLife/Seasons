@@ -67,10 +67,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffbe3cfc503ec4ff5a7c047c40cb6be3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotPrefab: {fileID: 114472974881531644, guid: 1046856afdf9c4d5891a11c611ccab04,
+  slotPrefab: {fileID: 114549727729511964, guid: 1046856afdf9c4d5891a11c611ccab04,
     type: 2}
   slotSize: 50
   farmSlots: []
+  text: {fileID: 0}
+  info: {fileID: 0}
   waterSlot: {fileID: 0}
 --- !u!222 &222806653039290812
 CanvasRenderer:

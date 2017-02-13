@@ -55,10 +55,10 @@ public class Fishing : MonoBehaviour {
 			Destroy (alert);
 			stop ();
 			Slot fishingRodSlot = backpack.GetComponent<Backpack>().FindItem(ItemType.FISHINGROD);
-			fishingRodSlot.CurrentItem.durability--;
-			Debug.Log(fishingRodSlot.CurrentItem.durability);
+			fishingRodSlot.CurrentItem.Durability--;
+			Debug.Log(fishingRodSlot.CurrentItem.Durability);
 			
-			if (fishingRodSlot.CurrentItem.durability <= 0) {
+			if (fishingRodSlot.CurrentItem.Durability <= 0) {
 				fishingRodSlot.DestroyItem();
 			}
 		}
