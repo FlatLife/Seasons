@@ -480,6 +480,7 @@ GameObject:
   - component: {fileID: 241460994}
   - component: {fileID: 241460996}
   - component: {fileID: 241460995}
+  - component: {fileID: 241460997}
   m_Layer: 5
   m_Name: Season
   m_TagString: Untagged
@@ -502,7 +503,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 112, y: 11}
+  m_AnchoredPosition: {x: 112, y: 24}
   m_SizeDelta: {x: 160, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &241460995
@@ -525,7 +526,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 29dce725a3c9a4240805f0d957d1f7c8, type: 3}
+    m_Font: {fileID: 12800000, guid: 1144d7ccde6704c4ab864b15dd0692cb, type: 3}
     m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
@@ -544,6 +545,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 241460993}
+--- !u!114 &241460997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 241460993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.422}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &261190085
 GameObject:
   m_ObjectHideFlags: 0
@@ -1975,6 +1990,7 @@ GameObject:
   - component: {fileID: 905942779}
   - component: {fileID: 905942781}
   - component: {fileID: 905942780}
+  - component: {fileID: 905942782}
   m_Layer: 5
   m_Name: DayCount
   m_TagString: Untagged
@@ -1997,8 +2013,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -141, y: 20}
-  m_SizeDelta: {x: 160, y: 40}
+  m_AnchoredPosition: {x: -185, y: 20}
+  m_SizeDelta: {x: 120, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &905942780
 MonoBehaviour:
@@ -2020,7 +2036,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 29dce725a3c9a4240805f0d957d1f7c8, type: 3}
+    m_Font: {fileID: 12800000, guid: 1144d7ccde6704c4ab864b15dd0692cb, type: 3}
     m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
@@ -2039,6 +2055,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 905942778}
+--- !u!114 &905942782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 905942778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.422}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &910449256
 GameObject:
   m_ObjectHideFlags: 0
@@ -3480,6 +3510,7 @@ MonoBehaviour:
   atFire: 0
   atFarm: 0
   atUse: 0
+  atFish: 0
   atBarrel: 0
   fireUIOpen: 0
   farmUIOpen: 0
