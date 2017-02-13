@@ -44,7 +44,7 @@ public class DayCycle : MonoBehaviour {
 		season = GameObject.Find("Season").GetComponent<Text>();
 		GameMaster.dayCount = dayCount;
 		GameObject bottle = Instantiate(Resources.Load<GameObject>("messageBottle"));
-		bottle.GetComponent<Item>().message = "message" + dayCount;
+		bottle.GetComponent<Item>().message = "Message " + dayCount;
 
 		transformList.Add(GameObject.Find("Island").transform);
 		transformList.Add(GameObject.Find("Tree").transform);
@@ -98,7 +98,7 @@ public class DayCycle : MonoBehaviour {
 			//spawn message in a bottle when day starts
 			if(bottleHasSpawned != true){
 				GameObject bottle = Instantiate(Resources.Load<GameObject>("messageBottle"));
-				bottle.GetComponent<Item>().message = "message" + dayCount;
+				bottle.GetComponent<Item>().message = "Message " + dayCount;
 				bottleHasSpawned = true;
 			}
 			fade.GetComponent<ScreenFade>().FadeToClear();

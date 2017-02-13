@@ -83,9 +83,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -1}
   serializedVersion: 2
-  m_Size: {x: 4, y: 4}
+  m_Size: {x: 10, y: 10}
 --- !u!114 &114345998458763036
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -109,6 +109,7 @@ MonoBehaviour:
   message: 
   slot: {fileID: 0}
   keepItem: 0
+  isSwimming: 0
   durability: 0
   cookTime: 0
   growTime: 60
