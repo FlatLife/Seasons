@@ -25,7 +25,7 @@ public class StatsMaster : MonoBehaviour {
 		hunger = GameObject.Find("Hunger");
 		warmth = GameObject.Find("Warmth");
 
-	}
+	} 
 	
 	// Update is called once per frame
 	void Update () {
