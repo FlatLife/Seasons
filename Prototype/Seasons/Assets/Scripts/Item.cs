@@ -74,6 +74,7 @@ public class Item : MonoBehaviour {
 		}
 	}
 
+
 	// Returns boolean for whether the item should be deleted or not
 	public bool Use() {
 		hunger = GameObject.Find("Hunger");

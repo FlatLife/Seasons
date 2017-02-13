@@ -79,7 +79,8 @@ MonoBehaviour:
   message: B
   slot: {fileID: 0}
   keepItem: 1
-  durability: 0
+  isSwimming: 0
+  durability: 3
   cookTime: 0
   growTime: 0
   nextItem: 

@@ -187,6 +187,16 @@ public class Backpack : MonoBehaviour {
 		return false;
 	}
 
+	public Slot FindItem(ItemType type){
+		foreach (GameObject slot in allSlots) {
+			Slot tmp = slot.GetComponent<Slot>();
+			if(!tmp.isEmpty && tmp.CurrentItem.type == type){
+				return tmp;
+			}
+		}
+		return null;
+	}
+
 	public int EmptySlots(){
 		int slots = 0;
 		foreach (GameObject slot in allSlots) {

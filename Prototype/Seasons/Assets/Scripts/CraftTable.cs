@@ -102,12 +102,28 @@ public class CraftTable : MonoBehaviour {
             	BackPack.AddItem(result);
 				if(!tmp1.CurrentItem.keepItem){
            			tmp1.DestroyItem ();
+				} else {
+					CheckDurability(tmp1);
 				}
 				if(!tmp2.CurrentItem.keepItem){
            	 		tmp2.DestroyItem ();
+				} else {
+					CheckDurability(tmp2);
 				}
 			}
 		} 
+	}
+
+	public void CheckDurability(Slot slot) {
+		Item item = slot.CurrentItem;
+		if(item.durability != 0) {
+			if(item.type == ItemType.HATCHET) {
+				item.durability--;
+			}
+			if (item.durability <= 0) {
+				slot.DestroyItem();
+			}
+		}
 	}
 
 	public void CheckRecipeOneItem(ItemType type, string product, int quantity) {
