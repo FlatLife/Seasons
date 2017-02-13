@@ -40,7 +40,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27acdc457081946e2a69d90370257990, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotPrefab: {fileID: 1032774612882832, guid: 1046856afdf9c4d5891a11c611ccab04, type: 2}
+  slotPrefab: {fileID: 1073421940708546, guid: 1046856afdf9c4d5891a11c611ccab04, type: 2}
+  info: {fileID: 0}
+  text: {fileID: 0}
   slotSize: 40
   cookSlots: []
 --- !u!114 &114355768168002488

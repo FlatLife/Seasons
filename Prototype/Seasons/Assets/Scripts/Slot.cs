@@ -18,7 +18,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 	public float growTime;
 	public bool isGrowing;
 	public bool isCooking;
-
+	private Transform ItemDurabilityBar;
 	public bool canShift = false;
 
 
@@ -58,11 +58,20 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 		currentItem = item;
 		item.transform.SetParent(this.transform);
 		itemCount = 1;
+		//CheckDurability(item);
 
 		stackTxt.text = itemCount > 1 ? itemCount.ToString() : string.Empty;
 		ChangeSprite(currentItem.spriteNeutral, currentItem.spriteHighlighted);
 	}
 
+	public void CheckDurability(Item item) {
+		ItemDurabilityBar = this.transform.Find("ItemDurability");
+		if (item.Durability != 0) {			
+			ItemDurabilityBar.GetComponent<Image>().enabled = true;
+		} else {
+			ItemDurabilityBar.GetComponent<Image>().enabled = false;
+		}
+	}
 	public void deltaCount(int change) {
 		itemCount += change;
 		stackTxt.text = itemCount > 1 ? itemCount.ToString() : string.Empty;

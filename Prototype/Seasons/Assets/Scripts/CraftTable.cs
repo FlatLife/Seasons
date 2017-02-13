@@ -116,11 +116,11 @@ public class CraftTable : MonoBehaviour {
 
 	public void CheckDurability(Slot slot) {
 		Item item = slot.CurrentItem;
-		if(item.durability != 0) {
+		if(item.Durability != 0) {
 			if(item.type == ItemType.HATCHET) {
-				item.durability--;
+				item.Durability--;
 			}
-			if (item.durability <= 0) {
+			if (item.Durability <= 0) {
 				slot.DestroyItem();
 			}
 		}

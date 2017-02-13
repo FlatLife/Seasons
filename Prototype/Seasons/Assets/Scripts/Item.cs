@@ -30,7 +30,12 @@ public class Item : MonoBehaviour {
 	public bool keepItem;
 
 	public bool isSwimming;
-	public int durability;
+	private int durability;
+	public int Durability {
+		get { return durability; }
+		set { durability = value;}
+	}
+	public int maxDurability;
 	public int cookTime;
 	public int growTime;
 	public string nextItem;
@@ -54,6 +59,10 @@ public class Item : MonoBehaviour {
 		falling = true;
 	}
 	
+	public void Awake() {
+		durability = maxDurability;
+	}
+
 	// Update is called once per frame
 	void Update () {
 		if(falling && yAxisEnd < transform.position.y){
