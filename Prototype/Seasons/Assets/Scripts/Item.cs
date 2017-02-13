@@ -28,6 +28,8 @@ public class Item : MonoBehaviour {
 	private GameObject thirst;
 	private PlaceObjects builder;
 	public bool keepItem;
+
+	public bool isSwimming;
 	public int durability;
 	public int cookTime;
 	public int growTime;
@@ -126,15 +128,21 @@ public class Item : MonoBehaviour {
 				thirst.GetComponent<BarScript>().increment(0.1f);
 				break;
 			case ItemType.FIREPREP:
-				toBeDeleted = true;
-				builder = GameObject.Find("Main Camera").GetComponent<PlaceObjects>();
-				builder.build("Fire", "PlaceFire");
+			isSwimming = GameObject.Find ("Player").GetComponent<Player> ().isSwimming;
+				if(!isSwimming){
+					toBeDeleted = true;
+					builder = GameObject.Find("Main Camera").GetComponent<PlaceObjects>();
+					builder.build("Fire", "PlaceFire");
+				}
 				break;
 			case ItemType.HOE:
-				builder = GameObject.Find("Main Camera").GetComponent<PlaceObjects>();
-				builder.build("Farm", "PlaceFarm");
-				durability--;
-				toBeDeleted = durability == 0;
+				isSwimming = GameObject.Find ("Player").GetComponent<Player> ().isSwimming;
+				if(!isSwimming){
+					builder = GameObject.Find("Main Camera").GetComponent<PlaceObjects>();
+					builder.build("Farm", "PlaceFarm");
+					durability--;
+					toBeDeleted = durability == 0;
+				}
 				break;
 			case ItemType.FRESHWATER:
 				thirst.GetComponent<BarScript>().increment(0.3f);
@@ -161,14 +169,20 @@ public class Item : MonoBehaviour {
 
 				break;
 			case ItemType.WATERPURIFIER:
-				toBeDeleted = true;
-				builder = GameObject.Find("Main Camera").GetComponent<PlaceObjects>();
-				builder.build("WaterPurifier", "PlaceWater");
+				isSwimming = GameObject.Find ("Player").GetComponent<Player> ().isSwimming;
+				if(!isSwimming){
+					toBeDeleted = true;
+					builder = GameObject.Find("Main Camera").GetComponent<PlaceObjects>();
+					builder.build("WaterPurifier", "PlaceWater");
+				}
 				break;
 			case ItemType.BARREL:
-				toBeDeleted = true;
-				builder = GameObject.Find("Main Camera").GetComponent<PlaceObjects>();
-				builder.build("Barrel", "PlaceBarrel");
+				isSwimming = GameObject.Find ("Player").GetComponent<Player> ().isSwimming;
+				if(!isSwimming){
+					toBeDeleted = true;
+					builder = GameObject.Find("Main Camera").GetComponent<PlaceObjects>();
+					builder.build("Barrel", "PlaceBarrel");
+				}
 				break;
 			case ItemType.BUCKET:
 				bool nearWater = GameObject.Find ("Player").GetComponent<Player> ().switchSwimMode;

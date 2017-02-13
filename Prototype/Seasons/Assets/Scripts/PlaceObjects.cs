@@ -16,9 +16,11 @@ public class PlaceObjects : MonoBehaviour {
 	private Color buildColor = new Color (1,1,1, 0.5f);
 	private Color cantBuild = new Color (1,0,0, 1f);
 
+	private Player player;
+
 	// Use this for initialization
 	void Start () {
-		
+		player = GameObject.Find("Player").GetComponent<Player>();
 	}
 	
 	// Update is called once per frame
@@ -48,9 +50,9 @@ public class PlaceObjects : MonoBehaviour {
 			// Set hoverObject's position and colour
 			Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			hoverObject.transform.position = new Vector3(pos.x, pos.y, pos.y - 0.3f);
-			hoverObject.GetComponent<SpriteRenderer>().color = canBuild ? buildColor : cantBuild;
+			hoverObject.GetComponent<SpriteRenderer>().color = canBuild && !player.isSwimming ? buildColor: cantBuild;
 
-			if (Input.GetMouseButtonDown(0) && canBuild) {
+			if (Input.GetMouseButtonDown(0) && canBuild && !player.isSwimming) {
 				item = Instantiate(Resources.Load<GameObject>(buildItem));
 				item.name = buildItem;
 				item.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);

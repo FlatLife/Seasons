@@ -19,6 +19,8 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 	public bool isGrowing;
 	public bool isCooking;
 
+	public bool canShift = false;
+
 
 	public Item CurrentItem {
 		get {return currentItem;}
