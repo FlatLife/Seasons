@@ -169,6 +169,18 @@ public class Player : MonoBehaviour {
 				performingAction = false;
 			}
 		}
+
+		if (fish.minigame) {
+				timeToCatch -= Time.deltaTime;
+				if (timeToCatch < 0.0f) {
+					fish.minigame = false;
+					timeToCatch = 2.0f;
+				}else if(Input.GetKeyDown (KeyCode.E)){
+					timeSinceLastFrame = 0;
+					frameIndex = 35;
+					catchingFish = true;
+				}
+			}
 		
 		OnCollisionUpdate();
 		//If player is pressing the interaction key
@@ -188,19 +200,6 @@ public class Player : MonoBehaviour {
 						timeSinceLastFrame = 0;
 						frameIndex = 0;
 					}
-				}
-			}
-
-			if (fish.minigame) {
-				timeToCatch -= Time.deltaTime;
-				if (timeToCatch < 0.0f) {
-					fish.minigame = false;
-					timeToCatch = 2.0f;
-				}else if(Input.GetKeyDown (KeyCode.E)){
-					timeSinceLastFrame = 0;
-					frameIndex = 35;
-					catchingFish = true;
-					// performingAction = false;
 				}
 			}
 		
