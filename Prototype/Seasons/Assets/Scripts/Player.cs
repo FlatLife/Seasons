@@ -52,6 +52,8 @@ public class Player : MonoBehaviour {
 	public bool atFire = false;
 	public bool atFarm = false;
 	public bool atUse = false;
+	public bool atFish = false;
+
 	public bool atBarrel = false;
 	public bool fireUIOpen = false;
 	public bool farmUIOpen = false;
