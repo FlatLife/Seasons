@@ -10,18 +10,29 @@ public class GameMaster : MonoBehaviour {
 	public AudioSource music;
 	public AudioClip summerMusic;
 	public AudioClip winterMusic;
+
+	public Player player;
 	private static float fadeVolume = 2;
 	private static bool fadingMusic = false;
 	private static bool fadingOut;
 	private static bool enteringWinter;
+	private static AudioLowPassFilter filter;
 
 	void Start(){
 		music = GetComponent<AudioSource>();
 		music.clip = summerMusic;
 		music.Play();
 		music.loop = true;
+		filter = GetComponent<AudioLowPassFilter>();
+
 	}
 	void Update(){
+		if(player.isSwimming){
+			filter.cutoffFrequency = 700;
+		} else {
+			filter.cutoffFrequency = 22000;
+		}
+
 		if(fadingMusic){
 			if(fadingOut){
 				fadeVolume -= Time.deltaTime;
