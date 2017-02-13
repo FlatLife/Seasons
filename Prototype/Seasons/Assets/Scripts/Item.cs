@@ -188,7 +188,7 @@ public class Item : MonoBehaviour {
 				toBeDeleted = false;
 				GameObject canvas = GameObject.Find ("Canvas");
 				GameObject scroll = Instantiate (Resources.Load<GameObject> (message), canvas.transform);
-				scroll.transform.position = new Vector3(400,400);
+				scroll.transform.localPosition = new Vector3 (0, 0);
 				break;
 		}
 		return toBeDeleted;

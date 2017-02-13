@@ -22,18 +22,6 @@ public class GameMaster : MonoBehaviour {
 		music.loop = true;
 	}
 	void Update(){
-		if(isWinter && music.clip == summerMusic){
-			music.clip = winterMusic;
-			music.Play();
-			music.loop = true;
-		}
-
-		if(!isWinter && music.clip == winterMusic){
-			music.clip = summerMusic;
-			music.Play();
-			music.loop = true;
-		}
-
 		if(fadingMusic){
 			if(fadingOut){
 				fadeVolume -= Time.deltaTime;
