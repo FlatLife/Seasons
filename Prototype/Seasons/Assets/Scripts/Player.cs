@@ -388,9 +388,8 @@ public class Player : MonoBehaviour {
 		if (canTouch) {
 			if (Input.GetKeyDown(KeyCode.E)) {
 				if (itemColliderID.gameObject.GetComponent<Item> ().type == ItemType.BOTTLE) {
-					GameObject scroll = Instantiate (Resources.Load<GameObject> ("message" + GameMaster.dayCount));
-					scroll.transform.SetParent (canvas.transform);
-					scroll.transform.position = new Vector3 (400, 400);
+					GameObject scroll = Instantiate (Resources.Load<GameObject> ("message" + GameMaster.dayCount), canvas.transform);
+					scroll.transform.localPosition = new Vector3 (0, 0);
 					string note = itemColliderID.gameObject.GetComponent<Item> ().message;
 					itemColliderID.gameObject.GetComponent<Item> ().itemName = note;
 				}
