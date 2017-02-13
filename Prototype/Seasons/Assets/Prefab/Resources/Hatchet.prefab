@@ -53,6 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Hatchet
+  itemUse: 
   type: 10
   spriteNeutral: {fileID: 21300000, guid: 8c25be578d55349d0bc8c0ca234645d0, type: 3}
   spriteHighlighted: {fileID: 21300000, guid: 8c25be578d55349d0bc8c0ca234645d0, type: 3}
@@ -60,8 +61,15 @@ MonoBehaviour:
   isFood: 0
   isCrop: 0
   isFinishedCrop: 0
+  message: 
+  slot: {fileID: 0}
   keepItem: 1
-  durability: 0
+  isSwimming: 0
+  durability: 3
+  cookTime: 0
+  growTime: 0
+  nextItem: 
+  zOffset: 0
 --- !u!212 &212087199281506584
 SpriteRenderer:
   m_ObjectHideFlags: 1
