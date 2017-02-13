@@ -27,6 +27,7 @@ public class GUIManager : MonoBehaviour {
 				if(!player.GetComponent<Fishing>().isFishing){
 					if(player.canFish){
 						popup.GetComponentInChildren<Text>().text = "Cast Rod";
+						popup.GetComponent<Image>().enabled = true;
 					}else{
 						popup.GetComponent<Image>().enabled = false;
 						popup.GetComponentInChildren<Text>().text = "I need to make a fishing rod";

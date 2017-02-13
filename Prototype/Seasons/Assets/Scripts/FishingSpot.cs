@@ -22,6 +22,8 @@ public class FishingSpot : MonoBehaviour {
 		ItemType type = (ItemType.FISHINGROD);
 		if(control.backpack.CheckItem(type)){
 			control.canFish = true;
+		}else{
+			control.canFish = false;
 		}
 		control.atFish = true;
 		control.atUse = true;

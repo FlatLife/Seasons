@@ -41,6 +41,7 @@ public class Fishing : MonoBehaviour {
 		}
 
 		if (minigame && hasCaught) {
+			stop ();
 			Backpack inv = backpack.GetComponent<Backpack> ();
 			float randNum = Random.Range(0f,1f);
 			//Random chance of catching different fish
@@ -53,10 +54,8 @@ public class Fishing : MonoBehaviour {
 			}
 			inv.AddItem(item);
 			Destroy (alert);
-			stop ();
 			Slot fishingRodSlot = backpack.GetComponent<Backpack>().FindItem(ItemType.FISHINGROD);
 			fishingRodSlot.CurrentItem.durability--;
-			Debug.Log(fishingRodSlot.CurrentItem.durability);
 			
 			if (fishingRodSlot.CurrentItem.durability <= 0) {
 				fishingRodSlot.DestroyItem();
@@ -67,8 +66,7 @@ public class Fishing : MonoBehaviour {
 
 	public void fish(){
 		Backpack inv = backpack.GetComponent<Backpack> ();
-		Item item = (Resources.Load("FishingRod") as GameObject).GetComponent<Item>();
-		if(inv.CheckItem(item)){
+		if(inv.CheckItem(ItemType.FISHINGROD)){
 			isFishing = true;
 		}
 		else if(text == null){
