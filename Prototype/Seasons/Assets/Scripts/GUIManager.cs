@@ -23,9 +23,14 @@ public class GUIManager : MonoBehaviour {
 			if(player.canTouch){
 				string item = player.itemColliderID.gameObject.GetComponent<Item>().itemName;
 				popup.GetComponentInChildren<Text>().text = "Pick up " + item;
-			}else if(player.canFish){
+			}else if(player.atFish){
 				if(!player.GetComponent<Fishing>().isFishing){
-					popup.GetComponentInChildren<Text>().text = "Cast Rod";
+					if(player.canFish){
+						popup.GetComponentInChildren<Text>().text = "Cast Rod";
+					}else{
+						popup.GetComponent<Image>().enabled = false;
+						popup.GetComponentInChildren<Text>().text = "I need to make a fishing rod";
+					}
 				}else if(player.GetComponent<Fishing>().isFishing && !player.GetComponent<Fishing>().minigame){
 					popup.GetComponentInChildren<Text>().text = "Exit Fishing";
 				}else if(player.GetComponent<Fishing>().isFishing && player.GetComponent<Fishing>().minigame){
@@ -55,7 +60,7 @@ public class GUIManager : MonoBehaviour {
 			}else if(player.atWaterPurifier){
 				popup.GetComponentInChildren<Text>().text = "Open Water purifier";
 			}
-			Vector3 pos = new Vector3(40, 75, 0);
+			Vector3 pos = new Vector3(500, 75, 0);
 			popup.transform.position = pos;
 		}else{
 			Destroy(popup);

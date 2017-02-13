@@ -21,17 +21,17 @@ public class LeftClick : MonoBehaviour, IPointerClickHandler, IBeginDragHandler,
 		if(eventData.button == PointerEventData.InputButton.Left && Input.GetKey(KeyCode.LeftShift)){
 			Item item = gameObject.GetComponent<Slot>().CurrentItem;
 			CraftTable table = craft.GetComponent<CraftTable> ();
-			if (eventData.pointerCurrentRaycast.gameObject.GetComponentsInParent<Backpack> () != null) {
+			if (gameObject.GetComponent<Slot>().canShift) {
 				if (table.Slot1.GetComponent<Slot> ().isEmpty) {
 					eventData.pointerPressRaycast.gameObject.GetComponentInParent<Backpack> ().MoveItem (gameObject);
 					eventData.pointerPressRaycast.gameObject.GetComponentInParent<Backpack> ().MoveItem (table.Slot1);
 				} else if (table.Slot2.GetComponent<Slot> ().isEmpty) {
 					eventData.pointerPressRaycast.gameObject.GetComponentInParent<Backpack> ().MoveItem (gameObject);
 					eventData.pointerPressRaycast.gameObject.GetComponentInParent<Backpack> ().MoveItem (table.Slot2);
-				} else {
+				}
+			} else {
 					canvas.GetComponentInChildren<Backpack> ().MoveItem (gameObject);
 				}
-			}
 		}else if(eventData.button == PointerEventData.InputButton.Left){
 			canvas.GetComponentInChildren<Backpack> ().MoveItem(gameObject);
 		}
