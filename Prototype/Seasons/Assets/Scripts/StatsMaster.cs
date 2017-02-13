@@ -13,10 +13,10 @@ public class StatsMaster : MonoBehaviour {
 	private GameObject hunger;
 	private GameObject warmth;
 
-	public float warmthConstant = 0.0004f;
-	public float hungerConstant = 0.0004f;
-	public float thirstConstant = 0.0004f;
-	public float healthConstant = 0.0004f; 
+	public float warmthConstant = 0.0002f;
+	public float hungerConstant = 0.0002f;
+	public float thirstConstant = 0.0002f;
+	public float healthConstant = 0.0002f; 
 
 	// Use this for initialization
 	void Start () {
