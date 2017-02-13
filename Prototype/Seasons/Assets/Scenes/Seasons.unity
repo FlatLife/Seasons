@@ -3304,6 +3304,7 @@ GameObject:
   - component: {fileID: 1401996499}
   - component: {fileID: 1401996501}
   - component: {fileID: 1401996502}
+  - component: {fileID: 1401996503}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: Untagged
@@ -3354,6 +3355,7 @@ MonoBehaviour:
   music: {fileID: 0}
   summerMusic: {fileID: 8300000, guid: 7db7dc28f702d4301bc951054a808ce8, type: 3}
   winterMusic: {fileID: 8300000, guid: cbe1327012c3b49999776360c8b0a0af, type: 3}
+  player: {fileID: 1440615826}
 --- !u!82 &1401996502
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3423,6 +3425,27 @@ AudioSource:
     m_PostInfinity: 2
     m_RotationOrder: 4
   reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!169 &1401996503
+AudioLowPassFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1401996498}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_LowpassResonanceQ: 1
+  lowpassLevelCustomCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
