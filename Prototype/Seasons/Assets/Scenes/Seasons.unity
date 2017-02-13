@@ -3135,6 +3135,7 @@ MonoBehaviour:
   music: {fileID: 0}
   summerMusic: {fileID: 8300000, guid: 7db7dc28f702d4301bc951054a808ce8, type: 3}
   winterMusic: {fileID: 8300000, guid: cbe1327012c3b49999776360c8b0a0af, type: 3}
+  player: {fileID: 1440615826}
 --- !u!82 &1401996502
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3814,7 +3815,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   volumeSlider: {fileID: 358105889}
-  volumeAudio: {fileID: 0}
 --- !u!1 &1448366924
 GameObject:
   m_ObjectHideFlags: 0
