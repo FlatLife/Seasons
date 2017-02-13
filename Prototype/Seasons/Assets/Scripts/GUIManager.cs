@@ -23,9 +23,14 @@ public class GUIManager : MonoBehaviour {
 			if(player.canTouch){
 				string item = player.itemColliderID.gameObject.GetComponent<Item>().itemName;
 				popup.GetComponentInChildren<Text>().text = "Pick up " + item;
-			}else if(player.canFish){
+			}else if(player.atFish){
 				if(!player.GetComponent<Fishing>().isFishing){
-					popup.GetComponentInChildren<Text>().text = "Cast Rod";
+					if(player.canFish){
+						popup.GetComponentInChildren<Text>().text = "Cast Rod";
+					}else{
+						popup.GetComponent<Image>().enabled = false;
+						popup.GetComponentInChildren<Text>().text = "I need to make a fishing rod";
+					}
 				}else if(player.GetComponent<Fishing>().isFishing && !player.GetComponent<Fishing>().minigame){
 					popup.GetComponentInChildren<Text>().text = "Exit Fishing";
 				}else if(player.GetComponent<Fishing>().isFishing && player.GetComponent<Fishing>().minigame){

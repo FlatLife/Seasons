@@ -19,7 +19,11 @@ public class FishingSpot : MonoBehaviour {
 	{
 		if(other.tag == "Player"){
 		Player control = other.gameObject.GetComponent<Player>();
-		control.canFish = true;
+		Item item = (Resources.Load("FishingRod") as GameObject).GetComponent<Item>();
+		if(control.backpack.CheckItem(item)){
+			control.canFish = true;
+		}
+		control.atFish = true;
 		control.atUse = true;
 		}
 
@@ -29,6 +33,7 @@ public class FishingSpot : MonoBehaviour {
 	{
 		if(other.tag == "Player"){
 			Player control = other.gameObject.GetComponent<Player>();
+			control.atFish = false;
 			control.canFish = false;
 			control.atUse = false;
 		}
