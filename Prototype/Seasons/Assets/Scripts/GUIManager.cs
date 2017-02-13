@@ -55,7 +55,7 @@ public class GUIManager : MonoBehaviour {
 			}else if(player.atWaterPurifier){
 				popup.GetComponentInChildren<Text>().text = "Open Water purifier";
 			}
-			Vector3 pos = new Vector3(40, 75, 0);
+			Vector3 pos = new Vector3(500, 75, 0);
 			popup.transform.position = pos;
 		}else{
 			Destroy(popup);
