@@ -176,8 +176,7 @@ public class Backpack : MonoBehaviour {
 	}
 	}
 
-	public bool CheckItem(Item item){
-		var type = item.type;
+public bool CheckItem(ItemType type){
 		foreach (GameObject slot in allSlots) {
 			Slot tmp = slot.GetComponent<Slot>();
 			if(!tmp.isEmpty && tmp.CurrentItem.type == type){

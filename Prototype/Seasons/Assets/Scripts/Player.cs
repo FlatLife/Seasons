@@ -142,7 +142,7 @@ public class Player : MonoBehaviour {
 				frameIndex = 35;
 				timeSinceLastFrame = 0;
 			}
-		} else if (fish.isFishing && !fish.minigame) {
+		} else if (fish.isFishing && !fish.minigame && !catchingFish) {
 			if (timeSinceLastFrame > fishIdleSpeed) {
 				animRenderer.sprite = fishingSprites[frameIndex];
 				fishIdleDirection = frameIndex >= 40 || frameIndex <= 34 ? !fishIdleDirection : fishIdleDirection; 
@@ -169,29 +169,8 @@ public class Player : MonoBehaviour {
 				performingAction = false;
 			}
 		}
-		
-		OnCollisionUpdate();
-		//If player is pressing the interaction key
-		if (Input.GetKeyDown (KeyCode.E)) {
-			//Fishing minigame interaction
-			if(canFish){
-				if (fish.isFishing && !fish.minigame) {
-					performingAction = false;
-					fish.stop ();
-				} else if(!fish.isFishing){
-					//setting up animation values to play
-					timeToCatch = 2.0f;
-					fish.fish ();
-					if(fish.isFishing){
-						performingAction = true;
-						playingCastRod = true;
-						timeSinceLastFrame = 0;
-						frameIndex = 0;
-					}
-				}
-			}
 
-			if (fish.minigame) {
+		if (fish.minigame && !catchingFish) {
 				timeToCatch -= Time.deltaTime;
 				if (timeToCatch < 0.0f) {
 					fish.minigame = false;
@@ -200,7 +179,31 @@ public class Player : MonoBehaviour {
 					timeSinceLastFrame = 0;
 					frameIndex = 35;
 					catchingFish = true;
-					// performingAction = false;
+				}
+			}
+		
+		OnCollisionUpdate();
+		//If player is pressing the interaction key
+		if (Input.GetKeyDown (KeyCode.E)) {
+			//Fishing minigame interaction
+			if(canFish){
+				if (fish.isFishing && !fish.minigame) {
+					playingCastRod = false;
+					performingAction = false;
+					fish.stop ();
+				} else if(!fish.isFishing){
+					//setting up animation values to play
+					timeToCatch = 2.0f;
+					if(openUI){
+						ToggleUI();
+					}
+					fish.fish ();
+					if(fish.isFishing){
+						performingAction = true;
+						playingCastRod = true;
+						timeSinceLastFrame = 0;
+						frameIndex = 0;
+					}
 				}
 			}
 		
@@ -332,53 +335,55 @@ public class Player : MonoBehaviour {
 	}
 
 	public void ToggleUI() {
-		openUI = !openUI;
-		craft.Slot1.GetComponent<Image>().enabled = !craft.Slot1.GetComponent<Image>().enabled;
-        craft.Slot2.GetComponent<Image>().enabled = !craft.Slot2.GetComponent<Image>().enabled;
-		craft.info.GetComponent<Image>().enabled = !craft.info.GetComponent<Image>().enabled;
-		craft.Slot1.GetComponentInChildren<Text>().enabled = !craft.Slot1.GetComponentInChildren<Text>().enabled;
-		craft.Slot2.GetComponentInChildren<Text>().enabled = !craft.Slot2.GetComponentInChildren<Text>().enabled;
-		destroy.destroySlot.GetComponent<Image>().enabled = !destroy.destroySlot.GetComponent<Image>().enabled;
-            
-        	foreach(GameObject slot in backpack.allSlots) {
-                slot.GetComponent<Image>().enabled = !slot.GetComponent<Image>().enabled;
-                slot.GetComponentInChildren<Text>().enabled = !slot.GetComponentInChildren<Text>().enabled;
-            }
+		if(!performingAction){
+			openUI = !openUI;
+			craft.Slot1.GetComponent<Image>().enabled = !craft.Slot1.GetComponent<Image>().enabled;
+			craft.Slot2.GetComponent<Image>().enabled = !craft.Slot2.GetComponent<Image>().enabled;
+			craft.info.GetComponent<Image>().enabled = !craft.info.GetComponent<Image>().enabled;
+			craft.Slot1.GetComponentInChildren<Text>().enabled = !craft.Slot1.GetComponentInChildren<Text>().enabled;
+			craft.Slot2.GetComponentInChildren<Text>().enabled = !craft.Slot2.GetComponentInChildren<Text>().enabled;
+			destroy.destroySlot.GetComponent<Image>().enabled = !destroy.destroySlot.GetComponent<Image>().enabled;
+				
+				foreach(GameObject slot in backpack.allSlots) {
+					slot.GetComponent<Image>().enabled = !slot.GetComponent<Image>().enabled;
+					slot.GetComponentInChildren<Text>().enabled = !slot.GetComponentInChildren<Text>().enabled;
+				}
 
-        backpack.GetComponent<Image>().enabled = !backpack.GetComponent<Image>().enabled;
-		backpack.GetComponentInChildren<Text>().enabled = !backpack.GetComponentInChildren<Text>().enabled;
-		backpack.info.GetComponent<Image>().enabled = !backpack.info.GetComponent<Image>().enabled;
+			backpack.GetComponent<Image>().enabled = !backpack.GetComponent<Image>().enabled;
+			backpack.GetComponentInChildren<Text>().enabled = !backpack.GetComponentInChildren<Text>().enabled;
+			backpack.info.GetComponent<Image>().enabled = !backpack.info.GetComponent<Image>().enabled;
 
-        craft.GetComponent<Image>().enabled = !craft.GetComponent<Image>().enabled;
-		//Text[] texts = craft.GetComponentsInChildren<Text> ();
-		//foreach(Text text in texts) {
-			//text.enabled = !text.enabled;
-		//}
-		GameObject.Find("Canvas/CraftTableTest/Text").GetComponent<Text>().enabled = !GameObject.Find("Canvas/CraftTableTest/Text").GetComponent<Text>().enabled;
-        craft.enabled = !craft.enabled;
+			craft.GetComponent<Image>().enabled = !craft.GetComponent<Image>().enabled;
+			//Text[] texts = craft.GetComponentsInChildren<Text> ();
+			//foreach(Text text in texts) {
+				//text.enabled = !text.enabled;
+			//}
+			GameObject.Find("Canvas/CraftTableTest/Text").GetComponent<Text>().enabled = !GameObject.Find("Canvas/CraftTableTest/Text").GetComponent<Text>().enabled;
+			craft.enabled = !craft.enabled;
 
-		destroy.info.GetComponent<Image>().enabled = !destroy.info.GetComponent<Image>().enabled;
-		destroy.GetComponent<Image>().enabled = !destroy.GetComponent<Image>().enabled;
-		destroy.destroySlot.GetComponentInChildren<Text>().enabled = !destroy.destroySlot.GetComponentInChildren<Text>().enabled;
-		destroy.enabled = !destroy.enabled;
+			destroy.info.GetComponent<Image>().enabled = !destroy.info.GetComponent<Image>().enabled;
+			destroy.GetComponent<Image>().enabled = !destroy.GetComponent<Image>().enabled;
+			destroy.destroySlot.GetComponentInChildren<Text>().enabled = !destroy.destroySlot.GetComponentInChildren<Text>().enabled;
+			destroy.enabled = !destroy.enabled;
 
-		//dont know what this line does was giving me an error. disabled it and everything seems to run fine
-			//slot.GetComponent<Image>().enabled = !slot.GetComponent<Image>().enabled;
+			//dont know what this line does was giving me an error. disabled it and everything seems to run fine
+				//slot.GetComponent<Image>().enabled = !slot.GetComponent<Image>().enabled;
 
-        GameObject.Find("Canvas/CraftTableTest/CraftButton").GetComponent<Image>().enabled = !GameObject.Find("Canvas/CraftTableTest/CraftButton").GetComponent<Image>().enabled;
-        GameObject.Find("Canvas/CraftTableTest/CraftButton/Text").SetActive(!GameObject.Find("Canvas/CraftTableTest/CraftButton/Text").activeInHierarchy); 
+			GameObject.Find("Canvas/CraftTableTest/CraftButton").GetComponent<Image>().enabled = !GameObject.Find("Canvas/CraftTableTest/CraftButton").GetComponent<Image>().enabled;
+			GameObject.Find("Canvas/CraftTableTest/CraftButton/Text").SetActive(!GameObject.Find("Canvas/CraftTableTest/CraftButton/Text").activeInHierarchy); 
 
-		GameObject.Find("Canvas/DestroyUI/DestroyButton").GetComponent<Image>().enabled = !GameObject.Find("Canvas/DestroyUI/DestroyButton").GetComponent<Image>().enabled;
-        GameObject.Find("Canvas/DestroyUI/DestroyButton/Text").SetActive(!GameObject.Find("Canvas/DestroyUI/DestroyButton/Text").activeInHierarchy); 
+			GameObject.Find("Canvas/DestroyUI/DestroyButton").GetComponent<Image>().enabled = !GameObject.Find("Canvas/DestroyUI/DestroyButton").GetComponent<Image>().enabled;
+			GameObject.Find("Canvas/DestroyUI/DestroyButton/Text").SetActive(!GameObject.Find("Canvas/DestroyUI/DestroyButton/Text").activeInHierarchy); 
 
-		if(atFire){
-			ToggleCookingUI();
-		}else if(atFarm){
-			ToggleFarmUI();
-		}else if(atWaterPurifier){
-			ToggleWaterUI();
-		}else if (atBarrel) {
-			ToggleBarrelUI();
+			if(atFire){
+				ToggleCookingUI();
+			}else if(atFarm){
+				ToggleFarmUI();
+			}else if(atWaterPurifier){
+				ToggleWaterUI();
+			}else if (atBarrel) {
+				ToggleBarrelUI();
+			}
 		}
 	}
 

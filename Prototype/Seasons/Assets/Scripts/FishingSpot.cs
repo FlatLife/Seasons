@@ -15,13 +15,15 @@ public class FishingSpot : MonoBehaviour {
 	}
 
 
-	void OnTriggerEnter2D(Collider2D other)
+	void OnTriggerStay2D(Collider2D other)
 	{
 		if(other.tag == "Player"){
 		Player control = other.gameObject.GetComponent<Player>();
-		Item item = (Resources.Load("FishingRod") as GameObject).GetComponent<Item>();
-		if(control.backpack.CheckItem(item)){
+		ItemType type = (ItemType.FISHINGROD);
+		if(control.backpack.CheckItem(type)){
 			control.canFish = true;
+		}else{
+			control.canFish = false;
 		}
 		control.atFish = true;
 		control.atUse = true;

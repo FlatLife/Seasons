@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 7a848203efa53fa45a2cc4c9a9e92e6c
-timeCreated: 1486732623
+guid: bd44a85a8b5ea524495aa363fe1087af
+timeCreated: 1486989522
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -45,6 +45,7 @@ TextureImporter:
     21300076: fishing_38
     21300078: fishing_39
     21300080: fishing_40
+    21300082: fishing_41
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -100,21 +101,21 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
   - buildTarget: Standalone
-    maxTextureSize: 8192
-    textureFormat: 12
+    maxTextureSize: 2048
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
-    overridden: 1
+    overridden: 0
   - buildTarget: WebGL
-    maxTextureSize: 8192
-    textureFormat: 12
+    maxTextureSize: 2048
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
-    overridden: 1
+    overridden: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -123,7 +124,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 1995
         width: 266
         height: 399
       alignment: 9
@@ -136,7 +137,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 266
-        y: 0
+        y: 1995
         width: 266
         height: 399
       alignment: 9
@@ -149,7 +150,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 532
-        y: 0
+        y: 1995
         width: 266
         height: 399
       alignment: 9
@@ -162,7 +163,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 798
-        y: 0
+        y: 1995
         width: 266
         height: 399
       alignment: 9
@@ -175,7 +176,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1064
-        y: 0
+        y: 1995
         width: 266
         height: 399
       alignment: 9
@@ -188,7 +189,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1330
-        y: 0
+        y: 1995
         width: 266
         height: 399
       alignment: 9
@@ -201,7 +202,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1596
-        y: 0
+        y: 1995
         width: 266
         height: 399
       alignment: 9
@@ -213,8 +214,8 @@ TextureImporter:
       name: fishing_7
       rect:
         serializedVersion: 2
-        x: 1862
-        y: 0
+        x: 0
+        y: 1596
         width: 266
         height: 399
       alignment: 9
@@ -226,8 +227,8 @@ TextureImporter:
       name: fishing_8
       rect:
         serializedVersion: 2
-        x: 2128
-        y: 0
+        x: 266
+        y: 1596
         width: 266
         height: 399
       alignment: 9
@@ -239,8 +240,8 @@ TextureImporter:
       name: fishing_9
       rect:
         serializedVersion: 2
-        x: 2394
-        y: 0
+        x: 532
+        y: 1596
         width: 266
         height: 399
       alignment: 9
@@ -252,8 +253,8 @@ TextureImporter:
       name: fishing_10
       rect:
         serializedVersion: 2
-        x: 2660
-        y: 0
+        x: 798
+        y: 1596
         width: 266
         height: 399
       alignment: 9
@@ -265,8 +266,8 @@ TextureImporter:
       name: fishing_11
       rect:
         serializedVersion: 2
-        x: 2926
-        y: 0
+        x: 1064
+        y: 1596
         width: 266
         height: 399
       alignment: 9
@@ -278,8 +279,8 @@ TextureImporter:
       name: fishing_12
       rect:
         serializedVersion: 2
-        x: 3192
-        y: 0
+        x: 1330
+        y: 1596
         width: 266
         height: 399
       alignment: 9
@@ -291,8 +292,8 @@ TextureImporter:
       name: fishing_13
       rect:
         serializedVersion: 2
-        x: 3458
-        y: 0
+        x: 1596
+        y: 1596
         width: 266
         height: 399
       alignment: 9
@@ -304,8 +305,8 @@ TextureImporter:
       name: fishing_14
       rect:
         serializedVersion: 2
-        x: 3724
-        y: 0
+        x: 0
+        y: 1197
         width: 266
         height: 399
       alignment: 9
@@ -317,8 +318,8 @@ TextureImporter:
       name: fishing_15
       rect:
         serializedVersion: 2
-        x: 3990
-        y: 0
+        x: 266
+        y: 1197
         width: 266
         height: 399
       alignment: 9
@@ -330,8 +331,8 @@ TextureImporter:
       name: fishing_16
       rect:
         serializedVersion: 2
-        x: 4256
-        y: 0
+        x: 532
+        y: 1197
         width: 266
         height: 399
       alignment: 9
@@ -343,8 +344,8 @@ TextureImporter:
       name: fishing_17
       rect:
         serializedVersion: 2
-        x: 4522
-        y: 0
+        x: 798
+        y: 1197
         width: 266
         height: 399
       alignment: 9
@@ -356,8 +357,8 @@ TextureImporter:
       name: fishing_18
       rect:
         serializedVersion: 2
-        x: 4788
-        y: 0
+        x: 1064
+        y: 1197
         width: 266
         height: 399
       alignment: 9
@@ -369,8 +370,8 @@ TextureImporter:
       name: fishing_19
       rect:
         serializedVersion: 2
-        x: 5054
-        y: 0
+        x: 1330
+        y: 1197
         width: 266
         height: 399
       alignment: 9
@@ -382,8 +383,8 @@ TextureImporter:
       name: fishing_20
       rect:
         serializedVersion: 2
-        x: 5320
-        y: 0
+        x: 1596
+        y: 1197
         width: 266
         height: 399
       alignment: 9
@@ -395,8 +396,8 @@ TextureImporter:
       name: fishing_21
       rect:
         serializedVersion: 2
-        x: 5586
-        y: 0
+        x: 0
+        y: 798
         width: 266
         height: 399
       alignment: 9
@@ -408,8 +409,8 @@ TextureImporter:
       name: fishing_22
       rect:
         serializedVersion: 2
-        x: 5852
-        y: 0
+        x: 266
+        y: 798
         width: 266
         height: 399
       alignment: 9
@@ -421,8 +422,8 @@ TextureImporter:
       name: fishing_23
       rect:
         serializedVersion: 2
-        x: 6118
-        y: 0
+        x: 532
+        y: 798
         width: 266
         height: 399
       alignment: 9
@@ -434,8 +435,8 @@ TextureImporter:
       name: fishing_24
       rect:
         serializedVersion: 2
-        x: 6384
-        y: 0
+        x: 798
+        y: 798
         width: 266
         height: 399
       alignment: 9
@@ -447,8 +448,8 @@ TextureImporter:
       name: fishing_25
       rect:
         serializedVersion: 2
-        x: 6650
-        y: 0
+        x: 1064
+        y: 798
         width: 266
         height: 399
       alignment: 9
@@ -460,8 +461,8 @@ TextureImporter:
       name: fishing_26
       rect:
         serializedVersion: 2
-        x: 6916
-        y: 0
+        x: 1330
+        y: 798
         width: 266
         height: 399
       alignment: 9
@@ -473,8 +474,8 @@ TextureImporter:
       name: fishing_27
       rect:
         serializedVersion: 2
-        x: 7182
-        y: 0
+        x: 1596
+        y: 798
         width: 266
         height: 399
       alignment: 9
@@ -486,8 +487,8 @@ TextureImporter:
       name: fishing_28
       rect:
         serializedVersion: 2
-        x: 7448
-        y: 0
+        x: 0
+        y: 399
         width: 266
         height: 399
       alignment: 9
@@ -499,8 +500,8 @@ TextureImporter:
       name: fishing_29
       rect:
         serializedVersion: 2
-        x: 7714
-        y: 0
+        x: 266
+        y: 399
         width: 266
         height: 399
       alignment: 9
@@ -512,8 +513,8 @@ TextureImporter:
       name: fishing_30
       rect:
         serializedVersion: 2
-        x: 7980
-        y: 0
+        x: 532
+        y: 399
         width: 266
         height: 399
       alignment: 9
@@ -525,8 +526,8 @@ TextureImporter:
       name: fishing_31
       rect:
         serializedVersion: 2
-        x: 8246
-        y: 0
+        x: 798
+        y: 399
         width: 266
         height: 399
       alignment: 9
@@ -538,8 +539,8 @@ TextureImporter:
       name: fishing_32
       rect:
         serializedVersion: 2
-        x: 8512
-        y: 0
+        x: 1064
+        y: 399
         width: 266
         height: 399
       alignment: 9
@@ -551,8 +552,8 @@ TextureImporter:
       name: fishing_33
       rect:
         serializedVersion: 2
-        x: 8778
-        y: 0
+        x: 1330
+        y: 399
         width: 266
         height: 399
       alignment: 9
@@ -564,8 +565,8 @@ TextureImporter:
       name: fishing_34
       rect:
         serializedVersion: 2
-        x: 9044
-        y: 0
+        x: 1596
+        y: 399
         width: 266
         height: 399
       alignment: 9
@@ -577,7 +578,7 @@ TextureImporter:
       name: fishing_35
       rect:
         serializedVersion: 2
-        x: 9310
+        x: 0
         y: 0
         width: 266
         height: 399
@@ -590,7 +591,7 @@ TextureImporter:
       name: fishing_36
       rect:
         serializedVersion: 2
-        x: 9576
+        x: 266
         y: 0
         width: 266
         height: 399
@@ -603,7 +604,7 @@ TextureImporter:
       name: fishing_37
       rect:
         serializedVersion: 2
-        x: 9842
+        x: 532
         y: 0
         width: 266
         height: 399
@@ -616,7 +617,7 @@ TextureImporter:
       name: fishing_38
       rect:
         serializedVersion: 2
-        x: 10108
+        x: 798
         y: 0
         width: 266
         height: 399
@@ -629,7 +630,7 @@ TextureImporter:
       name: fishing_39
       rect:
         serializedVersion: 2
-        x: 10374
+        x: 1064
         y: 0
         width: 266
         height: 399
@@ -642,7 +643,20 @@ TextureImporter:
       name: fishing_40
       rect:
         serializedVersion: 2
-        x: 10640
+        x: 1330
+        y: 0
+        width: 266
+        height: 399
+      alignment: 9
+      pivot: {x: 0.3, y: 0.36}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fishing_41
+      rect:
+        serializedVersion: 2
+        x: 1596
         y: 0
         width: 266
         height: 399

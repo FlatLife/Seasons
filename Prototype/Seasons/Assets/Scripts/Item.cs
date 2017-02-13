@@ -26,6 +26,8 @@ public class Item : MonoBehaviour {
 	private BoxCollider2D collider;
 	private GameObject hunger;
 	private GameObject thirst;
+
+	public GameObject scroll;
 	private PlaceObjects builder;
 	public bool keepItem;
 
@@ -211,8 +213,10 @@ public class Item : MonoBehaviour {
 			case ItemType.BOTTLE:
 				toBeDeleted = false;
 				GameObject canvas = GameObject.Find ("Canvas");
-				GameObject scroll = Instantiate (Resources.Load<GameObject> (message), canvas.transform);
-				scroll.transform.localPosition = new Vector3 (0, 0);
+				if(scroll == null){
+					scroll = Instantiate (Resources.Load<GameObject> (message), canvas.transform);
+					scroll.transform.localPosition = new Vector3 (0, 0);
+				}
 				break;
 		}
 		return toBeDeleted;
