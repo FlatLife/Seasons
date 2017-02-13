@@ -79,6 +79,7 @@ public class DayCycle : MonoBehaviour {
 				GameMaster.dayCount = dayCount;
 				if(dayCount % 5 == 0){
 					GameMaster.isWinter = !GameMaster.isWinter;
+					GameMaster.fadeMusic(GameMaster.isWinter);
 					if(GameMaster.isWinter){
 						season.text = "Winter";
 						land.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Snow");

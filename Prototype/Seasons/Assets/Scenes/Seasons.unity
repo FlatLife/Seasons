@@ -3198,6 +3198,7 @@ GameObject:
   - component: {fileID: 1401996500}
   - component: {fileID: 1401996499}
   - component: {fileID: 1401996501}
+  - component: {fileID: 1401996502}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: Untagged
@@ -3234,7 +3235,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &1401996501
+--- !u!114 &1401996501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1401996498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6890dcf6a1ae44916b9624ad0a0f4b0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  music: {fileID: 0}
+  summerMusic: {fileID: 8300000, guid: 7db7dc28f702d4301bc951054a808ce8, type: 3}
+  winterMusic: {fileID: 8300000, guid: cbe1327012c3b49999776360c8b0a0af, type: 3}
+--- !u!82 &1401996502
 AudioSource:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -3243,15 +3258,15 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7db7dc28f702d4301bc951054a808ce8, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 188
+  Priority: 128
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -3301,7 +3316,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 0
+    m_RotationOrder: 4
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -3912,7 +3927,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   volumeSlider: {fileID: 358105889}
-  volumeAudio: {fileID: 1401996501}
+  volumeAudio: {fileID: 0}
 --- !u!1 &1448366924
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,7 +16,6 @@ public class GenericAnimation : MonoBehaviour {
 	void Start () {
 		usedAnimation = Resources.LoadAll<Sprite>(animationName);
 		animRenderer = transform.GetComponent<SpriteRenderer>();
-		Debug.Log(usedAnimation.Length);
 	}
 	
 	// Update is called once per frame
