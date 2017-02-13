@@ -7,9 +7,8 @@ public class VolumeManager : MonoBehaviour {
 
 	// Use this for initialization
 	public Slider volumeSlider;
-	public AudioSource volumeAudio;
 
 	public void VolumeController(){
-		volumeAudio.volume = volumeSlider.value;
+		AudioListener.volume = volumeSlider.value;
 	}
 }
