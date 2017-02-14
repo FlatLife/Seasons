@@ -110,7 +110,7 @@ public class Player : MonoBehaviour {
 		}
 		//animation for starting fire
 		if(playingFireStart){
-			if(frameIndex < 13){				
+			if(frameIndex < 12){				
 				if(timeSinceLastFrame > animationSpeed){
 				animRenderer.sprite = animSprites[frameIndex];
 				timeSinceLastFrame = 0;
@@ -239,9 +239,7 @@ public class Player : MonoBehaviour {
 						if(buttonPressed < 0.4){
 							buttonSmash++;
 						} else {
-							if(buttonSmash > 0){
-								buttonSmash--;
-							}
+							buttonSmash--;
 						}	
 						//if they have pressed the button fast enough, enough times
 						if(buttonSmash == 10){

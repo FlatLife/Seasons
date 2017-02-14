@@ -148,6 +148,9 @@ public class Fire : MonoBehaviour {
         } else{
             lastFrame -= 5;
         }
+        if(state == 1){
+            fireState = -1;
+        }
         frameIndex = (state - 1) * 5; 
     }
 
