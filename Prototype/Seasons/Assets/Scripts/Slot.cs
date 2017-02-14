@@ -162,24 +162,28 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 			tooltip.transform.position = new Vector3(tooltip.transform.position.x + 60f ,tooltip.transform.position.y - 40f , -50f);
 			Component[] images = tooltip.GetComponentsInChildren<Image> ();
 				foreach (Image image in images) {
-					if (image.gameObject.name == "Desc" && use.Length > 0) {
-						image.enabled = true;
-						image.gameObject.GetComponentInChildren<Text> ().text = CurrentItem.itemUse;
-						image.gameObject.GetComponentInChildren<Text> ().rectTransform.sizeDelta = new Vector2 (lengthUse, tooltipTextRect.sizeDelta.y );
-						image.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2 (lengthUse, tooltipTextRect.sizeDelta.y );
+					if (image.gameObject.name == "Desc") {
+						if(use.Length > 0){
+							image.enabled = true;
+							image.gameObject.GetComponentInChildren<Text> ().text = CurrentItem.itemUse;
+							image.gameObject.GetComponentInChildren<Text> ().rectTransform.sizeDelta = new Vector2 (lengthUse, tooltipTextRect.sizeDelta.y );
+						}else if(durability != 0){
+							image.enabled = true;
+							image.gameObject.GetComponentInChildren<Text> ().text = "" + durability + " uses left";
+						}
 					}
 					if (image.gameObject.name == "Durability" && durability != 0) {
-						image.enabled = true;
-						image.gameObject.GetComponentInChildren<Text> ().text = "" + durability + " uses left";
-						image.gameObject.GetComponentInChildren<Text> ().rectTransform.sizeDelta = new Vector2 (lengthUse, tooltipTextRect.sizeDelta.y );
-						image.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2 (lengthUse, tooltipTextRect.sizeDelta.y );
+						if(use.Length != 0){
+							image.enabled = true;
+							image.gameObject.GetComponentInChildren<Text> ().text = "" + durability + " uses left";
+						}
 					}
 				}
 				foreach (Image image in images) {
-					if (image.gameObject.name == "Desc" && use.Length == 0) {
+					if (image.gameObject.name == "Desc" && use.Length == 0 && durability == 0) {
 						image.enabled = false;
 					}
-					if (image.gameObject.name == "Durability"  && durability == 0) {
+					if (image.gameObject.name == "Durability"  && (durability == 0 || use.Length == 0)) {
 						image.enabled = false;
 					}
 				
