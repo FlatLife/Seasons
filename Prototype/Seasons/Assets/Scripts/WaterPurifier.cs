@@ -6,7 +6,7 @@ public class WaterPurifier : MonoBehaviour {
 
 	public Canvas canvas;
 	public WaterPurifierUI WaterUI;
-	public float waterPurify = 3f;
+	public float waterPurify = 20f;
 	GameObject player;
 	float distanceFromPlayer;
 	AudioSource sound;
@@ -52,7 +52,7 @@ public class WaterPurifier : MonoBehaviour {
 					Item bucket = Instantiate(Resources.Load<Item> ("Bucket"));
 					bucket.transform.position = new Vector3 (0,20f,0);
 					WaterUI.Slot1.AddItem(bucket);
-					waterPurify = 3f;
+					waterPurify = 20f;
 				}
 			}else if (WaterUI.Slot2.CurrentItem.type == ItemType.SALTWATER
 			   && WaterUI.Slot1.CurrentItem.type == ItemType.BUCKET) {
@@ -74,7 +74,7 @@ public class WaterPurifier : MonoBehaviour {
 					Item bucket = Instantiate(Resources.Load<Item> ("Bucket"));
 					bucket.transform.position = new Vector3 (0,20f,0);
 					WaterUI.Slot2.AddItem(bucket);
-					waterPurify = 3f;
+					waterPurify = 20f;
 				}
 			}
 		}
