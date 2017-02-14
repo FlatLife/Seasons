@@ -59,7 +59,7 @@ public class Fire : MonoBehaviour {
 
             //adjusting the sound volume
             distanceFromPlayer = Vector3.Distance(player.transform.position, transform.position);
-            sound.volume = (1 - distanceFromPlayer/5);
+            sound.volume = (1 - distanceFromPlayer/5)/2;
             //adjusting the players warmth
             if(distanceFromPlayer < fireHeatRange){
                 warmth.GetComponent<BarScript>().increment(0.001f);
