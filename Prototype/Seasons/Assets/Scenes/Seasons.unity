@@ -5701,13 +5701,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6991c35240771416db35d40659428230, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statsMaster: {fileID: 0}
   iconSprites:
-  - {fileID: 21300000, guid: fa5da08d72b8c4d47b8518171feef751, type: 3}
+  - {fileID: 21300000, guid: 9b35f54d6eb725140a8ac0e9f0bf912f, type: 3}
   - {fileID: 21300000, guid: 3aea41c9e2a4b4fca9edbe52be3aa533, type: 3}
   - {fileID: 21300000, guid: c771a54d152594275891d49a7067721c, type: 3}
   - {fileID: 21300000, guid: ac91806aa865c4f0c9fc2869813329cd, type: 3}
   - {fileID: 21300000, guid: 28b53746ece594d3ca37180aa9c5b19e, type: 3}
+  player: {fileID: 1440615824}
 --- !u!212 &1682395618
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5751,7 +5751,7 @@ Transform:
   m_GameObject: {fileID: 1682395616}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -17.43, y: 0.1, z: 2.0078125}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 1}
   m_Children:
   - {fileID: 1694453655}
   m_Father: {fileID: 0}
@@ -5780,8 +5780,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1694453654}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.06, y: 1.21, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 1.06, y: 1.21, z: -0.001}
+  m_LocalScale: {x: 0, y: 0, z: 1}
   m_Children: []
   m_Father: {fileID: 1682395619}
   m_RootOrder: 0
