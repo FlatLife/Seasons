@@ -54,6 +54,7 @@ public class Item : MonoBehaviour {
 		yAxisEnd = Random.Range(-2.5f, 4.5f);
 		shadow = transform.Find("Shadow");
 		if (shadow != null) {
+			shadow.gameObject.GetComponent<SpriteRenderer>().enabled = false;
 			shadowPositionY = shadow.transform.localPosition.y;
 			shadow.transform.position = new Vector3(transform.position.x, yAxisEnd, 0);
 			shadow.transform.localPosition = new Vector3(shadow.transform.localPosition.x, shadow.transform.localPosition.y + shadowPositionY, shadow.transform.localPosition.z);
@@ -67,12 +68,13 @@ public class Item : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		
 		if(falling && yAxisEnd < transform.position.y){
 			transform.Translate(Vector3.down * fallSpeed * Time.deltaTime);
 			transform.position = new Vector3(transform.position.x, transform.position.y, yAxisEnd + zOffset);
 			if (shadow != null) {
 				shadow.transform.Translate(Vector3.up * fallSpeed * Time.deltaTime);
-				shadow.GetComponent<SpriteRenderer>().color = new Color(1,1,1,transform.position.y-shadow.position.y < 3f ? 1/(transform.position.y-shadow.position.y) : 0);
+				shadow.GetComponent<SpriteRenderer>().color = new Color(1,1,1,1/(transform.position.y-shadow.position.y));
 			}
 		} else if (falling) { 
 			falling = false;
@@ -80,6 +82,10 @@ public class Item : MonoBehaviour {
 			if (shadow != null) {
 				shadow.localPosition = new Vector3(shadow.localPosition.x, shadowPositionY, shadow.localPosition.z);
 			}
+		}
+
+		if(shadow.gameObject.GetComponent<SpriteRenderer>().enabled == false){
+			shadow.gameObject.GetComponent<SpriteRenderer>().enabled = true;
 		}
 	}
 
