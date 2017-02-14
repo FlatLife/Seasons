@@ -297,14 +297,22 @@ public class Player : MonoBehaviour {
 				isSwimming = !isSwimming;
 				Vector3 pos = transform.position;
 				if(isSwimming){
+					animRenderer.sortingLayerName = "Background";
+					animRenderer.sortingOrder = -2;
 					animRenderer.flipX = false;
 					animRenderer.sprite = Resources.Load<Sprite>("Head");
 					torso.GetComponent<SpriteRenderer>().enabled = true;
+					torso.GetComponent<SpriteRenderer>().sortingLayerName = "Background";
+					torso.GetComponent<SpriteRenderer>().sortingOrder = -3;
 					legs.GetComponent<SpriteRenderer>().enabled = true;
+					legs.GetComponent<SpriteRenderer>().sortingLayerName = "Background";
+					legs.GetComponent<SpriteRenderer>().sortingOrder = -4;
 					transform.GetComponent<PolygonCollider2D>().offset = new Vector2(0, 0.8f);
 					transform.position = new Vector3(-23.15025f,-2.443089f, pos.z);
 				}else{
 					animRenderer.sprite = standingSprite;
+					animRenderer.sortingLayerName = "Default";
+					animRenderer.sortingOrder = 0;
 					transform.rotation = new Quaternion();
 					torso.GetComponent<SpriteRenderer>().enabled = false;
 					legs.GetComponent<SpriteRenderer>().enabled = false;
