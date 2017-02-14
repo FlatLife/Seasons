@@ -18,10 +18,6 @@ public class WaveSound : MonoBehaviour {
 	void Update () {	
 		//changing volume of sound
 		distanceFromPlayer = Vector3.Distance(player.transform.position, transform.position);
-		if(distanceFromPlayer/45 > 0.7){
-			sound.volume = (1 - distanceFromPlayer/45);
-		} else {
-			sound.volume = 0.3f;
-		}
+		sound.volume = (1/distanceFromPlayer*2)*0.3f+0.05f;
 	}
 }
