@@ -88,9 +88,25 @@ public class Fire : MonoBehaviour {
             Slot currentSlot = cookingUI.cookSlots[i].GetComponent<Slot>();
             //if checking the log slot
             if(i == slotNum - 1){
-                if(!currentSlot.isEmpty && currentSlot.CurrentItem.type == ItemType.STICK && fireState < 3){
-                    currentSlot.DestroyItem();
-                    changeState(fireState++, 1);
+                if(!currentSlot.isEmpty && fireState == 1){
+                    //if its a stick increase the state by 1
+                    if(currentSlot.CurrentItem.type == ItemType.STICK){
+                        currentSlot.DestroyItem();
+                        changeState(fireState++, 1);
+                    }
+                    //if its a log increase the state by 2
+                    if(currentSlot.CurrentItem.type == ItemType.WOOD){
+                        currentSlot.DestroyItem();
+                        changeState(fireState++, 1);
+                        changeState(fireState++, 1);
+                    }
+                }
+                if(!currentSlot.isEmpty && fireState < 3){
+                    //if its a stick/wood increase the state by 1
+                    if(currentSlot.CurrentItem.type == ItemType.STICK || currentSlot.CurrentItem.type == ItemType.WOOD){
+                        currentSlot.DestroyItem();
+                        changeState(fireState++, 1);
+                    }
                 }
             } else {
                 //check food slots               
@@ -131,9 +147,6 @@ public class Fire : MonoBehaviour {
             lastFrame += 5;
         } else{
             lastFrame -= 5;
-        }
-        if(state == 1){
-            fireState = -1;
         }
         frameIndex = (state - 1) * 5; 
     }
