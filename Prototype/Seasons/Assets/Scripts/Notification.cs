@@ -35,7 +35,7 @@ public class Notification : MonoBehaviour {
 	}
 	
 	void Update () {
-		transform.position = player.transform.position + new Vector3(0.4f, 1.26f);
+		transform.position = player.GetComponent<Player>().isSwimming ? player.transform.position + new Vector3(0.4f, 0.2f) : player.transform.position + new Vector3(0.4f, 1.26f);
 
 		healthFlag = healthFlag || statsMaster.Health < 0.2f && !healthLock;
 		foodFlag = foodFlag || statsMaster.Hunger < 0.2f && !foodLock;
