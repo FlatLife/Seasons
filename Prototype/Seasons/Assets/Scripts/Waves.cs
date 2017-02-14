@@ -7,6 +7,8 @@ public class Waves : MonoBehaviour {
 
 	public Color c1;
 	public int lengthOfLineRenderer = 20;
+	float distanceFromPlayer;
+	AudioSource sound;
 
 	void Start() {
 
@@ -19,6 +21,7 @@ public class Waves : MonoBehaviour {
 		lineRenderer.numCapVertices = 10;
 		lineRenderer.sortingLayerName = "Background";
 		lineRenderer.sortingOrder = -1;
+		sound = GetComponent<AudioSource>();
 
 	}
 
@@ -39,5 +42,13 @@ public class Waves : MonoBehaviour {
 		effector.surfaceLevel = points[(int)Math.Abs(Math.Ceiling(player.transform.position.x+7.3f))].y - 1.5f;
 		lineRenderer.SetPositions(points);
 		collider.points = points2D;
+
+		//changing volume of sound
+		distanceFromPlayer = Vector3.Distance(player.transform.position, transform.position);
+		if(distanceFromPlayer/45 > 0.7){
+			sound.volume = (1 - distanceFromPlayer/45);
+		} else {
+			sound.volume = 0.3f;
+		}		
 	}
 }
