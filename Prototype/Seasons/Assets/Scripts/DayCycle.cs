@@ -96,7 +96,7 @@ public class DayCycle : MonoBehaviour {
 
 		if(fadeTime <= 0 && fadingIn){
 			//spawn message in a bottle when day starts
-			if(bottleHasSpawned != true){
+			if(bottleHasSpawned != true && dayCount <= 4){
 				GameObject bottle = Instantiate(Resources.Load<GameObject>("messageBottle"));
 				bottle.GetComponent<Item>().message = "Message " + dayCount;
 				bottleHasSpawned = true;
