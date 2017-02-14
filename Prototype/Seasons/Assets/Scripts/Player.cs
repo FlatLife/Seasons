@@ -73,6 +73,7 @@ public class Player : MonoBehaviour {
 	private Stat thirst;
 	private Stat warmth;
 	private Stat water;
+	private Notification notification;
 
 	private int frameSkip = 1;
 	
@@ -97,6 +98,7 @@ public class Player : MonoBehaviour {
 		thirst.Initialize();
 		warmth.Initialize();
 		water.Initialize();
+		notification = GameObject.Find("Notification").GetComponent<Notification>();
 	}
     // Use this for initialization
     void Start () {
@@ -416,13 +418,7 @@ public class Player : MonoBehaviour {
 					atUse = false;
 					canTouch = false;
 				} else {
-					if(full == null){
-						full = Instantiate (Resources.Load<GameObject> ("InventoryFull"), canvas.transform);
-						Vector3 pos = Camera.main.WorldToScreenPoint (gameObject.transform.position);
-						pos.y += 170f;
-						full.transform.position = pos;
-						Destroy (full, 2f);
-					}
+					notification.InventoryFlag = true;
 				}
 			}
 		}
