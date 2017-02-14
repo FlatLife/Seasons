@@ -41,14 +41,6 @@ public class Waves : MonoBehaviour {
 		}
 		effector.surfaceLevel = points[(int)Math.Abs(Math.Ceiling(player.transform.position.x+7.3f))].y - 1.5f;
 		lineRenderer.SetPositions(points);
-		collider.points = points2D;
-
-		//changing volume of sound
-		distanceFromPlayer = Vector3.Distance(player.transform.position, transform.position);
-		if(distanceFromPlayer/45 > 0.7){
-			sound.volume = (1 - distanceFromPlayer/45);
-		} else {
-			sound.volume = 0.3f;
-		}		
+		collider.points = points2D;		
 	}
 }
