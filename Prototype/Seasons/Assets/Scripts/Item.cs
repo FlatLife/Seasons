@@ -153,7 +153,10 @@ public class Item : MonoBehaviour {
 					builder = GameObject.Find("Main Camera").GetComponent<PlaceObjects>();
 					builder.build("Farm", "PlaceFarm");
 					durability--;
-					toBeDeleted = durability == 0;
+					if (durability == 0) {
+						toBeDeleted = true;
+						Debug.Log("Your hoe broke!");
+					}
 				}
 				break;
 			case ItemType.FRESHWATER:

@@ -122,6 +122,7 @@ public class CraftTable : MonoBehaviour {
 			}
 			if (item.Durability <= 0) {
 				slot.DestroyItem();
+				Debug.Log("Your axe broke!");
 			}
 		}
 	}
