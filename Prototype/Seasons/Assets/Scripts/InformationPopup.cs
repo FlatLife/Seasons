@@ -25,10 +25,9 @@ public int width;
 		// }
 
 		public void Hover(){
-			Color highlight = new Color(1f, 1f, 0f ,1f);
-			this.GetComponent<Image>().color = highlight;
 			popup = Instantiate(Resources.Load<GameObject>("Popup"));
 			popup.name = "popup";
+			gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("questionMarkHL");
 			RectTransform tooltipRect = popup.GetComponent<RectTransform> ();
 			tooltipRect.sizeDelta = new Vector2(width, height);
 			Text popupText = popup.GetComponentInChildren<Text> ();
@@ -41,8 +40,7 @@ public int width;
 		}
 
 		public void Exit(){
-			Color white = new Color(1f, 1f, 1f ,1f);
-			this.GetComponent<Image>().color = white;
+			gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("questionMark");
 			Destroy(popup.gameObject);
 		}
 }
