@@ -84,7 +84,7 @@ public class Item : MonoBehaviour {
 			}
 		}
 
-		if(shadow.gameObject.GetComponent<SpriteRenderer>().enabled == false){
+		if(shadow != null && shadow.gameObject.GetComponent<SpriteRenderer>().enabled == false){
 			shadow.gameObject.GetComponent<SpriteRenderer>().enabled = true;
 		}
 	}
