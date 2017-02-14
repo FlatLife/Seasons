@@ -5,7 +5,7 @@ public enum ItemType {NONE, FISHINGROD, STICK, WOOD, VINE, RAWFISH, COOKEDFISH, 
 	ICE, HATCHET, BUCKET, CARROTSEED, HOE, SALTWATER, FRESHWATER, CARROT, CLOTHES, FIREPREP, BOTTLE, 
 	WATERPURIFIER, SEAWEED, POTATOSEED, PINEAPPLESEED, STRAWBERRYSEED, POTATO, PINEAPPLE, STRAWBERRIES,
 	RAWTROUT, RAWSALMON, RAWGUPPY, COOKEDTROUT, COOKEDSALMON, COOKEDGUPPY, BAKEDPOTATO, ROASTEDCARROT,
-	BARREL };
+	BARREL, SUSHI };
 
 
 public class Item : MonoBehaviour {
@@ -100,7 +100,12 @@ public class Item : MonoBehaviour {
 				break;
 			case ItemType.COOKEDSALMON:
 				toBeDeleted = true;
-				hunger.GetComponent<BarScript>().increment(0.45f);
+				hunger.GetComponent<BarScript>().increment(0.40f);
+				break;
+			case ItemType.SUSHI:
+				toBeDeleted = true;
+				hunger.GetComponent<BarScript>().increment(0.50f);
+				thirst.GetComponent<BarScript>().increment(0.1f);
 				break;
 			case ItemType.RAWGUPPY:
 				toBeDeleted = true;
@@ -118,10 +123,10 @@ public class Item : MonoBehaviour {
 				toBeDeleted = true;
 				hunger.GetComponent<BarScript>().increment(0.1f);
 				break;
-		case ItemType.ROASTEDCARROT:
-			toBeDeleted = true;
-			hunger.GetComponent<BarScript>().increment(0.2f);
-			break;
+			case ItemType.ROASTEDCARROT:
+				toBeDeleted = true;
+				hunger.GetComponent<BarScript>().increment(0.2f);
+				break;
 			case ItemType.POTATO:
 				toBeDeleted = true;
 				hunger.GetComponent<BarScript>().increment(0.2f);
