@@ -18,6 +18,19 @@ public class StatsMaster : MonoBehaviour {
 	public float thirstConstant = 0.0002f;
 	public float healthConstant = 0.0002f; 
 
+	public float Health {
+		get { return health.GetComponent<BarScript>().returnAmount(); }
+	}
+	public float Thirst {
+		get { return thirst.GetComponent<BarScript>().returnAmount(); }
+	}
+	public float Hunger {
+		get { return hunger.GetComponent<BarScript>().returnAmount(); }
+	}
+	public float Warmth {
+		get { return warmth.GetComponent<BarScript>().returnAmount(); }
+	}
+
 	// Use this for initialization
 	void Start () {
 		health = GameObject.Find("Health");
