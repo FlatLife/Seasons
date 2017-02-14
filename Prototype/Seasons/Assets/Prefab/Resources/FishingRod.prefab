@@ -78,6 +78,7 @@ MonoBehaviour:
   isFinishedCrop: 0
   message: B
   slot: {fileID: 0}
+  scroll: {fileID: 0}
   keepItem: 1
   isSwimming: 0
   maxDurability: 8
