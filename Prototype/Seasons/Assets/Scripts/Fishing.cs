@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class Fishing : MonoBehaviour {
 
- private Transform text;
+ 	private Transform text;
 	public GameObject backpack;
 	public static float fishChance = 0.003f;
 	public Transform fishPrefab;
