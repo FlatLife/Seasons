@@ -47,7 +47,7 @@ public class LeftClick : MonoBehaviour, IPointerClickHandler, IBeginDragHandler,
 
 	public void OnEndDrag (PointerEventData eventData){
 		if(eventData.button == PointerEventData.InputButton.Left){
-			if (eventData.pointerCurrentRaycast.gameObject.GetComponent<Slot>() != null) {
+			if (eventData.pointerCurrentRaycast.gameObject != null && eventData.pointerCurrentRaycast.gameObject.GetComponent<Slot>() != null) {
 				canvas.GetComponentInChildren<Backpack> ().MoveItem (eventData.pointerCurrentRaycast.gameObject);
 			}
 		}
