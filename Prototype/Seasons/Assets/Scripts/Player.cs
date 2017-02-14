@@ -406,7 +406,6 @@ public class Player : MonoBehaviour {
 					canTouch = false;
 				} else {
 					GameObject full = Instantiate (Resources.Load<GameObject> ("InventoryFull"), canvas.transform);
-					RectTransform CanvasRect= canvas.GetComponent<RectTransform>();
 					Vector3 pos = Camera.main.WorldToScreenPoint (gameObject.transform.position);
 					pos.y += 170f;
 					full.transform.position = pos;
