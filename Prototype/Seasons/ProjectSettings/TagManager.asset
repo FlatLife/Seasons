@@ -67,3 +67,6 @@ TagManager:
   - name: UI
     uniqueID: 3987080983
     locked: 0
+  - name: ControlsPanel
+    uniqueID: 3379841323
+    locked: 0
