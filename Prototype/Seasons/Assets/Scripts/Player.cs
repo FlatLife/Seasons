@@ -19,6 +19,8 @@ public class Player : MonoBehaviour {
 	private bool fishIdleDirection = false;
     SpriteRenderer animRenderer;
 	float timeSinceLastFrame; 
+
+	public GameObject full;
 	public bool playingFireStart = false;
 	public bool playingCastRod = false;
 	private bool catchingFish = false;
@@ -411,11 +413,13 @@ public class Player : MonoBehaviour {
 					atUse = false;
 					canTouch = false;
 				} else {
-					GameObject full = Instantiate (Resources.Load<GameObject> ("InventoryFull"), canvas.transform);
-					Vector3 pos = Camera.main.WorldToScreenPoint (gameObject.transform.position);
-					pos.y += 170f;
-					full.transform.position = pos;
-					Destroy (full, 2f);
+					if(full == null){
+						full = Instantiate (Resources.Load<GameObject> ("InventoryFull"), canvas.transform);
+						Vector3 pos = Camera.main.WorldToScreenPoint (gameObject.transform.position);
+						pos.y += 170f;
+						full.transform.position = pos;
+						Destroy (full, 2f);
+					}
 				}
 			}
 		}
