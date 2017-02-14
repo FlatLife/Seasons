@@ -52,7 +52,6 @@ public class Notification : MonoBehaviour {
 		playingState = playingState == 0 && foodFlag ? 3 : playingState;
 		playingState = playingState == 0 && thirstFlag ? 4 : playingState;
 		playingState = playingState == 0 && warmthFlag ? 5 : playingState;
-		Debug.Log(thirstFlag);
 
 		if (playingState > 0) {
 			switch (playingState) {
