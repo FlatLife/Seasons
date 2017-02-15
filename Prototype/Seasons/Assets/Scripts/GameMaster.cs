@@ -64,6 +64,8 @@ public class GameMaster : MonoBehaviour {
 		fadingOut = true;
 		if(winter){
 			enteringWinter = true;
+		} else {
+			enteringWinter = false;
 		}
 	}
 	
