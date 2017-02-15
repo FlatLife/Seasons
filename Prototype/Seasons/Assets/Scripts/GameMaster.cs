@@ -60,6 +60,7 @@ public class GameMaster : MonoBehaviour {
 	}
 
 	public static void fadeMusic(bool winter){
+		Debug.Log("MUSIC CHANGE");
 		fadingMusic = true;
 		fadingOut = true;
 		if(winter){

@@ -134,6 +134,7 @@ public class Fire : MonoBehaviour {
         } else {
             if(sound.isPlaying){
                 sound.Stop();
+                fireState = -1;
             }
             animRenderer.sprite = animSprites[15];
         }		    
