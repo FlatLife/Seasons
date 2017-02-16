@@ -53,9 +53,9 @@ public class StatsMaster : MonoBehaviour {
 	}
 
 	public void SeasonStatChange() {
-		hungerConstant *= 1.25f;
-		warmthConstant *= 1.4f;
-		thirstConstant *= 1.3f;
+		hungerConstant += 0.0002f;
+		warmthConstant += 0.0002f;
+		thirstConstant += 0.0002f;
 		if(!GameMaster.isWinter){
 			Fishing.fishChance = 0.003f;
 		}else if(GameMaster.isWinter){
