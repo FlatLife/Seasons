@@ -52,6 +52,7 @@ public class DayCycle : MonoBehaviour {
 		transformList.Add(GameObject.Find("Ocean Background Bottom").transform);
 		transformList.Add(GameObject.Find("Beach").transform);
 		transformList.Add(GameObject.Find("Pier").transform);
+		transformList.Add(GameObject.Find("oceanColor").transform);
 		transformList.Add(treeSnow);
 		land = GameObject.Find("Land").transform;
 		transformList.Add(land);
@@ -133,7 +134,7 @@ public class DayCycle : MonoBehaviour {
 
 	void updateColor(List<Transform> transformList, Color tintColour, Color skyColour) {
 		foreach (Transform toColor in transformList) {
-			toColor.GetComponent<SpriteRenderer>().color = tintColour;
+			toColor.GetComponent<SpriteRenderer>().color = new Color(tintColour.r, tintColour.g, tintColour.b, toColor.transform.GetComponent<SpriteRenderer>().color.a);
 		}
 		Camera.main.backgroundColor = skyColour;
 	}
