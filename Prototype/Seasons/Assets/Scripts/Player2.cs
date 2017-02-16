@@ -59,8 +59,8 @@ public class Player2 : MonoBehaviour {
 						animRenderer.flipX = horizontalInput < 0 ? true : horizontalInput > 0 ? false : animRenderer.flipX;
 						animRenderer.sprite = walkingSprites[walkingFrameIndex];
 						timeSinceLastFrame = 0;
-						//frameSkip = frameSkip == 1 ? 2 : 1;
-						walkingFrameIndex = (walkingFrameIndex + 1) % walkingSprites.Length;
+						frameSkip = frameSkip == 1 ? 2 : 1;
+						walkingFrameIndex = (walkingFrameIndex + frameSkip) % walkingSprites.Length;
 					} else{
 						timeSinceLastFrame = timeSinceLastFrame + Time.deltaTime;
 					}
