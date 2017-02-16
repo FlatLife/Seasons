@@ -386,7 +386,9 @@ MonoBehaviour:
 
     Action Key: E
 
-    Backpack: Q'
+    Backpack: Q
+
+    Pause: P'
 --- !u!222 &62292860
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -582,7 +584,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 112, y: 24}
+  m_AnchoredPosition: {x: 108, y: 24}
   m_SizeDelta: {x: 160, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &241460995
@@ -2556,7 +2558,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -185, y: 20}
+  m_AnchoredPosition: {x: -180, y: 24}
   m_SizeDelta: {x: 120, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &905942780

@@ -421,7 +421,9 @@ MonoBehaviour:
 
     Action Key: E
 
-    Backpack: Q'
+    Backpack: Q
+
+    Pause: P'
 --- !u!222 &288296040
 CanvasRenderer:
   m_ObjectHideFlags: 0

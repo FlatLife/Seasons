@@ -110,6 +110,7 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(Time.timeScale == 0)return;
 		if(openUI && Input.GetKeyDown(KeyCode.Escape)){
 			ToggleUI();
 		}
@@ -348,7 +349,7 @@ public class Player : MonoBehaviour {
 	}
 
 	public void ToggleUI() {
-		if(!performingAction){
+		if(!performingAction && Time.timeScale != 0){
 			openUI = !openUI;
 			craft.Slot1.GetComponent<Image>().enabled = !craft.Slot1.GetComponent<Image>().enabled;
 			craft.Slot2.GetComponent<Image>().enabled = !craft.Slot2.GetComponent<Image>().enabled;
