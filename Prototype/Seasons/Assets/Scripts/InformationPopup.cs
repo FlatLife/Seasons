@@ -7,22 +7,32 @@ public class InformationPopup : MonoBehaviour {
 
 	public string info;
 
+	public string image;
+
+	private bool notOpened = true;
 	GameObject popup;
 	public GameObject canvas;
+	private float flash = 1f;
 	public int height;
 public int width;
 	// Use this for initialization
 		void Start () {
 			canvas = GameObject.Find("Canvas");
 		}
-		
-		// Update is called once per frame
-		// public void Show(){
-		// 	popup = Instantiate(Resources.Load<GameObject>(info));
-		// 	popup.transform.SetParent(canvas.transform);
-		// 	popup.GetComponent<RectTransform>().anchoredPosition = canvas.GetComponent<RectTransform>().anchoredPosition;
-		// 	popup.transform.position = new Vector3(431.5f,323.5f);
-		// }
+
+		void Update()
+		{
+			flash -= Time.deltaTime;
+			if(flash <= 0 && notOpened){
+				if(image == "questionMark"){
+					image = "questionMarkHL";
+				}else{
+					image = "questionMark";
+				}
+				gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>(image);
+				flash = 1f;
+			}
+		}
 
 		public void Hover(){
 			popup = Instantiate(Resources.Load<GameObject>("Popup"));
@@ -42,5 +52,6 @@ public int width;
 		public void Exit(){
 			gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("questionMark");
 			Destroy(popup.gameObject);
+			notOpened = false;
 		}
 }
