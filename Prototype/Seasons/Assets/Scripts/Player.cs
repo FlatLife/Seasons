@@ -76,6 +76,8 @@ public class Player : MonoBehaviour {
 	private Notification notification;
 
 	private int frameSkip = 1;
+	private bool reelingSprite = false;
+	public float reelingAnimationSpeed;
 	
 	private void Awake(){
 		health = new Stat();
@@ -177,16 +179,27 @@ public class Player : MonoBehaviour {
 		}
 
 		if (fish.minigame && !catchingFish) {
-				timeToCatch -= Time.deltaTime;
-				if (timeToCatch < 0.0f) {
-					fish.minigame = false;
-					timeToCatch = 2.0f;
-				}else if(Input.GetKeyDown (KeyCode.E)){
-					timeSinceLastFrame = 0;
-					frameIndex = 35;
-					catchingFish = true;
-				}
+			if(timeSinceLastFrame > reelingAnimationSpeed){
+				timeSinceLastFrame = 0;
+				frameIndex = frameIndex >= 29 ? frameIndex-1 : frameIndex = frameIndex <= 28 ? frameIndex+1 : frameIndex;
+				reelingSprite = !reelingSprite;
+				animRenderer.sprite = fishingSprites[frameIndex];
+			} else {
+				timeSinceLastFrame = timeSinceLastFrame + Time.deltaTime;
 			}
+			
+			timeToCatch -= Time.deltaTime;
+			if (timeToCatch < 0.0f) {
+				frameIndex = 39;
+				fishIdleDirection = true;
+				fish.minigame = false;
+				timeToCatch = 2.0f;
+			}else if(Input.GetKeyDown (KeyCode.E)){
+				timeSinceLastFrame = 0;
+				frameIndex = 35;
+				catchingFish = true;
+			}
+		}
 		
 		OnCollisionUpdate();
 		//If player is pressing the interaction key
