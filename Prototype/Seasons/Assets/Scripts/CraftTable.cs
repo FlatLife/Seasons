@@ -84,7 +84,7 @@ public class CraftTable : MonoBehaviour {
 		CheckRecipe(ItemType.STICK, ItemType.STICK, "FirePrep");
 		CheckRecipe(ItemType.SEAWEED, ItemType.ROCK, "WaterPurifierItem");
 		CheckRecipe(ItemType.WOOD, ItemType.WOOD, "BarrelItem");
-		CheckRecipe(ItemType.COOKEDSALMON, ItemType.SEAWEED, "Sushi");
+		CheckRecipe(ItemType.RAWSALMON, ItemType.SEAWEED, "Sushi");
 
 		//Other items that are made WITHOUT using CheckRecipe (usually put on something like a fire)
 		//Fresh Water = Seawater put on purifier (purifiers instantiated on the ground)
