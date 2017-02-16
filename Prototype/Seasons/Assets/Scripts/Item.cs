@@ -110,7 +110,7 @@ public class Item : MonoBehaviour {
 				break;
 			case ItemType.SUSHI:
 				toBeDeleted = true;
-				hunger.GetComponent<BarScript>().increment(0.50f);
+				hunger.GetComponent<BarScript>().increment(0.45f);
 				thirst.GetComponent<BarScript>().increment(0.1f);
 				break;
 			case ItemType.RAWGUPPY:
