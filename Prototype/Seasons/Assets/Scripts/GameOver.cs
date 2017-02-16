@@ -23,7 +23,7 @@ public class GameOver : MonoBehaviour {
 	}
 
 	public void Retry(){
-		SceneManager.LoadScene("Seasons");
+		SceneManager.LoadScene("StoryComic");
 	}
 
 	public void Quit(){
