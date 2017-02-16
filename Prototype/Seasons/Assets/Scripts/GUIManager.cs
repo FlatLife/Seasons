@@ -67,7 +67,7 @@ public class GUIManager : MonoBehaviour {
 			Destroy(popup);
 		}
 
-		if (Input.GetKeyDown(KeyCode.P))
+		if (Input.GetButtonDown("Pause") && !player.openUI)
         {
             // If user presses ESC, show the pause menu in pause mode
             pauseMenu.GetComponent<PauseMenuManager>().ShowPause();
