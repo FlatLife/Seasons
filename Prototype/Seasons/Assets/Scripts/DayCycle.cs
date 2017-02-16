@@ -9,6 +9,7 @@ public class DayCycle : MonoBehaviour {
 	public float dayTime;
 	public float fadeTime;
 	public GameObject fade;
+	public ParticleSystem snowParticles;
 	bool bottleHasSpawned;
 
 	private Text dayCountText;
@@ -79,6 +80,11 @@ public class DayCycle : MonoBehaviour {
 				dayCountText.text = "Day " + ++dayCount;
 				GameMaster.dayCount = dayCount;
 				if(dayCount % 5 == 0){
+					if (snowParticles.isPlaying) {
+						snowParticles.Stop();
+					} else {
+						snowParticles.Play();
+					}
 					GameMaster.isWinter = !GameMaster.isWinter;
 					GameMaster.fadeMusic(GameMaster.isWinter);
 					if(GameMaster.isWinter){
