@@ -6,7 +6,7 @@ public class Fire : MonoBehaviour {
     public Canvas canvas;
     public int slotNum;
     public CookingUI cookingUI;
-    float burnTime = 100;
+    public float burnTime = 20;
     GameObject fireSpark;
 
     //burnState = 1(small), 2(medium), 3(large)
@@ -66,7 +66,7 @@ public class Fire : MonoBehaviour {
             }
 
             //changing state of the fire as time goes on
-            burnTime -= timeSinceLastFrame;
+            burnTime -= Time.deltaTime;
             if(burnTime < 0){
                 //decrease fire state
                 changeState(fireState--, 0);          
@@ -103,9 +103,14 @@ public class Fire : MonoBehaviour {
                 }
                 if(!currentSlot.isEmpty && fireState < 3){
                     //if its a stick/wood increase the state by 1
-                    if(currentSlot.CurrentItem.type == ItemType.STICK || currentSlot.CurrentItem.type == ItemType.WOOD){
+                    if(currentSlot.CurrentItem.type == ItemType.STICK){
                         currentSlot.DestroyItem();
                         changeState(fireState++, 1);
+                        burnTime += 20;
+                    }else if (currentSlot.CurrentItem.type == ItemType.WOOD){
+                        currentSlot.DestroyItem();
+                        changeState(fireState+=2, 1);
+                        burnTime += 40;
                     }
                 }
             } else {
@@ -142,7 +147,7 @@ public class Fire : MonoBehaviour {
 
 
     void changeState(int state, int increaseOrDecrease){
-        burnTime = 50;
+        burnTime = 20;
         //increase means to add fuel to the fire, causing the lastFrame to be increased
         if(increaseOrDecrease == 1){
             lastFrame += 5;
@@ -154,7 +159,7 @@ public class Fire : MonoBehaviour {
 
     public void startFire(){
         fireState = 3;
-        burnTime = 150;
+        burnTime = 20;
         lastFrame = 14;
         frameIndex = 10;
     }
