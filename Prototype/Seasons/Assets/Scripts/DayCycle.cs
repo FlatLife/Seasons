@@ -54,6 +54,8 @@ public class DayCycle : MonoBehaviour {
 		transformList.Add(GameObject.Find("Beach").transform);
 		transformList.Add(GameObject.Find("Pier").transform);
 		transformList.Add(GameObject.Find("oceanColor").transform);
+		transformList.Add(GameObject.Find("Waves 1").transform);
+		transformList.Add(GameObject.Find("Waves 2").transform);
 		transformList.Add(treeSnow);
 		land = GameObject.Find("Land").transform;
 		transformList.Add(land);
