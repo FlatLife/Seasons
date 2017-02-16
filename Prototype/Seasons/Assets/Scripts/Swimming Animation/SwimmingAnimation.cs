@@ -11,7 +11,7 @@ public class SwimmingAnimation : MonoBehaviour {
 	private float angleDifference = 0;
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		float horizontalInput = Input.GetAxis("Horizontal");
 	  	float verticalInput = Input.GetAxis("Vertical");
 		float angle = (Mathf.Atan2(horizontalInput, verticalInput) * (180 / Mathf.PI)) * -1;
