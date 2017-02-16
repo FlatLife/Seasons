@@ -6226,6 +6226,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 046d2e65ba5433945b684a642d68e1c4, type: 3}
   - {fileID: 21300000, guid: ac91806aa865c4f0c9fc2869813329cd, type: 3}
   - {fileID: 21300000, guid: 28b53746ece594d3ca37180aa9c5b19e, type: 3}
+  - {fileID: 21300000, guid: f4e9b5b6c67164cda951b2f34a548508, type: 3}
+  - {fileID: 21300000, guid: 986dd4bca3fc84235bc9582a42779258, type: 3}
   player: {fileID: 1440615824}
 --- !u!212 &1666886341
 SpriteRenderer:
