@@ -8,6 +8,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
   - enabled: 1
+    path: Assets/Scenes/StoryComic.unity
+  - enabled: 1
     path: Assets/Scenes/Seasons.unity
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
