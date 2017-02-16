@@ -10,7 +10,7 @@ public class TreeSpawn : MonoBehaviour {
 	public int removeTime;
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		//check if any items have been picked up if the list is full
 		if(items.Count >= 10){
 			for(int i = items.Count - 1; i >= 0; i--){
