@@ -166,7 +166,6 @@ public class Item : MonoBehaviour {
 					durability--;
 					if (durability == 0) {
 						toBeDeleted = true;
-						Debug.Log("Your hoe broke!");
 					}
 				}
 				break;
