@@ -5,26 +5,28 @@ using UnityEngine;
 public class Placeable : MonoBehaviour {
 
 	public bool colliding;
-	private Collider2D objectColliderID;
+	private List<Collider2D> objectColliderID;
 	// Use this for initialization
 	void Start () {
-		
+		objectColliderID = new List<Collider2D>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		colliding = objectColliderID.Count != 0;
 	}
 
-	void OnTriggerStay2D(Collider2D other){
-			colliding = true;
-			objectColliderID = other;
+	void OnTriggerEnter2D(Collider2D other){
+			objectColliderID.Add(other);
 	}
 		
 
 	void OnTriggerExit2D(Collider2D other){
-		if(other = objectColliderID){
-			colliding = false;
+		for(int i = objectColliderID.Count - 1; i >= 0; i--){
+			if(other == objectColliderID[i]){
+				objectColliderID.RemoveAt(i);
+			}
 		}
+		
 	}
 }
