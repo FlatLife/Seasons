@@ -101,15 +101,19 @@ public class Fire : MonoBehaviour {
                         changeState(fireState++, 1);
                     }
                 }
-                if(!currentSlot.isEmpty && fireState < 3){
+                if(!currentSlot.isEmpty){
                     //if its a stick/wood increase the state by 1
                     if(currentSlot.CurrentItem.type == ItemType.STICK){
                         currentSlot.DestroyItem();
-                        changeState(fireState++, 1);
+                        if(fireState + 1 <= 3){
+                            changeState(fireState++, 1);
+                        }
                         burnTime += 20;
                     }else if (currentSlot.CurrentItem.type == ItemType.WOOD){
                         currentSlot.DestroyItem();
-                        changeState(fireState+=2, 1);
+                        if(fireState + 2 <= 3){
+                            changeState(fireState+=2, 1);
+                        }
                         burnTime += 40;
                     }
                 }
