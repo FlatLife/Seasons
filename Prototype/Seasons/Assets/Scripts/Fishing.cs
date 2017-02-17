@@ -18,11 +18,14 @@ public class Fishing : MonoBehaviour {
 	public Transform canvas;
 	//Used to spawn items in backpack for fishing
 	Item item;
+	private Notification notification;
+
 
 
 
 	// Use this for initialization
 	void Start () {
+		notification = GameObject.Find("Notification").GetComponent<Notification>();
 	}
 	
 	// Update is called once per frame
@@ -47,7 +50,10 @@ public class Fishing : MonoBehaviour {
 			} else if (randNum > 0.9f) {
 				item = (Resources.Load("rawSalmon") as GameObject).GetComponent<Item>();
 			}
-			inv.AddItem(item);
+			bool added = inv.AddItem(item);
+			if(!added){
+				notification.InventoryFlag = true;
+			}
 			Slot fishingRodSlot = backpack.GetComponent<Backpack>().FindItem(ItemType.FISHINGROD);
 			fishingRodSlot.CurrentItem.Durability--;
 			

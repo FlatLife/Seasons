@@ -13,11 +13,13 @@ public class CraftTable : MonoBehaviour {
 	public GameObject Slot2;
 	public GameObject info;
 
+	private Notification notification;
+
 
 	// Use this for initialization
 	void Awake () {
 		CreateLayout();
-		
+		notification = GameObject.Find("Notification").GetComponent<Notification>();
 	}
 	
 	// Update is called once per frame
@@ -100,16 +102,20 @@ public class CraftTable : MonoBehaviour {
 			if((tmp1.CurrentItem.type == type1 && tmp2.CurrentItem.type == type2)
        		|| (tmp1.CurrentItem.type == type2 && tmp2.CurrentItem.type == type1)){
 				Item result = Resources.Load<GameObject>(product).GetComponent<Item>();
-            	BackPack.AddItem(result);
-				if(!tmp1.CurrentItem.keepItem){
-           			tmp1.DestroyItem ();
-				} else {
-					CheckDurability(tmp1);
-				}
-				if(!tmp2.CurrentItem.keepItem){
-           	 		tmp2.DestroyItem ();
-				} else {
-					CheckDurability(tmp2);
+				if(BackPack.EmptySlots() >= 1){
+            		BackPack.AddItem(result);
+					if(!tmp1.CurrentItem.keepItem){
+           				tmp1.DestroyItem ();
+					} else {
+						CheckDurability(tmp1);
+					}
+					if(!tmp2.CurrentItem.keepItem){
+						tmp2.DestroyItem ();
+					} else {
+						CheckDurability(tmp2);
+					}
+				}else{
+					notification.InventoryFlag = true;
 				}
 			}
 		} 
@@ -145,6 +151,8 @@ public class CraftTable : MonoBehaviour {
 						if(!tmp2.CurrentItem.keepItem){
 							tmp2.DestroyItem();
 						}
+					}else{
+						notification.InventoryFlag = true;
 					}
 				}
 			} else if (tmp2.isEmpty){
@@ -157,6 +165,8 @@ public class CraftTable : MonoBehaviour {
 						if(!tmp1.CurrentItem.keepItem){
 							tmp1.DestroyItem();
 						}
+					}else{
+						notification.InventoryFlag = true;
 					}
 				}
 			}
