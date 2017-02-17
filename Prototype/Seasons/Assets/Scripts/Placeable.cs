@@ -16,14 +16,14 @@ public class Placeable : MonoBehaviour {
 		
 	}
 
-	void OnTriggerEnter2D(Collider2D other){
+	void OnTriggerStay2D(Collider2D other){
 			colliding = true;
 			objectColliderID = other;
 	}
 		
 
 	void OnTriggerExit2D(Collider2D other){
-		if(other == objectColliderID){
+		if(other = objectColliderID){
 			colliding = false;
 		}
 	}

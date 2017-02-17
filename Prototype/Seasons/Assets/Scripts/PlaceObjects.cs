@@ -34,28 +34,31 @@ public class PlaceObjects : MonoBehaviour {
 			}
 			// Makes sure object isn't on top of something
 			canBuild = !hoverObject.GetComponent<Placeable>().colliding;
-
+			Debug.Log("Colliding" + canBuild);
 			// Makes sure object is being built close enough to the player
-			Vector3 centerPosition = Camera.main.transform.position + new Vector3(Screen.width/2, Screen.height/2 - 65);
-			Vector2 difference = Input.mousePosition - centerPosition;
+			Vector3 centerPosition = player.transform.position - new Vector3(0,1.25f,0);
+			Vector2 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - centerPosition;
 			float distance = difference.magnitude;
-			canBuild = canBuild ? distance < 250 : false;
+			Debug.Log(distance);
+			canBuild = canBuild ? distance < 4 : false;
+			Debug.Log("Distance" + canBuild);
 
 			// Makes sure object is not outside island
 			int layerMask = 1 << 8 | 1 << 9;
-			int hit = Physics2D.LinecastNonAlloc(Camera.main.ScreenToWorldPoint(centerPosition - new Vector3(0, 4f,0)), Camera.main.ScreenToWorldPoint(Input.mousePosition), new RaycastHit2D[1], layerMask);
+			int hit = Physics2D.LinecastNonAlloc(centerPosition, Camera.main.ScreenToWorldPoint(Input.mousePosition), new RaycastHit2D[1], layerMask);
 			canBuild = canBuild ? hit == 0 : false;
+			Debug.Log("RayCast" + canBuild);
 			
 
 			// Set hoverObject's position and colour
-			Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+			Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition + new Vector3(0, 75));
 			hoverObject.transform.position = new Vector3(pos.x, pos.y, pos.y - 0.3f);
 			hoverObject.GetComponent<SpriteRenderer>().color = canBuild && !player.isSwimming ? buildColor: cantBuild;
 
 			if (Input.GetMouseButtonDown(0) && canBuild && !player.isSwimming) {
 				item = Instantiate(Resources.Load<GameObject>(buildItem));
 				item.name = buildItem;
-				item.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+				item.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition + new Vector3(0, 75));
 				item.transform.position = new Vector3 (item.transform.position.x, item.transform.position.y, item.transform.position.y + 0.2f);
 				buildMode = false;
 				Destroy(hoverObject);
