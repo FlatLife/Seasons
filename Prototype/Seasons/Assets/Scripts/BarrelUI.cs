@@ -16,13 +16,11 @@ public class BarrelUI : MonoBehaviour {
 	public GameObject WaterMask;
 	public RectTransform WaterBarRect;
 	public RectTransform WaterMaskRect;
+	public Stat water;
 	public Text text;
 
 	public void Initialize() {
-		WaterBar = GameObject.Find("WaterBar");
-		WaterMask = GameObject.Find("WaterBar/Mask");
-		WaterBarRect = WaterBar.GetComponent<RectTransform>();
-		WaterMaskRect = WaterMask.GetComponent<RectTransform>();
+
 		
 		RectTransform uiRect = this.GetComponent<RectTransform>();
 		uiRect.sizeDelta = new Vector3(200, 350);
@@ -31,10 +29,20 @@ public class BarrelUI : MonoBehaviour {
 		uiRect.pivot = new Vector2(0, 1);
 		uiRect.anchoredPosition = new Vector3(520, 495);
 
+		WaterBar = Instantiate(Resources.Load<GameObject>("WaterBar"));
+		WaterMask = WaterBar.transform.Find("Mask").gameObject;
 		WaterBar.transform.SetParent(this.transform);
 		WaterMask.transform.SetParent(this.WaterBar.transform);
+		WaterBarRect = WaterBar.GetComponent<RectTransform>();
+		WaterMaskRect = WaterMask.GetComponent<RectTransform>();
 		WaterBarRect.anchoredPosition = new Vector3(45, -113);
 		WaterMaskRect.localPosition = new Vector3(7, -8);
+
+		water = new Stat();
+		water.bar = WaterBar.GetComponent<BarScript>();
+		water.currentVal = 0;
+		water.Initialize();
+
 
 		text = Instantiate (Resources.Load<Text> ("Text"), this.transform);
 		RectTransform textRect = text.GetComponent<RectTransform> ();

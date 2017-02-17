@@ -16,14 +16,16 @@ public class Fishing : MonoBehaviour {
 	public Transform rodAlert;
 	public float delay;
 	public Transform canvas;
-	GameObject alert;
 	//Used to spawn items in backpack for fishing
 	Item item;
+	private Notification notification;
+
 
 
 
 	// Use this for initialization
 	void Start () {
+		notification = GameObject.Find("Notification").GetComponent<Notification>();
 	}
 	
 	// Update is called once per frame
@@ -31,12 +33,7 @@ public class Fishing : MonoBehaviour {
 		if (isFishing && !minigame) {
 			delay -= Time.deltaTime;
 			if(Random.Range(0f,1f) < fishChance  && Time.timeScale != 0 && delay < 0f){ 
-				alert = Instantiate(Resources.Load<GameObject>("alert"));
 				minigame = true;
-				Vector3 position = transform.position;
-				position.y += 3;
-				alert.transform.position = position;
-				Destroy (alert.gameObject, 2.0f);
 				delay = 2f;
 			}
 		}
@@ -53,8 +50,10 @@ public class Fishing : MonoBehaviour {
 			} else if (randNum > 0.9f) {
 				item = (Resources.Load("rawSalmon") as GameObject).GetComponent<Item>();
 			}
-			inv.AddItem(item);
-			Destroy (alert);
+			bool added = inv.AddItem(item);
+			if(!added){
+				notification.InventoryFlag = true;
+			}
 			Slot fishingRodSlot = backpack.GetComponent<Backpack>().FindItem(ItemType.FISHINGROD);
 			fishingRodSlot.CurrentItem.Durability--;
 			
