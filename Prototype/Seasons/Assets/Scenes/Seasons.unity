@@ -3434,7 +3434,7 @@ MonoBehaviour:
   dayTime: 120
   fadeTime: 2
   fade: {fileID: 2054058419}
-  snowParticles: {fileID: 1633878317}
+  snowParticles: {fileID: 0}
   dayLength: 120
   treeSnow: {fileID: 1037412035}
 --- !u!4 &1086110956
@@ -4704,7 +4704,7 @@ MonoBehaviour:
   performingAction: 0
   timeToCatch: 2
   openUI: 0
-  reelingAnimationSpeed: 0.05
+  reelingAnimationSpeed: 0
 --- !u!60 &1440615827
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -5704,7 +5704,6 @@ GameObject:
   - component: {fileID: 1514190017}
   - component: {fileID: 1514190020}
   - component: {fileID: 1514190019}
-  - component: {fileID: 1514190018}
   m_Layer: 0
   m_Name: Text (1)
   m_TagString: Untagged
@@ -5730,18 +5729,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -154}
   m_SizeDelta: {x: 300, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1514190018
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1514190016}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65f2379e6f1da4033a73a6b43b499d4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseGame: 0
 --- !u!114 &1514190019
 MonoBehaviour:
   m_ObjectHideFlags: 0
