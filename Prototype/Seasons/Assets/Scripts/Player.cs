@@ -72,7 +72,6 @@ public class Player : MonoBehaviour {
 	private Stat hunger;
 	private Stat thirst;
 	private Stat warmth;
-	private Stat water;
 	private Notification notification;
 
 	private int frameSkip = 1;
@@ -84,22 +83,18 @@ public class Player : MonoBehaviour {
 		hunger = new Stat();
 		thirst = new Stat();
 		warmth = new Stat();
-		water = new Stat();
 		health.bar = GameObject.Find("Canvas/Stats/Health").GetComponent<BarScript>();
 		hunger.bar = GameObject.Find("Canvas/Stats/Hunger").GetComponent<BarScript>();
 		thirst.bar = GameObject.Find("Canvas/Stats/Thirst").GetComponent<BarScript>();
 		warmth.bar = GameObject.Find("Canvas/Stats/Warmth").GetComponent<BarScript>();
-		water.bar = GameObject.Find("Canvas/WaterBar").GetComponent<BarScript>();
 		health.currentVal = 100;
 		hunger.currentVal = 100;
 		thirst.currentVal = 100;
 		warmth.currentVal = 100;
-		water.currentVal = 0;
 		health.Initialize();
 		hunger.Initialize();
 		thirst.Initialize();
 		warmth.Initialize();
-		water.Initialize();
 		notification = GameObject.Find("Notification").GetComponent<Notification>();
 	}
     // Use this for initialization
