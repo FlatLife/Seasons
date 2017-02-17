@@ -17,7 +17,7 @@ public class Barrel : MonoBehaviour {
 		BarrelUI.name = "BarrelUI";
 		BarrelUI.Initialize();
 		BarrelUI.transform.SetParent(canvas.transform);
-		water = GameObject.Find("WaterBar");
+		water = BarrelUI.WaterBar;
 	}
 	
 	// Update is called once per frame
