@@ -34,20 +34,19 @@ public class PlaceObjects : MonoBehaviour {
 			}
 			// Makes sure object isn't on top of something
 			canBuild = !hoverObject.GetComponent<Placeable>().colliding;
-			Debug.Log("Colliding" + canBuild);
+
 			// Makes sure object is being built close enough to the player
 			Vector3 centerPosition = player.transform.position - new Vector3(0,1.25f,0);
 			Vector2 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - centerPosition;
 			float distance = difference.magnitude;
-			Debug.Log(distance);
 			canBuild = canBuild ? distance < 4 : false;
-			Debug.Log("Distance" + canBuild);
+
 
 			// Makes sure object is not outside island
 			int layerMask = 1 << 8 | 1 << 9;
 			int hit = Physics2D.LinecastNonAlloc(centerPosition, Camera.main.ScreenToWorldPoint(Input.mousePosition), new RaycastHit2D[1], layerMask);
 			canBuild = canBuild ? hit == 0 : false;
-			Debug.Log("RayCast" + canBuild);
+
 			
 
 			// Set hoverObject's position and colour
