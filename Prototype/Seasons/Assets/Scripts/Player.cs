@@ -317,6 +317,7 @@ public class Player : MonoBehaviour {
 				isSwimming = !isSwimming;
 				Vector3 pos = transform.position;
 				if(isSwimming){
+					Camera.main.GetComponent<BoxCollider2D>().enabled = true;
 					underwater.GetComponent<BoxCollider2D> ().enabled = true;
 					animRenderer.sortingLayerName = "Background";
 					animRenderer.sortingOrder = -2;
@@ -331,6 +332,7 @@ public class Player : MonoBehaviour {
 					transform.GetComponent<PolygonCollider2D>().offset = new Vector2(0, 0.8f);
 					transform.position = new Vector3(-23.15025f,-2.443089f, pos.z);
 				}else{
+					Camera.main.GetComponent<BoxCollider2D>().enabled = false;
 					underwater.GetComponent<BoxCollider2D> ().enabled = false;
 					animRenderer.sprite = standingSprite;
 					animRenderer.sortingLayerName = "Default";

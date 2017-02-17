@@ -184,6 +184,7 @@ MonoBehaviour:
   canvas: {fileID: 0}
   slotNum: 4
   cookingUI: {fileID: 0}
+  burnTime: 20
   fireState: 0
   lastFrame: 0
   animationTime: 0.15
