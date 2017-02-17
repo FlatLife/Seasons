@@ -67,6 +67,8 @@ public class Player : MonoBehaviour {
 	public float timeToCatch = 2.0f;
 
 	public bool openUI = false;
+	public bool openUIFlag = false;
+	public bool atUIFlag = false;
 
 	private Stat health;
 	private Stat hunger;
@@ -223,7 +225,8 @@ public class Player : MonoBehaviour {
 		
 			
 			//Cooking minigame interaction
-			if(atFire){
+			if(atFire && !atUIFlag){
+				atUIFlag = true;
 				fire = fireColliderID.gameObject.GetComponent<Fire>();
 				switch (fire.fireState){
 					//if player hasnt begun to start the fire
@@ -271,7 +274,8 @@ public class Player : MonoBehaviour {
 				}
 			}
 
-			if (atFarm) {
+			if (atFarm && !atUIFlag) {
+				atUIFlag = true;
 				if(openUI){
 					if(!farmUIOpen){
 						ToggleFarmUI();
@@ -282,7 +286,8 @@ public class Player : MonoBehaviour {
 				
 			}
 
-			if (atWaterPurifier) {
+			if (atWaterPurifier && !atUIFlag) {
+				atUIFlag = true;
 				//Debug.Log("Player entered Farm zone and pressed e");
 				if(openUI){
 					if(!waterUIOpen){
@@ -294,7 +299,8 @@ public class Player : MonoBehaviour {
 				
 			}
 
-			if (atBarrel) {
+			if (atBarrel && !atUIFlag) {
+				atUIFlag = true;
 				//Debug.Log("Player entered Farm zone and pressed e");
 				if(openUI){
 					if(!barrelUIOpen){
@@ -304,6 +310,8 @@ public class Player : MonoBehaviour {
 				ToggleUI();
 				
 			}
+
+			atUIFlag = false;
 
 			if(switchSwimMode){
 				isSwimming = !isSwimming;
@@ -397,15 +405,21 @@ public class Player : MonoBehaviour {
 			GameObject.Find("Canvas/DestroyUI/DestroyButton").GetComponent<Image>().enabled = !GameObject.Find("Canvas/DestroyUI/DestroyButton").GetComponent<Image>().enabled;
 			GameObject.Find("Canvas/DestroyUI/DestroyButton/Text").SetActive(!GameObject.Find("Canvas/DestroyUI/DestroyButton/Text").activeInHierarchy); 
 
-			if(atFire){
+			if(atFire && !openUIFlag){
 				ToggleCookingUI();
-			}else if(atFarm){
+				openUIFlag = true;
+
+			}else if(atFarm && !openUIFlag){
 				ToggleFarmUI();
-			}else if(atWaterPurifier){
+				openUIFlag = true;
+			}else if(atWaterPurifier && !openUIFlag){
 				ToggleWaterUI();
-			}else if (atBarrel) {
+				openUIFlag = true;
+			}else if (atBarrel && !openUIFlag) {
 				ToggleBarrelUI();
+				openUIFlag = true;
 			}
+			openUIFlag = false;
 		}
 	}
 
