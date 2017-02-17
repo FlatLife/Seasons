@@ -23,7 +23,7 @@ public class Item : MonoBehaviour {
 	public string message;
 	public Slot slot;
 	private Item newItem;
-	private BoxCollider2D collider;
+	private BoxCollider2D colliderBox;
 	private GameObject hunger;
 	private GameObject thirst;
 
@@ -174,9 +174,9 @@ public class Item : MonoBehaviour {
 				thirst.GetComponent<BarScript>().increment(0.3f);
 				slot.DestroyItem ();
 				newItem = Instantiate(Resources.Load<GameObject>("Bucket").GetComponent<Item>(), slot.transform);
-				collider = newItem.gameObject.GetComponent<BoxCollider2D>();
-				if(collider != null){
-					collider.enabled = false;
+				colliderBox = newItem.gameObject.GetComponent<BoxCollider2D>();
+				if(colliderBox != null){
+					colliderBox.enabled = false;
 				}
 				newItem.transform.position = new Vector3 (0,20f,0);
 				newItem.GetComponent<SpriteRenderer>().enabled = false;
@@ -185,9 +185,9 @@ public class Item : MonoBehaviour {
 			case ItemType.SALTWATER:
 				slot.DestroyItem ();
 				newItem = Instantiate(Resources.Load<GameObject>("Bucket").GetComponent<Item>(), slot.transform);
-				collider = newItem.gameObject.GetComponent<BoxCollider2D>();
-				if(collider != null){
-					collider.enabled = false;
+				colliderBox = newItem.gameObject.GetComponent<BoxCollider2D>();
+				if(colliderBox != null){
+					colliderBox.enabled = false;
 				}
 				newItem.transform.position = new Vector3 (0,20f,0);
 				newItem.GetComponent<SpriteRenderer>().enabled = false;
@@ -215,9 +215,9 @@ public class Item : MonoBehaviour {
 				if (nearWater) {
 				slot.DestroyItem ();
 				newItem = Instantiate(Resources.Load<GameObject>("SaltWater").GetComponent<Item>(), slot.transform);
-				collider = newItem.gameObject.GetComponent<BoxCollider2D>();
-				if(collider != null){
-					collider.enabled = false;
+				colliderBox = newItem.gameObject.GetComponent<BoxCollider2D>();
+				if(colliderBox != null){
+					colliderBox.enabled = false;
 				}
 				newItem.transform.position = new Vector3 (0,20f,0);
 				newItem.GetComponent<SpriteRenderer>().enabled = false;
