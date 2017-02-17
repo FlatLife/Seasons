@@ -181,7 +181,7 @@ public class Player : MonoBehaviour {
 		if (fish.minigame && !catchingFish) {
 			if(timeSinceLastFrame > reelingAnimationSpeed){
 				timeSinceLastFrame = 0;
-				frameIndex = frameIndex >= 27 ? frameIndex-1 : frameIndex = frameIndex <= 26 ? frameIndex+1 : frameIndex;
+				frameIndex = frameIndex >= 30 ? frameIndex-1 : frameIndex = frameIndex <= 29 ? frameIndex+1 : frameIndex;
 				reelingSprite = !reelingSprite;
 				animRenderer.sprite = fishingSprites[frameIndex];
 			} else {
