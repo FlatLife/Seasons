@@ -3284,7 +3284,7 @@ MonoBehaviour:
   dayTime: 120
   fadeTime: 2
   fade: {fileID: 2054058419}
-  snowParticles: {fileID: 0}
+  snowParticles: {fileID: 1633878317}
   dayLength: 120
   treeSnow: {fileID: 1037412035}
 --- !u!4 &1086110956
