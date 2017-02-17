@@ -21,7 +21,7 @@ public class TreeSpawn : MonoBehaviour {
 		}
 		//if it is time to spawn an item
 		if(coolDown <= 0 && items.Count < 10){
-			int itemChoice = Random.Range(0, 4);
+			int itemChoice = Random.Range(0, 3);
 			switch (itemChoice){
 				case 0:
 					item = Instantiate(Resources.Load<Item>("Wood"));
@@ -30,10 +30,7 @@ public class TreeSpawn : MonoBehaviour {
 					item = Instantiate(Resources.Load<Item>("Stick"));
 					break;
 				case 2:
-					item = Instantiate(Resources.Load<Item>("Vine"));
-					break;
-				case 3:
-					int seedChoice = Random.Range(0, 4);
+					int seedChoice = Random.Range(0, 5);
 					switch (seedChoice){
 						case 0:
 							item = Instantiate(Resources.Load<Item>("StrawberrySeeds"));
@@ -46,6 +43,9 @@ public class TreeSpawn : MonoBehaviour {
 							break;
 						case 3:
 							item = Instantiate(Resources.Load<Item>("CarrotSeeds"));
+							break;
+						case 4:
+							item = Instantiate(Resources.Load<Item>("Vine"));
 							break;
 					}
 					break;
