@@ -67,12 +67,13 @@ public class Player : MonoBehaviour {
 	public float timeToCatch = 2.0f;
 
 	public bool openUI = false;
+	public bool openUIFlag = false;
+	public bool atUIFlag = false;
 
 	private Stat health;
 	private Stat hunger;
 	private Stat thirst;
 	private Stat warmth;
-	private Stat water;
 	private Notification notification;
 
 	private int frameSkip = 1;
@@ -84,22 +85,18 @@ public class Player : MonoBehaviour {
 		hunger = new Stat();
 		thirst = new Stat();
 		warmth = new Stat();
-		water = new Stat();
 		health.bar = GameObject.Find("Canvas/Stats/Health").GetComponent<BarScript>();
 		hunger.bar = GameObject.Find("Canvas/Stats/Hunger").GetComponent<BarScript>();
 		thirst.bar = GameObject.Find("Canvas/Stats/Thirst").GetComponent<BarScript>();
 		warmth.bar = GameObject.Find("Canvas/Stats/Warmth").GetComponent<BarScript>();
-		water.bar = GameObject.Find("Canvas/WaterBar").GetComponent<BarScript>();
 		health.currentVal = 100;
 		hunger.currentVal = 100;
 		thirst.currentVal = 100;
 		warmth.currentVal = 100;
-		water.currentVal = 0;
 		health.Initialize();
 		hunger.Initialize();
 		thirst.Initialize();
 		warmth.Initialize();
-		water.Initialize();
 		notification = GameObject.Find("Notification").GetComponent<Notification>();
 	}
     // Use this for initialization
@@ -181,7 +178,7 @@ public class Player : MonoBehaviour {
 		if (fish.minigame && !catchingFish) {
 			if(timeSinceLastFrame > reelingAnimationSpeed){
 				timeSinceLastFrame = 0;
-				frameIndex = frameIndex >= 27 ? frameIndex-1 : frameIndex = frameIndex <= 26 ? frameIndex+1 : frameIndex;
+				frameIndex = frameIndex >= 30 ? frameIndex-1 : frameIndex = frameIndex <= 29 ? frameIndex+1 : frameIndex;
 				reelingSprite = !reelingSprite;
 				animRenderer.sprite = fishingSprites[frameIndex];
 			} else {
@@ -228,7 +225,8 @@ public class Player : MonoBehaviour {
 		
 			
 			//Cooking minigame interaction
-			if(atFire){
+			if(atFire && !atUIFlag){
+				atUIFlag = true;
 				fire = fireColliderID.gameObject.GetComponent<Fire>();
 				switch (fire.fireState){
 					//if player hasnt begun to start the fire
@@ -276,7 +274,8 @@ public class Player : MonoBehaviour {
 				}
 			}
 
-			if (atFarm) {
+			if (atFarm && !atUIFlag) {
+				atUIFlag = true;
 				if(openUI){
 					if(!farmUIOpen){
 						ToggleFarmUI();
@@ -287,7 +286,8 @@ public class Player : MonoBehaviour {
 				
 			}
 
-			if (atWaterPurifier) {
+			if (atWaterPurifier && !atUIFlag) {
+				atUIFlag = true;
 				//Debug.Log("Player entered Farm zone and pressed e");
 				if(openUI){
 					if(!waterUIOpen){
@@ -299,7 +299,8 @@ public class Player : MonoBehaviour {
 				
 			}
 
-			if (atBarrel) {
+			if (atBarrel && !atUIFlag) {
+				atUIFlag = true;
 				//Debug.Log("Player entered Farm zone and pressed e");
 				if(openUI){
 					if(!barrelUIOpen){
@@ -309,6 +310,8 @@ public class Player : MonoBehaviour {
 				ToggleUI();
 				
 			}
+
+			atUIFlag = false;
 
 			if(switchSwimMode){
 				isSwimming = !isSwimming;
@@ -402,15 +405,21 @@ public class Player : MonoBehaviour {
 			GameObject.Find("Canvas/DestroyUI/DestroyButton").GetComponent<Image>().enabled = !GameObject.Find("Canvas/DestroyUI/DestroyButton").GetComponent<Image>().enabled;
 			GameObject.Find("Canvas/DestroyUI/DestroyButton/Text").SetActive(!GameObject.Find("Canvas/DestroyUI/DestroyButton/Text").activeInHierarchy); 
 
-			if(atFire){
+			if(atFire && !openUIFlag){
 				ToggleCookingUI();
-			}else if(atFarm){
+				openUIFlag = true;
+
+			}else if(atFarm && !openUIFlag){
 				ToggleFarmUI();
-			}else if(atWaterPurifier){
+				openUIFlag = true;
+			}else if(atWaterPurifier && !openUIFlag){
 				ToggleWaterUI();
-			}else if (atBarrel) {
+				openUIFlag = true;
+			}else if (atBarrel && !openUIFlag) {
 				ToggleBarrelUI();
+				openUIFlag = true;
 			}
+			openUIFlag = false;
 		}
 	}
 
