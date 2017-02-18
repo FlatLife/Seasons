@@ -53,7 +53,7 @@ public class Notification : MonoBehaviour {
 		thirstFlag = thirstFlag || statsMaster.Thirst < 0.2f && !thirstLock;
 		warmthFlag = warmthFlag || statsMaster.Warmth < 0.2f && !warmthLock;
 		nightFlag = nightFlag || dayCycle.dayTime < 5f && !nightLock;
-		if (DayCycle.dayCount > 1 && DayCycle.dayCount < 5 ){
+		if (DayCycle.dayCount > 1 && DayCycle.dayCount <= 5 ){
 			bottleFlag = bottleFlag || dayCycle.dayTime < (dayCycle.dayLength - 5f) && !bottleLock;
 		}
 
