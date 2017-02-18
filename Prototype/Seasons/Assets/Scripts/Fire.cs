@@ -113,7 +113,9 @@ public class Fire : MonoBehaviour {
                         currentSlot.DestroyItem();
                         if(fireState + 2 <= 3){
                             changeState(fireState+=2, 1);
-                        }
+						}else if(fireState + 1 <= 3){
+								changeState(fireState++ , 1);
+						}
                         burnTime += 40;
                     }
                 }
@@ -151,7 +153,9 @@ public class Fire : MonoBehaviour {
 
 
     void changeState(int state, int increaseOrDecrease){
-        burnTime = 20;
+		if (burnTime <= 0) {
+			burnTime = 20;
+		}
         //increase means to add fuel to the fire, causing the lastFrame to be increased
         if(increaseOrDecrease == 1){
             lastFrame += 5;
